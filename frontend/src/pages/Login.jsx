@@ -7,7 +7,6 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    // TODO: replace with real auth call to your backend (JWT, OAuth, etc.)
     localStorage.setItem('user_name', name)
     navigate('/')
   }
