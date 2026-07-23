@@ -8,7 +8,8 @@ export default function AIChatbot() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const bottomRef = useRef(null)
+  const messagesRef = useRef(null)
+  const inputRef = useRef(null)
 
   const { language, t } = useLanguage()
 
@@ -18,8 +19,17 @@ export default function AIChatbot() {
 
   const userId = user?.id || 'anonymous'
 
+  /*
+   * Scroll ONLY the message container.
+   * This prevents the entire browser page from jumping.
+   */
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({
+    const container = messagesRef.current
+
+    if (!container) return
+
+    container.scrollTo({
+      top: container.scrollHeight,
       behavior: 'smooth',
     })
   }, [messages, loading])
@@ -66,379 +76,210 @@ export default function AIChatbot() {
       ])
     } finally {
       setLoading(false)
+
+      // Keep typing comfortable after response.
+      requestAnimationFrame(() => {
+        inputRef.current?.focus({
+          preventScroll: true,
+        })
+      })
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      send()
     }
   }
 
   return (
-    <section className="w-full py-8 sm:py-12">
+    <div className="chat-page">
 
-      {/* PAGE HEADING */}
-      <div className="text-center mb-7">
+      <div className="chat-container">
 
-        <div
-          className="
-            inline-flex items-center gap-2
-            bg-leaf-100
-            text-leaf-800
-            rounded-full
-            px-4 py-2
-            text-xs font-semibold
-            mb-4
-          "
-        >
-          ✨ CropSaver AI
-        </div>
+        {/* =========================
+            CHAT HEADER
+        ========================== */}
 
-        <h1
-          className="
-            font-heading
-            text-3xl sm:text-4xl
-            font-bold
-            text-leaf-900
-          "
-        >
-          {t.aiChatbot}
-        </h1>
+        <div className="chat-header">
 
-        <p
-          className="
-            mt-2
-            text-gray-500
-            max-w-xl
-            mx-auto
-          "
-        >
-          {t.chatbotCardDesc}
-        </p>
-
-      </div>
-
-      {/* CHAT */}
-      <div
-        className="
-          w-full
-          max-w-4xl
-          mx-auto
-          bg-white
-          rounded-3xl
-          border border-leaf-100
-          shadow-soft
-          overflow-hidden
-        "
-      >
-
-        {/* CHAT HEADER */}
-        <div
-          className="
-            px-6 py-4
-            border-b border-leaf-100
-            bg-gradient-to-r
-            from-leaf-50 to-white
-            flex items-center gap-3
-          "
-        >
-          <div
-            className="
-              w-11 h-11
-              rounded-xl
-              bg-leaf-700
-              text-white
-              flex items-center justify-center
-              text-xl
-              shadow-card
-            "
-          >
+          <div className="chat-header-icon">
             🌱
           </div>
 
-          <div>
-            <h2
-              className="
-                font-heading
-                font-semibold
-                text-leaf-900
-              "
-            >
-              CropSaver AI
-            </h2>
+          <div className="chat-header-content">
 
-            <div
-              className="
-                flex items-center gap-1.5
-                text-xs text-gray-500
-              "
-            >
-              <span
-                className="
-                  w-2 h-2
-                  bg-green-500
-                  rounded-full
-                "
-              />
+            <h1>
+              {t.aiChatbot}
+            </h1>
 
-              AI farming assistant
-            </div>
+            <p>
+              {t.chatbotCardDesc}
+            </p>
+
+            <span className="chat-language">
+              🌐 {aiLanguageNames[language] || 'English'}
+            </span>
+
           </div>
 
         </div>
 
-        {/* MESSAGE AREA */}
+
+        {/* =========================
+            MESSAGE AREA
+        ========================== */}
+
         <div
-          className="
-            h-[460px]
-            overflow-y-auto
-            px-5 sm:px-7
-            py-6
-            bg-gradient-to-b
-            from-leaf-50/40
-            via-white
-            to-white
-          "
+          ref={messagesRef}
+          className="chat-messages"
         >
 
-          {messages.length === 0 && (
-            <div
-              className="
-                h-full
-                flex items-center
-                justify-center
-              "
-            >
-              <div
-                className="
-                  text-center
-                  max-w-md
-                  mx-auto
-                "
-              >
+          {/* EMPTY CHAT */}
 
-                <div
-                  className="
-                    w-20 h-20
-                    rounded-3xl
-                    bg-leaf-100
-                    mx-auto
-                    flex items-center justify-center
-                    text-4xl
-                    mb-5
-                  "
-                >
-                  🌱
-                </div>
+          {messages.length === 0 && !loading && (
 
-                <h2
-                  className="
-                    font-heading
-                    text-2xl
-                    font-semibold
-                    text-leaf-900
-                  "
-                >
-                  {t.aiChatbot}
-                </h2>
+            <div className="chat-welcome">
 
-                <p
-                  className="
-                    text-gray-500
-                    mt-2
-                    leading-relaxed
-                  "
-                >
-                  {t.chatPlaceholder}
-                </p>
-
-                <div
-                  className="
-                    mt-5
-                    inline-flex
-                    items-center gap-2
-                    text-xs
-                    bg-white
-                    border border-leaf-100
-                    rounded-full
-                    px-4 py-2
-                    text-gray-500
-                  "
-                >
-                  🌐 {aiLanguageNames[language] || 'English'}
-                </div>
-
+              <div className="chat-welcome-icon">
+                🌱
               </div>
+
+              <h2>
+                {t.aiChatbot}
+              </h2>
+
+              <p>
+                {t.chatPlaceholder}
+              </p>
+
+              <span className="chat-welcome-language">
+                🌐 {aiLanguageNames[language] || 'English'}
+              </span>
+
             </div>
+
           )}
 
-          <div className="space-y-4">
 
-            {messages.map((message, index) => (
+          {/* MESSAGES */}
 
-              <div
-                key={index}
-                className={`
-                  flex
-                  ${
+          {messages.length > 0 && (
+
+            <div className="chat-message-list">
+
+              {messages.map((message, index) => (
+
+                <div
+                  key={`${message.role}-${index}`}
+                  className={
                     message.role === 'user'
-                      ? 'justify-end'
-                      : 'justify-start'
+                      ? 'chat-message-row user'
+                      : 'chat-message-row bot'
                   }
-                `}
-              >
+                >
 
-                <div
-                  className={`
-                    max-w-[80%]
-                    sm:max-w-[70%]
-                    px-4 py-3
-                    rounded-2xl
-                    whitespace-pre-wrap
-                    leading-relaxed
-                    text-sm sm:text-base
+                  {message.role === 'bot' && (
+                    <div className="chat-bot-avatar">
+                      🌱
+                    </div>
+                  )}
 
-                    ${
+
+                  <div
+                    className={
                       message.role === 'user'
-                        ? `
-                          bg-leaf-700
-                          text-white
-                          rounded-br-md
-                          shadow-card
-                        `
-                        : `
-                          bg-white
-                          text-gray-700
-                          border border-leaf-100
-                          rounded-bl-md
-                          shadow-sm
-                        `
+                        ? 'chat-bubble chat-user-bubble'
+                        : 'chat-bubble chat-bot-bubble'
                     }
-                  `}
-                >
-                  {message.text}
+                  >
+                    {message.text}
+                  </div>
+
                 </div>
 
+              ))}
+
+            </div>
+
+          )}
+
+
+          {/* THINKING */}
+
+          {loading && (
+
+            <div className="chat-message-row bot">
+
+              <div className="chat-bot-avatar">
+                🌱
               </div>
-            ))}
 
-            {loading && (
-              <div className="flex justify-start">
+              <div className="chat-bubble chat-bot-bubble chat-thinking">
 
-                <div
-                  className="
-                    bg-white
-                    border border-leaf-100
-                    shadow-sm
-                    rounded-2xl
-                    rounded-bl-md
-                    px-4 py-3
-                    flex items-center gap-2
-                    text-sm text-gray-500
-                  "
-                >
-                  <span className="animate-pulse">🌱</span>
+                <span className="chat-thinking-dot"></span>
+                <span className="chat-thinking-dot"></span>
+                <span className="chat-thinking-dot"></span>
+
+                <span className="chat-thinking-text">
                   {t.thinking}
-                </div>
+                </span>
 
               </div>
-            )}
 
-            <div ref={bottomRef} />
+            </div>
 
-          </div>
+          )}
 
         </div>
 
-        {/* INPUT */}
-        <div
-          className="
-            border-t border-leaf-100
-            bg-white
-            p-4 sm:p-5
-          "
-        >
 
-          <div
-            className="
-              flex items-center gap-2
-              bg-gray-50
-              border border-gray-200
-              rounded-2xl
-              p-2
+        {/* =========================
+            INPUT AREA
+        ========================== */}
 
-              focus-within:border-leaf-400
-              focus-within:ring-4
-              focus-within:ring-leaf-100/60
+        <div className="chat-input-section">
 
-              transition-all
-            "
-          >
+          <div className="chat-input-wrapper">
 
             <input
+              ref={inputRef}
+              type="text"
               value={input}
-              onChange={(e) =>
-                setInput(e.target.value)
-              }
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  send()
-                }
-              }}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder={t.chatPlaceholder}
-              className="
-                flex-1
-                bg-transparent
-                outline-none
-                px-3
-                py-2.5
-                text-gray-700
-              "
+              disabled={loading}
+              autoComplete="off"
             />
 
             <button
               type="button"
               onClick={send}
-              disabled={
-                loading || !input.trim()
-              }
-              className="
-                min-w-12 h-12
-                rounded-xl
-                bg-leaf-700
-                text-white
-
-                flex items-center
-                justify-center
-
-                hover:bg-leaf-800
-                hover:scale-105
-
-                active:scale-95
-
-                disabled:opacity-40
-                disabled:cursor-not-allowed
-                disabled:hover:scale-100
-
-                transition-all
-                duration-200
-              "
+              disabled={loading || !input.trim()}
+              className="chat-send-button"
+              aria-label="Send message"
             >
-              ➤
+              {loading ? (
+                <span className="chat-send-loader"></span>
+              ) : (
+                <span>➤</span>
+              )}
             </button>
 
           </div>
 
-          <p
-            className="
-              text-center
-              text-xs
-              text-gray-400
-              mt-3
-            "
-          >
-            🌱 CropSaver AI • {aiLanguageNames[language] || 'English'}
+
+          <p className="chat-input-footer">
+            🌱 CropSaver AI •{' '}
+            {aiLanguageNames[language] || 'English'}
           </p>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
   )
 }
