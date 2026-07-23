@@ -49,7 +49,7 @@ export const aiLanguageNames = {
 // =====================================================
 
 const en = {
-  appName: 'CropSaver',
+ appName: 'Krishay',
 
   dashboard: 'Dashboard',
   diseaseDetection: 'Disease Detection',
