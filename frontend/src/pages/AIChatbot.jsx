@@ -272,7 +272,7 @@ export default function AIChatbot() {
 
 
           <p className="chat-input-footer">
-            🌱 CropSaver AI •{' '}
+            🌱 Krishay •{' '}
             {aiLanguageNames[language] || 'English'}
           </p>
 
