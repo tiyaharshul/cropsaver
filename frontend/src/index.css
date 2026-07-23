@@ -21,36 +21,8 @@
 
   body {
     margin: 0;
-    padding: 0;
-
-    width: 100%;
-    min-width: 320px;
     min-height: 100vh;
-
-    overflow-x: hidden;
-
-    font-family: 'Inter', sans-serif;
-
-    color: #17351f;
-
-    background:
-      radial-gradient(
-        circle at 5% 20%,
-        rgba(95, 190, 115, 0.06),
-        transparent 25%
-      ),
-      radial-gradient(
-        circle at 95% 65%,
-        rgba(213, 167, 76, 0.05),
-        transparent 25%
-      ),
-      linear-gradient(
-        180deg,
-        #f7fcf7 0%,
-        #f3faf4 50%,
-        #f8fcf8 100%
-      );
-
+    background: #d2e7d5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -108,22 +80,9 @@
 .app-shell {
   width: 100%;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
-
-  background:
-    radial-gradient(
-      circle at 5% 20%,
-      rgba(95, 190, 115, 0.055),
-      transparent 26%
-    ),
-    radial-gradient(
-      circle at 95% 65%,
-      rgba(213, 167, 76, 0.045),
-      transparent 26%
-    ),
-    #f7fbf7;
+  background: #d2e7d5;
 }
 
 
@@ -363,48 +322,119 @@
 ========================================================= */
 
 .app-main {
-  flex: 1;
-
+  position: relative;
   width: 100%;
-
-  min-width: 0;
+  flex: 1 0 auto;
 }
-
-
-/*
-   Authenticated pages get a centered container.
-
-   IMPORTANT:
-   This prevents Dashboard / Notices / Nearby / Profile
-   from stretching across an extremely wide monitor.
-*/
 
 .app-main.authenticated {
+  --mouse-x: 50%;
+  --mouse-y: 25%;
+  position: relative;
   width: 100%;
-  max-width: 1500px;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
 
-  margin: 0 auto;
-
-  padding:
-    24px clamp(20px, 3vw, 48px) 50px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(70, 137, 84, 0.10), transparent 30%),
+    radial-gradient(circle at 90% 75%, rgba(112, 151, 90, 0.08), transparent 30%),
+    linear-gradient(135deg, #c9e1ce 0%, #d5e8d7 48%, #c8e0cd 100%);
 }
 
+.app-main.authenticated::before {
+  content: '';
+  position: absolute;
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  width: 850px;
+  height: 850px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
 
-/* Login/Register/Language pages */
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 249, 0.98) 0%,
+      rgba(255, 254, 246, 0.88) 16%,
+      rgba(255, 253, 243, 0.67) 32%,
+      rgba(255, 251, 239, 0.42) 48%,
+      rgba(255, 252, 243, 0.18) 63%,
+      transparent 78%
+    );
+
+  filter: blur(10px);
+  transition: left 0.05s linear, top 0.05s linear;
+}
+
+.app-main.authenticated > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-page,
+.profile-page,
+.history-page,
+.detection-page,
+.notices-page,
+.nearby-page,
+.chat-page {
+  position: relative;
+  width: min(100% - 40px, 1400px);
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent !important;
+}
+
+.dashboard-page {
+  padding-top: 34px;
+  padding-bottom: 80px;
+}
+
+.profile-page,
+.history-page,
+.detection-page,
+.notices-page,
+.nearby-page,
+.chat-page {
+  min-height: 520px;
+  padding-top: 28px;
+  padding-bottom: 60px;
+}
+
+.profile-page {
+  padding-top: 45px;
+}
+
+.profile-card {
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 26px;
+  border-radius: 18px;
+  background: rgba(255, 255, 252, 0.96);
+  border: 1px solid rgba(34, 91, 49, 0.14);
+  box-shadow: 0 12px 35px rgba(28, 73, 40, 0.10);
+  backdrop-filter: blur(10px);
+}
 
 .app-main.public {
   width: 100%;
+  flex: 1;
 }
 
 
 /* =========================================================
    FOOTER
 ========================================================= */
-
+/* 
 .app-footer {
   width: 100%;
-
-  margin-top: 30px;
+  flex-shrink: 0;
+  margin-top: auto;
 
   color:
     rgba(255, 255, 255, 0.78);
@@ -415,8 +445,26 @@
       #103c23,
       #15502d
     );
-}
+} */
+.app-footer {
+  flex-shrink: 0;
 
+  margin-top: auto;
+
+  color:
+    rgba(255, 255, 255, .82);
+
+  background:
+    linear-gradient(
+      135deg,
+      #237342 0%,
+      #248245 50%,
+      #196a34 100%
+    );
+
+  border-top:
+    1px solid rgba(255, 255, 255, .08);
+}
 
 /* ---------------------------------------------------------
    FOOTER CONTENT
@@ -760,4 +808,19 @@
     display: none;
   }
 
+}
+
+/* =========================================================
+   FINAL LAYOUT OVERRIDES
+========================================================= */
+
+.app-footer {
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.82);
+  background: linear-gradient(135deg, #174f2c 0%, #1d6838 52%, #247d44 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }

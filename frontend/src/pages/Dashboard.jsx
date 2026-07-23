@@ -10,41 +10,47 @@ import '../styles/dashboard.css'
 export default function Dashboard() {
   const { t } = useLanguage()
 
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+
+    e.currentTarget.style.setProperty(
+      '--mouse-x',
+      `${e.clientX - rect.left}px`
+    )
+
+    e.currentTarget.style.setProperty(
+      '--mouse-y',
+      `${e.clientY - rect.top}px`
+    )
+  }
+
   return (
-    <div className="dashboard-page">
-
-      {/* ================= HERO ================= */}
-
+    <div
+      className="dashboard-page"
+      onMouseMove={handleMouseMove}
+    >
+      {/* HERO */}
       <section className="dashboard-section hero-section">
         <DashboardHero />
       </section>
 
-
-      {/* ================= TOOLKIT INTRO ================= */}
-
+      {/* TOOLKIT INTRO */}
       <section className="dashboard-section toolkit-section">
-
         <div className="toolkit-heading">
           <span className="section-label">
             {t.farmingToolkit}
           </span>
 
-          <h2>
-            {t.toolkitTitle}
-          </h2>
+          <h2>{t.toolkitTitle}</h2>
         </div>
 
         <p className="toolkit-description">
           {t.toolkitDescription}
         </p>
-
       </section>
 
-
-      {/* ================= MAIN FEATURES ================= */}
-
+      {/* MAIN FEATURES */}
       <section className="dashboard-section main-features">
-
         <FeatureCard
           type="disease"
           title={t.diseaseFeatureTitle}
@@ -62,14 +68,10 @@ export default function Dashboard() {
           button={t.askCropSaver}
           to="/chat"
         />
-
       </section>
 
-
-      {/* ================= QUICK TOOLS ================= */}
-
+      {/* QUICK TOOLS */}
       <section className="dashboard-section quick-tools-section">
-
         <div className="quick-tools-heading">
           <span className="section-label">
             {t.quickTools || 'QUICK ACCESS'}
@@ -80,9 +82,7 @@ export default function Dashboard() {
           </h2>
         </div>
 
-
         <div className="quick-features">
-
           <QuickCard
             icon="📜"
             title={t.cropHistory}
@@ -103,43 +103,26 @@ export default function Dashboard() {
             description={t.expertsCardDesc}
             to="/nearby"
           />
-
         </div>
-
       </section>
 
-
-      {/* ================= AI CTA ================= */}
-
+      {/* CTA */}
       <section className="dashboard-section dashboard-cta">
-
         <div className="cta-content">
-
           <span className="cta-label">
             ✨ {t.cropSaverAi}
           </span>
 
-          <h2>
-            {t.finalCtaTitle}
-          </h2>
+          <h2>{t.finalCtaTitle}</h2>
 
-          <p>
-            {t.finalCtaDescription}
-          </p>
-
+          <p>{t.finalCtaDescription}</p>
         </div>
 
-
-        <Link
-          to="/chat"
-          className="cta-button"
-        >
+        <Link to="/chat" className="cta-button">
           <span>{t.askCropSaver}</span>
           <span className="cta-arrow">→</span>
         </Link>
-
       </section>
-
     </div>
   )
 }

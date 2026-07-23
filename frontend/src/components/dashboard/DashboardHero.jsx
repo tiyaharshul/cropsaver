@@ -16,28 +16,27 @@ export default function DashboardHero() {
   return (
     <section className="dashboard-hero">
 
-      {/* BACKGROUND IMAGE */}
+      {/* EXISTING FIELD BACKGROUND */}
       <img
         src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=2000&q=90"
-        alt="Farmer working in an agricultural field"
+        alt="Agricultural field"
         className="hero-image"
       />
 
-      {/* IMAGE OVERLAY */}
+      {/* OVERLAY */}
       <div className="hero-overlay" />
 
       {/* DECORATIVE LIGHT */}
       <div className="hero-glow" />
 
 
-      {/* CONTENT */}
+      {/* ================= LEFT CONTENT ================= */}
       <div className="hero-content">
 
         <span className="hero-badge">
           <span className="hero-badge-dot" />
           {t.dashboardAiBadge}
         </span>
-
 
         <p className="hero-welcome">
           {t.dashboardWelcome}
@@ -51,18 +50,16 @@ export default function DashboardHero() {
           {' '}👋
         </p>
 
-
         <h1>
           {t.dashboardHeroTitle}
         </h1>
-
 
         <p className="hero-description">
           {t.dashboardHeroDescription}
         </p>
 
 
-        {/* ACTION BUTTONS */}
+        {/* BUTTONS */}
         <div className="hero-actions">
 
           <Link
@@ -79,7 +76,6 @@ export default function DashboardHero() {
               →
             </span>
           </Link>
-
 
           <Link
             to="/chat"
@@ -102,25 +98,20 @@ export default function DashboardHero() {
             <span className="hero-feature-icon">
               ✓
             </span>
-
             {t.aiDiagnosis}
           </span>
-
 
           <span>
             <span className="hero-feature-icon">
               🌐
             </span>
-
             {t.localLanguages}
           </span>
-
 
           <span>
             <span className="hero-feature-icon">
               🎧
             </span>
-
             {t.anytimeAssistance}
           </span>
 
@@ -128,6 +119,17 @@ export default function DashboardHero() {
 
       </div>
 
+
+      {/* ================= FARMER ================= */}
+      <div className="hero-farmer-area">
+  <div className="farmer-image-frame">
+    <img
+      src="/public/images/farmer.png"
+      alt="Farmer"
+      className="farmer-image"
+    />
+  </div>
+</div>
     </section>
   )
 }
