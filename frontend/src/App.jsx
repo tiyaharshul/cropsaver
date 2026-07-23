@@ -7,7 +7,7 @@ import GovernmentNoticeBoard from './pages/GovernmentNoticeBoard.jsx'
 import NearbyExperts from './pages/NearbyExperts.jsx'
 import AIChatbot from './pages/AIChatbot.jsx'
 import Profile from './pages/Profile.jsx'
-
+import VoiceAssistant from './components/VoiceAssistant.jsx'
 function NavBar() {
   const links = [
     ['Dashboard', '/'],
@@ -29,11 +29,11 @@ function NavBar() {
     </nav>
   )
 }
-
 export default function App() {
   return (
     <div className="min-h-screen bg-leaf-50">
       <NavBar />
+
       <main className="p-4 max-w-5xl mx-auto">
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -46,6 +46,8 @@ export default function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
+
+      <VoiceAssistant />
     </div>
   )
 }
