@@ -146,7 +146,7 @@ const en = {
 const hi = {
   ...en,
 
-  appName: 'क्रॉपसेवर',
+  appName: 'कृषय',
   dashboard: 'डैशबोर्ड',
   diseaseDetection: 'रोग पहचान',
   cropHistory: 'फसल इतिहास',
@@ -240,7 +240,7 @@ const hi = {
 
 const raj = {
   ...hi,
-  appName: 'क्रॉपसेवर',
+  appName: 'कृषय',
   dashboard: 'मुख्य पन्नो',
   diseaseDetection: 'फसल रो रोग पहचान',
   cropHistory: 'फसल रो इतिहास',
@@ -274,7 +274,7 @@ const har = {
 const gu = {
   ...en,
 
-  appName: 'ક્રોપસેવર',
+  appName: 'कृषय',
   dashboard: 'ડેશબોર્ડ',
   diseaseDetection: 'રોગ ઓળખ',
   cropHistory: 'પાક ઇતિહાસ',
@@ -347,7 +347,7 @@ const gu = {
 const mr = {
   ...en,
 
-  appName: 'क्रॉपसेव्हर',
+  appName: 'कृषय',
   dashboard: 'डॅशबोर्ड',
   diseaseDetection: 'रोग ओळख',
   cropHistory: 'पीक इतिहास',
@@ -384,7 +384,7 @@ const mr = {
 const pa = {
   ...en,
 
-  appName: 'ਕ੍ਰਾਪਸੇਵਰ',
+  appName: 'कृषय',
   dashboard: 'ਡੈਸ਼ਬੋਰਡ',
   diseaseDetection: 'ਰੋਗ ਪਛਾਣ',
   cropHistory: 'ਫਸਲ ਇਤਿਹਾਸ',
@@ -419,7 +419,7 @@ const pa = {
 const bn = {
   ...en,
 
-  dashboard: 'ড্যাশবোর্ড',
+  dashboard: 'कृषय',
   diseaseDetection: 'রোগ শনাক্তকরণ',
   cropHistory: 'ফসলের ইতিহাস',
   governmentNotices: 'সরকারি বিজ্ঞপ্তি',
@@ -449,7 +449,7 @@ const bn = {
 const ta = {
   ...en,
 
-  dashboard: 'முகப்புப் பலகை',
+  dashboard: 'कृषय',
   diseaseDetection: 'நோய் கண்டறிதல்',
   cropHistory: 'பயிர் வரலாறு',
   governmentNotices: 'அரசு அறிவிப்புகள்',
@@ -479,7 +479,7 @@ const ta = {
 const te = {
   ...en,
 
-  dashboard: 'డ్యాష్‌బోర్డ్',
+  dashboard: 'कृषय',
   diseaseDetection: 'వ్యాధి గుర్తింపు',
   cropHistory: 'పంట చరిత్ర',
   governmentNotices: 'ప్రభుత్వ నోటీసులు',
@@ -509,7 +509,7 @@ const te = {
 const kn = {
   ...en,
 
-  appName: 'ಕ್ರಾಪ್‌ಸೇವರ್',
+  appName: 'कृषय',
   dashboard: 'ಡ್ಯಾಶ್‌ಬೋರ್ಡ್',
   diseaseDetection: 'ರೋಗ ಪತ್ತೆ',
   cropHistory: 'ಬೆಳೆ ಇತಿಹಾಸ',
@@ -555,7 +555,7 @@ const kn = {
 const ml = {
   ...en,
 
-  dashboard: 'ഡാഷ്ബോർഡ്',
+  dashboard: 'कृषय',
   diseaseDetection: 'രോഗ നിർണയം',
   cropHistory: 'വിള ചരിത്രം',
   governmentNotices: 'സർക്കാർ അറിയിപ്പുകൾ',
@@ -585,7 +585,7 @@ const ml = {
 const or = {
   ...en,
 
-  dashboard: 'ଡ୍ୟାସବୋର୍ଡ',
+  dashboard: 'कृषय',
   diseaseDetection: 'ରୋଗ ଚିହ୍ନଟ',
   cropHistory: 'ଫସଲ ଇତିହାସ',
   governmentNotices: 'ସରକାରୀ ସୂଚନା',
@@ -609,7 +609,7 @@ const or = {
 const as = {
   ...en,
 
-  dashboard: 'ডেশ্বব’ৰ্ড',
+  dashboard: 'कृषय',
   diseaseDetection: 'ৰোগ চিনাক্তকৰণ',
   cropHistory: 'শস্যৰ ইতিহাস',
   governmentNotices: 'চৰকাৰী জাননী',
