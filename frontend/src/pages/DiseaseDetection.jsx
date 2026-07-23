@@ -125,21 +125,19 @@ const detectRes = await api.post(
       // -----------------------------
 
       const payload = {
-        crop_name:
-          detectRes.data.crop_name,
+  crop_name: detectRes.data.crop_name,
+  disease_name: detectRes.data.disease_name,
+  confidence: Number(
+    detectRes.data.confidence
+  ),
 
-        disease_name:
-          detectRes.data.disease_name,
+  language:
+    aiLanguageNames[language] ||
+    'English',
 
-        confidence: Number(
-          detectRes.data.confidence
-        ),
-
-        language:
-          aiLanguageNames[language] ||
-          'English',
-      }
-
+  history_id:
+    detectRes.data.history_id,
+}
       const treatmentRes =
         await api.post(
           '/treatment',
