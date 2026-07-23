@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     # Auth
     JWT_SECRET: str = "change-this-secret-in-production"
     JWT_ALGORITHM: str = "HS256"
-
+    GOOGLE_CLIENT_ID: str = ""
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 

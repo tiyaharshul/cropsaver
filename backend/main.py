@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-from routers import detect, treatment, voice, feedback, history, government, nearby, chat, weather
+from routers import auth, detect, treatment, voice, feedback, history, government, nearby, chat, weather
 
 app = FastAPI(
     title="Smart Farming Assistant API",
@@ -27,6 +26,7 @@ app.include_router(government.router, tags=["Government Notices"])
 app.include_router(nearby.router, tags=["Nearby Experts (OpenStreetMap)"])
 app.include_router(chat.router, tags=["AI Chatbot"])
 app.include_router(weather.router, tags=["Weather"])
+app.include_router(auth.router, tags=["Authentication"])
 
 
 @app.get("/")

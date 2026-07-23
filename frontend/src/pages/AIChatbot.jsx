@@ -1,405 +1,120 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import api from '../api/axios'
-
+import { useLanguage } from '../contexts/LanguageContext'
+import { aiLanguageNames } from '../data/translations'
 
 export default function AIChatbot() {
-
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const messagesEndRef = useRef(null)
+  const { language, t } = useLanguage()
 
-  const userId =
-    localStorage.getItem('user_name') || 'anonymous'
+  const user = JSON.parse(
+    localStorage.getItem('cropsaver_user') || 'null'
+  )
 
-
-  // --------------------------------------------------
-  // AUTO SCROLL
-  // --------------------------------------------------
-
-  useEffect(() => {
-
-    messagesEndRef.current?.scrollIntoView({
-      behavior: 'smooth',
-    })
-
-  }, [messages, loading])
-
-
-  // --------------------------------------------------
-  // CLEAN RESPONSE
-  // --------------------------------------------------
-
-  const cleanText = (text) => {
-
-    if (!text) return ''
-
-    return text
-      .replace(/\*\*(.*?)\*\*/g, '$1')
-      .replace(/\*(.*?)\*/g, '$1')
-      .replace(/__(.*?)__/g, '$1')
-      .replace(/_(.*?)_/g, '$1')
-      .replace(/#{1,6}\s?/g, '')
-      .replace(/`([^`]+)`/g, '$1')
-      .trim()
-  }
-
-
-  // --------------------------------------------------
-  // SEND MESSAGE
-  // --------------------------------------------------
+  const userId = user?.id || 'anonymous'
 
   const send = async () => {
+    const question = input.trim()
 
-    const message = input.trim()
+    if (!question || loading) return
 
-    if (!message || loading) return
-
-    const userMsg = {
-      role: 'user',
-      text: message,
-    }
-
-    setMessages((previous) => [
-      ...previous,
-      userMsg,
+    setMessages((messages) => [
+      ...messages,
+      {
+        role: 'user',
+        text: question,
+      },
     ])
 
     setInput('')
     setLoading(true)
 
     try {
-
       const res = await api.post('/chat', {
         user_id: userId,
-        message: message,
-        language: 'en',
+        message: question,
+
+        // Send "Kannada" instead of "kn", etc.
+        language: aiLanguageNames[language] || 'English',
       })
 
-      const botMessage = {
-        role: 'bot',
-        text: cleanText(res.data.reply),
-      }
-
-      setMessages((previous) => [
-        ...previous,
-        botMessage,
-      ])
-
-    } catch (error) {
-
-      console.error(
-        'Chatbot error:',
-        error
-      )
-
-      setMessages((previous) => [
-        ...previous,
+      setMessages((messages) => [
+        ...messages,
         {
           role: 'bot',
-          text:
-            'Sorry, I could not answer that right now. Please try again.',
+          text: res.data.reply,
         },
       ])
+    } catch (error) {
+      console.error(error)
 
+      setMessages((messages) => [
+        ...messages,
+        {
+          role: 'bot',
+          text: t.chatError,
+        },
+      ])
     } finally {
-
       setLoading(false)
-
     }
   }
-
-
-  // --------------------------------------------------
-  // ENTER KEY
-  // --------------------------------------------------
-
-  const handleKeyDown = (event) => {
-
-    if (
-      event.key === 'Enter' &&
-      !event.shiftKey
-    ) {
-
-      event.preventDefault()
-
-      send()
-    }
-  }
-
-
-  // --------------------------------------------------
-  // UI
-  // --------------------------------------------------
 
   return (
+    <div className="max-w-2xl space-y-4">
 
-    <div className="max-w-3xl mx-auto">
+      <h1 className="text-2xl font-bold text-leaf-700">
+        {t.aiChatbot}
+      </h1>
 
-      {/* TITLE */}
+      <div className="bg-white rounded-lg shadow p-4 h-96 overflow-y-auto space-y-3">
 
-      <div className="mb-5">
-
-        <h1 className="text-2xl font-bold text-leaf-700">
-          🌱 CropSaver AI
-        </h1>
-
-        <p className="text-sm text-gray-500 mt-1">
-          Ask about crops, diseases, irrigation,
-          weather, pests or government schemes.
-        </p>
-
-      </div>
-
-
-      {/* CHAT CONTAINER */}
-
-      <div
-        className="
-          bg-white
-          rounded-xl
-          shadow
-          border
-          border-gray-100
-          h-[450px]
-          overflow-y-auto
-          p-5
-          space-y-5
-        "
-      >
-
-        {/* EMPTY STATE */}
-
-        {messages.length === 0 && (
-
+        {messages.map((message, index) => (
           <div
-            className="
-              h-full
-              flex
-              flex-col
-              justify-center
-              items-center
-              text-center
-              text-gray-400
-            "
+            key={index}
+            className={`p-3 rounded-lg max-w-[80%] whitespace-pre-wrap leading-relaxed ${
+              message.role === 'user'
+                ? 'bg-leaf-100 ml-auto'
+                : 'bg-gray-100'
+            }`}
           >
-
-            <div className="text-5xl mb-4">
-              👨‍🌾
-            </div>
-
-            <p
-              className="
-                font-semibold
-                text-gray-600
-              "
-            >
-              How can CropSaver help?
-            </p>
-
-            <p
-              className="
-                text-sm
-                mt-2
-                max-w-sm
-              "
-            >
-              Ask me about crop diseases,
-              fertilizers, irrigation, pests,
-              weather or government schemes.
-            </p>
-
+            {message.text}
           </div>
-
-        )}
-
-
-        {/* MESSAGES */}
-
-        {messages.map((message, index) => {
-
-          const isUser =
-            message.role === 'user'
-
-          return (
-
-            <div
-              key={index}
-              className={`flex ${
-                isUser
-                  ? 'justify-end'
-                  : 'justify-start'
-              }`}
-            >
-
-              <div
-                className={`
-                  max-w-[80%]
-                  rounded-2xl
-                  px-4
-                  py-3
-                  text-sm
-                  leading-7
-                  ${
-                    isUser
-                      ? `
-                        bg-leaf-700
-                        text-white
-                        rounded-br-md
-                      `
-                      : `
-                        bg-gray-100
-                        text-gray-800
-                        rounded-bl-md
-                      `
-                  }
-                `}
-              >
-
-                {/* NAME */}
-
-                {!isUser && (
-
-                  <div
-                    className="
-                      text-xs
-                      font-semibold
-                      text-leaf-700
-                      mb-2
-                    "
-                  >
-                    🌱 CropSaver
-                  </div>
-
-                )}
-
-
-                {/* MESSAGE */}
-
-                <div className="whitespace-pre-wrap break-words">
-                  {message.text}
-                </div>
-
-              </div>
-
-            </div>
-
-          )
-
-        })}
-
-
-        {/* THINKING */}
+        ))}
 
         {loading && (
-
-          <div className="flex justify-start">
-
-            <div
-              className="
-                bg-gray-100
-                rounded-2xl
-                rounded-bl-md
-                px-4
-                py-3
-              "
-            >
-
-              <p
-                className="
-                  text-xs
-                  font-semibold
-                  text-leaf-700
-                  mb-1
-                "
-              >
-                🌱 CropSaver
-              </p>
-
-              <div
-                className="
-                  text-sm
-                  text-gray-500
-                  animate-pulse
-                "
-              >
-                Thinking...
-              </div>
-
-            </div>
-
-          </div>
-
+          <p className="text-sm text-gray-400">
+            {t.thinking}
+          </p>
         )}
-
-
-        <div ref={messagesEndRef} />
 
       </div>
 
-
-      {/* INPUT AREA */}
-
-      <div
-        className="
-          mt-4
-          flex
-          gap-3
-          items-center
-        "
-      >
+      <div className="flex gap-2">
 
         <input
-          className="
-            flex-1
-            border
-            border-gray-300
-            rounded-xl
-            px-4
-            py-3
-            outline-none
-            focus:border-leaf-700
-            bg-white
-          "
+          className="flex-1 border rounded px-3 py-2"
           value={input}
-          onChange={(event) =>
-            setInput(event.target.value)
-          }
-          onKeyDown={handleKeyDown}
-          disabled={loading}
-          placeholder="Ask about crops, pests, weather..."
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') send()
+          }}
+          placeholder={t.chatPlaceholder}
         />
 
-
         <button
-          type="button"
           onClick={send}
-          disabled={
-            loading ||
-            !input.trim()
-          }
-          className="
-            bg-leaf-700
-            hover:bg-leaf-800
-            disabled:opacity-50
-            disabled:cursor-not-allowed
-            text-white
-            px-6
-            py-3
-            rounded-xl
-            font-medium
-            transition
-          "
+          disabled={loading}
+          className="bg-leaf-700 text-white px-4 py-2 rounded disabled:opacity-50"
         >
-          {loading
-            ? 'Thinking...'
-            : 'Send'}
+          {t.send}
         </button>
 
       </div>
 
     </div>
-
   )
 }
