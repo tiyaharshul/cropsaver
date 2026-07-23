@@ -1,4 +1,7 @@
-import { useEffect } from 'react'
+import {
+  useEffect,
+  useState,
+} from 'react'
 
 import {
   Routes,
@@ -39,16 +42,12 @@ import {
 // NAVBAR
 // ======================================================
 
-function NavBar() {
+function NavBar({ isAuthenticated, onLogout }) {
   const navigate = useNavigate()
   const location = useLocation()
   const { t } = useLanguage()
 
-  const token = localStorage.getItem(
-    'cropsaver_token'
-  )
-
-  if (!token) {
+  if (!isAuthenticated) {
     return null
   }
 
@@ -61,7 +60,6 @@ function NavBar() {
     [t.aiChatbot, '/chat', '✦'],
     [t.profile, '/profile', '♙'],
   ]
-
 
   const logout = () => {
     localStorage.removeItem(
@@ -76,9 +74,14 @@ function NavBar() {
       'user_name'
     )
 
-    navigate('/login')
-  }
+    // Update React immediately
+    onLogout()
 
+    // Go to login
+    navigate('/login', {
+      replace: true,
+    })
+  }
 
   return (
     <nav className="app-navbar">
@@ -103,7 +106,7 @@ function NavBar() {
         </Link>
 
 
-        {/* DESKTOP NAVIGATION */}
+        {/* NAVIGATION */}
 
         <div className="navbar-links">
 
@@ -167,17 +170,13 @@ function NavBar() {
 // LANGUAGE REQUIREMENT
 // ======================================================
 
-function RequireLanguage({
-  children,
-}) {
-
+function RequireLanguage({ children }) {
   const chosen =
     localStorage.getItem(
       'cropsaver_language_chosen'
     )
 
   if (!chosen) {
-
     return (
       <Navigate
         to="/language"
@@ -196,10 +195,29 @@ function RequireLanguage({
 
 function AppContent() {
 
-  const token =
-    localStorage.getItem(
-      'cropsaver_token'
+  // IMPORTANT:
+  // Authentication is now React state.
+  const [isAuthenticated, setIsAuthenticated] =
+    useState(() =>
+      Boolean(
+        localStorage.getItem(
+          'cropsaver_token'
+        )
+      )
     )
+
+
+  // ====================================================
+  // LOGIN / LOGOUT STATE
+  // ====================================================
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true)
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+  }
 
 
   // ====================================================
@@ -208,9 +226,7 @@ function AppContent() {
 
   useEffect(() => {
 
-    const handleMouseMove = (
-      event
-    ) => {
+    const handleMouseMove = (event) => {
 
       const main =
         document.querySelector(
@@ -221,17 +237,14 @@ function AppContent() {
         return
       }
 
-
       const rect =
         main.getBoundingClientRect()
-
 
       const mouseX =
         event.clientX - rect.left
 
       const mouseY =
         event.clientY - rect.top
-
 
       main.style.setProperty(
         '--mouse-x',
@@ -242,23 +255,18 @@ function AppContent() {
         '--mouse-y',
         `${mouseY}px`
       )
-
     }
-
 
     window.addEventListener(
       'mousemove',
       handleMouseMove
     )
 
-
     return () => {
-
       window.removeEventListener(
         'mousemove',
         handleMouseMove
       )
-
     }
 
   }, [])
@@ -271,7 +279,10 @@ function AppContent() {
   return (
     <div className="app-shell">
 
-      <NavBar />
+      <NavBar
+        isAuthenticated={isAuthenticated}
+        onLogout={handleLogout}
+      />
 
 
       {/* =================================================
@@ -280,7 +291,7 @@ function AppContent() {
 
       <main
         className={
-          token
+          isAuthenticated
             ? 'app-main authenticated'
             : 'app-main public'
         }
@@ -289,9 +300,7 @@ function AppContent() {
         <Routes>
 
 
-          {/* =============================================
-              LANGUAGE
-          ============================================= */}
+          {/* LANGUAGE */}
 
           <Route
             path="/language"
@@ -301,17 +310,14 @@ function AppContent() {
           />
 
 
-          {/* =============================================
-              LOGIN
-          ============================================= */}
+          {/* LOGIN */}
 
           <Route
             path="/login"
             element={
-
               <RequireLanguage>
 
-                {token ? (
+                {isAuthenticated ? (
 
                   <Navigate
                     to="/"
@@ -320,27 +326,27 @@ function AppContent() {
 
                 ) : (
 
-                  <Login />
+                  <Login
+                    onLoginSuccess={
+                      handleLoginSuccess
+                    }
+                  />
 
                 )}
 
               </RequireLanguage>
-
             }
           />
 
 
-          {/* =============================================
-              REGISTER
-          ============================================= */}
+          {/* REGISTER */}
 
           <Route
             path="/register"
             element={
-
               <RequireLanguage>
 
-                {token ? (
+                {isAuthenticated ? (
 
                   <Navigate
                     to="/"
@@ -354,156 +360,135 @@ function AppContent() {
                 )}
 
               </RequireLanguage>
-
             }
           />
 
 
-          {/* =============================================
-              DASHBOARD
-          ============================================= */}
+          {/* DASHBOARD */}
 
           <Route
             path="/"
             element={
-
               <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
 
+                <Dashboard />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              GOOGLE SETUP
-          ============================================= */}
+          {/* GOOGLE SETUP */}
 
           <Route
             path="/google-setup"
             element={
-
               <ProtectedRoute>
-                <GoogleSetup />
-              </ProtectedRoute>
 
+                <GoogleSetup />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              DISEASE DETECTION
-          ============================================= */}
+          {/* DISEASE DETECTION */}
 
           <Route
             path="/detect"
             element={
-
               <ProtectedRoute>
-                <DiseaseDetection />
-              </ProtectedRoute>
 
+                <DiseaseDetection />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              CROP HISTORY
-          ============================================= */}
+          {/* CROP HISTORY */}
 
           <Route
             path="/history"
             element={
-
               <ProtectedRoute>
-                <CropHistory />
-              </ProtectedRoute>
 
+                <CropHistory />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              GOVERNMENT NOTICES
-          ============================================= */}
+          {/* GOVERNMENT NOTICES */}
 
           <Route
             path="/notices"
             element={
-
               <ProtectedRoute>
-                <GovernmentNoticeBoard />
-              </ProtectedRoute>
 
+                <GovernmentNoticeBoard />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              NEARBY EXPERTS
-          ============================================= */}
+          {/* NEARBY EXPERTS */}
 
           <Route
             path="/nearby"
             element={
-
               <ProtectedRoute>
-                <NearbyExperts />
-              </ProtectedRoute>
 
+                <NearbyExperts />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              AI CHATBOT
-          ============================================= */}
+          {/* AI CHATBOT */}
 
           <Route
             path="/chat"
             element={
-
               <ProtectedRoute>
-                <AIChatbot />
-              </ProtectedRoute>
 
+                <AIChatbot />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              PROFILE
-          ============================================= */}
+          {/* PROFILE */}
 
           <Route
             path="/profile"
             element={
-
               <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
 
+                <Profile />
+
+              </ProtectedRoute>
             }
           />
 
 
-          {/* =============================================
-              FALLBACK
-          ============================================= */}
+          {/* FALLBACK */}
 
           <Route
             path="*"
             element={
-
               <Navigate
                 to={
-                  token
+                  isAuthenticated
                     ? '/'
-                    : '/language'
+                    : '/login'
                 }
                 replace
               />
-
             }
           />
 
@@ -516,7 +501,7 @@ function AppContent() {
           FOOTER
       ================================================= */}
 
-      {token && (
+      {isAuthenticated && (
         <Footer />
       )}
 
@@ -525,13 +510,10 @@ function AppContent() {
           FLOATING AI TOOLS
       ================================================= */}
 
-      {token && (
+      {isAuthenticated && (
         <>
-
           <QuickChat />
-
           <VoiceAssistant />
-
         </>
       )}
 
@@ -545,14 +527,11 @@ function AppContent() {
 // ======================================================
 
 export default function App() {
-
   return (
-
     <LanguageProvider>
 
       <AppContent />
 
     </LanguageProvider>
-
   )
 }
