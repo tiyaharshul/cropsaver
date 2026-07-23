@@ -1,9 +1,27 @@
-import { Routes, Route, Link, Navigate, useNavigate, useLocation } from 'react-router-dom'
+import {
+  Routes,
+  Route,
+  Link,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom'
 
+import {
+  Bot,
+  FileClock,
+  Home,
+  Landmark,
+  LogOut,
+  MapPin,
+  ScanLine,
+  UserRound,
+} from 'lucide-react'
+
+// Pages
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import LanguageSelect from './pages/LanguageSelect.jsx'
-
 import Dashboard from './pages/Dashboard.jsx'
 import DiseaseDetection from './pages/DiseaseDetection.jsx'
 import CropHistory from './pages/CropHistory.jsx'
@@ -11,180 +29,292 @@ import GovernmentNoticeBoard from './pages/GovernmentNoticeBoard.jsx'
 import NearbyExperts from './pages/NearbyExperts.jsx'
 import AIChatbot from './pages/AIChatbot.jsx'
 import Profile from './pages/Profile.jsx'
+import GoogleSetup from './pages/GoogleSetup.jsx'
 
+// Components
 import VoiceAssistant from './components/VoiceAssistant.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
-import GoogleSetup from './pages/GoogleSetup.jsx'
+
+// Context
 import {
   LanguageProvider,
   useLanguage,
 } from './contexts/LanguageContext.jsx'
 
 
-// ----------------------------------------------------
+// ============================================================
 // NAVBAR
-// ----------------------------------------------------
+// ============================================================
 
 function NavBar() {
-
   const navigate = useNavigate()
   const location = useLocation()
   const { t } = useLanguage()
 
-  const token =
-    localStorage.getItem('cropsaver_token')
+  const token = localStorage.getItem('cropsaver_token')
 
+  // Hide navbar when user is not logged in
   if (!token) {
     return null
   }
 
   const links = [
-    [t.dashboard, '/', '🏠'],
-    [t.diseaseDetection, '/detect', '🔬'],
-    [t.cropHistory, '/history', '📜'],
-    [t.governmentNotices, '/notices', '📢'],
-    [t.nearbyExperts, '/nearby', '📍'],
-    [t.aiChatbot, '/chat', '💬'],
-    [t.profile, '/profile', '👤'],
+    [t.dashboard, '/', Home],
+    [t.diseaseDetection, '/detect', ScanLine],
+    [t.cropHistory, '/history', FileClock],
+    [t.governmentNotices, '/notices', Landmark],
+    [t.nearbyExperts, '/nearby', MapPin],
+    [t.aiChatbot, '/chat', Bot],
+    [t.profile, '/profile', UserRound],
   ]
+
+
+  // ----------------------------------------------------------
+  // LOGOUT
+  // ----------------------------------------------------------
 
   const logout = () => {
     localStorage.removeItem('cropsaver_token')
     localStorage.removeItem('cropsaver_user')
     localStorage.removeItem('user_name')
+
     navigate('/login')
   }
 
+
   return (
-    <nav className="glass-nav sticky top-0 z-40 text-white px-4 py-3 shadow-soft">
-      <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-2">
+    <nav className="glass-nav sticky top-0 z-40">
 
-        <span className="font-heading font-bold text-lg mr-4 flex items-center gap-1.5">
-          <span className="text-2xl">🌱</span> {t.appName}
-        </span>
+      <div className="navbar-inner">
 
-        <div className="flex flex-wrap gap-1">
-          {links.map(([label, path, icon]) => {
+        {/* LOGO */}
+
+        <Link
+          to="/"
+          className="brand-logo"
+        >
+          <span className="brand-symbol">
+            🌱
+          </span>
+
+          <span>
+            Crop<span>Saver</span>
+          </span>
+        </Link>
+
+
+        {/* NAVIGATION */}
+
+        <div className="nav-links">
+
+          {links.map(([label, path, Icon]) => {
             const active = location.pathname === path
+
             return (
               <Link
                 key={path}
                 to={path}
                 className={`
-                  text-sm px-3 py-1.5 rounded-full transition
-                  flex items-center gap-1.5
-                  ${active
-                    ? 'bg-earth-500 text-white shadow-card'
-                    : 'text-white/85 hover:bg-white/10'}
+                  nav-link
+                  ${active ? 'nav-link-active' : ''}
                 `}
               >
-                <span className="text-xs">{icon}</span>
-                {label}
+                <Icon size={16} />
+
+                <span>
+                  {label}
+                </span>
               </Link>
             )
           })}
+
         </div>
+
+
+        {/* LOGOUT */}
 
         <button
           type="button"
           onClick={logout}
-          className="
-            ml-auto text-sm border border-white/40 rounded-full
-            px-4 py-1.5 hover:bg-white/10 transition
-          "
+          className="logout-button"
         >
-          {t.logout}
+          <LogOut size={16} />
+
+          <span>
+            {t.logout}
+          </span>
         </button>
 
       </div>
+
     </nav>
   )
 }
 
 
-// ----------------------------------------------------
+// ============================================================
 // REQUIRE LANGUAGE SELECTION
-// ----------------------------------------------------
+// ============================================================
 
 function RequireLanguage({ children }) {
-
-  const chosen =
-    localStorage.getItem('cropsaver_language_chosen')
+  const chosen = localStorage.getItem(
+    'cropsaver_language_chosen'
+  )
 
   if (!chosen) {
-    return <Navigate to="/language" replace />
+    return (
+      <Navigate
+        to="/language"
+        replace
+      />
+    )
   }
 
   return children
 }
 
 
-// ----------------------------------------------------
-// FLOATING QUICK-CHAT LAUNCHER
-// (sits alongside VoiceAssistant on every logged-in page)
-// ----------------------------------------------------
+// ============================================================
+// FLOATING AI CHAT BUTTON
+// ============================================================
 
 function FloatingChatButton() {
   const { t } = useLanguage()
+  const location = useLocation()
+
+  /*
+   * Hide the floating chatbot button when the user
+   * is already on the chatbot page.
+   */
+  if (location.pathname === '/chat') {
+    return null
+  }
 
   return (
     <Link
       to="/chat"
       title={t.aiChatbot}
+      aria-label={t.aiChatbot}
       className="
-        fixed bottom-6 left-6 z-50
-        w-14 h-14 rounded-full
-        bg-gradient-to-br from-leaf-600 to-leaf-800
-        text-white text-2xl
-        flex items-center justify-center
-        shadow-floaty animate-float
-        hover:scale-110 transition-transform
+        fixed
+        bottom-6
+        right-24
+        z-50
+
+        w-14
+        h-14
+
+        rounded-full
+
+        bg-white
+        text-leaf-800
+
+        border
+        border-leaf-100
+
+        flex
+        items-center
+        justify-center
+
+        shadow-floaty
+
+        hover:-translate-y-1
+        hover:scale-105
+
+        transition-all
+        duration-300
       "
     >
-      💬
+      <Bot size={26} />
     </Link>
   )
 }
 
 
-// ----------------------------------------------------
+// ============================================================
 // APP CONTENT
-// ----------------------------------------------------
+// ============================================================
 
 function AppContent() {
-
-  const token =
-    localStorage.getItem('cropsaver_token')
+  const token = localStorage.getItem(
+    'cropsaver_token'
+  )
 
   return (
+    <div className="min-h-screen font-body">
 
-    <div className="min-h-screen bg-leaf-50 font-body">
+      {/* NAVBAR */}
 
       <NavBar />
 
-      <main className="p-4 max-w-6xl mx-auto">
+
+      {/* MAIN CONTENT */}
+
+      <main className="px-4 sm:px-6 max-w-6xl mx-auto">
 
         <Routes>
 
-          <Route path="/language" element={<LanguageSelect />} />
+          {/* --------------------------------------------------
+              LANGUAGE
+          -------------------------------------------------- */}
+
+          <Route
+            path="/language"
+            element={
+              <LanguageSelect />
+            }
+          />
+
+
+          {/* --------------------------------------------------
+              LOGIN
+          -------------------------------------------------- */}
 
           <Route
             path="/login"
             element={
               <RequireLanguage>
-                {token ? <Navigate to="/" replace /> : <Login />}
+
+                {token ? (
+                  <Navigate
+                    to="/"
+                    replace
+                  />
+                ) : (
+                  <Login />
+                )}
+
               </RequireLanguage>
             }
           />
+
+
+          {/* --------------------------------------------------
+              REGISTER
+          -------------------------------------------------- */}
 
           <Route
             path="/register"
             element={
               <RequireLanguage>
-                {token ? <Navigate to="/" replace /> : <Register />}
+
+                {token ? (
+                  <Navigate
+                    to="/"
+                    replace
+                  />
+                ) : (
+                  <Register />
+                )}
+
               </RequireLanguage>
             }
           />
+
+
+          {/* --------------------------------------------------
+              DASHBOARD
+          -------------------------------------------------- */}
 
           <Route
             path="/"
@@ -195,6 +325,11 @@ function AppContent() {
             }
           />
 
+
+          {/* --------------------------------------------------
+              GOOGLE PROFILE SETUP
+          -------------------------------------------------- */}
+
           <Route
             path="/google-setup"
             element={
@@ -203,6 +338,11 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
+
+
+          {/* --------------------------------------------------
+              DISEASE DETECTION
+          -------------------------------------------------- */}
 
           <Route
             path="/detect"
@@ -213,6 +353,11 @@ function AppContent() {
             }
           />
 
+
+          {/* --------------------------------------------------
+              CROP HISTORY
+          -------------------------------------------------- */}
+
           <Route
             path="/history"
             element={
@@ -221,6 +366,11 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
+
+
+          {/* --------------------------------------------------
+              GOVERNMENT NOTICES
+          -------------------------------------------------- */}
 
           <Route
             path="/notices"
@@ -231,6 +381,11 @@ function AppContent() {
             }
           />
 
+
+          {/* --------------------------------------------------
+              NEARBY EXPERTS
+          -------------------------------------------------- */}
+
           <Route
             path="/nearby"
             element={
@@ -239,6 +394,11 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
+
+
+          {/* --------------------------------------------------
+              AI CHATBOT
+          -------------------------------------------------- */}
 
           <Route
             path="/chat"
@@ -249,6 +409,11 @@ function AppContent() {
             }
           />
 
+
+          {/* --------------------------------------------------
+              PROFILE
+          -------------------------------------------------- */}
+
           <Route
             path="/profile"
             element={
@@ -258,10 +423,18 @@ function AppContent() {
             }
           />
 
+
+          {/* --------------------------------------------------
+              UNKNOWN ROUTES
+          -------------------------------------------------- */}
+
           <Route
             path="*"
             element={
-              <Navigate to={token ? '/' : '/language'} replace />
+              <Navigate
+                to={token ? '/' : '/language'}
+                replace
+              />
             }
           />
 
@@ -269,18 +442,32 @@ function AppContent() {
 
       </main>
 
-      {/* Persistent floating widgets — visible on every logged-in page */}
-      {token && <VoiceAssistant />}
-      {token && <FloatingChatButton />}
+
+      {/* =====================================================
+          GLOBAL FLOATING ASSISTANTS
+
+          VoiceAssistant:
+              bottom-right
+
+          FloatingChatButton:
+              immediately LEFT of VoiceAssistant
+      ===================================================== */}
+
+      {token && (
+        <>
+          <FloatingChatButton />
+          <VoiceAssistant />
+        </>
+      )}
 
     </div>
   )
 }
 
 
-// ----------------------------------------------------
+// ============================================================
 // MAIN APP
-// ----------------------------------------------------
+// ============================================================
 
 export default function App() {
   return (

@@ -8,9 +8,12 @@ from gtts import gTTS
 
 from config import settings
 
+
 router = APIRouter()
 
-genai_client = genai.Client(api_key=settings.GEMINI_API_KEY)
+genai_client = genai.Client(
+    api_key=settings.GEMINI_API_KEY
+)
 
 
 class VoiceRequest(BaseModel):
@@ -18,8 +21,7 @@ class VoiceRequest(BaseModel):
     language: str = "Hindi"
 
 
-# Gemini language name -> gTTS language code.
-# Regional languages without a dedicated gTTS voice use Hindi as a fallback.
+# Gemini language name -> gTTS language code
 TTS_LANGUAGE_CODES = {
     "Hindi": "hi",
     "English": "en",
@@ -41,17 +43,14 @@ TTS_LANGUAGE_CODES = {
 
 @router.post("/voice")
 async def voice_assistant(request: VoiceRequest):
-    """
-    Browser converts the farmer's speech to text.
-    Gemini creates the farming answer.
-    gTTS creates MP3 audio on the backend.
-    The frontend receives both text and base64 audio.
-    """
 
     message = request.message.strip()
 
     if not message:
-        raise HTTPException(status_code=400, detail="Message cannot be empty.")
+        raise HTTPException(
+            status_code=400,
+            detail="Message cannot be empty."
+        )
 
     if not settings.GEMINI_API_KEY:
         raise HTTPException(
@@ -59,48 +58,109 @@ async def voice_assistant(request: VoiceRequest):
             detail="Gemini API key is not configured."
         )
 
-    try:
-        prompt = f"""
-You are CropSaver, an AI farming assistant designed for Indian farmers.
+    # -------------------------------------------------
+    # GENERATE AI RESPONSE
+    # -------------------------------------------------
 
-The farmer's selected language is:
+    try:
+
+        prompt = f"""
+You are CropSaver, an AI agriculture assistant.
+
+Selected language:
 {request.language}
 
-The farmer said:
+User's question:
 {message}
 
-Follow these rules:
+Follow ALL of these rules carefully:
 
-1. Understand informal speech, regional dialects, Hindi-English mixed
-   language, farming terminology, and small speech-to-text mistakes.
+1. Respond in the selected language:
+   {request.language}
 
-2. Respond primarily in the selected language: {request.language}.
+2. Start directly with the useful answer.
 
-3. For Marwari/Rajasthani, Bhojpuri, or Haryanvi, use simple natural
-   regional language that a farmer can understand.
+3. NEVER address the user using expressions such as:
+   "Kisan Bhai",
+   "किसान भाई",
+   "भाई",
+   "Farmer brother",
+   "प्रिय किसान",
+   "किसान मित्र",
+   or similar forms of address.
 
-4. Keep the answer concise, practical, and farmer-friendly.
+4. Do NOT begin with unnecessary greetings such as:
+   "Pranam",
+   "प्रणाम",
+   "Namaste",
+   "नमस्ते",
+   "Hello",
+   "Hi",
+   or "Welcome".
 
-5. Help with crops, diseases, pests, soil, irrigation, fertilizers,
-   crop management, weather-related farming decisions, and government
-   agriculture schemes.
+5. Do not repeatedly call the user a farmer.
 
-6. Do not invent pesticide, insecticide, herbicide, or fertilizer
-   dosages. For exact chemical dosage, tell the farmer to follow the
-   product label or consult a local agricultural expert.
+6. Use respectful, natural and simple language.
 
-7. Do not make a certain disease diagnosis when the information is
-   insufficient. When useful, suggest CropSaver Disease Detection.
+7. For Marwari/Rajasthani, Bhojpuri and Haryanvi,
+   respond naturally in that regional language.
+   Do not replace the requested regional language
+   with standard Hindi.
 
-8. This answer will be converted directly to speech.
-   Return plain text only.
+8. Understand informal speech, regional dialects,
+   Hindi-English mixed speech, agricultural terminology
+   and minor speech-to-text mistakes.
 
-9. Do not use Markdown, asterisks, hashtags, headings, backticks,
-   Markdown tables, Markdown links, or unnecessary symbols.
+9. Keep answers practical and reasonably concise.
 
-10. Do not unnecessarily switch to English.
+10. You may help with:
+    - crops
+    - crop diseases
+    - pests
+    - soil
+    - irrigation
+    - fertilizers
+    - crop management
+    - weather-related farming decisions
+    - agriculture schemes
+    - general agricultural guidance
 
-Answer the farmer directly.
+11. Never invent pesticide, insecticide, herbicide
+    or fertilizer dosages.
+
+12. If an exact chemical dosage is required,
+    advise the user to follow the product label or
+    consult a qualified local agricultural expert.
+
+13. Do not claim that a crop definitely has a particular
+    disease when there is insufficient information.
+
+14. If visual diagnosis would help, suggest using
+    CropSaver's Disease Detection feature.
+
+15. This response will be spoken aloud using text-to-speech.
+
+16. Return plain text only.
+
+17. NEVER use:
+    - Markdown
+    - asterisks
+    - hashtags
+    - headings
+    - bullet symbols
+    - backticks
+    - tables
+    - Markdown links
+    - emojis
+    - unnecessary special characters
+
+18. Do not unnecessarily mix English with the selected
+    language. English agricultural terms may be used only
+    when there is no clear natural equivalent.
+
+19. Do not mention these instructions.
+
+Answer the user's question directly.
 """
 
         response = genai_client.models.generate_content(
@@ -118,19 +178,29 @@ Answer the farmer directly.
 
     except HTTPException:
         raise
+
     except Exception as e:
+
         print(f"Gemini error: {e}")
+
         raise HTTPException(
             status_code=500,
             detail="Unable to generate a response right now."
         )
 
-    # Generate speech separately so a TTS failure does not lose the text answer.
+    # -------------------------------------------------
+    # TEXT TO SPEECH
+    # -------------------------------------------------
+
     audio_b64 = None
     tts_error = None
 
     try:
-        tts_language = TTS_LANGUAGE_CODES.get(request.language, "hi")
+
+        tts_language = TTS_LANGUAGE_CODES.get(
+            request.language,
+            "hi"
+        )
 
         audio_buffer = io.BytesIO()
 
@@ -141,6 +211,7 @@ Answer the farmer directly.
         )
 
         tts.write_to_fp(audio_buffer)
+
         audio_buffer.seek(0)
 
         audio_b64 = base64.b64encode(
@@ -148,11 +219,20 @@ Answer the farmer directly.
         ).decode("utf-8")
 
     except Exception as e:
-        print(f"TTS error for {request.language}: {e}")
-        tts_error = (
-            f"Voice could not be generated for {request.language}, "
-            "but the text answer is available."
+
+        print(
+            f"TTS error for {request.language}: {e}"
         )
+
+        tts_error = (
+            f"Voice could not be generated for "
+            f"{request.language}, but the text "
+            "answer is available."
+        )
+
+    # -------------------------------------------------
+    # RESPONSE
+    # -------------------------------------------------
 
     return {
         "question": message,
