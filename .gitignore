@@ -95,3 +95,21 @@ coverage/
 *.pem
 *.key
 *.crt
+# Environment variables / secrets
+.env
+backend/.env
+frontend/.env
+
+# Python
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Vite
+dist/
+frontend/dist/
