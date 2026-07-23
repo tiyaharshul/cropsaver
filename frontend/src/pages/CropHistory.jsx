@@ -28,6 +28,11 @@ export default function CropHistory() {
     setSelectedItem,
   ] = useState(null)
 
+  const [
+    deletingId,
+    setDeletingId,
+  ] = useState(null)
+
 
   const { t } = useLanguage()
 
@@ -134,6 +139,91 @@ export default function CropHistory() {
 
 
   // ======================================================
+  // DELETE HISTORY
+  // ======================================================
+
+  const deleteHistory = async (
+    historyId
+  ) => {
+
+    if (!historyId) {
+      return
+    }
+
+
+    const confirmed =
+      window.confirm(
+        'Are you sure you want to delete this diagnosis? This action cannot be undone.'
+      )
+
+
+    if (!confirmed) {
+      return
+    }
+
+
+    try {
+
+      setDeletingId(historyId)
+      setError('')
+
+
+      await api.delete(
+        `/history/${historyId}`,
+        {
+          params: {
+            user_id: userId,
+          },
+        }
+      )
+
+
+      // Remove immediately from UI
+      setItems(
+        (currentItems) =>
+          currentItems.filter(
+            (item) =>
+              item._id !== historyId
+          )
+      )
+
+
+      // Close modal if the deleted
+      // diagnosis is currently open
+      if (
+        selectedItem?._id ===
+        historyId
+      ) {
+
+        setSelectedItem(null)
+
+      }
+
+
+    } catch (err) {
+
+      console.error(
+        'Delete history error:',
+        err
+      )
+
+
+      setError(
+        err.response?.data?.detail ||
+        'Could not delete this diagnosis.'
+      )
+
+
+    } finally {
+
+      setDeletingId(null)
+
+    }
+
+  }
+
+
+  // ======================================================
   // UI
   // ======================================================
 
@@ -198,6 +288,7 @@ export default function CropHistory() {
             text-red-700
             rounded-xl
             p-4
+            mb-5
           "
         >
           {error}
@@ -345,32 +436,85 @@ export default function CropHistory() {
                   </div>
 
 
-                  {/* VIEW BUTTON */}
+                  {/* =====================================
+                      ACTION BUTTONS
+                  ===================================== */}
 
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setSelectedItem(
-                        item
-                      )
-                    }
+                  <div
                     className="
                       mt-4
-                      w-full
-                      rounded-xl
-                      border
-                      border-green-200
-                      bg-green-50
-                      text-green-800
-                      font-semibold
-                      py-2.5
-                      px-4
-                      hover:bg-green-100
-                      transition
+                      flex
+                      flex-col
+                      sm:flex-row
+                      gap-2
                     "
                   >
-                    View Full Diagnosis →
-                  </button>
+
+                    {/* VIEW */}
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSelectedItem(
+                          item
+                        )
+                      }
+                      className="
+                        flex-1
+                        rounded-xl
+                        border
+                        border-green-200
+                        bg-green-50
+                        text-green-800
+                        font-semibold
+                        py-2.5
+                        px-4
+                        hover:bg-green-100
+                        transition
+                      "
+                    >
+                      View Full Diagnosis →
+                    </button>
+
+
+                    {/* DELETE */}
+
+                    <button
+                      type="button"
+                      disabled={
+                        deletingId ===
+                        item._id
+                      }
+                      onClick={() =>
+                        deleteHistory(
+                          item._id
+                        )
+                      }
+                      className="
+                        sm:w-auto
+                        rounded-xl
+                        border
+                        border-red-200
+                        bg-red-50
+                        text-red-700
+                        font-semibold
+                        py-2.5
+                        px-4
+                        hover:bg-red-100
+                        disabled:opacity-50
+                        disabled:cursor-not-allowed
+                        transition
+                      "
+                    >
+
+                      {deletingId ===
+                      item._id
+                        ? 'Deleting...'
+                        : '🗑 Delete'}
+
+                    </button>
+
+                  </div>
 
                 </div>
 
@@ -538,6 +682,8 @@ export default function CropHistory() {
                 "
               >
 
+                {/* CROP */}
+
                 <div
                   className="
                     bg-green-50
@@ -568,6 +714,8 @@ export default function CropHistory() {
                 </div>
 
 
+                {/* DISEASE */}
+
                 <div
                   className="
                     bg-green-50
@@ -597,6 +745,8 @@ export default function CropHistory() {
 
                 </div>
 
+
+                {/* CONFIDENCE */}
 
                 <div
                   className="
@@ -678,8 +828,6 @@ export default function CropHistory() {
                   </div>
 
 
-                  {/* EXPLANATION */}
-
                   <DetailSection
                     icon="💡"
                     title={
@@ -693,8 +841,6 @@ export default function CropHistory() {
                     }
                   />
 
-
-                  {/* ORGANIC */}
 
                   <DetailSection
                     icon="🌿"
@@ -710,8 +856,6 @@ export default function CropHistory() {
                   />
 
 
-                  {/* CHEMICAL */}
-
                   <DetailSection
                     icon="🧪"
                     title={
@@ -725,8 +869,6 @@ export default function CropHistory() {
                     }
                   />
 
-
-                  {/* DOSAGE */}
 
                   <DetailSection
                     icon="💧"
@@ -742,8 +884,6 @@ export default function CropHistory() {
                   />
 
 
-                  {/* SCHEDULE */}
-
                   <DetailSection
                     icon="📅"
                     title={
@@ -757,8 +897,6 @@ export default function CropHistory() {
                     }
                   />
 
-
-                  {/* RECOVERY */}
 
                   <DetailSection
                     icon="⏱️"
@@ -774,8 +912,6 @@ export default function CropHistory() {
                   />
 
 
-                  {/* PREVENTION */}
-
                   <DetailSection
                     icon="🛡️"
                     title={
@@ -788,6 +924,54 @@ export default function CropHistory() {
                         .prevention
                     }
                   />
+
+
+                  {/* DELETE FROM MODAL */}
+
+                  <div
+                    className="
+                      border-t
+                      border-gray-100
+                      pt-5
+                    "
+                  >
+
+                    <button
+                      type="button"
+                      disabled={
+                        deletingId ===
+                        selectedItem._id
+                      }
+                      onClick={() =>
+                        deleteHistory(
+                          selectedItem._id
+                        )
+                      }
+                      className="
+                        w-full
+                        rounded-xl
+                        border
+                        border-red-200
+                        bg-red-50
+                        text-red-700
+                        font-semibold
+                        py-3
+                        px-4
+                        hover:bg-red-100
+                        disabled:opacity-50
+                        disabled:cursor-not-allowed
+                        transition
+                      "
+                    >
+
+                      {deletingId ===
+                      selectedItem._id
+                        ? 'Deleting...'
+                        : '🗑 Delete this diagnosis'}
+
+                    </button>
+
+                  </div>
 
                 </div>
 
@@ -829,6 +1013,44 @@ export default function CropHistory() {
                     New diagnoses will save the complete
                     treatment plan automatically.
                   </p>
+
+
+                  {/* DELETE OLD RECORD */}
+
+                  <button
+                    type="button"
+                    disabled={
+                      deletingId ===
+                      selectedItem._id
+                    }
+                    onClick={() =>
+                      deleteHistory(
+                        selectedItem._id
+                      )
+                    }
+                    className="
+                      w-full
+                      mt-4
+                      rounded-xl
+                      border
+                      border-red-200
+                      bg-red-50
+                      text-red-700
+                      font-semibold
+                      py-3
+                      px-4
+                      hover:bg-red-100
+                      disabled:opacity-50
+                      transition
+                    "
+                  >
+
+                    {deletingId ===
+                    selectedItem._id
+                      ? 'Deleting...'
+                      : '🗑 Delete this diagnosis'}
+
+                  </button>
 
                 </div>
 
