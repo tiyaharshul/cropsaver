@@ -13,7 +13,7 @@ client = genai.Client(api_key=settings.GEMINI_API_KEY)
 PROMPT_TEMPLATE = """
 You are an expert agricultural scientist.
 
-A farmer has uploaded a crop image.
+A crop image has been analyzed by an AI crop disease detection system.
 
 Crop:
 {crop_name}
