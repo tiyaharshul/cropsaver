@@ -1,4 +1,3 @@
-
 import { useRef, useState } from 'react'
 import api from '../api/axios'
 
@@ -277,10 +276,10 @@ export default function VoiceAssistant() {
   return (
     <>
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 overflow-hidden">
-          <div className="bg-leaf-700 text-white p-4 flex justify-between items-center">
+        <div className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border border-leaf-100 z-50 overflow-hidden">
+          <div className="bg-gradient-to-r from-leaf-700 to-leaf-800 text-white p-4 flex justify-between items-center">
             <div>
-              <h2 className="font-bold text-lg">🌱 CropSaver Assistant</h2>
+              <h2 className="font-heading font-bold text-lg">🌱 CropSaver Assistant</h2>
               <p className="text-xs opacity-90">Speak in your language</p>
             </div>
 
@@ -294,7 +293,7 @@ export default function VoiceAssistant() {
             </button>
           </div>
 
-          <div className="p-4 border-b bg-gray-50">
+          <div className="p-4 border-b bg-leaf-50">
             <label className="block text-xs font-semibold text-gray-600 mb-2">
               अपनी भाषा चुनें / Select your language
             </label>
@@ -303,7 +302,7 @@ export default function VoiceAssistant() {
               value={selectedLanguage.name}
               onChange={handleLanguageChange}
               disabled={isListening || isLoading}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm focus:outline-none"
+              className="w-full border border-leaf-200 rounded-lg px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-leaf-400"
             >
               {languages.map((language) => (
                 <option key={language.name} value={language.name}>
@@ -359,7 +358,7 @@ export default function VoiceAssistant() {
               <div>
                 <p className="text-xs text-gray-500 mb-1">🌱 CropSaver</p>
 
-                <div className="bg-green-100 rounded-lg p-3 text-sm whitespace-pre-line">
+                <div className="bg-leaf-100 rounded-lg p-3 text-sm whitespace-pre-line">
                   {answer}
                 </div>
 
@@ -395,7 +394,7 @@ export default function VoiceAssistant() {
               type="button"
               onClick={startListening}
               disabled={isListening || isLoading}
-              className="bg-leaf-700 hover:bg-leaf-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-full font-medium transition"
+              className="bg-gradient-to-r from-leaf-600 to-leaf-800 hover:from-leaf-700 hover:to-leaf-900 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-full font-medium transition"
             >
               {isListening
                 ? '🎙️ Listening...'
@@ -410,7 +409,7 @@ export default function VoiceAssistant() {
       <button
         type="button"
         onClick={openAssistant}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-leaf-700 hover:bg-leaf-800 text-white rounded-full shadow-xl text-2xl z-50 flex items-center justify-center transition"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-leaf-600 to-leaf-800 hover:scale-110 text-white rounded-full shadow-floaty text-2xl z-50 flex items-center justify-center transition-transform animate-pulse-ring"
         title="CropSaver Voice Assistant"
         aria-label="Open CropSaver Voice Assistant"
       >

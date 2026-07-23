@@ -1,4 +1,4 @@
-import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom'
+import { Routes, Route, Link, Navigate, useNavigate, useLocation } from 'react-router-dom'
 
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
@@ -28,99 +28,75 @@ import {
 function NavBar() {
 
   const navigate = useNavigate()
+  const location = useLocation()
   const { t } = useLanguage()
 
   const token =
     localStorage.getItem('cropsaver_token')
 
-  // Don't show navbar before login
   if (!token) {
     return null
   }
 
   const links = [
-    [t.dashboard, '/'],
-    [t.diseaseDetection, '/detect'],
-    [t.cropHistory, '/history'],
-    [t.governmentNotices, '/notices'],
-    [t.nearbyExperts, '/nearby'],
-    [t.aiChatbot, '/chat'],
-    [t.profile, '/profile'],
+    [t.dashboard, '/', '🏠'],
+    [t.diseaseDetection, '/detect', '🔬'],
+    [t.cropHistory, '/history', '📜'],
+    [t.governmentNotices, '/notices', '📢'],
+    [t.nearbyExperts, '/nearby', '📍'],
+    [t.aiChatbot, '/chat', '💬'],
+    [t.profile, '/profile', '👤'],
   ]
 
-
-  // ------------------------------------------------
-  // LOGOUT
-  // ------------------------------------------------
-
   const logout = () => {
-
-    localStorage.removeItem(
-      'cropsaver_token'
-    )
-
-    localStorage.removeItem(
-      'cropsaver_user'
-    )
-
-    localStorage.removeItem(
-      'user_name'
-    )
-
+    localStorage.removeItem('cropsaver_token')
+    localStorage.removeItem('cropsaver_user')
+    localStorage.removeItem('user_name')
     navigate('/login')
   }
 
-
   return (
+    <nav className="glass-nav sticky top-0 z-40 text-white px-4 py-3 shadow-soft">
+      <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-2">
 
-    <nav
-      className="
-        bg-leaf-700
-        text-white
-        px-4
-        py-3
-        flex
-        flex-wrap
-        gap-4
-        items-center
-      "
-    >
+        <span className="font-heading font-bold text-lg mr-4 flex items-center gap-1.5">
+          <span className="text-2xl">🌱</span> {t.appName}
+        </span>
 
-      <span className="font-bold text-lg mr-4">
-        🌱 {t.appName}
-      </span>
+        <div className="flex flex-wrap gap-1">
+          {links.map(([label, path, icon]) => {
+            const active = location.pathname === path
+            return (
+              <Link
+                key={path}
+                to={path}
+                className={`
+                  text-sm px-3 py-1.5 rounded-full transition
+                  flex items-center gap-1.5
+                  ${active
+                    ? 'bg-earth-500 text-white shadow-card'
+                    : 'text-white/85 hover:bg-white/10'}
+                `}
+              >
+                <span className="text-xs">{icon}</span>
+                {label}
+              </Link>
+            )
+          })}
+        </div>
 
-
-      {links.map(([label, path]) => (
-
-        <Link
-          key={path}
-          to={path}
-          className="hover:underline text-sm"
+        <button
+          type="button"
+          onClick={logout}
+          className="
+            ml-auto text-sm border border-white/40 rounded-full
+            px-4 py-1.5 hover:bg-white/10 transition
+          "
         >
-          {label}
-        </Link>
+          {t.logout}
+        </button>
 
-      ))}
-
-
-      <button
-        type="button"
-        onClick={logout}
-        className="
-          ml-auto
-          text-sm
-          border
-          border-white/40
-          rounded-lg
-          px-3
-          py-1.5
-          hover:bg-white/10
-        "
-      >
-        {t.logout}
-      </button>
-
+      </div>
     </nav>
   )
 }
@@ -133,21 +109,41 @@ function NavBar() {
 function RequireLanguage({ children }) {
 
   const chosen =
-    localStorage.getItem(
-      'cropsaver_language_chosen'
-    )
+    localStorage.getItem('cropsaver_language_chosen')
 
   if (!chosen) {
-
-    return (
-      <Navigate
-        to="/language"
-        replace
-      />
-    )
+    return <Navigate to="/language" replace />
   }
 
   return children
+}
+
+
+// ----------------------------------------------------
+// FLOATING QUICK-CHAT LAUNCHER
+// (sits alongside VoiceAssistant on every logged-in page)
+// ----------------------------------------------------
+
+function FloatingChatButton() {
+  const { t } = useLanguage()
+
+  return (
+    <Link
+      to="/chat"
+      title={t.aiChatbot}
+      className="
+        fixed bottom-6 left-6 z-50
+        w-14 h-14 rounded-full
+        bg-gradient-to-br from-leaf-600 to-leaf-800
+        text-white text-2xl
+        flex items-center justify-center
+        shadow-floaty animate-float
+        hover:scale-110 transition-transform
+      "
+    >
+      💬
+    </Link>
+  )
 }
 
 
@@ -158,81 +154,37 @@ function RequireLanguage({ children }) {
 function AppContent() {
 
   const token =
-    localStorage.getItem(
-      'cropsaver_token'
-    )
+    localStorage.getItem('cropsaver_token')
 
   return (
 
-    <div className="min-h-screen bg-leaf-50">
+    <div className="min-h-screen bg-leaf-50 font-body">
 
       <NavBar />
 
-
-      <main className="p-4 max-w-5xl mx-auto">
+      <main className="p-4 max-w-6xl mx-auto">
 
         <Routes>
 
-
-          {/* LANGUAGE */}
-
-          <Route
-            path="/language"
-            element={<LanguageSelect />}
-          />
-
-
-          {/* LOGIN */}
+          <Route path="/language" element={<LanguageSelect />} />
 
           <Route
             path="/login"
             element={
-
               <RequireLanguage>
-
-                {token
-                  ? (
-                    <Navigate
-                      to="/"
-                      replace
-                    />
-                  )
-                  : (
-                    <Login />
-                  )
-                }
-
+                {token ? <Navigate to="/" replace /> : <Login />}
               </RequireLanguage>
             }
           />
-
-
-          {/* REGISTER */}
 
           <Route
             path="/register"
             element={
-
               <RequireLanguage>
-
-                {token
-                  ? (
-                    <Navigate
-                      to="/"
-                      replace
-                    />
-                  )
-                  : (
-                    <Register />
-                  )
-                }
-
+                {token ? <Navigate to="/" replace /> : <Register />}
               </RequireLanguage>
             }
           />
-
-
-          {/* DASHBOARD */}
 
           <Route
             path="/"
@@ -242,16 +194,15 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
-          <Route
-          path="/google-setup"
-          element={
-            <ProtectedRoute>
-              <GoogleSetup />
-            </ProtectedRoute>
-          }
-          />
 
-          {/* DISEASE DETECTION */}
+          <Route
+            path="/google-setup"
+            element={
+              <ProtectedRoute>
+                <GoogleSetup />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/detect"
@@ -262,9 +213,6 @@ function AppContent() {
             }
           />
 
-
-          {/* HISTORY */}
-
           <Route
             path="/history"
             element={
@@ -273,9 +221,6 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
-
-
-          {/* GOVERNMENT NOTICES */}
 
           <Route
             path="/notices"
@@ -286,9 +231,6 @@ function AppContent() {
             }
           />
 
-
-          {/* NEARBY EXPERTS */}
-
           <Route
             path="/nearby"
             element={
@@ -297,9 +239,6 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
-
-
-          {/* CHATBOT */}
 
           <Route
             path="/chat"
@@ -310,9 +249,6 @@ function AppContent() {
             }
           />
 
-
-          {/* PROFILE */}
-
           <Route
             path="/profile"
             element={
@@ -322,20 +258,10 @@ function AppContent() {
             }
           />
 
-
-          {/* UNKNOWN ROUTE */}
-
           <Route
             path="*"
             element={
-              <Navigate
-                to={
-                  token
-                    ? '/'
-                    : '/language'
-                }
-                replace
-              />
+              <Navigate to={token ? '/' : '/language'} replace />
             }
           />
 
@@ -343,10 +269,9 @@ function AppContent() {
 
       </main>
 
-
-      {/* Voice assistant only after login */}
-
+      {/* Persistent floating widgets — visible on every logged-in page */}
       {token && <VoiceAssistant />}
+      {token && <FloatingChatButton />}
 
     </div>
   )
@@ -358,14 +283,9 @@ function AppContent() {
 // ----------------------------------------------------
 
 export default function App() {
-
   return (
-
     <LanguageProvider>
-
       <AppContent />
-
     </LanguageProvider>
-
   )
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,8 +8,35 @@ html, body, #root {
   height: 100%;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f2fbf3;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+}
+
 .leaflet-container {
   height: 500px;
   width: 100%;
   border-radius: 0.75rem;
+}
+
+/* Sticky glass navbar */
+.glass-nav {
+  background: rgba(18, 72, 36, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #8fdd9e;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
 }
