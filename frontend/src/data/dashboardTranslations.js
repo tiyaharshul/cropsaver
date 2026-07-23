@@ -4,9 +4,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI-Powered Farming Companion',
     dashboardHeroTitle: 'Smarter farming starts here.',
     dashboardHeroDescription:
-      'Protect your crops, detect diseases early, get expert guidance and make better farming decisions with CropSaver.',
+      'Protect your crops, detect diseases early, get expert guidance and make better farming decisions with Krishay.',
     detectDisease: 'Detect Disease',
-    askCropSaver: 'Ask CropSaver',
+    askKrishay: 'Ask Krishay',
     aiDiagnosis: 'AI Crop Diagnosis',
     localLanguages: 'Local Languages',
     anytimeAssistance: 'Anytime Assistance',
@@ -18,18 +18,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'Detect crop diseases instantly',
     diseaseFeatureDescription:
-      'Upload a photo of your crop and let CropSaver AI identify possible diseases and provide useful treatment guidance.',
+      'Upload a photo of your crop and let Krishay AI identify possible diseases and provide useful treatment guidance.',
     aiCropDoctor: 'AI Crop Doctor',
     startDiagnosis: 'Start Diagnosis',
 
     aiFeatureTitle: 'Your personal AI farming assistant',
     aiFeatureDescription:
       'Ask questions about crops, irrigation, pests, fertilizers, diseases and farming practices in your preferred language.',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'Have a farming question?',
     finalCtaDescription:
-      'CropSaver AI is ready to help you with practical farming guidance whenever you need it.',
+      'Krishay AI is ready to help you with practical farming guidance whenever you need it.',
 
     footerDescription:
       'Smart farming assistance powered by AI — helping farmers protect crops, make better decisions and grow with confidence.',
@@ -46,9 +46,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'एआई आधारित कृषि साथी',
     dashboardHeroTitle: 'स्मार्ट खेती की शुरुआत यहाँ से होती है।',
     dashboardHeroDescription:
-      'अपनी फसलों की सुरक्षा करें, रोगों की जल्दी पहचान करें, विशेषज्ञ मार्गदर्शन प्राप्त करें और CropSaver के साथ बेहतर कृषि निर्णय लें।',
+      'अपनी फसलों की सुरक्षा करें, रोगों की जल्दी पहचान करें, विशेषज्ञ मार्गदर्शन प्राप्त करें और Krishay के साथ बेहतर कृषि निर्णय लें।',
     detectDisease: 'रोग पहचानें',
-    askCropSaver: 'CropSaver से पूछें',
+    askKrishay: 'Krishay से पूछें',
     aiDiagnosis: 'एआई फसल निदान',
     localLanguages: 'स्थानीय भाषाएँ',
     anytimeAssistance: 'कभी भी सहायता',
@@ -60,18 +60,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'फसल रोगों की तुरंत पहचान करें',
     diseaseFeatureDescription:
-      'अपनी फसल की तस्वीर अपलोड करें और CropSaver AI से संभावित रोग की पहचान और उपचार संबंधी मार्गदर्शन प्राप्त करें।',
+      'अपनी फसल की तस्वीर अपलोड करें और Krishay AI से संभावित रोग की पहचान और उपचार संबंधी मार्गदर्शन प्राप्त करें।',
     aiCropDoctor: 'एआई फसल डॉक्टर',
     startDiagnosis: 'जाँच शुरू करें',
 
     aiFeatureTitle: 'आपका व्यक्तिगत एआई कृषि सहायक',
     aiFeatureDescription:
       'फसल, सिंचाई, कीट, उर्वरक, रोग और खेती से जुड़े सवाल अपनी पसंदीदा भाषा में पूछें।',
-    cropSaverAi: 'CropSaver एआई',
+    KrishayAi: 'Krishay एआई',
 
     finalCtaTitle: 'खेती से जुड़ा कोई सवाल है?',
     finalCtaDescription:
-      'जब भी आपको जरूरत हो, CropSaver AI व्यावहारिक कृषि मार्गदर्शन देने के लिए तैयार है।',
+      'जब भी आपको जरूरत हो, Krishay AI व्यावहारिक कृषि मार्गदर्शन देने के लिए तैयार है।',
 
     footerDescription:
       'एआई आधारित स्मार्ट कृषि सहायता — किसानों को फसलों की रक्षा, बेहतर निर्णय और आत्मविश्वास के साथ खेती करने में मदद करती है।',
@@ -88,9 +88,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'एआई आधारित खेती साथी',
     dashboardHeroTitle: 'समझदार खेती री शुरुआत अठै सूं।',
     dashboardHeroDescription:
-      'आपरी फसल ने बचाओ, बीमारी ने जल्दी पहचानो अर CropSaver री मदद सूं खेती रा बेहतर फैसला लो।',
+      'आपरी फसल ने बचाओ, बीमारी ने जल्दी पहचानो अर Krishay री मदद सूं खेती रा बेहतर फैसला लो।',
     detectDisease: 'बीमारी पहचानो',
-    askCropSaver: 'CropSaver ने पूछो',
+    askKrishay: 'Krishay ने पूछो',
     aiDiagnosis: 'एआई फसल जांच',
     localLanguages: 'आपरी भाषा',
     anytimeAssistance: 'हर समय मदद',
@@ -102,18 +102,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'फसल री बीमारी तुरंत पहचानो',
     diseaseFeatureDescription:
-      'फसल री फोटो अपलोड करो अर CropSaver AI सूं बीमारी अर इलाज री जानकारी पाओ।',
+      'फसल री फोटो अपलोड करो अर Krishay AI सूं बीमारी अर इलाज री जानकारी पाओ।',
     aiCropDoctor: 'एआई फसल डॉक्टर',
     startDiagnosis: 'जांच शुरू करो',
 
     aiFeatureTitle: 'आपरो एआई खेती सहायक',
     aiFeatureDescription:
       'फसल, पानी, कीड़ा, खाद अर बीमारी बाबत आपरी भाषा में सवाल पूछो।',
-    cropSaverAi: 'CropSaver एआई',
+    KrishayAi: 'Krishay एआई',
 
     finalCtaTitle: 'खेती रो कोई सवाल है?',
     finalCtaDescription:
-      'CropSaver AI खेती री सही जानकारी देबा खातर हर समय तैयार है।',
+      'Krishay AI खेती री सही जानकारी देबा खातर हर समय तैयार है।',
 
     footerDescription:
       'एआई आधारित स्मार्ट खेती री मदद — किसानां ने फसल री रक्षा अर बेहतर खेती रा फैसला करबा में मदद करे।',
@@ -130,9 +130,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'एआई खेती साथी',
     dashboardHeroTitle: 'स्मार्ट खेती के शुरुआत इहाँ से करीं।',
     dashboardHeroDescription:
-      'अपना फसल के बचाईं, बीमारी जल्दी पहिचानीं आ CropSaver के मदद से बेहतर खेती के फैसला लीं।',
+      'अपना फसल के बचाईं, बीमारी जल्दी पहिचानीं आ Krishay के मदद से बेहतर खेती के फैसला लीं।',
     detectDisease: 'बीमारी पहिचानीं',
-    askCropSaver: 'CropSaver से पूछीं',
+    askKrishay: 'Krishay से पूछीं',
     aiDiagnosis: 'एआई फसल जाँच',
     localLanguages: 'अपना भाषा',
     anytimeAssistance: 'हर समय मदद',
@@ -144,18 +144,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'फसल के बीमारी तुरंत पहिचानीं',
     diseaseFeatureDescription:
-      'फसल के फोटो अपलोड करीं आ CropSaver AI से बीमारी आ इलाज के जानकारी पाईं।',
+      'फसल के फोटो अपलोड करीं आ Krishay AI से बीमारी आ इलाज के जानकारी पाईं।',
     aiCropDoctor: 'एआई फसल डॉक्टर',
     startDiagnosis: 'जाँच शुरू करीं',
 
     aiFeatureTitle: 'रउआ निजी एआई खेती सहायक',
     aiFeatureDescription:
       'फसल, सिंचाई, कीड़ा, खाद आ बीमारी से जुड़ल सवाल अपना भाषा में पूछीं।',
-    cropSaverAi: 'CropSaver एआई',
+    KrishayAi: 'Krishay एआई',
 
     finalCtaTitle: 'खेती से जुड़ल सवाल बा?',
     finalCtaDescription:
-      'CropSaver AI खेती के उपयोगी सलाह देवे खातिर हमेशा तैयार बा।',
+      'Krishay AI खेती के उपयोगी सलाह देवे खातिर हमेशा तैयार बा।',
 
     footerDescription:
       'एआई आधारित स्मार्ट खेती सहायता — किसान के फसल बचावे आ बेहतर खेती के फैसला लेवे में मदद करेला।',
@@ -172,9 +172,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'एआई खेती साथी',
     dashboardHeroTitle: 'स्मार्ट खेती की शुरुआत यहीं तै सै।',
     dashboardHeroDescription:
-      'अपणी फसल बचाओ, बीमारी जल्दी पहचानो अर CropSaver की मदद तै खेती के बढ़िया फैसले लो।',
+      'अपणी फसल बचाओ, बीमारी जल्दी पहचानो अर Krishay की मदद तै खेती के बढ़िया फैसले लो।',
     detectDisease: 'बीमारी पहचानो',
-    askCropSaver: 'CropSaver तै पूछो',
+    askKrishay: 'Krishay तै पूछो',
     aiDiagnosis: 'एआई फसल जांच',
     localLanguages: 'अपणी भाषा',
     anytimeAssistance: 'हर टाइम मदद',
@@ -186,18 +186,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'फसल की बीमारी तुरंत पहचानो',
     diseaseFeatureDescription:
-      'फसल की फोटो डालो अर CropSaver AI तै बीमारी अर इलाज की जानकारी पाओ।',
+      'फसल की फोटो डालो अर Krishay AI तै बीमारी अर इलाज की जानकारी पाओ।',
     aiCropDoctor: 'एआई फसल डॉक्टर',
     startDiagnosis: 'जांच शुरू करो',
 
     aiFeatureTitle: 'थारा एआई खेती सहायक',
     aiFeatureDescription:
       'फसल, पानी, कीड़े, खाद अर बीमारी के सवाल अपणी भाषा में पूछो।',
-    cropSaverAi: 'CropSaver एआई',
+    KrishayAi: 'Krishay एआई',
 
     finalCtaTitle: 'खेती का कोई सवाल सै?',
     finalCtaDescription:
-      'CropSaver AI खेती की उपयोगी सलाह देण खातर हर टाइम तैयार सै।',
+      'Krishay AI खेती की उपयोगी सलाह देण खातर हर टाइम तैयार सै।',
 
     footerDescription:
       'एआई आधारित स्मार्ट खेती सहायता — किसानां नै फसल बचाण अर खेती के बढ़िया फैसले लेण में मदद करै सै।',
@@ -214,9 +214,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI આધારિત કૃષિ સાથી',
     dashboardHeroTitle: 'સ્માર્ટ ખેતીની શરૂઆત અહીંથી થાય છે.',
     dashboardHeroDescription:
-      'તમારા પાકનું રક્ષણ કરો, રોગોની વહેલી ઓળખ કરો અને CropSaver સાથે વધુ સારા કૃષિ નિર્ણયો લો.',
+      'તમારા પાકનું રક્ષણ કરો, રોગોની વહેલી ઓળખ કરો અને Krishay સાથે વધુ સારા કૃષિ નિર્ણયો લો.',
     detectDisease: 'રોગ ઓળખો',
-    askCropSaver: 'CropSaver ને પૂછો',
+    askKrishay: 'Krishay ને પૂછો',
     aiDiagnosis: 'AI પાક નિદાન',
     localLanguages: 'સ્થાનિક ભાષાઓ',
     anytimeAssistance: 'ક્યારેય પણ સહાય',
@@ -228,18 +228,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'પાકના રોગોને તરત ઓળખો',
     diseaseFeatureDescription:
-      'પાકનો ફોટો અપલોડ કરો અને CropSaver AI દ્વારા સંભવિત રોગ અને સારવાર માર્ગદર્શન મેળવો.',
+      'પાકનો ફોટો અપલોડ કરો અને Krishay AI દ્વારા સંભવિત રોગ અને સારવાર માર્ગદર્શન મેળવો.',
     aiCropDoctor: 'AI પાક ડૉક્ટર',
     startDiagnosis: 'તપાસ શરૂ કરો',
 
     aiFeatureTitle: 'તમારો વ્યક્તિગત AI કૃષિ સહાયક',
     aiFeatureDescription:
       'પાક, સિંચાઈ, જીવાત, ખાતર અને રોગો વિશે તમારી ભાષામાં પ્રશ્નો પૂછો.',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'ખેતી વિશે કોઈ પ્રશ્ન છે?',
     finalCtaDescription:
-      'CropSaver AI તમને ઉપયોગી કૃષિ માર્ગદર્શન આપવા માટે તૈયાર છે.',
+      'Krishay AI તમને ઉપયોગી કૃષિ માર્ગદર્શન આપવા માટે તૈયાર છે.',
 
     footerDescription:
       'AI આધારિત સ્માર્ટ કૃષિ સહાય — ખેડૂતોને પાકનું રક્ષણ કરવા, વધુ સારા નિર્ણયો લેવા અને આત્મવિશ્વાસથી ખેતી કરવામાં મદદ કરે છે.',
@@ -256,9 +256,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'एआय आधारित शेती साथी',
     dashboardHeroTitle: 'स्मार्ट शेतीची सुरुवात इथून होते.',
     dashboardHeroDescription:
-      'तुमच्या पिकांचे संरक्षण करा, रोग लवकर ओळखा आणि CropSaver सोबत अधिक चांगले शेती निर्णय घ्या.',
+      'तुमच्या पिकांचे संरक्षण करा, रोग लवकर ओळखा आणि Krishay सोबत अधिक चांगले शेती निर्णय घ्या.',
     detectDisease: 'रोग ओळखा',
-    askCropSaver: 'CropSaver ला विचारा',
+    askKrishay: 'Krishay ला विचारा',
     aiDiagnosis: 'एआय पीक निदान',
     localLanguages: 'स्थानिक भाषा',
     anytimeAssistance: 'कधीही मदत',
@@ -270,18 +270,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'पिकांचे रोग त्वरित ओळखा',
     diseaseFeatureDescription:
-      'पिकाचा फोटो अपलोड करा आणि CropSaver AI कडून संभाव्य रोग व उपचार मार्गदर्शन मिळवा.',
+      'पिकाचा फोटो अपलोड करा आणि Krishay AI कडून संभाव्य रोग व उपचार मार्गदर्शन मिळवा.',
     aiCropDoctor: 'एआय पीक डॉक्टर',
     startDiagnosis: 'तपासणी सुरू करा',
 
     aiFeatureTitle: 'तुमचा वैयक्तिक एआय शेती सहाय्यक',
     aiFeatureDescription:
       'पीक, सिंचन, कीड, खत आणि रोगांविषयी तुमच्या भाषेत प्रश्न विचारा.',
-    cropSaverAi: 'CropSaver एआय',
+    KrishayAi: 'Krishay एआय',
 
     finalCtaTitle: 'शेतीविषयी काही प्रश्न आहे?',
     finalCtaDescription:
-      'CropSaver AI तुम्हाला उपयुक्त शेती मार्गदर्शन देण्यासाठी तयार आहे.',
+      'Krishay AI तुम्हाला उपयुक्त शेती मार्गदर्शन देण्यासाठी तयार आहे.',
 
     footerDescription:
       'एआय आधारित स्मार्ट शेती सहाय्य — शेतकऱ्यांना पिकांचे संरक्षण, चांगले निर्णय आणि आत्मविश्वासाने शेती करण्यास मदत करते.',
@@ -298,9 +298,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI ਖੇਤੀ ਸਾਥੀ',
     dashboardHeroTitle: 'ਸਮਾਰਟ ਖੇਤੀ ਦੀ ਸ਼ੁਰੂਆਤ ਇੱਥੋਂ ਹੁੰਦੀ ਹੈ।',
     dashboardHeroDescription:
-      'ਆਪਣੀਆਂ ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ ਕਰੋ, ਬਿਮਾਰੀਆਂ ਦੀ ਜਲਦੀ ਪਛਾਣ ਕਰੋ ਅਤੇ CropSaver ਨਾਲ ਵਧੀਆ ਖੇਤੀ ਫੈਸਲੇ ਲਓ।',
+      'ਆਪਣੀਆਂ ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ ਕਰੋ, ਬਿਮਾਰੀਆਂ ਦੀ ਜਲਦੀ ਪਛਾਣ ਕਰੋ ਅਤੇ Krishay ਨਾਲ ਵਧੀਆ ਖੇਤੀ ਫੈਸਲੇ ਲਓ।',
     detectDisease: 'ਬਿਮਾਰੀ ਪਛਾਣੋ',
-    askCropSaver: 'CropSaver ਨੂੰ ਪੁੱਛੋ',
+    askKrishay: 'Krishay ਨੂੰ ਪੁੱਛੋ',
     aiDiagnosis: 'AI ਫਸਲ ਜਾਂਚ',
     localLanguages: 'ਸਥਾਨਕ ਭਾਸ਼ਾਵਾਂ',
     anytimeAssistance: 'ਕਿਸੇ ਵੀ ਵੇਲੇ ਮਦਦ',
@@ -312,18 +312,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'ਫਸਲ ਦੀ ਬਿਮਾਰੀ ਤੁਰੰਤ ਪਛਾਣੋ',
     diseaseFeatureDescription:
-      'ਫਸਲ ਦੀ ਤਸਵੀਰ ਅਪਲੋਡ ਕਰੋ ਅਤੇ CropSaver AI ਤੋਂ ਬਿਮਾਰੀ ਅਤੇ ਇਲਾਜ ਬਾਰੇ ਮਾਰਗਦਰਸ਼ਨ ਲਵੋ।',
+      'ਫਸਲ ਦੀ ਤਸਵੀਰ ਅਪਲੋਡ ਕਰੋ ਅਤੇ Krishay AI ਤੋਂ ਬਿਮਾਰੀ ਅਤੇ ਇਲਾਜ ਬਾਰੇ ਮਾਰਗਦਰਸ਼ਨ ਲਵੋ।',
     aiCropDoctor: 'AI ਫਸਲ ਡਾਕਟਰ',
     startDiagnosis: 'ਜਾਂਚ ਸ਼ੁਰੂ ਕਰੋ',
 
     aiFeatureTitle: 'ਤੁਹਾਡਾ ਨਿੱਜੀ AI ਖੇਤੀ ਸਹਾਇਕ',
     aiFeatureDescription:
       'ਫਸਲਾਂ, ਸਿੰਚਾਈ, ਕੀੜਿਆਂ, ਖਾਦ ਅਤੇ ਬਿਮਾਰੀਆਂ ਬਾਰੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਪੁੱਛੋ।',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'ਖੇਤੀ ਬਾਰੇ ਕੋਈ ਸਵਾਲ ਹੈ?',
     finalCtaDescription:
-      'CropSaver AI ਤੁਹਾਡੀ ਖੇਤੀ ਸੰਬੰਧੀ ਮਦਦ ਲਈ ਤਿਆਰ ਹੈ।',
+      'Krishay AI ਤੁਹਾਡੀ ਖੇਤੀ ਸੰਬੰਧੀ ਮਦਦ ਲਈ ਤਿਆਰ ਹੈ।',
 
     footerDescription:
       'ਏਆਈ ਆਧਾਰਿਤ ਸਮਾਰਟ ਖੇਤੀ ਸਹਾਇਤਾ — ਕਿਸਾਨਾਂ ਨੂੰ ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ ਕਰਨ ਅਤੇ ਬਿਹਤਰ ਖੇਤੀ ਫੈਸਲੇ ਲੈਣ ਵਿੱਚ ਮਦਦ ਕਰਦੀ ਹੈ।',
@@ -340,9 +340,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI কৃষি সহায়ক',
     dashboardHeroTitle: 'স্মার্ট কৃষির শুরু এখানেই।',
     dashboardHeroDescription:
-      'আপনার ফসল রক্ষা করুন, রোগ দ্রুত শনাক্ত করুন এবং CropSaver-এর সাহায্যে আরও ভালো কৃষি সিদ্ধান্ত নিন।',
+      'আপনার ফসল রক্ষা করুন, রোগ দ্রুত শনাক্ত করুন এবং Krishay-এর সাহায্যে আরও ভালো কৃষি সিদ্ধান্ত নিন।',
     detectDisease: 'রোগ শনাক্ত করুন',
-    askCropSaver: 'CropSaver-কে জিজ্ঞাসা করুন',
+    askKrishay: 'Krishay-কে জিজ্ঞাসা করুন',
     aiDiagnosis: 'AI ফসল নির্ণয়',
     localLanguages: 'স্থানীয় ভাষা',
     anytimeAssistance: 'যেকোনো সময় সহায়তা',
@@ -354,18 +354,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'ফসলের রোগ দ্রুত শনাক্ত করুন',
     diseaseFeatureDescription:
-      'ফসলের ছবি আপলোড করুন এবং CropSaver AI থেকে রোগ ও চিকিৎসার নির্দেশনা পান।',
+      'ফসলের ছবি আপলোড করুন এবং Krishay AI থেকে রোগ ও চিকিৎসার নির্দেশনা পান।',
     aiCropDoctor: 'AI ফসল ডাক্তার',
     startDiagnosis: 'পরীক্ষা শুরু করুন',
 
     aiFeatureTitle: 'আপনার ব্যক্তিগত AI কৃষি সহায়ক',
     aiFeatureDescription:
       'ফসল, সেচ, কীটপতঙ্গ, সার ও রোগ সম্পর্কে নিজের ভাষায় প্রশ্ন করুন।',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'কৃষি নিয়ে কোনো প্রশ্ন আছে?',
     finalCtaDescription:
-      'CropSaver AI আপনার কৃষি সংক্রান্ত প্রশ্নে সাহায্য করতে প্রস্তুত।',
+      'Krishay AI আপনার কৃষি সংক্রান্ত প্রশ্নে সাহায্য করতে প্রস্তুত।',
 
     footerDescription:
       'এআই-চালিত স্মার্ট কৃষি সহায়তা — কৃষকদের ফসল রক্ষা করতে এবং আরও ভালো কৃষি সিদ্ধান্ত নিতে সাহায্য করে।',
@@ -382,9 +382,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI விவசாய துணை',
     dashboardHeroTitle: 'ஸ்மார்ட் விவசாயம் இங்கிருந்து தொடங்குகிறது.',
     dashboardHeroDescription:
-      'உங்கள் பயிர்களை பாதுகாத்து, நோய்களை விரைவாக கண்டறிந்து CropSaver மூலம் சிறந்த விவசாய முடிவுகளை எடுக்கவும்.',
+      'உங்கள் பயிர்களை பாதுகாத்து, நோய்களை விரைவாக கண்டறிந்து Krishay மூலம் சிறந்த விவசாய முடிவுகளை எடுக்கவும்.',
     detectDisease: 'நோயை கண்டறியவும்',
-    askCropSaver: 'CropSaver-ஐ கேளுங்கள்',
+    askKrishay: 'Krishay-ஐ கேளுங்கள்',
     aiDiagnosis: 'AI பயிர் கண்டறிதல்',
     localLanguages: 'உள்ளூர் மொழிகள்',
     anytimeAssistance: 'எப்போதும் உதவி',
@@ -396,18 +396,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'பயிர் நோய்களை உடனடியாக கண்டறியுங்கள்',
     diseaseFeatureDescription:
-      'பயிரின் புகைப்படத்தை பதிவேற்றி CropSaver AI மூலம் நோய் மற்றும் சிகிச்சை வழிகாட்டுதலை பெறுங்கள்.',
+      'பயிரின் புகைப்படத்தை பதிவேற்றி Krishay AI மூலம் நோய் மற்றும் சிகிச்சை வழிகாட்டுதலை பெறுங்கள்.',
     aiCropDoctor: 'AI பயிர் மருத்துவர்',
     startDiagnosis: 'பரிசோதனையை தொடங்கு',
 
     aiFeatureTitle: 'உங்கள் தனிப்பட்ட AI விவசாய உதவியாளர்',
     aiFeatureDescription:
       'பயிர்கள், நீர்ப்பாசனம், பூச்சிகள், உரங்கள் மற்றும் நோய்கள் குறித்து உங்கள் மொழியில் கேளுங்கள்.',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'விவசாயம் குறித்து கேள்வி உள்ளதா?',
     finalCtaDescription:
-      'CropSaver AI உங்களுக்கு பயனுள்ள விவசாய வழிகாட்டுதலை வழங்க தயாராக உள்ளது.',
+      'Krishay AI உங்களுக்கு பயனுள்ள விவசாய வழிகாட்டுதலை வழங்க தயாராக உள்ளது.',
 
     footerDescription:
       'AI ஆதரவு ஸ்மார்ட் விவசாய உதவி — விவசாயிகள் பயிர்களை பாதுகாக்கவும் சிறந்த முடிவுகளை எடுக்கவும் உதவுகிறது.',
@@ -424,9 +424,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI వ్యవసాయ సహాయకుడు',
     dashboardHeroTitle: 'స్మార్ట్ వ్యవసాయం ఇక్కడి నుంచే ప్రారంభమవుతుంది.',
     dashboardHeroDescription:
-      'మీ పంటలను రక్షించండి, వ్యాధులను త్వరగా గుర్తించండి మరియు CropSaver సహాయంతో మెరుగైన వ్యవసాయ నిర్ణయాలు తీసుకోండి.',
+      'మీ పంటలను రక్షించండి, వ్యాధులను త్వరగా గుర్తించండి మరియు Krishay సహాయంతో మెరుగైన వ్యవసాయ నిర్ణయాలు తీసుకోండి.',
     detectDisease: 'వ్యాధిని గుర్తించండి',
-    askCropSaver: 'CropSaver ను అడగండి',
+    askKrishay: 'Krishay ను అడగండి',
     aiDiagnosis: 'AI పంట నిర్ధారణ',
     localLanguages: 'స్థానిక భాషలు',
     anytimeAssistance: 'ఎప్పుడైనా సహాయం',
@@ -438,18 +438,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'పంట వ్యాధులను వెంటనే గుర్తించండి',
     diseaseFeatureDescription:
-      'పంట ఫోటోను అప్‌లోడ్ చేసి CropSaver AI ద్వారా వ్యాధి మరియు చికిత్స మార్గదర్శకత్వం పొందండి.',
+      'పంట ఫోటోను అప్‌లోడ్ చేసి Krishay AI ద్వారా వ్యాధి మరియు చికిత్స మార్గదర్శకత్వం పొందండి.',
     aiCropDoctor: 'AI పంట డాక్టర్',
     startDiagnosis: 'పరీక్ష ప్రారంభించండి',
 
     aiFeatureTitle: 'మీ వ్యక్తిగత AI వ్యవసాయ సహాయకుడు',
     aiFeatureDescription:
       'పంటలు, నీటిపారుదల, పురుగులు, ఎరువులు మరియు వ్యాధుల గురించి మీ భాషలో అడగండి.',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'వ్యవసాయం గురించి ప్రశ్న ఉందా?',
     finalCtaDescription:
-      'CropSaver AI మీ వ్యవసాయ ప్రశ్నలకు సహాయం చేయడానికి సిద్ధంగా ఉంది.',
+      'Krishay AI మీ వ్యవసాయ ప్రశ్నలకు సహాయం చేయడానికి సిద్ధంగా ఉంది.',
 
     footerDescription:
       'ఏఐ ఆధారిత స్మార్ట్ వ్యవసాయ సహాయం — రైతులు పంటలను రక్షించుకోవడానికి మరియు మెరుగైన నిర్ణయాలు తీసుకోవడానికి సహాయపడుతుంది.',
@@ -466,9 +466,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI ಕೃಷಿ ಸಹಾಯಕ',
     dashboardHeroTitle: 'ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಇಲ್ಲಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.',
     dashboardHeroDescription:
-      'ನಿಮ್ಮ ಬೆಳೆಗಳನ್ನು ರಕ್ಷಿಸಿ, ರೋಗಗಳನ್ನು ಬೇಗ ಗುರುತಿಸಿ ಮತ್ತು CropSaver ಮೂಲಕ ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ.',
+      'ನಿಮ್ಮ ಬೆಳೆಗಳನ್ನು ರಕ್ಷಿಸಿ, ರೋಗಗಳನ್ನು ಬೇಗ ಗುರುತಿಸಿ ಮತ್ತು Krishay ಮೂಲಕ ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ.',
     detectDisease: 'ರೋಗ ಗುರುತಿಸಿ',
-    askCropSaver: 'CropSaver ಅನ್ನು ಕೇಳಿ',
+    askKrishay: 'Krishay ಅನ್ನು ಕೇಳಿ',
     aiDiagnosis: 'AI ಬೆಳೆ ನಿರ್ಣಯ',
     localLanguages: 'ಸ್ಥಳೀಯ ಭಾಷೆಗಳು',
     anytimeAssistance: 'ಯಾವಾಗ ಬೇಕಾದರೂ ಸಹಾಯ',
@@ -480,18 +480,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'ಬೆಳೆ ರೋಗಗಳನ್ನು ತಕ್ಷಣ ಗುರುತಿಸಿ',
     diseaseFeatureDescription:
-      'ಬೆಳೆಯ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ CropSaver AI ಮೂಲಕ ರೋಗ ಮತ್ತು ಚಿಕಿತ್ಸೆಯ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.',
+      'ಬೆಳೆಯ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ Krishay AI ಮೂಲಕ ರೋಗ ಮತ್ತು ಚಿಕಿತ್ಸೆಯ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.',
     aiCropDoctor: 'AI ಬೆಳೆ ವೈದ್ಯ',
     startDiagnosis: 'ಪರಿಶೀಲನೆ ಆರಂಭಿಸಿ',
 
     aiFeatureTitle: 'ನಿಮ್ಮ ವೈಯಕ್ತಿಕ AI ಕೃಷಿ ಸಹಾಯಕ',
     aiFeatureDescription:
       'ಬೆಳೆ, ನೀರಾವರಿ, ಕೀಟ, ಗೊಬ್ಬರ ಮತ್ತು ರೋಗಗಳ ಕುರಿತು ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಕೇಳಿ.',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'ಕೃಷಿ ಕುರಿತು ಪ್ರಶ್ನೆಯಿದೆಯೇ?',
     finalCtaDescription:
-      'CropSaver AI ನಿಮಗೆ ಉಪಯುಕ್ತ ಕೃಷಿ ಮಾರ್ಗದರ್ಶನ ನೀಡಲು ಸಿದ್ಧವಾಗಿದೆ.',
+      'Krishay AI ನಿಮಗೆ ಉಪಯುಕ್ತ ಕೃಷಿ ಮಾರ್ಗದರ್ಶನ ನೀಡಲು ಸಿದ್ಧವಾಗಿದೆ.',
 
     footerDescription:
       'ಎಐ ಆಧಾರಿತ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಸಹಾಯ — ರೈತರು ಬೆಳೆಗಳನ್ನು ರಕ್ಷಿಸಲು ಮತ್ತು ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.',
@@ -508,9 +508,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI കൃഷി സഹായി',
     dashboardHeroTitle: 'സ്മാർട്ട് കൃഷി ഇവിടെ തുടങ്ങുന്നു.',
     dashboardHeroDescription:
-      'നിങ്ങളുടെ വിളകൾ സംരക്ഷിക്കുക, രോഗങ്ങൾ നേരത്തെ കണ്ടെത്തുക, CropSaver ഉപയോഗിച്ച് മികച്ച കൃഷി തീരുമാനങ്ങൾ എടുക്കുക.',
+      'നിങ്ങളുടെ വിളകൾ സംരക്ഷിക്കുക, രോഗങ്ങൾ നേരത്തെ കണ്ടെത്തുക, Krishay ഉപയോഗിച്ച് മികച്ച കൃഷി തീരുമാനങ്ങൾ എടുക്കുക.',
     detectDisease: 'രോഗം കണ്ടെത്തുക',
-    askCropSaver: 'CropSaver-നോട് ചോദിക്കുക',
+    askKrishay: 'Krishay-നോട് ചോദിക്കുക',
     aiDiagnosis: 'AI വിള നിർണയം',
     localLanguages: 'പ്രാദേശിക ഭാഷകൾ',
     anytimeAssistance: 'എപ്പോൾ വേണമെങ്കിലും സഹായം',
@@ -522,18 +522,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'വിള രോഗങ്ങൾ ഉടൻ കണ്ടെത്തുക',
     diseaseFeatureDescription:
-      'വിളയുടെ ചിത്രം അപ്‌ലോഡ് ചെയ്ത് CropSaver AI വഴി രോഗവും ചികിത്സാ മാർഗനിർദേശവും നേടുക.',
+      'വിളയുടെ ചിത്രം അപ്‌ലോഡ് ചെയ്ത് Krishay AI വഴി രോഗവും ചികിത്സാ മാർഗനിർദേശവും നേടുക.',
     aiCropDoctor: 'AI വിള ഡോക്ടർ',
     startDiagnosis: 'പരിശോധന ആരംഭിക്കുക',
 
     aiFeatureTitle: 'നിങ്ങളുടെ വ്യക്തിഗത AI കൃഷി സഹായി',
     aiFeatureDescription:
       'വിളകൾ, ജലസേചനം, കീടങ്ങൾ, വളങ്ങൾ, രോഗങ്ങൾ എന്നിവയെക്കുറിച്ച് നിങ്ങളുടെ ഭാഷയിൽ ചോദിക്കുക.',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'കൃഷിയെക്കുറിച്ച് ചോദ്യമുണ്ടോ?',
     finalCtaDescription:
-      'CropSaver AI നിങ്ങൾക്ക് പ്രായോഗിക കൃഷി മാർഗനിർദേശം നൽകാൻ തയ്യാറാണ്.',
+      'Krishay AI നിങ്ങൾക്ക് പ്രായോഗിക കൃഷി മാർഗനിർദേശം നൽകാൻ തയ്യാറാണ്.',
 
     footerDescription:
       'എഐ അധിഷ്ഠിത സ്മാർട്ട് കൃഷി സഹായം — കർഷകർക്ക് വിളകൾ സംരക്ഷിക്കാനും മികച്ച തീരുമാനങ്ങൾ എടുക്കാനും സഹായിക്കുന്നു.',
@@ -550,9 +550,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI କୃଷି ସହାୟକ',
     dashboardHeroTitle: 'ସ୍ମାର୍ଟ କୃଷି ଏଠାରୁ ଆରମ୍ଭ ହୁଏ।',
     dashboardHeroDescription:
-      'ଆପଣଙ୍କ ଫସଲକୁ ସୁରକ୍ଷିତ କରନ୍ତୁ, ରୋଗକୁ ଶୀଘ୍ର ଚିହ୍ନଟ କରନ୍ତୁ ଏବଂ CropSaver ସହିତ ଉନ୍ନତ କୃଷି ନିଷ୍ପତ୍ତି ନିଅନ୍ତୁ।',
+      'ଆପଣଙ୍କ ଫସଲକୁ ସୁରକ୍ଷିତ କରନ୍ତୁ, ରୋଗକୁ ଶୀଘ୍ର ଚିହ୍ନଟ କରନ୍ତୁ ଏବଂ Krishay ସହିତ ଉନ୍ନତ କୃଷି ନିଷ୍ପତ୍ତି ନିଅନ୍ତୁ।',
     detectDisease: 'ରୋଗ ଚିହ୍ନଟ କରନ୍ତୁ',
-    askCropSaver: 'CropSaver କୁ ପଚାରନ୍ତୁ',
+    askKrishay: 'Krishay କୁ ପଚାରନ୍ତୁ',
     aiDiagnosis: 'AI ଫସଲ ନିର୍ଣ୍ଣୟ',
     localLanguages: 'ସ୍ଥାନୀୟ ଭାଷା',
     anytimeAssistance: 'ଯେକୌଣସି ସମୟରେ ସହାୟତା',
@@ -564,18 +564,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'ଫସଲ ରୋଗକୁ ତୁରନ୍ତ ଚିହ୍ନଟ କରନ୍ତୁ',
     diseaseFeatureDescription:
-      'ଫସଲର ଫଟୋ ଅପଲୋଡ୍ କରି CropSaver AI ଠାରୁ ରୋଗ ଏବଂ ଚିକିତ୍ସା ମାର୍ଗଦର୍ଶନ ପାଆନ୍ତୁ।',
+      'ଫସଲର ଫଟୋ ଅପଲୋଡ୍ କରି Krishay AI ଠାରୁ ରୋଗ ଏବଂ ଚିକିତ୍ସା ମାର୍ଗଦର୍ଶନ ପାଆନ୍ତୁ।',
     aiCropDoctor: 'AI ଫସଲ ଡାକ୍ତର',
     startDiagnosis: 'ପରୀକ୍ଷା ଆରମ୍ଭ କରନ୍ତୁ',
 
     aiFeatureTitle: 'ଆପଣଙ୍କ ବ୍ୟକ୍ତିଗତ AI କୃଷି ସହାୟକ',
     aiFeatureDescription:
       'ଫସଲ, ଜଳସେଚନ, କୀଟ, ସାର ଏବଂ ରୋଗ ବିଷୟରେ ନିଜ ଭାଷାରେ ପଚାରନ୍ତୁ।',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'କୃଷି ବିଷୟରେ ପ୍ରଶ୍ନ ଅଛି?',
     finalCtaDescription:
-      'CropSaver AI ଆପଣଙ୍କୁ କୃଷି ସହାୟତା ଦେବାକୁ ପ୍ରସ୍ତୁତ।',
+      'Krishay AI ଆପଣଙ୍କୁ କୃଷି ସହାୟତା ଦେବାକୁ ପ୍ରସ୍ତୁତ।',
 
     footerDescription:
       'ଏଆଇ ଆଧାରିତ ସ୍ମାର୍ଟ କୃଷି ସହାୟତା — କୃଷକମାନଙ୍କୁ ଫସଲ ସୁରକ୍ଷା ଏବଂ ଉନ୍ନତ କୃଷି ନିଷ୍ପତ୍ତି ନେବାରେ ସାହାଯ୍ୟ କରେ।',
@@ -592,9 +592,9 @@ export const dashboardTranslations = {
     dashboardAiBadge: 'AI কৃষি সহায়ক',
     dashboardHeroTitle: 'স্মাৰ্ট কৃষি ইয়াৰ পৰাই আৰম্ভ হয়।',
     dashboardHeroDescription:
-      'আপোনাৰ শস্য সুৰক্ষিত কৰক, ৰোগ আগতেই চিনাক্ত কৰক আৰু CropSaver-ৰ সহায়ত উন্নত কৃষি সিদ্ধান্ত লওক।',
+      'আপোনাৰ শস্য সুৰক্ষিত কৰক, ৰোগ আগতেই চিনাক্ত কৰক আৰু Krishay-ৰ সহায়ত উন্নত কৃষি সিদ্ধান্ত লওক।',
     detectDisease: 'ৰোগ চিনাক্ত কৰক',
-    askCropSaver: 'CropSaver-ক সোধক',
+    askKrishay: 'Krishay-ক সোধক',
     aiDiagnosis: 'AI শস্য নিৰ্ণয়',
     localLanguages: 'স্থানীয় ভাষা',
     anytimeAssistance: 'যিকোনো সময়তে সহায়',
@@ -606,18 +606,18 @@ export const dashboardTranslations = {
 
     diseaseFeatureTitle: 'শস্যৰ ৰোগ তৎক্ষণাত চিনাক্ত কৰক',
     diseaseFeatureDescription:
-      'শস্যৰ ছবি আপলোড কৰি CropSaver AI-ৰ পৰা ৰোগ আৰু চিকিৎসাৰ পৰামৰ্শ লাভ কৰক।',
+      'শস্যৰ ছবি আপলোড কৰি Krishay AI-ৰ পৰা ৰোগ আৰু চিকিৎসাৰ পৰামৰ্শ লাভ কৰক।',
     aiCropDoctor: 'AI শস্য চিকিৎসক',
     startDiagnosis: 'পৰীক্ষা আৰম্ভ কৰক',
 
     aiFeatureTitle: 'আপোনাৰ ব্যক্তিগত AI কৃষি সহায়ক',
     aiFeatureDescription:
       'শস্য, জলসিঞ্চন, কীট-পতংগ, সাৰ আৰু ৰোগৰ বিষয়ে নিজৰ ভাষাত সোধক।',
-    cropSaverAi: 'CropSaver AI',
+    KrishayAi: 'Krishay AI',
 
     finalCtaTitle: 'কৃষিৰ বিষয়ে কোনো প্ৰশ্ন আছে?',
     finalCtaDescription:
-      'CropSaver AI আপোনাক ব্যৱহাৰিক কৃষি পৰামৰ্শ দিবলৈ সাজু।',
+      'Krishay AI আপোনাক ব্যৱহাৰিক কৃষি পৰামৰ্শ দিবলৈ সাজু।',
 
     footerDescription:
       'এআই-ভিত্তিক স্মাৰ্ট কৃষি সহায়তা — কৃষকসকলক শস্য সুৰক্ষিত কৰিবলৈ আৰু উন্নত কৃষি সিদ্ধান্ত ল’বলৈ সহায় কৰে।',
