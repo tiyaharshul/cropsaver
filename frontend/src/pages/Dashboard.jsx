@@ -74,11 +74,11 @@ export default function Dashboard() {
       <section className="dashboard-section quick-tools-section">
         <div className="quick-tools-heading">
           <span className="section-label">
-            {t.quickTools || 'QUICK ACCESS'}
+            {t.quickTools }
           </span>
 
           <h2>
-            {t.exploreTools || 'Explore your farming tools'}
+            {t.exploreTools }
           </h2>
         </div>
 

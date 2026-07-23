@@ -44,9 +44,7 @@ export default function NearbyExperts() {
         },
       })
       .then((res) => {
-        setCenters(
-          res.data.centers || []
-        )
+        setCenters(res.data.centers || [])
       })
       .catch((err) => {
         console.error(err)
@@ -63,6 +61,7 @@ export default function NearbyExperts() {
       .finally(() => {
         setLoading(false)
       })
+
   }, [position, t.nearbyFetchError])
 
   return (
@@ -74,7 +73,7 @@ export default function NearbyExperts() {
         <div>
 
           <span className="page-section-label">
-            📍 FARM SUPPORT
+            📍 {t.farmSupport}
           </span>
 
           <h1>
@@ -87,21 +86,20 @@ export default function NearbyExperts() {
 
         </div>
 
-
         {position && (
           <div className="location-active">
+
             <span className="location-active-dot"></span>
 
-            Location detected
+            {t.locationDetected}
+
           </div>
         )}
 
       </div>
 
-
       {/* ERROR */}
       {error && (
-
         <div className="nearby-error">
 
           <span>!</span>
@@ -111,13 +109,10 @@ export default function NearbyExperts() {
           </p>
 
         </div>
-
       )}
-
 
       {/* LOADING */}
       {loading && (
-
         <div className="nearby-loading">
 
           <div className="nearby-loader"></div>
@@ -127,39 +122,39 @@ export default function NearbyExperts() {
           </span>
 
         </div>
-
       )}
-
 
       {/* MAP */}
       {position && (
-
         <div className="nearby-map-card">
 
           <div className="nearby-map-header">
 
             <div>
+
               <span className="nearby-map-label">
-                YOUR AREA
+                {t.yourArea}
               </span>
 
               <h2>
-                Agriculture services near you
+                {t.agricultureServicesNearYou}
               </h2>
-            </div>
 
+            </div>
 
             {centers.length > 0 && (
               <span className="nearby-count">
+
                 {centers.length}{' '}
+
                 {centers.length === 1
-                  ? 'location'
-                  : 'locations'}
+                  ? t.location
+                  : t.locations}
+
               </span>
             )}
 
           </div>
-
 
           <div className="nearby-map-wrapper">
 
@@ -172,16 +167,13 @@ export default function NearbyExperts() {
           </div>
 
         </div>
-
       )}
-
 
       {/* EMPTY */}
       {!loading &&
         !error &&
         position &&
         centers.length === 0 && (
-
           <div className="nearby-empty">
 
             <span>
@@ -189,23 +181,22 @@ export default function NearbyExperts() {
             </span>
 
             <div>
+
               <h3>
-                No centers found nearby
+                {t.noCentersNearby}
               </h3>
 
               <p>
                 {t.noCenters}
               </p>
+
             </div>
 
           </div>
-
         )}
-
 
       {/* CENTERS */}
       {centers.length > 0 && (
-
         <div className="nearby-results">
 
           <div className="nearby-results-heading">
@@ -213,22 +204,20 @@ export default function NearbyExperts() {
             <div>
 
               <span className="page-section-label">
-                NEARBY LOCATIONS
+                {t.nearbyLocations}
               </span>
 
               <h2>
-                Agriculture support centers
+                {t.agricultureSupportCenters}
               </h2>
 
             </div>
 
           </div>
 
-
           <div className="nearby-centers-grid">
 
             {centers.map((center, index) => (
-
               <div
                 key={index}
                 className="nearby-center-card"
@@ -237,7 +226,6 @@ export default function NearbyExperts() {
                 <div className="nearby-center-icon">
                   🌾
                 </div>
-
 
                 <div className="nearby-center-content">
 
@@ -249,7 +237,6 @@ export default function NearbyExperts() {
                     {center.category}
                   </span>
 
-
                   {center.address && (
                     <p className="nearby-address">
                       📍 {center.address}
@@ -258,7 +245,6 @@ export default function NearbyExperts() {
 
                 </div>
 
-
                 <div className="nearby-distance">
 
                   <strong>
@@ -266,19 +252,17 @@ export default function NearbyExperts() {
                   </strong>
 
                   <span>
-                    km away
+                    {t.kmAway}
                   </span>
 
                 </div>
 
               </div>
-
             ))}
 
           </div>
 
         </div>
-
       )}
 
     </div>

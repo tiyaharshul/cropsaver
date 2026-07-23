@@ -3,7 +3,6 @@ import api from '../api/axios'
 import { useLanguage } from '../contexts/LanguageContext'
 
 export default function GovernmentNoticeBoard() {
-
   const [notices, setNotices] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -11,51 +10,40 @@ export default function GovernmentNoticeBoard() {
   const { language, t } = useLanguage()
 
   useEffect(() => {
-
     setLoading(true)
     setError('')
 
     api
       .get('/government-notices', {
         params: {
-          language: language,
+          language,
         },
       })
       .then((res) => {
-
-        setNotices(
-          res.data.notices || []
-        )
-
+        setNotices(res.data.notices || [])
       })
       .catch((err) => {
-
         console.error(err)
 
         setError(
           err.response?.data?.detail ||
           t.noticesError
         )
-
       })
       .finally(() => {
-
         setLoading(false)
-
       })
 
   }, [language, t.noticesError])
 
-
   return (
-
     <div className="notices-page">
 
       {/* PAGE HEADER */}
       <div className="notices-header">
 
         <span className="page-section-label">
-          🇮🇳 FARMER UPDATES
+          🇮🇳 {t.farmerUpdates}
         </span>
 
         <h1>
@@ -63,17 +51,13 @@ export default function GovernmentNoticeBoard() {
         </h1>
 
         <p>
-          Stay informed about government schemes,
-          agricultural programs and important updates
-          for farmers.
+          {t.noticesDescription}
         </p>
 
       </div>
 
-
       {/* LOADING */}
       {loading && (
-
         <div className="notices-state">
 
           <div className="notices-loader"></div>
@@ -83,29 +67,25 @@ export default function GovernmentNoticeBoard() {
           </p>
 
         </div>
-
       )}
-
 
       {/* ERROR */}
       {error && (
-
         <div className="notices-error">
+
           <span>!</span>
 
           <p>
             {error}
           </p>
+
         </div>
-
       )}
-
 
       {/* EMPTY */}
       {!loading &&
         !error &&
         notices.length === 0 && (
-
           <div className="notices-empty">
 
             <div className="notices-empty-icon">
@@ -113,7 +93,7 @@ export default function GovernmentNoticeBoard() {
             </div>
 
             <h2>
-              No updates available
+              {t.noUpdatesAvailable}
             </h2>
 
             <p>
@@ -121,19 +101,15 @@ export default function GovernmentNoticeBoard() {
             </p>
 
           </div>
-
         )}
-
 
       {/* NOTICES */}
       {!loading &&
         !error &&
         notices.length > 0 && (
-
           <div className="notices-list">
 
             {notices.map((notice, index) => (
-
               <a
                 key={index}
                 href={notice.url}
@@ -142,13 +118,7 @@ export default function GovernmentNoticeBoard() {
                 className="notice-card"
               >
 
-               
-
                 <div className="notice-card-content">
-
-                  <span className="notice-type">
-                    
-                  </span>
 
                   <h2>
                     {notice.title}
@@ -157,7 +127,6 @@ export default function GovernmentNoticeBoard() {
                   <p>
                     {notice.summary}
                   </p>
-
 
                   <span className="notice-read-more">
                     {t.readMore}
@@ -169,17 +138,14 @@ export default function GovernmentNoticeBoard() {
 
                 </div>
 
-
                 <div className="notice-external">
                   ↗
                 </div>
 
               </a>
-
             ))}
 
           </div>
-
         )}
 
     </div>

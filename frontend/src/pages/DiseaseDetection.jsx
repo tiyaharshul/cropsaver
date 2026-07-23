@@ -20,6 +20,10 @@ export default function DiseaseDetection() {
   const [detection, setDetection] = useState(null)
   const [treatment, setTreatment] = useState(null)
 
+  // =====================================================
+  // IMAGE UPLOAD
+  // =====================================================
+
   const handleFileChange = (e) => {
     const selected = e.target.files?.[0]
 
@@ -27,18 +31,24 @@ export default function DiseaseDetection() {
 
     setFile(selected)
     setPreview(URL.createObjectURL(selected))
+
     setDetection(null)
     setTreatment(null)
     setError('')
   }
 
+  // =====================================================
+  // CAMERA CAPTURE
+  // =====================================================
+
   const captureFromCamera = async () => {
-    const imageSrc = webcamRef.current?.getScreenshot()
+    const imageSrc =
+      webcamRef.current?.getScreenshot()
 
     if (!imageSrc) return
 
-    const blob = await fetch(imageSrc).then((response) =>
-      response.blob()
+    const blob = await fetch(imageSrc).then(
+      (response) => response.blob()
     )
 
     const captured = new File(
@@ -58,6 +68,10 @@ export default function DiseaseDetection() {
     setError('')
   }
 
+  // =====================================================
+  // DISEASE DETECTION
+  // =====================================================
+
   const handleDetect = async () => {
     if (!file) {
       alert(t.selectImageFirst)
@@ -74,26 +88,38 @@ export default function DiseaseDetection() {
 
       formData.append('file', file)
 
+      // -----------------------------
+      // DETECT DISEASE
+      // -----------------------------
+
       const detectRes = await api.post(
         '/detect',
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type':
+              'multipart/form-data',
           },
         }
       )
 
       setDetection(detectRes.data)
 
+      // -----------------------------
+      // GET TREATMENT
+      // -----------------------------
+
       const payload = {
-        crop_name: detectRes.data.crop_name,
-        disease_name: detectRes.data.disease_name,
+        crop_name:
+          detectRes.data.crop_name,
+
+        disease_name:
+          detectRes.data.disease_name,
+
         confidence: Number(
           detectRes.data.confidence
         ),
 
-        // No longer hard-coded English
         language:
           aiLanguageNames[language] ||
           'English',
@@ -117,8 +143,11 @@ export default function DiseaseDetection() {
       if (Array.isArray(detail)) {
         setError(
           detail
-            .map((item) =>
-              `${item.loc?.at(-1)}: ${item.msg}`
+            .map(
+              (item) =>
+                `${item.loc?.at(-1)}: ${
+                  item.msg
+                }`
             )
             .join(', ')
         )
@@ -136,13 +165,21 @@ export default function DiseaseDetection() {
     }
   }
 
-   return (
+  // =====================================================
+  // UI
+  // =====================================================
+
+  return (
     <div className="detection-page">
 
-      {/* PAGE HEADER */}
+      {/* ===============================================
+          PAGE HEADER
+      =============================================== */}
+
       <div className="detection-header">
+
         <span className="detection-label">
-          🌿 CROP HEALTH
+          🌿 {t.cropHealthLabel}
         </span>
 
         <h1>
@@ -150,13 +187,15 @@ export default function DiseaseDetection() {
         </h1>
 
         <p>
-          Upload a clear photo of your crop and let CropSaver
-          identify possible diseases and recommend treatment.
+          {t.detectionDescription}
         </p>
+
       </div>
 
+      {/* ===============================================
+          UPLOAD CARD
+      =============================================== */}
 
-      {/* UPLOAD CARD */}
       <div className="detection-upload-card">
 
         <div className="detection-upload-icon">
@@ -164,32 +203,40 @@ export default function DiseaseDetection() {
         </div>
 
         <div className="detection-upload-text">
-          <h2>Upload crop image</h2>
+
+          <h2>
+            {t.uploadCropImage}
+          </h2>
 
           <p>
-            Choose a clear image of the affected leaf or crop
+            {t.uploadCropDescription}
           </p>
+
         </div>
 
+        {/* ACTIONS */}
 
         <div className="detection-actions">
 
           <label className="detection-file-button">
+
             <span>↑</span>
-            <span>Choose Image</span>
+
+            <span>
+              {t.chooseImage}
+            </span>
 
             <input
               type="file"
               accept="image/*"
               onChange={handleFileChange}
             />
+
           </label>
 
-
           <span className="detection-or">
-            or
+            {t.or}
           </span>
-
 
           <button
             type="button"
@@ -200,17 +247,21 @@ export default function DiseaseDetection() {
               )
             }
           >
+
             <span>📷</span>
 
             {showCamera
               ? t.closeCamera
               : t.useCamera}
+
           </button>
 
         </div>
 
+        {/* =============================================
+            CAMERA
+        ============================================= */}
 
-        {/* CAMERA */}
         {showCamera && (
           <div className="detection-camera">
 
@@ -231,29 +282,38 @@ export default function DiseaseDetection() {
           </div>
         )}
 
+        {/* =============================================
+            IMAGE PREVIEW
+        ============================================= */}
 
-        {/* IMAGE PREVIEW */}
         {preview && (
           <div className="detection-preview">
 
             <img
               src={preview}
-              alt="Selected crop"
+              alt={t.selectedCropImage}
             />
 
             <div className="detection-preview-info">
+
               <span>✓</span>
-              Image ready for analysis
+
+              {t.imageReadyForAnalysis}
+
             </div>
 
           </div>
         )}
 
+        {/* IMAGE HINT */}
 
         <p className="detection-hint">
-          JPG, PNG or camera photo • Clear images give better results
+          {t.imageUploadHint}
         </p>
 
+        {/* =============================================
+            DETECT BUTTON
+        ============================================= */}
 
         <button
           type="button"
@@ -261,19 +321,28 @@ export default function DiseaseDetection() {
           onClick={handleDetect}
           className="detection-submit-button"
         >
+
           {loading ? (
             <>
+
               <span className="detection-spinner"></span>
+
               {t.analyzing}
+
             </>
           ) : (
             <>
+
               <span>✦</span>
+
               {t.detectDisease}
+
             </>
           )}
+
         </button>
 
+        {/* ERROR */}
 
         {error && (
           <div className="detection-error">
@@ -283,72 +352,99 @@ export default function DiseaseDetection() {
 
       </div>
 
+      {/* ===============================================
+          DIAGNOSIS RESULT
+      =============================================== */}
 
-      {/* RESULTS */}
       {detection && (
         <div className="detection-result-card">
 
           <div className="detection-result-header">
+
             <div>
+
               <span className="detection-label">
-                ANALYSIS COMPLETE
+                {t.analysisComplete}
               </span>
 
               <h2>
                 {t.diagnosisResult}
               </h2>
+
             </div>
 
             <div className="detection-result-icon">
               ✓
             </div>
-          </div>
 
+          </div>
 
           <div className="detection-result-grid">
 
+            {/* RESULT DETAILS */}
+
             <div className="detection-result-details">
 
+              {/* CROP */}
+
               <div className="detection-result-item">
-                <span>{t.crop}</span>
+
+                <span>
+                  {t.crop}
+                </span>
 
                 <strong>
                   {detection.crop_name ||
                     t.unknownCrop}
                 </strong>
+
               </div>
 
+              {/* DISEASE */}
 
               <div className="detection-result-item">
-                <span>{t.disease}</span>
+
+                <span>
+                  {t.disease}
+                </span>
 
                 <strong>
                   {detection.disease_name ||
                     t.unknown}
                 </strong>
+
               </div>
 
+              {/* CONFIDENCE */}
 
               <div className="detection-result-item">
-                <span>{t.confidence}</span>
+
+                <span>
+                  {t.confidence}
+                </span>
 
                 <strong>
+
                   {typeof detection.confidence ===
                   'number'
                     ? `${(
-                        detection.confidence * 100
+                        detection.confidence *
+                        100
                       ).toFixed(2)}%`
                     : 'N/A'}
+
                 </strong>
+
               </div>
 
             </div>
 
+            {/* RESULT IMAGE */}
 
             {detection.image_url && (
               <img
                 src={detection.image_url}
-                alt="Detected crop"
+                alt={t.detectedCropImage}
                 className="detection-result-image"
               />
             )}
@@ -358,14 +454,19 @@ export default function DiseaseDetection() {
         </div>
       )}
 
+      {/* ===============================================
+          TREATMENT
+      =============================================== */}
 
-      {/* TREATMENT */}
       {treatment && (
         <div className="treatment-card">
 
+          {/* TREATMENT HEADER */}
+
           <div className="treatment-header">
+
             <span className="detection-label">
-              🌿 CROP CARE
+              🌿 {t.cropCare}
             </span>
 
             <h2>
@@ -373,94 +474,167 @@ export default function DiseaseDetection() {
             </h2>
 
             <p>
-              Recommended steps based on your crop diagnosis
+              {t.treatmentDescription}
             </p>
+
           </div>
 
+          {/* TREATMENT GRID */}
 
           <div className="treatment-grid">
 
+            {/* EXPLANATION */}
+
             <div className="treatment-section treatment-wide">
+
               <span className="treatment-icon">
                 💡
               </span>
 
               <div>
-                <h3>{t.explanation}</h3>
-                <p>{treatment.explanation}</p>
+
+                <h3>
+                  {t.explanation}
+                </h3>
+
+                <p>
+                  {treatment.explanation}
+                </p>
+
               </div>
+
             </div>
 
+            {/* ORGANIC TREATMENT */}
 
             <div className="treatment-section">
+
               <span className="treatment-icon">
                 🌿
               </span>
 
               <div>
-                <h3>{t.organicTreatment}</h3>
-                <p>{treatment.organic_treatment}</p>
+
+                <h3>
+                  {t.organicTreatment}
+                </h3>
+
+                <p>
+                  {treatment.organic_treatment}
+                </p>
+
               </div>
+
             </div>
 
+            {/* CHEMICAL TREATMENT */}
 
             <div className="treatment-section">
+
               <span className="treatment-icon">
                 🧪
               </span>
 
               <div>
-                <h3>{t.chemicalTreatment}</h3>
-                <p>{treatment.chemical_treatment}</p>
+
+                <h3>
+                  {t.chemicalTreatment}
+                </h3>
+
+                <p>
+                  {treatment.chemical_treatment}
+                </p>
+
               </div>
+
             </div>
 
+            {/* DOSAGE */}
 
             <div className="treatment-section">
+
               <span className="treatment-icon">
                 💧
               </span>
 
               <div>
-                <h3>{t.dosage}</h3>
-                <p>{treatment.dosage}</p>
+
+                <h3>
+                  {t.dosage}
+                </h3>
+
+                <p>
+                  {treatment.dosage}
+                </p>
+
               </div>
+
             </div>
 
+            {/* SPRAY SCHEDULE */}
 
             <div className="treatment-section">
+
               <span className="treatment-icon">
                 📅
               </span>
 
               <div>
-                <h3>{t.spraySchedule}</h3>
-                <p>{treatment.spray_schedule}</p>
+
+                <h3>
+                  {t.spraySchedule}
+                </h3>
+
+                <p>
+                  {treatment.spray_schedule}
+                </p>
+
               </div>
+
             </div>
 
+            {/* RECOVERY TIME */}
 
             <div className="treatment-section">
+
               <span className="treatment-icon">
                 ⏱
               </span>
 
               <div>
-                <h3>{t.recoveryTime}</h3>
-                <p>{treatment.recovery_time}</p>
+
+                <h3>
+                  {t.recoveryTime}
+                </h3>
+
+                <p>
+                  {treatment.recovery_time}
+                </p>
+
               </div>
+
             </div>
 
+            {/* PREVENTION */}
 
             <div className="treatment-section">
+
               <span className="treatment-icon">
                 🛡
               </span>
 
               <div>
-                <h3>{t.prevention}</h3>
-                <p>{treatment.prevention}</p>
+
+                <h3>
+                  {t.prevention}
+                </h3>
+
+                <p>
+                  {treatment.prevention}
+                </p>
+
               </div>
+
             </div>
 
           </div>
@@ -469,4 +643,5 @@ export default function DiseaseDetection() {
       )}
 
     </div>
-  )}
+  )
+}

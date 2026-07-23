@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import api from '../api/axios'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -23,9 +24,7 @@ export default function CropHistory() {
         },
       })
       .then((res) => {
-        setItems(
-          res.data.history || []
-        )
+        setItems(res.data.history || [])
       })
       .catch((error) => {
         console.error(error)
@@ -39,7 +38,7 @@ export default function CropHistory() {
       <div className="history-header">
 
         <span className="page-section-label">
-          🌿 CROP HEALTH
+          🌿 {t.cropHealthLabel}
         </span>
 
         <h1>
@@ -47,16 +46,13 @@ export default function CropHistory() {
         </h1>
 
         <p>
-          Review your previous crop diagnoses and monitor
-          the health of your crops over time.
+          {t.historyDescription}
         </p>
 
       </div>
 
-
       {/* EMPTY STATE */}
       {items.length === 0 && (
-
         <div className="history-empty">
 
           <div className="history-empty-icon">
@@ -64,33 +60,29 @@ export default function CropHistory() {
           </div>
 
           <h2>
-            No crop diagnoses yet
+            {t.noCropDiagnoses}
           </h2>
 
           <p>
             {t.noHistory}
           </p>
 
-          <a
-            href="/detect"
+          <Link
+            to="/detect"
             className="history-empty-button"
           >
             <span>✦</span>
-            Detect a Crop Disease
-          </a>
+            {t.detectCropDisease}
+          </Link>
 
         </div>
-
       )}
-
 
       {/* HISTORY GRID */}
       {items.length > 0 && (
-
         <div className="history-grid">
 
           {items.map((item) => (
-
             <div
               key={item._id}
               className="history-card"
@@ -98,41 +90,35 @@ export default function CropHistory() {
 
               {/* IMAGE */}
               {item.image_url ? (
-
                 <div className="history-image-wrapper">
 
                   <img
                     src={item.image_url}
-                    alt=""
+                    alt={item.crop_name || ''}
                     className="history-image"
                   />
 
                   <span className="history-status">
-                    ✓ Analyzed
+                    ✓ {t.analyzed}
                   </span>
 
                 </div>
-
               ) : (
-
                 <div className="history-image-placeholder">
                   🌿
                 </div>
-
               )}
-
 
               {/* CONTENT */}
               <div className="history-card-content">
 
                 <span className="history-card-label">
-                  CROP DIAGNOSIS
+                  {t.cropDiagnosis}
                 </span>
 
                 <h2>
                   {item.crop_name}
                 </h2>
-
 
                 <div className="history-info">
 
@@ -145,7 +131,6 @@ export default function CropHistory() {
                       {item.disease_name}
                     </strong>
                   </div>
-
 
                   <div className="history-info-row">
                     <span>
@@ -162,11 +147,9 @@ export default function CropHistory() {
               </div>
 
             </div>
-
           ))}
 
         </div>
-
       )}
 
     </div>
