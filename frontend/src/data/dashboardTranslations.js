@@ -10,6 +10,9 @@ export const dashboardTranslations = {
     aiDiagnosis: 'AI Crop Diagnosis',
     localLanguages: 'Local Languages',
     anytimeAssistance: 'Anytime Assistance',
+    viewFullDiagnosis: 'View Full Diagnosis',
+deleteHistory: 'Delete',
+deletingHistory: 'Deleting...',
 
     farmingToolkit: 'Farming Toolkit',
     toolkitTitle: 'Everything you need for healthier crops',
@@ -41,7 +44,9 @@ export const dashboardTranslations = {
     footerMessage: 'Technology for better farming',
   },
 
-  hi: {
+  hi: {viewFullDiagnosis: 'पूरा निदान देखें',
+deleteHistory: 'हटाएं',
+deletingHistory: 'हटाया जा रहा है...',
     dashboardWelcome: 'स्वागत है',
     dashboardAiBadge: 'एआई आधारित कृषि साथी',
     dashboardHeroTitle: 'स्मार्ट खेती की शुरुआत यहाँ से होती है।',
@@ -83,7 +88,9 @@ export const dashboardTranslations = {
     footerMessage: 'बेहतर खेती के लिए तकनीक',
   },
 
-  raj: {
+  raj: {viewFullDiagnosis: 'पूरो निदान देखो',
+deleteHistory: 'हटाओ',
+deletingHistory: 'हटायो जा रियो है...',
     dashboardWelcome: 'राम राम, स्वागत है',
     dashboardAiBadge: 'एआई आधारित खेती साथी',
     dashboardHeroTitle: 'समझदार खेती री शुरुआत अठै सूं।',
@@ -125,7 +132,9 @@ export const dashboardTranslations = {
     footerMessage: 'बेहतर खेती खातर तकनीक',
   },
 
-  bho: {
+  bho: {viewFullDiagnosis: 'पूरा रोग जाँच देखीं',
+deleteHistory: 'हटाईं',
+deletingHistory: 'हटावल जा रहल बा...',
     dashboardWelcome: 'स्वागत बा',
     dashboardAiBadge: 'एआई खेती साथी',
     dashboardHeroTitle: 'स्मार्ट खेती के शुरुआत इहाँ से करीं।',
@@ -167,7 +176,10 @@ export const dashboardTranslations = {
     footerMessage: 'बेहतर खेती खातिर तकनीक',
   },
 
-  har: {
+  har: {viewFullDiagnosis: 'पूरा रोग जांच देखो',
+deleteHistory: 'हटाओ',
+deletingHistory: 'हटाया जा रह्या सै...',
+
     dashboardWelcome: 'राम राम, स्वागत सै',
     dashboardAiBadge: 'एआई खेती साथी',
     dashboardHeroTitle: 'स्मार्ट खेती की शुरुआत यहीं तै सै।',
@@ -209,7 +221,9 @@ export const dashboardTranslations = {
     footerMessage: 'बढ़िया खेती खातर तकनीक',
   },
 
-  gu: {
+  gu: {viewFullDiagnosis: 'સંપૂર્ણ નિદાન જુઓ',
+deleteHistory: 'કાઢી નાખો',
+deletingHistory: 'કાઢી રહ્યા છીએ...',
     dashboardWelcome: 'સ્વાગત છે',
     dashboardAiBadge: 'AI આધારિત કૃષિ સાથી',
     dashboardHeroTitle: 'સ્માર્ટ ખેતીની શરૂઆત અહીંથી થાય છે.',
@@ -251,7 +265,10 @@ export const dashboardTranslations = {
     footerMessage: 'વધુ સારી ખેતી માટે ટેકનોલોજી',
   },
 
-  mr: {
+  mr: {viewFullDiagnosis: 'संपूर्ण निदान पहा',
+deleteHistory: 'हटवा',
+deletingHistory: 'हटवत आहे...',
+
     dashboardWelcome: 'स्वागत आहे',
     dashboardAiBadge: 'एआय आधारित शेती साथी',
     dashboardHeroTitle: 'स्मार्ट शेतीची सुरुवात इथून होते.',
@@ -293,7 +310,9 @@ export const dashboardTranslations = {
     footerMessage: 'उत्तम शेतीसाठी तंत्रज्ञान',
   },
 
-  pa: {
+  pa: {viewFullDiagnosis: 'ਪੂਰਾ ਨਿਦਾਨ ਵੇਖੋ',
+deleteHistory: 'ਮਿਟਾਓ',
+deletingHistory: 'ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...',
     dashboardWelcome: 'ਜੀ ਆਇਆਂ ਨੂੰ',
     dashboardAiBadge: 'AI ਖੇਤੀ ਸਾਥੀ',
     dashboardHeroTitle: 'ਸਮਾਰਟ ਖੇਤੀ ਦੀ ਸ਼ੁਰੂਆਤ ਇੱਥੋਂ ਹੁੰਦੀ ਹੈ।',
@@ -335,7 +354,10 @@ export const dashboardTranslations = {
     footerMessage: 'ਬਿਹਤਰ ਖੇਤੀ ਲਈ ਤਕਨਾਲੋਜੀ',
   },
 
-  bn: {
+  bn: {viewFullDiagnosis: 'সম্পূর্ণ রোগ নির্ণয় দেখুন',
+deleteHistory: 'মুছুন',
+deletingHistory: 'মুছে ফেলা হচ্ছে...',
+
     dashboardWelcome: 'স্বাগতম',
     dashboardAiBadge: 'AI কৃষি সহায়ক',
     dashboardHeroTitle: 'স্মার্ট কৃষির শুরু এখানেই।',
@@ -377,7 +399,9 @@ export const dashboardTranslations = {
     footerMessage: 'উন্নত কৃষির জন্য প্রযুক্তি',
   },
 
-  ta: {
+  ta: {viewFullDiagnosis: 'முழு நோயறிதலைக் காண்க',
+deleteHistory: 'நீக்கு',
+deletingHistory: 'நீக்கப்படுகிறது...',
     dashboardWelcome: 'வரவேற்கிறோம்',
     dashboardAiBadge: 'AI விவசாய துணை',
     dashboardHeroTitle: 'ஸ்மார்ட் விவசாயம் இங்கிருந்து தொடங்குகிறது.',
@@ -419,7 +443,10 @@ export const dashboardTranslations = {
     footerMessage: 'சிறந்த விவசாயத்திற்கான தொழில்நுட்பம்',
   },
 
-  te: {
+  te: {viewFullDiagnosis: 'పూర్తి నిర్ధారణను చూడండి',
+deleteHistory: 'తొలగించు',
+deletingHistory: 'తొలగిస్తోంది...',
+
     dashboardWelcome: 'స్వాగతం',
     dashboardAiBadge: 'AI వ్యవసాయ సహాయకుడు',
     dashboardHeroTitle: 'స్మార్ట్ వ్యవసాయం ఇక్కడి నుంచే ప్రారంభమవుతుంది.',
@@ -461,7 +488,10 @@ export const dashboardTranslations = {
     footerMessage: 'మెరుగైన వ్యవసాయం కోసం సాంకేతికత',
   },
 
-  kn: {
+  kn: {viewFullDiagnosis: 'ಸಂಪೂರ್ಣ ರೋಗನಿರ್ಣಯ ನೋಡಿ',
+deleteHistory: 'ಅಳಿಸಿ',
+deletingHistory: 'ಅಳಿಸಲಾಗುತ್ತಿದೆ...',
+
     dashboardWelcome: 'ಸ್ವಾಗತ',
     dashboardAiBadge: 'AI ಕೃಷಿ ಸಹಾಯಕ',
     dashboardHeroTitle: 'ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಇಲ್ಲಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.',
@@ -503,7 +533,10 @@ export const dashboardTranslations = {
     footerMessage: 'ಉತ್ತಮ ಕೃಷಿಗಾಗಿ ತಂತ್ರಜ್ಞಾನ',
   },
 
-  ml: {
+  ml: {viewFullDiagnosis: 'പൂർണ്ണ രോഗനിർണയം കാണുക',
+deleteHistory: 'ഇല്ലാതാക്കുക',
+deletingHistory: 'ഇല്ലാതാക്കുന്നു...',
+
     dashboardWelcome: 'സ്വാഗതം',
     dashboardAiBadge: 'AI കൃഷി സഹായി',
     dashboardHeroTitle: 'സ്മാർട്ട് കൃഷി ഇവിടെ തുടങ്ങുന്നു.',
@@ -545,7 +578,10 @@ export const dashboardTranslations = {
     footerMessage: 'മികച്ച കൃഷിക്കായി സാങ്കേതികവിദ്യ',
   },
 
-  or: {
+  or: {viewFullDiagnosis: 'ସମ୍ପୂର୍ଣ୍ଣ ରୋଗ ନିର୍ଣ୍ଣୟ ଦେଖନ୍ତୁ',
+deleteHistory: 'ବିଲୋପ କରନ୍ତୁ',
+deletingHistory: 'ବିଲୋପ କରାଯାଉଛି...',
+
     dashboardWelcome: 'ସ୍ୱାଗତ',
     dashboardAiBadge: 'AI କୃଷି ସହାୟକ',
     dashboardHeroTitle: 'ସ୍ମାର୍ଟ କୃଷି ଏଠାରୁ ଆରମ୍ଭ ହୁଏ।',
@@ -587,7 +623,9 @@ export const dashboardTranslations = {
     footerMessage: 'ଉନ୍ନତ କୃଷି ପାଇଁ ପ୍ରଯୁକ୍ତି',
   },
 
-  as: {
+  as: {viewFullDiagnosis: 'সম্পূৰ্ণ ৰোগ নিৰ্ণয় চাওক',
+deleteHistory: 'মচক',
+deletingHistory: 'মচি থকা হৈছে...',
     dashboardWelcome: 'স্বাগতম',
     dashboardAiBadge: 'AI কৃষি সহায়ক',
     dashboardHeroTitle: 'স্মাৰ্ট কৃষি ইয়াৰ পৰাই আৰম্ভ হয়।',
@@ -628,4 +666,6 @@ export const dashboardTranslations = {
     footerRights: 'সকলো অধিকাৰ সংৰক্ষিত।',
     footerMessage: 'উন্নত কৃষিৰ বাবে প্ৰযুক্তি',
   },
+
+  
 }
