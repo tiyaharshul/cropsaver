@@ -1,11 +1,7 @@
 import json
 
 from bson import ObjectId
-
-from fastapi import (
-    APIRouter,
-    HTTPException,
-)
+from fastapi import APIRouter, HTTPException
 
 from google import genai
 from google.genai import types
@@ -32,24 +28,41 @@ client = genai.Client(
 # ======================================================
 
 PROMPT_TEMPLATE = """
-You are an expert agricultural scientist.
+You are an expert agricultural scientist helping farmers.
 
-A crop image has been analyzed by an AI crop disease
-detection system.
+A crop image has already been analyzed by an AI crop
+diagnostic system.
 
 Crop:
 {crop_name}
 
-Disease:
-{disease_name}
+Problem type:
+{problem_type}
 
-Confidence:
+Problem:
+{problem_name}
+
+Detection confidence:
 {confidence}
 
-Provide useful and cautious treatment guidance for the
-farmer.
+The problem may be a:
 
-Generate treatment ONLY as valid JSON.
+- disease
+- pest
+- nutrient deficiency
+- environmental stress
+- physical damage
+- healthy crop
+- other agricultural problem
+
+Provide practical and cautious guidance for the farmer.
+
+If the diagnosis confidence is low, clearly explain that
+the diagnosis should be verified before applying treatment.
+
+If the problem has no chemical cure, clearly say so.
+
+Generate ONLY valid JSON.
 
 Required JSON format:
 
@@ -63,13 +76,16 @@ Required JSON format:
   "prevention": "..."
 }}
 
-Important:
+Important rules:
 
-- Do not invent a treatment when the diagnosis is uncertain.
+- Do not invent treatments.
 - Take the confidence level into account.
-- When chemical treatment is relevant, advise following the
-  registered product label and applicable local agricultural
-  guidance.
+- Do not recommend unnecessary pesticides.
+- If chemical treatment is relevant, advise the farmer to
+  follow the registered product label and applicable local
+  agricultural guidance.
+- If the diagnosis is uncertain, recommend verification by
+  an agricultural expert.
 - Do not write markdown.
 - Do not write ```json.
 - Return ONLY JSON.
@@ -98,12 +114,29 @@ async def get_treatment(
 
 
     # ==================================================
+    # DETERMINE PROBLEM
+    # ==================================================
+
+    problem_type = (
+        req.problem_type
+        or "disease"
+    )
+
+    problem_name = (
+        req.problem_name
+        or req.disease_name
+        or "Unknown crop problem"
+    )
+
+
+    # ==================================================
     # BUILD PROMPT
     # ==================================================
 
     prompt = PROMPT_TEMPLATE.format(
         crop_name=req.crop_name,
-        disease_name=req.disease_name,
+        problem_type=problem_type,
+        problem_name=problem_name,
         confidence=req.confidence,
         language=req.language,
     )
@@ -115,24 +148,23 @@ async def get_treatment(
         # GEMINI
         # ==============================================
 
-        response = (
-            client.models.generate_content(
-                model=(
-                    "gemini-3.5-flash-lite"
-                ),
+        response = client.models.generate_content(
 
-                contents=prompt,
+            model="gemini-3.5-flash-lite",
 
-                config=(
-                    types.GenerateContentConfig(
-                        response_mime_type=(
-                            "application/json"
-                        ),
-                        temperature=0.2,
-                    )
-                ),
-            )
+            contents=prompt,
+
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                temperature=0.2,
+            ),
         )
+
+
+        if not response.text:
+            raise ValueError(
+                "Gemini returned an empty response."
+            )
 
 
         text = response.text.strip()
@@ -161,7 +193,7 @@ async def get_treatment(
 
 
         # ==============================================
-        # BUILD TREATMENT
+        # BUILD TREATMENT RESPONSE
         # ==============================================
 
         treatment = TreatmentResponse(
@@ -183,7 +215,7 @@ async def get_treatment(
 
             dosage=parsed.get(
                 "dosage",
-                "Follow product label.",
+                "Follow registered product label.",
             ),
 
             spray_schedule=parsed.get(
@@ -198,16 +230,13 @@ async def get_treatment(
 
             prevention=parsed.get(
                 "prevention",
-                (
-                    "Maintain good crop "
-                    "hygiene."
-                ),
+                "Maintain good crop hygiene.",
             ),
         )
 
 
         # ==============================================
-        # SAVE TREATMENT INTO HISTORY
+        # SAVE TREATMENT TO HISTORY
         # ==============================================
 
         if req.history_id:
@@ -220,17 +249,24 @@ async def get_treatment(
 
                     update_result = (
                         await crop_history_collection.update_one(
+
                             {
-                                "_id":
-                                    ObjectId(
-                                        req.history_id
-                                    )
+                                "_id": ObjectId(
+                                    req.history_id
+                                )
                             },
 
                             {
                                 "$set": {
+
+                                    "problem_type":
+                                        problem_type,
+
+                                    "problem_name":
+                                        problem_name,
+
                                     "treatment":
-                                        treatment.model_dump()
+                                        treatment.model_dump(),
                                 }
                             },
                         )
@@ -238,6 +274,7 @@ async def get_treatment(
 
 
                     print("=" * 60)
+
                     print(
                         "Treatment history ID:",
                         req.history_id,
@@ -262,21 +299,28 @@ async def get_treatment(
                         req.history_id,
                     )
 
-            except Exception as e:
 
-                # Do not fail treatment generation just
-                # because history storage failed.
+            except Exception as history_error:
+
+                # Treatment should still be returned even if
+                # MongoDB history update fails.
 
                 print(
                     "Treatment history save error:",
-                    e,
+                    history_error,
                 )
 
 
-      
+        # ==============================================
+        # RETURN
+        # ==============================================
 
         return treatment
 
+
+    # ==================================================
+    # INVALID JSON
+    # ==================================================
 
     except json.JSONDecodeError as e:
 
@@ -289,7 +333,20 @@ async def get_treatment(
         )
 
 
+    # ==================================================
+    # OTHER ERROR
+    # ==================================================
+
+    except HTTPException:
+        raise
+
+
     except Exception as e:
+
+        print(
+            "Treatment generation error:",
+            repr(e),
+        )
 
         raise HTTPException(
             status_code=500,

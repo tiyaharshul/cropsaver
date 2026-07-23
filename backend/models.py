@@ -50,13 +50,21 @@ class AuthResponse(BaseModel):
 
 
 # ======================================================
-# DISEASE DETECTION
+# DISEASE / CROP PROBLEM DETECTION
 # ======================================================
 
 class DetectionResult(BaseModel):
     history_id: Optional[str] = None
+
     crop_name: str
+
+    # General problem classification
+    problem_type: str = "disease"
+    problem_name: Optional[str] = None
+
+    # Kept for compatibility with existing frontend/history
     disease_name: str
+
     confidence: float
     image_url: Optional[str] = None
 
@@ -67,13 +75,19 @@ class DetectionResult(BaseModel):
 
 class TreatmentRequest(BaseModel):
     crop_name: str
+
+    # Kept for backwards compatibility
     disease_name: str
+
     confidence: float
     language: str = "en"
 
-    # Connect treatment with the detection stored
-    # inside MongoDB.
+    # Connect treatment with MongoDB history
     history_id: Optional[str] = None
+
+    # New generalized crop-problem fields
+    problem_type: str = "disease"
+    problem_name: Optional[str] = None
 
 
 class TreatmentResponse(BaseModel):
@@ -124,15 +138,18 @@ class ChatResponse(BaseModel):
 
 class CropHistoryItem(BaseModel):
     user_id: str
+
     crop_name: str
+
+    problem_type: str = "disease"
+    problem_name: Optional[str] = None
+
     disease_name: str
     confidence: float
 
     image_url: Optional[str] = None
 
-    treatment: Optional[
-        TreatmentResponse
-    ] = None
+    treatment: Optional[TreatmentResponse] = None
 
     created_at: datetime = Field(
         default_factory=datetime.utcnow

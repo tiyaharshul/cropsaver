@@ -124,16 +124,23 @@ const detectRes = await api.post(
       // GET TREATMENT
       // -----------------------------
 
-      const payload = {
+   const payload = {
   crop_name: detectRes.data.crop_name,
+
   disease_name: detectRes.data.disease_name,
-  confidence: Number(
-    detectRes.data.confidence
-  ),
+
+  problem_type:
+    detectRes.data.problem_type || 'disease',
+
+  problem_name:
+    detectRes.data.problem_name ||
+    detectRes.data.disease_name,
+
+  confidence:
+    Number(detectRes.data.confidence),
 
   language:
-    aiLanguageNames[language] ||
-    'English',
+    aiLanguageNames[language] || 'English',
 
   history_id:
     detectRes.data.history_id,
