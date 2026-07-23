@@ -1,11 +1,18 @@
 import base64
 import json
+from datetime import datetime, timezone
 
 import cloudinary
 import cloudinary.uploader
 import httpx
 
-from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi import (
+    APIRouter,
+    UploadFile,
+    File,
+    HTTPException,
+)
+
 from google import genai
 from google.genai import types
 
@@ -18,7 +25,7 @@ router = APIRouter()
 
 
 # ======================================================
-# CLOUDINARY CONFIGURATION
+# CLOUDINARY
 # ======================================================
 
 cloudinary.config(
@@ -29,10 +36,12 @@ cloudinary.config(
 
 
 # ======================================================
-# API CONFIGURATION
+# SERVICES
 # ======================================================
 
-PLANT_ID_URL = "https://api.plant.id/v3/health_assessment"
+PLANT_ID_URL = (
+    "https://api.plant.id/v3/health_assessment"
+)
 
 GEMINI_MODEL = "gemini-3.5-flash-lite"
 
@@ -42,16 +51,15 @@ gemini_client = genai.Client(
 
 
 # ======================================================
-# HELPER: CLEAN GEMINI JSON
+# JSON HELPER
 # ======================================================
 
 def clean_json_response(text: str):
-    """
-    Convert Gemini JSON text into a Python dictionary.
-    """
 
     if not text:
-        raise ValueError("Gemini returned an empty response.")
+        raise ValueError(
+            "Gemini returned an empty response."
+        )
 
     cleaned = (
         text
@@ -65,85 +73,85 @@ def clean_json_response(text: str):
 
 
 # ======================================================
-# HELPER: GEMINI IMAGE ANALYSIS
+# GEMINI IMAGE ANALYSIS
 # ======================================================
 
 def analyze_image_with_gemini(
     image_bytes: bytes,
     mime_type: str,
 ):
-    """
-    Ask Gemini to independently identify:
-    - crop
-    - disease
-    - confidence
-    - visible symptoms
-    """
 
     prompt = """
-You are an expert agricultural scientist and plant pathologist.
+You are an expert agricultural scientist and plant
+pathologist.
 
 Carefully analyze the uploaded crop or plant image.
 
-Your job is to independently identify:
+Identify:
 
 1. The crop or plant visible in the image.
 2. The most likely disease or health problem.
 3. Whether the plant appears healthy.
-4. The visible symptoms supporting your conclusion.
+4. Visible symptoms supporting your conclusion.
 5. Your confidence in the visual identification.
 
-IMPORTANT RULES:
+Rules:
 
-- Identify the crop from the IMAGE itself.
-- Do not assume the crop name.
+- Identify the crop from the image itself.
+- Do not assume the crop.
 - Do not invent information.
-- If the crop cannot be identified reliably, return "Unknown Crop".
+- If crop identification is uncertain, return
+  "Unknown Crop".
 - If no disease is visible, return "Healthy".
-- If the exact disease cannot be identified, describe the most likely
-  disease category rather than inventing a specific disease.
-- confidence must be a number between 0 and 1.
-- Keep the reason concise.
+- If an exact disease cannot be reliably identified,
+  use a broader disease category.
+- confidence must be between 0 and 1.
 - Return ONLY valid JSON.
-- Do not use markdown.
-- Do not use ```json.
+- Do not return markdown.
 
-Return exactly this JSON structure:
+Required JSON:
 
 {
-  "crop_name": "Tomato",
-  "disease_name": "Possible disease name",
-  "confidence": 0.85,
-  "reason": "Short explanation of visible symptoms"
+  "crop_name": "...",
+  "disease_name": "...",
+  "confidence": 0.0,
+  "reason": "..."
 }
 """
 
-    response = gemini_client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=[
-            types.Part.from_bytes(
-                data=image_bytes,
-                mime_type=mime_type,
+    response = (
+        gemini_client.models.generate_content(
+            model=GEMINI_MODEL,
+
+            contents=[
+                types.Part.from_bytes(
+                    data=image_bytes,
+                    mime_type=mime_type,
+                ),
+                prompt,
+            ],
+
+            config=types.GenerateContentConfig(
+                response_mime_type=(
+                    "application/json"
+                ),
+                temperature=0.1,
             ),
-            prompt,
-        ],
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            temperature=0.1,
-        ),
+        )
     )
 
     parsed = clean_json_response(
         response.text
     )
 
-    confidence = parsed.get(
-        "confidence",
-        0.0,
-    )
-
     try:
-        confidence = float(confidence)
+        confidence = float(
+            parsed.get(
+                "confidence",
+                0.0,
+            )
+        )
+
     except (TypeError, ValueError):
         confidence = 0.0
 
@@ -153,24 +161,25 @@ Return exactly this JSON structure:
     )
 
     return {
-        "crop_name": (
+        "crop_name":
             parsed.get("crop_name")
-            or "Unknown Crop"
-        ),
-        "disease_name": (
+            or "Unknown Crop",
+
+        "disease_name":
             parsed.get("disease_name")
-            or "Unknown Disease"
-        ),
-        "confidence": confidence,
-        "reason": (
+            or "Unknown Disease",
+
+        "confidence":
+            confidence,
+
+        "reason":
             parsed.get("reason")
-            or ""
-        ),
+            or "",
     }
 
 
 # ======================================================
-# HELPER: RECONCILE PLANT.ID + GEMINI
+# RECONCILE PLANT.ID + GEMINI
 # ======================================================
 
 def reconcile_diagnosis(
@@ -178,13 +187,6 @@ def reconcile_diagnosis(
     plant_confidence: float,
     gemini_result: dict,
 ):
-    """
-    Gemini receives both diagnostic opinions and decides
-    on a final disease label.
-
-    Crop identification still comes primarily from
-    Gemini's image analysis.
-    """
 
     crop_name = gemini_result.get(
         "crop_name",
@@ -209,51 +211,43 @@ def reconcile_diagnosis(
     prompt = f"""
 You are an expert agricultural plant pathologist.
 
-A crop image has been independently analyzed by:
+A crop image was analyzed independently by Plant.id
+and Gemini vision.
 
-1. Plant.id, a plant disease recognition system.
-2. Gemini vision, which directly inspected the image.
-
-Here are the results.
-
-CROP IDENTIFIED FROM IMAGE BY GEMINI:
+Crop identified by Gemini:
 {crop_name}
 
-PLANT.ID DISEASE:
+Plant.id disease:
 {plant_disease}
 
-PLANT.ID CONFIDENCE:
+Plant.id confidence:
 {plant_confidence}
 
-GEMINI DISEASE:
+Gemini disease:
 {gemini_disease}
 
-GEMINI VISUAL CONFIDENCE:
+Gemini confidence:
 {gemini_confidence}
 
-GEMINI VISUAL OBSERVATIONS:
+Gemini visual observations:
 {gemini_reason}
 
 Determine the most reasonable final disease diagnosis.
 
 Rules:
 
-- Plant.id is a specialist plant-health model, so give its
-  disease prediction meaningful weight.
-- However, do NOT blindly accept Plant.id when its confidence
-  is low.
-- Use Gemini's visual observations as supporting evidence.
-- Do not invent a very specific disease when evidence is weak.
-- If both systems broadly agree, use the more useful specific
-  disease name.
-- If they disagree and Plant.id confidence is low, use a
-  cautious disease label.
-- If the image appears healthy, return "Healthy".
-- Do not change the crop name in this step.
+- Give Plant.id meaningful weight because it is a
+  specialist plant-health system.
+- Do not blindly accept Plant.id when confidence is low.
+- Use visible symptoms from Gemini as supporting evidence.
+- If both systems agree, return the useful disease name.
+- If evidence is weak, use a cautious broader diagnosis.
+- Do not invent a specific disease.
+- If the plant appears healthy, return "Healthy".
+- Do not change the crop name.
 - Return ONLY JSON.
-- No markdown.
 
-Return:
+Required JSON:
 
 {{
   "disease_name": "...",
@@ -261,13 +255,18 @@ Return:
 }}
 """
 
-    response = gemini_client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            temperature=0.1,
-        ),
+    response = (
+        gemini_client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=prompt,
+
+            config=types.GenerateContentConfig(
+                response_mime_type=(
+                    "application/json"
+                ),
+                temperature=0.1,
+            ),
+        )
     )
 
     parsed = clean_json_response(
@@ -275,21 +274,20 @@ Return:
     )
 
     return {
-        "disease_name": (
+        "disease_name":
             parsed.get("disease_name")
             or plant_disease
             or gemini_disease
-            or "Unknown Disease"
-        ),
-        "reason": (
+            or "Unknown Disease",
+
+        "reason":
             parsed.get("reason")
-            or gemini_reason
-        ),
+            or gemini_reason,
     }
 
 
 # ======================================================
-# DETECTION ENDPOINT
+# DETECT
 # ======================================================
 
 @router.post(
@@ -303,7 +301,7 @@ async def detect_disease(
 ):
 
     # ==================================================
-    # 1. READ IMAGE
+    # READ IMAGE
     # ==================================================
 
     image_bytes = await file.read()
@@ -317,20 +315,26 @@ async def detect_disease(
     mime_type = (
         file.content_type
         if file.content_type
-        and file.content_type.startswith("image/")
+        and file.content_type.startswith(
+            "image/"
+        )
         else "image/jpeg"
     )
 
 
     # ==================================================
-    # 2. UPLOAD IMAGE TO CLOUDINARY
+    # CLOUDINARY
     # ==================================================
 
     try:
 
-        upload_result = cloudinary.uploader.upload(
-            image_bytes,
-            folder="smart-farming/crop-images",
+        upload_result = (
+            cloudinary.uploader.upload(
+                image_bytes,
+                folder=(
+                    "smart-farming/crop-images"
+                ),
+            )
         )
 
         image_url = upload_result[
@@ -354,7 +358,7 @@ async def detect_disease(
 
 
     # ==================================================
-    # 3. GEMINI IMAGE ANALYSIS
+    # GEMINI IMAGE ANALYSIS
     # ==================================================
 
     gemini_result = {
@@ -368,13 +372,14 @@ async def detect_disease(
 
         gemini_result = (
             analyze_image_with_gemini(
-                image_bytes=image_bytes,
-                mime_type=mime_type,
+                image_bytes,
+                mime_type,
             )
         )
 
         print("=" * 60)
         print("Gemini Image Analysis")
+
         print(
             json.dumps(
                 gemini_result,
@@ -382,12 +387,13 @@ async def detect_disease(
                 ensure_ascii=False,
             )
         )
+
         print("=" * 60)
 
     except Exception as e:
 
-        # Do NOT kill the whole detection request.
-        # Plant.id can still provide a diagnosis.
+        # Gemini failure should not prevent
+        # Plant.id from running.
 
         print("=" * 60)
         print("Gemini Vision Error:")
@@ -396,12 +402,14 @@ async def detect_disease(
 
 
     # ==================================================
-    # 4. PREPARE PLANT.ID REQUEST
+    # PLANT.ID PAYLOAD
     # ==================================================
 
-    b64_image = base64.b64encode(
-        image_bytes
-    ).decode("utf-8")
+    b64_image = (
+        base64.b64encode(
+            image_bytes
+        ).decode("utf-8")
+    )
 
     headers = {
         "Api-Key":
@@ -415,12 +423,13 @@ async def detect_disease(
         "images": [
             b64_image
         ],
+
         "similar_images": True,
     }
 
 
     # ==================================================
-    # 5. CALL PLANT.ID
+    # CALL PLANT.ID
     # ==================================================
 
     try:
@@ -476,7 +485,7 @@ async def detect_disease(
 
 
     # ==================================================
-    # 6. PARSE PLANT.ID
+    # PARSE PLANT.ID
     # ==================================================
 
     plant_disease = "Unknown Disease"
@@ -517,12 +526,9 @@ async def detect_disease(
 
         else:
 
-            # Some responses may indicate that
-            # the plant is healthy.
-
             is_healthy = result.get(
                 "is_healthy",
-                {}
+                {},
             )
 
             healthy_probability = float(
@@ -534,7 +540,9 @@ async def detect_disease(
             )
 
             if healthy_probability >= 0.5:
+
                 plant_disease = "Healthy"
+
                 plant_confidence = (
                     healthy_probability
                 )
@@ -547,180 +555,154 @@ async def detect_disease(
         )
 
 
-    print("=" * 60)
-    print("Plant.id Parsed Result")
-    print("Disease:", plant_disease)
-    print(
-        "Confidence:",
-        plant_confidence,
-    )
-    print("=" * 60)
-
-
     # ==================================================
-    # 7. CROP NAME COMES FROM GEMINI
+    # CROP NAME
     # ==================================================
 
-    crop_name = gemini_result.get(
-        "crop_name",
-        "Unknown Crop",
+    crop_name = (
+        gemini_result.get(
+            "crop_name"
+        )
+        or "Unknown Crop"
     )
 
-    if not crop_name:
-        crop_name = "Unknown Crop"
-
 
     # ==================================================
-    # 8. RECONCILE DISEASE RESULTS
+    # FINAL DISEASE
     # ==================================================
 
     final_disease = plant_disease
+    final_reason = ""
 
     try:
 
-        reconciled = reconcile_diagnosis(
-            plant_disease=plant_disease,
-            plant_confidence=plant_confidence,
-            gemini_result=gemini_result,
+        reconciled = (
+            reconcile_diagnosis(
+                plant_disease,
+                plant_confidence,
+                gemini_result,
+            )
         )
 
-        final_disease = reconciled.get(
-            "disease_name",
-            plant_disease,
-        )
-
-        print("=" * 60)
-        print("Final AI Diagnosis")
-        print("Crop:", crop_name)
-        print(
-            "Disease:",
-            final_disease,
-        )
-        print(
-            "Plant.id Confidence:",
-            plant_confidence,
-        )
-        print(
-            "Gemini Disease:",
-            gemini_result.get(
+        final_disease = (
+            reconciled.get(
                 "disease_name"
-            ),
+            )
+            or plant_disease
         )
-        print(
-            "Gemini Confidence:",
-            gemini_result.get(
-                "confidence"
-            ),
-        )
-        print(
-            "Reason:",
+
+        final_reason = (
             reconciled.get(
                 "reason"
-            ),
+            )
+            or ""
         )
-        print("=" * 60)
 
     except Exception as e:
 
-        # If reconciliation fails, keep
-        # Plant.id disease result.
-
-        print("=" * 60)
         print(
             "Reconciliation Error:",
             e,
         )
+
         print(
-            "Using Plant.id disease instead."
+            "Using Plant.id disease."
         )
-        print("=" * 60)
 
 
     # ==================================================
-    # 9. FINAL CONFIDENCE
+    # CONFIDENCE
     # ==================================================
-    #
-    # Keep Plant.id probability as the displayed
-    # confidence because it comes from the specialist
-    # disease model.
-    #
-    # We deliberately DO NOT average Gemini confidence
-    # and Plant.id probability.
-    # ==================================================
+
+    # Keep Plant.id's probability rather than
+    # mathematically averaging unrelated model scores.
 
     confidence = plant_confidence
 
 
     # ==================================================
-    # 10. CREATE RESPONSE
+    # SAVE HISTORY
     # ==================================================
 
-    detection = DetectionResult(
-        crop_name=crop_name,
-        disease_name=final_disease,
-        confidence=confidence,
-        image_url=image_url,
-    )
-
-
-    # ==================================================
-    # 11. SAVE HISTORY
-    # ==================================================
+    history_id = None
 
     try:
 
-        await crop_history_collection.insert_one(
-            {
-                "user_id":
-                    user_id,
+        history_result = (
+            await crop_history_collection.insert_one(
+                {
+                    "user_id":
+                        user_id,
 
-                "crop_name":
-                    crop_name,
+                    "crop_name":
+                        crop_name,
 
-                "disease_name":
-                    final_disease,
+                    "disease_name":
+                        final_disease,
 
-                "confidence":
-                    confidence,
+                    "confidence":
+                        confidence,
 
-                "image_url":
-                    image_url,
+                    "image_url":
+                        image_url,
 
-                # Extra debugging / future ML fields
+                    # Treatment is populated later.
+                    "treatment":
+                        None,
 
-                "plant_id_disease":
-                    plant_disease,
+                    "created_at":
+                        datetime.now(
+                            timezone.utc
+                        ),
 
-                "plant_id_confidence":
-                    plant_confidence,
+                    # Additional AI information
 
-                "gemini_crop":
-                    gemini_result.get(
-                        "crop_name"
-                    ),
+                    "plant_id_disease":
+                        plant_disease,
 
-                "gemini_disease":
-                    gemini_result.get(
-                        "disease_name"
-                    ),
+                    "plant_id_confidence":
+                        plant_confidence,
 
-                "gemini_confidence":
-                    gemini_result.get(
-                        "confidence"
-                    ),
+                    "gemini_crop":
+                        gemini_result.get(
+                            "crop_name"
+                        ),
 
-                "gemini_reason":
-                    gemini_result.get(
-                        "reason"
-                    ),
-            }
+                    "gemini_disease":
+                        gemini_result.get(
+                            "disease_name"
+                        ),
+
+                    "gemini_confidence":
+                        gemini_result.get(
+                            "confidence"
+                        ),
+
+                    "gemini_reason":
+                        gemini_result.get(
+                            "reason"
+                        ),
+
+                    "final_reason":
+                        final_reason,
+                }
+            )
         )
+
+        history_id = str(
+            history_result.inserted_id
+        )
+
+        print("=" * 60)
+        print(
+            "History saved:",
+            history_id,
+        )
+        print("=" * 60)
 
     except Exception as e:
 
-        # History failure should not prevent
-        # the farmer from receiving diagnosis.
-
+      
         print(
             "MongoDB History Error:",
             e,
@@ -728,7 +710,13 @@ async def detect_disease(
 
 
     # ==================================================
-    # 12. RETURN RESULT
+    # RESPONSE
     # ==================================================
 
-    return detection
+    return DetectionResult(
+        history_id=history_id,
+        crop_name=crop_name,
+        disease_name=final_disease,
+        confidence=confidence,
+        image_url=image_url,
+    )
