@@ -97,7 +97,7 @@ function NavBar() {
           </span>
 
           <span>
-            {t.appName || 'CropSaver'}
+            {t.appName || 'Krishay'}
           </span>
 
         </Link>
