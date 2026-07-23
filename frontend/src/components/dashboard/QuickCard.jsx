@@ -7,21 +7,26 @@ export default function QuickCard({
   to,
 }) {
   return (
-    <Link to={to} className="quick-card">
+    <Link
+      to={to}
+      className="quick-card"
+    >
+      <div className="quick-card-main">
 
-      <div className="quick-icon">
-        {icon}
+        <div className="quick-icon">
+          {icon}
+        </div>
+
+        <div className="quick-content">
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+
       </div>
 
-      <div className="quick-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-
-      <span className="quick-arrow">
+      <div className="quick-arrow">
         →
-      </span>
-
+      </div>
     </Link>
   )
 }

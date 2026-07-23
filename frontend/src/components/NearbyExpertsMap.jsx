@@ -1,68 +1,176 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+} from 'react-leaflet'
+
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useEffect } from 'react'
 
 
+// ======================================================
+// LEAFLET DEFAULT MARKER FIX
+// ======================================================
+
 delete L.Icon.Default.prototype._getIconUrl
+
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  iconRetinaUrl:
+    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+
+  iconUrl:
+    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+
+  shadowUrl:
+    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 })
 
-const categoryColor = {
-  KVK: 'green',
-  'Agriculture Office': 'blue',
-  'Soil Lab': 'orange',
-  'Fertilizer Shop': 'violet',
-}
+
+// ======================================================
+// KEEP MAP CENTERED ON USER
+// ======================================================
 
 function Recenter({ lat, lon }) {
   const map = useMap()
+
   useEffect(() => {
-    map.setView([lat, lon], map.getZoom())
-  }, [lat, lon])
+    if (!lat || !lon) return
+
+    // Keep map focused around the user's city.
+    // DO NOT fit bounds using all expert markers.
+    map.setView([lat, lon], 12)
+  }, [lat, lon, map])
+
   return null
 }
 
 
-export default function NearbyExpertsMap({ userLat, userLon, centers = [] }) {
+// ======================================================
+// MAP
+// ======================================================
+
+export default function NearbyExpertsMap({
+  userLat,
+  userLon,
+  centers = [],
+}) {
+
+  // Only show markers that are reasonably near the user.
+  // This prevents 600–2000 km away results from ruining the map.
+  const nearbyCenters = centers.filter((center) => {
+    const distance = Number(center.distance_km)
+
+    return (
+      Number.isFinite(distance) &&
+      distance <= 100 &&
+      Number.isFinite(Number(center.latitude)) &&
+      Number.isFinite(Number(center.longitude))
+    )
+  })
+
+
   return (
-    <MapContainer
-      center={[userLat, userLon]}
-      zoom={12}
-      scrollWheelZoom={true}
-      className="leaflet-container"
+    <div
+      style={{
+        width: '100%',
+        height: '445px',
+        borderRadius: '20px',
+        overflow: 'hidden',
+      }}
     >
-      {/* OpenStreetMap tile layer */}
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Recenter lat={userLat} lon={userLon} />
 
-      <Marker position={[userLat, userLon]}>
-        <Popup>You are here</Popup>
-      </Marker>
+      <MapContainer
+        center={[userLat, userLon]}
+        zoom={12}
+        scrollWheelZoom={true}
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+      >
 
-      {centers.map((c, idx) => (
-        <Marker key={idx} position={[c.latitude, c.longitude]}>
+        {/* OPENSTREETMAP */}
+
+        <TileLayer
+          attribution='&copy; OpenStreetMap contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+
+
+        {/* KEEP MAP ON USER */}
+
+        <Recenter
+          lat={userLat}
+          lon={userLon}
+        />
+
+
+        {/* USER LOCATION */}
+
+        <Marker
+          position={[
+            Number(userLat),
+            Number(userLon),
+          ]}
+        >
           <Popup>
-            <strong>{c.name}</strong>
-            <br />
-            {c.category}
-            <br />
-            {c.address && (
-              <>
-                {c.address}
-                <br />
-              </>
-            )}
-            {c.distance_km != null && <>{c.distance_km} km away</>}
+            <strong>📍 You are here</strong>
           </Popup>
         </Marker>
-      ))}
-    </MapContainer>
+
+
+        {/* NEARBY EXPERT MARKERS ONLY */}
+
+        {nearbyCenters.map((center, index) => (
+
+          <Marker
+            key={
+              center.id ||
+              `${center.latitude}-${center.longitude}-${index}`
+            }
+            position={[
+              Number(center.latitude),
+              Number(center.longitude),
+            ]}
+          >
+
+            <Popup>
+
+              <strong>
+                {center.name}
+              </strong>
+
+              <br />
+
+              {center.category}
+
+              {center.address && (
+                <>
+                  <br />
+                  {center.address}
+                </>
+              )}
+
+              {center.distance_km != null && (
+                <>
+                  <br />
+                  <strong>
+                    {center.distance_km} km away
+                  </strong>
+                </>
+              )}
+
+            </Popup>
+
+          </Marker>
+
+        ))}
+
+      </MapContainer>
+
+    </div>
   )
 }

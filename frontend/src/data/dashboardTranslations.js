@@ -2,449 +2,630 @@ export const dashboardTranslations = {
   en: {
     dashboardWelcome: 'Welcome',
     dashboardAiBadge: 'AI-Powered Farming Companion',
-    dashboardHeroTitle: 'Protect your crops. Grow with confidence.',
+    dashboardHeroTitle: 'Smarter farming starts here.',
     dashboardHeroDescription:
-      'Detect crop diseases, get expert guidance and make smarter farming decisions with CropSaver.',
-    aiDiagnosis: 'AI Diagnosis',
-    localLanguages: 'Local Languages',
-    anytimeAssistance: '24/7 Assistance',
-    farmingToolkit: 'Your Farming Toolkit',
-    toolkitTitle: 'Everything your crops need, in one place.',
-    toolkitDescription:
-      'Smart tools to help farmers detect problems early, find reliable information and make better decisions.',
-    aiCropDoctor: 'AI Crop Doctor',
-    diseaseFeatureTitle: 'Spot crop diseases before they spread.',
-    diseaseFeatureDescription:
-      'Upload a photo of your crop and let CropSaver identify possible diseases and recommend treatment.',
-    startDiagnosis: 'Start Diagnosis',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'Your farming questions, answered instantly.',
-    aiFeatureDescription:
-      'Ask about crops, diseases, pests, irrigation, fertilizers and farming practices in your preferred language.',
+      'Protect your crops, detect diseases early, get expert guidance and make better farming decisions with CropSaver.',
+    detectDisease: 'Detect Disease',
     askCropSaver: 'Ask CropSaver',
-    finalCtaTitle: 'Need help with your crop?',
+    aiDiagnosis: 'AI Crop Diagnosis',
+    localLanguages: 'Local Languages',
+    anytimeAssistance: 'Anytime Assistance',
+
+    farmingToolkit: 'Farming Toolkit',
+    toolkitTitle: 'Everything you need for healthier crops',
+    toolkitDescription:
+      'Smart tools designed to help you protect your crops, solve farming problems and make informed decisions.',
+
+    diseaseFeatureTitle: 'Detect crop diseases instantly',
+    diseaseFeatureDescription:
+      'Upload a photo of your crop and let CropSaver AI identify possible diseases and provide useful treatment guidance.',
+    aiCropDoctor: 'AI Crop Doctor',
+    startDiagnosis: 'Start Diagnosis',
+
+    aiFeatureTitle: 'Your personal AI farming assistant',
+    aiFeatureDescription:
+      'Ask questions about crops, irrigation, pests, fertilizers, diseases and farming practices in your preferred language.',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'Have a farming question?',
     finalCtaDescription:
-      'Talk to CropSaver AI and get farming guidance whenever you need it.',
-    tryAsking: 'Try asking',
+      'CropSaver AI is ready to help you with practical farming guidance whenever you need it.',
+
+    footerDescription:
+      'Smart farming assistance powered by AI — helping farmers protect crops, make better decisions and grow with confidence.',
+    madeForFarmers: 'Built for Indian farmers',
+    farmingTools: 'Farming Tools',
+    explore: 'Explore',
+    needHelp: 'Need Help?',
+    footerRights: 'All rights reserved.',
+    footerMessage: 'Technology for better farming',
   },
 
   hi: {
     dashboardWelcome: 'स्वागत है',
-    dashboardAiBadge: 'एआई आधारित कृषि सहायक',
-    dashboardHeroTitle:
-      'अपनी फसलों की रक्षा करें। आत्मविश्वास के साथ आगे बढ़ें।',
+    dashboardAiBadge: 'एआई आधारित कृषि साथी',
+    dashboardHeroTitle: 'स्मार्ट खेती की शुरुआत यहाँ से होती है।',
     dashboardHeroDescription:
-      'फसल रोगों की पहचान करें, विशेषज्ञ मार्गदर्शन पाएं और क्रॉपसेवर के साथ खेती के बेहतर निर्णय लें।',
-    aiDiagnosis: 'एआई रोग पहचान',
+      'अपनी फसलों की सुरक्षा करें, रोगों की जल्दी पहचान करें, विशेषज्ञ मार्गदर्शन प्राप्त करें और CropSaver के साथ बेहतर कृषि निर्णय लें।',
+    detectDisease: 'रोग पहचानें',
+    askCropSaver: 'CropSaver से पूछें',
+    aiDiagnosis: 'एआई फसल निदान',
     localLanguages: 'स्थानीय भाषाएँ',
-    anytimeAssistance: '24/7 सहायता',
-    farmingToolkit: 'आपका कृषि टूलकिट',
-    toolkitTitle: 'आपकी फसल की हर जरूरत, एक ही जगह।',
+    anytimeAssistance: 'कभी भी सहायता',
+
+    farmingToolkit: 'कृषि टूलकिट',
+    toolkitTitle: 'स्वस्थ फसलों के लिए आपकी जरूरत की हर सुविधा',
     toolkitDescription:
-      'समस्याओं की जल्दी पहचान, विश्वसनीय जानकारी और बेहतर निर्णयों के लिए स्मार्ट उपकरण।',
-    aiCropDoctor: 'एआई फसल डॉक्टर',
-    diseaseFeatureTitle: 'फसल रोगों को फैलने से पहले पहचानें।',
+      'आपकी फसलों की सुरक्षा, कृषि समस्याओं के समाधान और बेहतर निर्णय लेने के लिए स्मार्ट उपकरण।',
+
+    diseaseFeatureTitle: 'फसल रोगों की तुरंत पहचान करें',
     diseaseFeatureDescription:
-      'फसल की फोटो अपलोड करें और क्रॉपसेवर से संभावित रोग की पहचान और उपचार की सलाह पाएं।',
-    startDiagnosis: 'जांच शुरू करें',
-    cropSaverAi: 'क्रॉपसेवर एआई',
-    aiFeatureTitle: 'खेती से जुड़े सवालों के जवाब तुरंत पाएं।',
+      'अपनी फसल की तस्वीर अपलोड करें और CropSaver AI से संभावित रोग की पहचान और उपचार संबंधी मार्गदर्शन प्राप्त करें।',
+    aiCropDoctor: 'एआई फसल डॉक्टर',
+    startDiagnosis: 'जाँच शुरू करें',
+
+    aiFeatureTitle: 'आपका व्यक्तिगत एआई कृषि सहायक',
     aiFeatureDescription:
-      'फसल, रोग, कीट, सिंचाई, उर्वरक और खेती के तरीकों के बारे में अपनी पसंदीदा भाषा में पूछें।',
-    askCropSaver: 'क्रॉपसेवर से पूछें',
-    finalCtaTitle: 'अपनी फसल के लिए मदद चाहिए?',
+      'फसल, सिंचाई, कीट, उर्वरक, रोग और खेती से जुड़े सवाल अपनी पसंदीदा भाषा में पूछें।',
+    cropSaverAi: 'CropSaver एआई',
+
+    finalCtaTitle: 'खेती से जुड़ा कोई सवाल है?',
     finalCtaDescription:
-      'क्रॉपसेवर एआई से बात करें और जरूरत पड़ने पर खेती से जुड़ी सलाह पाएं।',
-    tryAsking: 'पूछकर देखें',
+      'जब भी आपको जरूरत हो, CropSaver AI व्यावहारिक कृषि मार्गदर्शन देने के लिए तैयार है।',
+
+    footerDescription:
+      'एआई आधारित स्मार्ट कृषि सहायता — किसानों को फसलों की रक्षा, बेहतर निर्णय और आत्मविश्वास के साथ खेती करने में मदद करती है।',
+    madeForFarmers: 'भारतीय किसानों के लिए बनाया गया',
+    farmingTools: 'कृषि उपकरण',
+    explore: 'जानकारी देखें',
+    needHelp: 'मदद चाहिए?',
+    footerRights: 'सर्वाधिकार सुरक्षित।',
+    footerMessage: 'बेहतर खेती के लिए तकनीक',
   },
 
   raj: {
-    dashboardWelcome: 'पधारो',
-    dashboardAiBadge: 'एआई खेती सहायक',
-    dashboardHeroTitle:
-      'आपरी फसल री रक्षा करो। भरोसे सूं खेती करो।',
+    dashboardWelcome: 'राम राम, स्वागत है',
+    dashboardAiBadge: 'एआई आधारित खेती साथी',
+    dashboardHeroTitle: 'समझदार खेती री शुरुआत अठै सूं।',
     dashboardHeroDescription:
-      'फसल रा रोग पहचानो, खेती री सलाह पावो अर क्रॉपसेवर री मदद सूं बेहतर फैसला करो।',
-    aiDiagnosis: 'एआई रोग पहचान',
-    localLanguages: 'स्थानीय भाषावां',
-    anytimeAssistance: '24/7 मदद',
-    farmingToolkit: 'आपरो खेती टूलकिट',
-    toolkitTitle: 'फसल खातर जरूरी साधन एक ही जगह।',
+      'आपरी फसल ने बचाओ, बीमारी ने जल्दी पहचानो अर CropSaver री मदद सूं खेती रा बेहतर फैसला लो।',
+    detectDisease: 'बीमारी पहचानो',
+    askCropSaver: 'CropSaver ने पूछो',
+    aiDiagnosis: 'एआई फसल जांच',
+    localLanguages: 'आपरी भाषा',
+    anytimeAssistance: 'हर समय मदद',
+
+    farmingToolkit: 'खेती रा साधन',
+    toolkitTitle: 'स्वस्थ फसल खातर जरूरी सगळा साधन',
     toolkitDescription:
-      'फसल री समस्या जल्दी पहचानबा अर बेहतर खेती रा फैसला करबा खातर स्मार्ट साधन।',
-    aiCropDoctor: 'एआई फसल डॉक्टर',
-    diseaseFeatureTitle: 'फसल रो रोग फैलण सूं पैली पहचानो।',
+      'फसल बचावण, खेती री समस्या सुलझावण अर सही फैसला लेवण खातर स्मार्ट साधन।',
+
+    diseaseFeatureTitle: 'फसल री बीमारी तुरंत पहचानो',
     diseaseFeatureDescription:
-      'फसल री फोटो अपलोड करो अर क्रॉपसेवर सूं रोग पहचान अर उपचार री सलाह पावो।',
+      'फसल री फोटो अपलोड करो अर CropSaver AI सूं बीमारी अर इलाज री जानकारी पाओ।',
+    aiCropDoctor: 'एआई फसल डॉक्टर',
     startDiagnosis: 'जांच शुरू करो',
-    cropSaverAi: 'क्रॉपसेवर एआई',
-    aiFeatureTitle: 'खेती रा सवालां रा जवाब तुरन्त पावो।',
+
+    aiFeatureTitle: 'आपरो एआई खेती सहायक',
     aiFeatureDescription:
-      'फसल, रोग, कीड़ा, सिंचाई अर खाद रा सवाल आपरी भाषा में पूछो।',
-    askCropSaver: 'क्रॉपसेवर सूं पूछो',
-    finalCtaTitle: 'फसल खातर मदद चाहिए?',
+      'फसल, पानी, कीड़ा, खाद अर बीमारी बाबत आपरी भाषा में सवाल पूछो।',
+    cropSaverAi: 'CropSaver एआई',
+
+    finalCtaTitle: 'खेती रो कोई सवाल है?',
     finalCtaDescription:
-      'क्रॉपसेवर एआई सूं बात करो अर खेती री सलाह पावो।',
-    tryAsking: 'पूछ के देखो',
+      'CropSaver AI खेती री सही जानकारी देबा खातर हर समय तैयार है।',
+
+    footerDescription:
+      'एआई आधारित स्मार्ट खेती री मदद — किसानां ने फसल री रक्षा अर बेहतर खेती रा फैसला करबा में मदद करे।',
+    madeForFarmers: 'भारतीय किसानां खातर बणायो गयो',
+    farmingTools: 'खेती रा साधन',
+    explore: 'और जाणो',
+    needHelp: 'मदद चाहिए?',
+    footerRights: 'सगळा अधिकार सुरक्षित।',
+    footerMessage: 'बेहतर खेती खातर तकनीक',
   },
 
   bho: {
     dashboardWelcome: 'स्वागत बा',
-    dashboardAiBadge: 'एआई खेती सहायक',
-    dashboardHeroTitle:
-      'अपना फसल के बचाईं। भरोसा के साथ खेती करीं।',
+    dashboardAiBadge: 'एआई खेती साथी',
+    dashboardHeroTitle: 'स्मार्ट खेती के शुरुआत इहाँ से करीं।',
     dashboardHeroDescription:
-      'फसल के रोग पहिचानीं, खेती के सलाह पाईं आ क्रॉपसेवर के मदद से बेहतर फैसला लीं।',
-    aiDiagnosis: 'एआई रोग पहचान',
-    localLanguages: 'स्थानीय भाषा',
-    anytimeAssistance: '24/7 मदद',
-    farmingToolkit: 'रउआ खेती टूलकिट',
-    toolkitTitle: 'फसल खातिर जरूरी सब चीज एके जगह।',
+      'अपना फसल के बचाईं, बीमारी जल्दी पहिचानीं आ CropSaver के मदद से बेहतर खेती के फैसला लीं।',
+    detectDisease: 'बीमारी पहिचानीं',
+    askCropSaver: 'CropSaver से पूछीं',
+    aiDiagnosis: 'एआई फसल जाँच',
+    localLanguages: 'अपना भाषा',
+    anytimeAssistance: 'हर समय मदद',
+
+    farmingToolkit: 'खेती के साधन',
+    toolkitTitle: 'स्वस्थ फसल खातिर जरूरी सब साधन',
     toolkitDescription:
-      'समस्या जल्दी पहिचाने आ बेहतर फैसला लेवे खातिर स्मार्ट साधन।',
-    aiCropDoctor: 'एआई फसल डॉक्टर',
-    diseaseFeatureTitle: 'फसल के रोग फइले से पहिले पहिचानीं।',
+      'फसल बचावे, खेती के समस्या सुलझावे आ सही फैसला लेवे खातिर स्मार्ट साधन।',
+
+    diseaseFeatureTitle: 'फसल के बीमारी तुरंत पहिचानीं',
     diseaseFeatureDescription:
-      'फसल के फोटो अपलोड करीं आ क्रॉपसेवर से रोग आ इलाज के सलाह पाईं।',
-    startDiagnosis: 'जांच शुरू करीं',
-    cropSaverAi: 'क्रॉपसेवर एआई',
-    aiFeatureTitle: 'खेती के सवाल के जवाब तुरन्त पाईं।',
+      'फसल के फोटो अपलोड करीं आ CropSaver AI से बीमारी आ इलाज के जानकारी पाईं।',
+    aiCropDoctor: 'एआई फसल डॉक्टर',
+    startDiagnosis: 'जाँच शुरू करीं',
+
+    aiFeatureTitle: 'रउआ निजी एआई खेती सहायक',
     aiFeatureDescription:
-      'फसल, रोग, कीड़ा, सिंचाई आ खाद के बारे में अपना भाषा में पूछीं।',
-    askCropSaver: 'क्रॉपसेवर से पूछीं',
-    finalCtaTitle: 'फसल खातिर मदद चाहीं?',
+      'फसल, सिंचाई, कीड़ा, खाद आ बीमारी से जुड़ल सवाल अपना भाषा में पूछीं।',
+    cropSaverAi: 'CropSaver एआई',
+
+    finalCtaTitle: 'खेती से जुड़ल सवाल बा?',
     finalCtaDescription:
-      'क्रॉपसेवर एआई से बात करीं आ खेती के सलाह पाईं।',
-    tryAsking: 'पूछ के देखीं',
+      'CropSaver AI खेती के उपयोगी सलाह देवे खातिर हमेशा तैयार बा।',
+
+    footerDescription:
+      'एआई आधारित स्मार्ट खेती सहायता — किसान के फसल बचावे आ बेहतर खेती के फैसला लेवे में मदद करेला।',
+    madeForFarmers: 'भारतीय किसान खातिर बनावल गइल',
+    farmingTools: 'खेती के साधन',
+    explore: 'आगे देखीं',
+    needHelp: 'मदद चाहीं?',
+    footerRights: 'सभ अधिकार सुरक्षित।',
+    footerMessage: 'बेहतर खेती खातिर तकनीक',
   },
 
   har: {
     dashboardWelcome: 'राम राम, स्वागत सै',
-    dashboardAiBadge: 'एआई खेती सहायक',
-    dashboardHeroTitle:
-      'अपणी फसल की रक्षा कर। भरोसे तै खेती कर।',
+    dashboardAiBadge: 'एआई खेती साथी',
+    dashboardHeroTitle: 'स्मार्ट खेती की शुरुआत यहीं तै सै।',
     dashboardHeroDescription:
-      'फसल की बीमारी पहचान, खेती की सलाह ले अर क्रॉपसेवर की मदद तै बढ़िया फैसला कर।',
-    aiDiagnosis: 'एआई रोग पहचान',
-    localLanguages: 'स्थानीय भाषा',
-    anytimeAssistance: '24/7 मदद',
-    farmingToolkit: 'तेरा खेती टूलकिट',
-    toolkitTitle: 'फसल की जरूरत का सारा सामान एक जगह।',
+      'अपणी फसल बचाओ, बीमारी जल्दी पहचानो अर CropSaver की मदद तै खेती के बढ़िया फैसले लो।',
+    detectDisease: 'बीमारी पहचानो',
+    askCropSaver: 'CropSaver तै पूछो',
+    aiDiagnosis: 'एआई फसल जांच',
+    localLanguages: 'अपणी भाषा',
+    anytimeAssistance: 'हर टाइम मदद',
+
+    farmingToolkit: 'खेती के साधन',
+    toolkitTitle: 'स्वस्थ फसल खातर सारे जरूरी साधन',
     toolkitDescription:
-      'दिक्कत जल्दी पहचानण अर खेती के बढ़िया फैसले लेण खातर स्मार्ट साधन।',
-    aiCropDoctor: 'एआई फसल डॉक्टर',
-    diseaseFeatureTitle: 'फसल की बीमारी फैलण तै पहले पहचान।',
+      'फसल बचाण, खेती की दिक्कत सुलझाण अर सही फैसला लेण खातर स्मार्ट साधन।',
+
+    diseaseFeatureTitle: 'फसल की बीमारी तुरंत पहचानो',
     diseaseFeatureDescription:
-      'फसल की फोटो डाल अर क्रॉपसेवर तै बीमारी और इलाज की सलाह ले।',
-    startDiagnosis: 'जांच शुरू कर',
-    cropSaverAi: 'क्रॉपसेवर एआई',
-    aiFeatureTitle: 'खेती के सवालां के जवाब तुरंत ले।',
+      'फसल की फोटो डालो अर CropSaver AI तै बीमारी अर इलाज की जानकारी पाओ।',
+    aiCropDoctor: 'एआई फसल डॉक्टर',
+    startDiagnosis: 'जांच शुरू करो',
+
+    aiFeatureTitle: 'थारा एआई खेती सहायक',
     aiFeatureDescription:
-      'फसल, बीमारी, कीड़े, सिंचाई अर खाद के बारे में अपणी भाषा में पूछ।',
-    askCropSaver: 'क्रॉपसेवर तै पूछ',
-    finalCtaTitle: 'फसल खातर मदद चाहिए?',
+      'फसल, पानी, कीड़े, खाद अर बीमारी के सवाल अपणी भाषा में पूछो।',
+    cropSaverAi: 'CropSaver एआई',
+
+    finalCtaTitle: 'खेती का कोई सवाल सै?',
     finalCtaDescription:
-      'क्रॉपसेवर एआई तै बात कर अर खेती की सलाह ले।',
-    tryAsking: 'पूछ के देख',
+      'CropSaver AI खेती की उपयोगी सलाह देण खातर हर टाइम तैयार सै।',
+
+    footerDescription:
+      'एआई आधारित स्मार्ट खेती सहायता — किसानां नै फसल बचाण अर खेती के बढ़िया फैसले लेण में मदद करै सै।',
+    madeForFarmers: 'भारतीय किसानां खातर बनाया गया',
+    farmingTools: 'खेती के साधन',
+    explore: 'और देख',
+    needHelp: 'मदद चाहिए?',
+    footerRights: 'सारे अधिकार सुरक्षित।',
+    footerMessage: 'बढ़िया खेती खातर तकनीक',
   },
 
   gu: {
     dashboardWelcome: 'સ્વાગત છે',
-    dashboardAiBadge: 'AI આધારિત કૃષિ સહાયક',
-    dashboardHeroTitle:
-      'તમારા પાકનું રક્ષણ કરો. આત્મવિશ્વાસ સાથે આગળ વધો.',
+    dashboardAiBadge: 'AI આધારિત કૃષિ સાથી',
+    dashboardHeroTitle: 'સ્માર્ટ ખેતીની શરૂઆત અહીંથી થાય છે.',
     dashboardHeroDescription:
-      'પાકના રોગો ઓળખો, નિષ્ણાત માર્ગદર્શન મેળવો અને CropSaver સાથે વધુ સારા ખેતીના નિર્ણયો લો.',
-    aiDiagnosis: 'AI રોગ નિદાન',
+      'તમારા પાકનું રક્ષણ કરો, રોગોની વહેલી ઓળખ કરો અને CropSaver સાથે વધુ સારા કૃષિ નિર્ણયો લો.',
+    detectDisease: 'રોગ ઓળખો',
+    askCropSaver: 'CropSaver ને પૂછો',
+    aiDiagnosis: 'AI પાક નિદાન',
     localLanguages: 'સ્થાનિક ભાષાઓ',
-    anytimeAssistance: '24/7 સહાય',
-    farmingToolkit: 'તમારું કૃષિ ટૂલકિટ',
-    toolkitTitle: 'તમારા પાકની દરેક જરૂરિયાત, એક જ જગ્યાએ.',
+    anytimeAssistance: 'ક્યારેય પણ સહાય',
+
+    farmingToolkit: 'કૃષિ ટૂલકિટ',
+    toolkitTitle: 'સ્વસ્થ પાક માટે જરૂરી તમામ સાધનો',
     toolkitDescription:
-      'સમસ્યાઓ વહેલી ઓળખવા, વિશ્વસનીય માહિતી મેળવવા અને સારા નિર્ણયો લેવા માટે સ્માર્ટ સાધનો.',
-    aiCropDoctor: 'AI પાક ડૉક્ટર',
-    diseaseFeatureTitle: 'પાકના રોગો ફેલાય તે પહેલાં ઓળખો.',
+      'પાકનું રક્ષણ કરવા, કૃષિ સમસ્યાઓ ઉકેલવા અને યોગ્ય નિર્ણયો લેવા માટે સ્માર્ટ સાધનો.',
+
+    diseaseFeatureTitle: 'પાકના રોગોને તરત ઓળખો',
     diseaseFeatureDescription:
-      'પાકનો ફોટો અપલોડ કરો અને CropSaver પાસેથી રોગની ઓળખ અને સારવારની સલાહ મેળવો.',
-    startDiagnosis: 'નિદાન શરૂ કરો',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'ખેતીના પ્રશ્નોના જવાબ તરત મેળવો.',
+      'પાકનો ફોટો અપલોડ કરો અને CropSaver AI દ્વારા સંભવિત રોગ અને સારવાર માર્ગદર્શન મેળવો.',
+    aiCropDoctor: 'AI પાક ડૉક્ટર',
+    startDiagnosis: 'તપાસ શરૂ કરો',
+
+    aiFeatureTitle: 'તમારો વ્યક્તિગત AI કૃષિ સહાયક',
     aiFeatureDescription:
-      'પાક, રોગ, જીવાત, સિંચાઈ, ખાતર અને ખેતી વિશે તમારી ભાષામાં પૂછો.',
-    askCropSaver: 'CropSaverને પૂછો',
-    finalCtaTitle: 'તમારા પાક માટે મદદ જોઈએ છે?',
+      'પાક, સિંચાઈ, જીવાત, ખાતર અને રોગો વિશે તમારી ભાષામાં પ્રશ્નો પૂછો.',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'ખેતી વિશે કોઈ પ્રશ્ન છે?',
     finalCtaDescription:
-      'CropSaver AI સાથે વાત કરો અને જરૂર પડે ત્યારે કૃષિ માર્ગદર્શન મેળવો.',
-    tryAsking: 'પૂછી જુઓ',
+      'CropSaver AI તમને ઉપયોગી કૃષિ માર્ગદર્શન આપવા માટે તૈયાર છે.',
+
+    footerDescription:
+      'AI આધારિત સ્માર્ટ કૃષિ સહાય — ખેડૂતોને પાકનું રક્ષણ કરવા, વધુ સારા નિર્ણયો લેવા અને આત્મવિશ્વાસથી ખેતી કરવામાં મદદ કરે છે.',
+    madeForFarmers: 'ભારતીય ખેડૂતો માટે બનાવેલ',
+    farmingTools: 'કૃષિ સાધનો',
+    explore: 'વધુ જાણો',
+    needHelp: 'મદદ જોઈએ?',
+    footerRights: 'બધા અધિકારો સુરક્ષિત.',
+    footerMessage: 'વધુ સારી ખેતી માટે ટેકનોલોજી',
   },
 
   mr: {
     dashboardWelcome: 'स्वागत आहे',
-    dashboardAiBadge: 'एआय आधारित शेती सहाय्यक',
-    dashboardHeroTitle:
-      'तुमच्या पिकांचे संरक्षण करा. आत्मविश्वासाने शेती करा.',
+    dashboardAiBadge: 'एआय आधारित शेती साथी',
+    dashboardHeroTitle: 'स्मार्ट शेतीची सुरुवात इथून होते.',
     dashboardHeroDescription:
-      'पिकांचे रोग ओळखा, तज्ज्ञ मार्गदर्शन मिळवा आणि क्रॉपसेव्हरसह अधिक चांगले निर्णय घ्या.',
-    aiDiagnosis: 'एआय रोग निदान',
+      'तुमच्या पिकांचे संरक्षण करा, रोग लवकर ओळखा आणि CropSaver सोबत अधिक चांगले शेती निर्णय घ्या.',
+    detectDisease: 'रोग ओळखा',
+    askCropSaver: 'CropSaver ला विचारा',
+    aiDiagnosis: 'एआय पीक निदान',
     localLanguages: 'स्थानिक भाषा',
-    anytimeAssistance: '24/7 सहाय्य',
-    farmingToolkit: 'तुमचे शेती टूलकिट',
-    toolkitTitle: 'तुमच्या पिकाला आवश्यक सर्व काही एका ठिकाणी.',
+    anytimeAssistance: 'कधीही मदत',
+
+    farmingToolkit: 'शेती टूलकिट',
+    toolkitTitle: 'निरोगी पिकांसाठी आवश्यक सर्व साधने',
     toolkitDescription:
-      'समस्या लवकर ओळखण्यासाठी, विश्वसनीय माहिती आणि चांगले निर्णय घेण्यासाठी स्मार्ट साधने.',
-    aiCropDoctor: 'एआय पीक डॉक्टर',
-    diseaseFeatureTitle: 'पीक रोग पसरण्यापूर्वी ओळखा.',
+      'पिकांचे संरक्षण, शेतीच्या समस्या सोडवणे आणि योग्य निर्णय घेण्यासाठी स्मार्ट साधने.',
+
+    diseaseFeatureTitle: 'पिकांचे रोग त्वरित ओळखा',
     diseaseFeatureDescription:
-      'पिकाचा फोटो अपलोड करा आणि क्रॉपसेव्हरकडून रोग ओळख व उपचार मार्गदर्शन मिळवा.',
-    startDiagnosis: 'निदान सुरू करा',
-    cropSaverAi: 'क्रॉपसेव्हर एआय',
-    aiFeatureTitle: 'शेतीच्या प्रश्नांची उत्तरे त्वरित मिळवा.',
+      'पिकाचा फोटो अपलोड करा आणि CropSaver AI कडून संभाव्य रोग व उपचार मार्गदर्शन मिळवा.',
+    aiCropDoctor: 'एआय पीक डॉक्टर',
+    startDiagnosis: 'तपासणी सुरू करा',
+
+    aiFeatureTitle: 'तुमचा वैयक्तिक एआय शेती सहाय्यक',
     aiFeatureDescription:
-      'पिके, रोग, कीड, सिंचन, खते आणि शेतीबद्दल आपल्या भाषेत विचारा.',
-    askCropSaver: 'क्रॉपसेव्हरला विचारा',
-    finalCtaTitle: 'तुमच्या पिकासाठी मदत हवी आहे?',
+      'पीक, सिंचन, कीड, खत आणि रोगांविषयी तुमच्या भाषेत प्रश्न विचारा.',
+    cropSaverAi: 'CropSaver एआय',
+
+    finalCtaTitle: 'शेतीविषयी काही प्रश्न आहे?',
     finalCtaDescription:
-      'क्रॉपसेव्हर एआयशी बोला आणि आवश्यक तेव्हा शेतीविषयक मार्गदर्शन मिळवा.',
-    tryAsking: 'विचारून पहा',
+      'CropSaver AI तुम्हाला उपयुक्त शेती मार्गदर्शन देण्यासाठी तयार आहे.',
+
+    footerDescription:
+      'एआय आधारित स्मार्ट शेती सहाय्य — शेतकऱ्यांना पिकांचे संरक्षण, चांगले निर्णय आणि आत्मविश्वासाने शेती करण्यास मदत करते.',
+    madeForFarmers: 'भारतीय शेतकऱ्यांसाठी तयार केले',
+    farmingTools: 'शेती साधने',
+    explore: 'अधिक जाणून घ्या',
+    needHelp: 'मदत हवी आहे?',
+    footerRights: 'सर्व हक्क राखीव.',
+    footerMessage: 'उत्तम शेतीसाठी तंत्रज्ञान',
   },
 
   pa: {
     dashboardWelcome: 'ਜੀ ਆਇਆਂ ਨੂੰ',
-    dashboardAiBadge: 'ਏਆਈ ਆਧਾਰਿਤ ਖੇਤੀ ਸਹਾਇਕ',
-    dashboardHeroTitle:
-      'ਆਪਣੀਆਂ ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ ਕਰੋ। ਭਰੋਸੇ ਨਾਲ ਖੇਤੀ ਕਰੋ।',
+    dashboardAiBadge: 'AI ਖੇਤੀ ਸਾਥੀ',
+    dashboardHeroTitle: 'ਸਮਾਰਟ ਖੇਤੀ ਦੀ ਸ਼ੁਰੂਆਤ ਇੱਥੋਂ ਹੁੰਦੀ ਹੈ।',
     dashboardHeroDescription:
-      'ਫਸਲਾਂ ਦੇ ਰੋਗ ਪਛਾਣੋ, ਮਾਹਿਰ ਸਲਾਹ ਲਵੋ ਅਤੇ CropSaver ਨਾਲ ਬਿਹਤਰ ਫੈਸਲੇ ਕਰੋ।',
-    aiDiagnosis: 'ਏਆਈ ਰੋਗ ਪਛਾਣ',
-    localLanguages: 'ਸਥਾਨਕ ਭਾਸ਼ਾਵਾਂ',
-    anytimeAssistance: '24/7 ਸਹਾਇਤਾ',
-    farmingToolkit: 'ਤੁਹਾਡਾ ਖੇਤੀ ਟੂਲਕਿਟ',
-    toolkitTitle: 'ਤੁਹਾਡੀ ਫਸਲ ਲਈ ਲੋੜੀਂਦੀ ਹਰ ਚੀਜ਼ ਇੱਕ ਥਾਂ।',
-    toolkitDescription:
-      'ਸਮੱਸਿਆਵਾਂ ਨੂੰ ਜਲਦੀ ਪਛਾਣਣ ਅਤੇ ਬਿਹਤਰ ਫੈਸਲੇ ਕਰਨ ਲਈ ਸਮਾਰਟ ਸਾਧਨ।',
-    aiCropDoctor: 'ਏਆਈ ਫਸਲ ਡਾਕਟਰ',
-    diseaseFeatureTitle: 'ਫਸਲ ਦੇ ਰੋਗ ਫੈਲਣ ਤੋਂ ਪਹਿਲਾਂ ਪਛਾਣੋ।',
-    diseaseFeatureDescription:
-      'ਫਸਲ ਦੀ ਤਸਵੀਰ ਅਪਲੋਡ ਕਰੋ ਅਤੇ CropSaver ਤੋਂ ਰੋਗ ਦੀ ਪਛਾਣ ਅਤੇ ਇਲਾਜ ਦੀ ਸਲਾਹ ਲਵੋ।',
-    startDiagnosis: 'ਜਾਂਚ ਸ਼ੁਰੂ ਕਰੋ',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'ਖੇਤੀ ਦੇ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਤੁਰੰਤ ਪਾਓ।',
-    aiFeatureDescription:
-      'ਫਸਲਾਂ, ਰੋਗਾਂ, ਕੀੜਿਆਂ, ਸਿੰਚਾਈ ਅਤੇ ਖਾਦ ਬਾਰੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਪੁੱਛੋ।',
+      'ਆਪਣੀਆਂ ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ ਕਰੋ, ਬਿਮਾਰੀਆਂ ਦੀ ਜਲਦੀ ਪਛਾਣ ਕਰੋ ਅਤੇ CropSaver ਨਾਲ ਵਧੀਆ ਖੇਤੀ ਫੈਸਲੇ ਲਓ।',
+    detectDisease: 'ਬਿਮਾਰੀ ਪਛਾਣੋ',
     askCropSaver: 'CropSaver ਨੂੰ ਪੁੱਛੋ',
-    finalCtaTitle: 'ਆਪਣੀ ਫਸਲ ਲਈ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?',
+    aiDiagnosis: 'AI ਫਸਲ ਜਾਂਚ',
+    localLanguages: 'ਸਥਾਨਕ ਭਾਸ਼ਾਵਾਂ',
+    anytimeAssistance: 'ਕਿਸੇ ਵੀ ਵੇਲੇ ਮਦਦ',
+
+    farmingToolkit: 'ਖੇਤੀ ਟੂਲਕਿਟ',
+    toolkitTitle: 'ਸਿਹਤਮੰਦ ਫਸਲਾਂ ਲਈ ਲੋੜੀਂਦੇ ਸਾਰੇ ਸਾਧਨ',
+    toolkitDescription:
+      'ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ, ਖੇਤੀ ਸਮੱਸਿਆਵਾਂ ਦੇ ਹੱਲ ਅਤੇ ਵਧੀਆ ਫੈਸਲਿਆਂ ਲਈ ਸਮਾਰਟ ਸਾਧਨ।',
+
+    diseaseFeatureTitle: 'ਫਸਲ ਦੀ ਬਿਮਾਰੀ ਤੁਰੰਤ ਪਛਾਣੋ',
+    diseaseFeatureDescription:
+      'ਫਸਲ ਦੀ ਤਸਵੀਰ ਅਪਲੋਡ ਕਰੋ ਅਤੇ CropSaver AI ਤੋਂ ਬਿਮਾਰੀ ਅਤੇ ਇਲਾਜ ਬਾਰੇ ਮਾਰਗਦਰਸ਼ਨ ਲਵੋ।',
+    aiCropDoctor: 'AI ਫਸਲ ਡਾਕਟਰ',
+    startDiagnosis: 'ਜਾਂਚ ਸ਼ੁਰੂ ਕਰੋ',
+
+    aiFeatureTitle: 'ਤੁਹਾਡਾ ਨਿੱਜੀ AI ਖੇਤੀ ਸਹਾਇਕ',
+    aiFeatureDescription:
+      'ਫਸਲਾਂ, ਸਿੰਚਾਈ, ਕੀੜਿਆਂ, ਖਾਦ ਅਤੇ ਬਿਮਾਰੀਆਂ ਬਾਰੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਪੁੱਛੋ।',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'ਖੇਤੀ ਬਾਰੇ ਕੋਈ ਸਵਾਲ ਹੈ?',
     finalCtaDescription:
-      'CropSaver AI ਨਾਲ ਗੱਲ ਕਰੋ ਅਤੇ ਲੋੜ ਵੇਲੇ ਖੇਤੀ ਦੀ ਸਲਾਹ ਲਵੋ।',
-    tryAsking: 'ਪੁੱਛ ਕੇ ਵੇਖੋ',
+      'CropSaver AI ਤੁਹਾਡੀ ਖੇਤੀ ਸੰਬੰਧੀ ਮਦਦ ਲਈ ਤਿਆਰ ਹੈ।',
+
+    footerDescription:
+      'ਏਆਈ ਆਧਾਰਿਤ ਸਮਾਰਟ ਖੇਤੀ ਸਹਾਇਤਾ — ਕਿਸਾਨਾਂ ਨੂੰ ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ ਕਰਨ ਅਤੇ ਬਿਹਤਰ ਖੇਤੀ ਫੈਸਲੇ ਲੈਣ ਵਿੱਚ ਮਦਦ ਕਰਦੀ ਹੈ।',
+    madeForFarmers: 'ਭਾਰਤੀ ਕਿਸਾਨਾਂ ਲਈ ਬਣਾਇਆ ਗਿਆ',
+    farmingTools: 'ਖੇਤੀ ਸਾਧਨ',
+    explore: 'ਹੋਰ ਜਾਣੋ',
+    needHelp: 'ਮਦਦ ਚਾਹੀਦੀ ਹੈ?',
+    footerRights: 'ਸਾਰੇ ਅਧਿਕਾਰ ਰਾਖਵੇਂ ਹਨ।',
+    footerMessage: 'ਬਿਹਤਰ ਖੇਤੀ ਲਈ ਤਕਨਾਲੋਜੀ',
   },
 
   bn: {
     dashboardWelcome: 'স্বাগতম',
-    dashboardAiBadge: 'এআই-চালিত কৃষি সহায়ক',
-    dashboardHeroTitle:
-      'আপনার ফসল রক্ষা করুন। আত্মবিশ্বাসের সঙ্গে চাষ করুন।',
+    dashboardAiBadge: 'AI কৃষি সহায়ক',
+    dashboardHeroTitle: 'স্মার্ট কৃষির শুরু এখানেই।',
     dashboardHeroDescription:
-      'ফসলের রোগ শনাক্ত করুন, বিশেষজ্ঞ পরামর্শ নিন এবং CropSaver-এর সাহায্যে আরও ভালো সিদ্ধান্ত নিন।',
-    aiDiagnosis: 'এআই রোগ নির্ণয়',
-    localLanguages: 'স্থানীয় ভাষা',
-    anytimeAssistance: '২৪/৭ সহায়তা',
-    farmingToolkit: 'আপনার কৃষি টুলকিট',
-    toolkitTitle: 'আপনার ফসলের প্রয়োজনীয় সবকিছু এক জায়গায়।',
-    toolkitDescription:
-      'সমস্যা দ্রুত শনাক্ত করা, নির্ভরযোগ্য তথ্য পাওয়া এবং ভালো সিদ্ধান্ত নেওয়ার জন্য স্মার্ট সরঞ্জাম।',
-    aiCropDoctor: 'এআই ফসল ডাক্তার',
-    diseaseFeatureTitle: 'রোগ ছড়ানোর আগেই শনাক্ত করুন।',
-    diseaseFeatureDescription:
-      'ফসলের ছবি আপলোড করুন এবং CropSaver থেকে রোগ শনাক্তকরণ ও চিকিৎসার পরামর্শ নিন।',
-    startDiagnosis: 'রোগ নির্ণয় শুরু করুন',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'কৃষি বিষয়ক প্রশ্নের উত্তর সঙ্গে সঙ্গে পান।',
-    aiFeatureDescription:
-      'ফসল, রোগ, পোকামাকড়, সেচ, সার এবং কৃষি পদ্ধতি সম্পর্কে নিজের ভাষায় প্রশ্ন করুন।',
+      'আপনার ফসল রক্ষা করুন, রোগ দ্রুত শনাক্ত করুন এবং CropSaver-এর সাহায্যে আরও ভালো কৃষি সিদ্ধান্ত নিন।',
+    detectDisease: 'রোগ শনাক্ত করুন',
     askCropSaver: 'CropSaver-কে জিজ্ঞাসা করুন',
-    finalCtaTitle: 'আপনার ফসলের জন্য সাহায্য দরকার?',
+    aiDiagnosis: 'AI ফসল নির্ণয়',
+    localLanguages: 'স্থানীয় ভাষা',
+    anytimeAssistance: 'যেকোনো সময় সহায়তা',
+
+    farmingToolkit: 'কৃষি টুলকিট',
+    toolkitTitle: 'সুস্থ ফসলের জন্য প্রয়োজনীয় সবকিছু',
+    toolkitDescription:
+      'ফসল রক্ষা, কৃষি সমস্যা সমাধান এবং সঠিক সিদ্ধান্ত নেওয়ার জন্য স্মার্ট সরঞ্জাম।',
+
+    diseaseFeatureTitle: 'ফসলের রোগ দ্রুত শনাক্ত করুন',
+    diseaseFeatureDescription:
+      'ফসলের ছবি আপলোড করুন এবং CropSaver AI থেকে রোগ ও চিকিৎসার নির্দেশনা পান।',
+    aiCropDoctor: 'AI ফসল ডাক্তার',
+    startDiagnosis: 'পরীক্ষা শুরু করুন',
+
+    aiFeatureTitle: 'আপনার ব্যক্তিগত AI কৃষি সহায়ক',
+    aiFeatureDescription:
+      'ফসল, সেচ, কীটপতঙ্গ, সার ও রোগ সম্পর্কে নিজের ভাষায় প্রশ্ন করুন।',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'কৃষি নিয়ে কোনো প্রশ্ন আছে?',
     finalCtaDescription:
-      'CropSaver AI-এর সঙ্গে কথা বলুন এবং প্রয়োজনমতো কৃষি পরামর্শ পান।',
-    tryAsking: 'জিজ্ঞাসা করে দেখুন',
+      'CropSaver AI আপনার কৃষি সংক্রান্ত প্রশ্নে সাহায্য করতে প্রস্তুত।',
+
+    footerDescription:
+      'এআই-চালিত স্মার্ট কৃষি সহায়তা — কৃষকদের ফসল রক্ষা করতে এবং আরও ভালো কৃষি সিদ্ধান্ত নিতে সাহায্য করে।',
+    madeForFarmers: 'ভারতীয় কৃষকদের জন্য তৈরি',
+    farmingTools: 'কৃষি সরঞ্জাম',
+    explore: 'আরও জানুন',
+    needHelp: 'সাহায্য দরকার?',
+    footerRights: 'সর্বস্বত্ব সংরক্ষিত।',
+    footerMessage: 'উন্নত কৃষির জন্য প্রযুক্তি',
   },
 
   ta: {
     dashboardWelcome: 'வரவேற்கிறோம்',
-    dashboardAiBadge: 'AI ஆதரவு விவசாய உதவியாளர்',
-    dashboardHeroTitle:
-      'உங்கள் பயிர்களை பாதுகாத்திடுங்கள். நம்பிக்கையுடன் வளருங்கள்.',
+    dashboardAiBadge: 'AI விவசாய துணை',
+    dashboardHeroTitle: 'ஸ்மார்ட் விவசாயம் இங்கிருந்து தொடங்குகிறது.',
     dashboardHeroDescription:
-      'பயிர் நோய்களை கண்டறிந்து, நிபுணர் வழிகாட்டுதலைப் பெற்று CropSaver மூலம் சிறந்த விவசாய முடிவுகளை எடுக்குங்கள்.',
-    aiDiagnosis: 'AI நோய் கண்டறிதல்',
-    localLanguages: 'உள்ளூர் மொழிகள்',
-    anytimeAssistance: '24/7 உதவி',
-    farmingToolkit: 'உங்கள் விவசாய கருவிகள்',
-    toolkitTitle: 'உங்கள் பயிருக்கு தேவையான அனைத்தும் ஒரே இடத்தில்.',
-    toolkitDescription:
-      'பிரச்சினைகளை விரைவாக கண்டறிந்து, நம்பகமான தகவலுடன் சிறந்த முடிவுகளை எடுக்க உதவும் கருவிகள்.',
-    aiCropDoctor: 'AI பயிர் மருத்துவர்',
-    diseaseFeatureTitle: 'பயிர் நோய்கள் பரவும் முன் கண்டறியுங்கள்.',
-    diseaseFeatureDescription:
-      'பயிரின் படத்தை பதிவேற்றி CropSaver மூலம் நோயைக் கண்டறிந்து சிகிச்சை ஆலோசனை பெறுங்கள்.',
-    startDiagnosis: 'கண்டறிதலை தொடங்கு',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'உங்கள் விவசாய கேள்விகளுக்கு உடனடி பதில்.',
-    aiFeatureDescription:
-      'பயிர்கள், நோய்கள், பூச்சிகள், பாசனம், உரங்கள் மற்றும் விவசாய முறைகள் குறித்து உங்கள் மொழியில் கேளுங்கள்.',
+      'உங்கள் பயிர்களை பாதுகாத்து, நோய்களை விரைவாக கண்டறிந்து CropSaver மூலம் சிறந்த விவசாய முடிவுகளை எடுக்கவும்.',
+    detectDisease: 'நோயை கண்டறியவும்',
     askCropSaver: 'CropSaver-ஐ கேளுங்கள்',
-    finalCtaTitle: 'உங்கள் பயிருக்கு உதவி தேவையா?',
+    aiDiagnosis: 'AI பயிர் கண்டறிதல்',
+    localLanguages: 'உள்ளூர் மொழிகள்',
+    anytimeAssistance: 'எப்போதும் உதவி',
+
+    farmingToolkit: 'விவசாய கருவிகள்',
+    toolkitTitle: 'ஆரோக்கியமான பயிர்களுக்கு தேவையான அனைத்தும்',
+    toolkitDescription:
+      'பயிர்களை பாதுகாக்கவும் விவசாய பிரச்சினைகளை தீர்க்கவும் உதவும் ஸ்மார்ட் கருவிகள்.',
+
+    diseaseFeatureTitle: 'பயிர் நோய்களை உடனடியாக கண்டறியுங்கள்',
+    diseaseFeatureDescription:
+      'பயிரின் புகைப்படத்தை பதிவேற்றி CropSaver AI மூலம் நோய் மற்றும் சிகிச்சை வழிகாட்டுதலை பெறுங்கள்.',
+    aiCropDoctor: 'AI பயிர் மருத்துவர்',
+    startDiagnosis: 'பரிசோதனையை தொடங்கு',
+
+    aiFeatureTitle: 'உங்கள் தனிப்பட்ட AI விவசாய உதவியாளர்',
+    aiFeatureDescription:
+      'பயிர்கள், நீர்ப்பாசனம், பூச்சிகள், உரங்கள் மற்றும் நோய்கள் குறித்து உங்கள் மொழியில் கேளுங்கள்.',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'விவசாயம் குறித்து கேள்வி உள்ளதா?',
     finalCtaDescription:
-      'CropSaver AI உடன் பேசி தேவையான போது விவசாய வழிகாட்டுதலைப் பெறுங்கள்.',
-    tryAsking: 'கேட்டுப் பாருங்கள்',
+      'CropSaver AI உங்களுக்கு பயனுள்ள விவசாய வழிகாட்டுதலை வழங்க தயாராக உள்ளது.',
+
+    footerDescription:
+      'AI ஆதரவு ஸ்மார்ட் விவசாய உதவி — விவசாயிகள் பயிர்களை பாதுகாக்கவும் சிறந்த முடிவுகளை எடுக்கவும் உதவுகிறது.',
+    madeForFarmers: 'இந்திய விவசாயிகளுக்காக உருவாக்கப்பட்டது',
+    farmingTools: 'விவசாய கருவிகள்',
+    explore: 'மேலும் அறிய',
+    needHelp: 'உதவி தேவையா?',
+    footerRights: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.',
+    footerMessage: 'சிறந்த விவசாயத்திற்கான தொழில்நுட்பம்',
   },
 
   te: {
     dashboardWelcome: 'స్వాగతం',
-    dashboardAiBadge: 'ఏఐ ఆధారిత వ్యవసాయ సహాయకుడు',
-    dashboardHeroTitle:
-      'మీ పంటలను రక్షించండి. నమ్మకంతో సాగు చేయండి.',
+    dashboardAiBadge: 'AI వ్యవసాయ సహాయకుడు',
+    dashboardHeroTitle: 'స్మార్ట్ వ్యవసాయం ఇక్కడి నుంచే ప్రారంభమవుతుంది.',
     dashboardHeroDescription:
-      'పంట వ్యాధులను గుర్తించండి, నిపుణుల మార్గదర్శనం పొందండి మరియు CropSaverతో మెరుగైన వ్యవసాయ నిర్ణయాలు తీసుకోండి.',
-    aiDiagnosis: 'ఏఐ వ్యాధి నిర్ధారణ',
+      'మీ పంటలను రక్షించండి, వ్యాధులను త్వరగా గుర్తించండి మరియు CropSaver సహాయంతో మెరుగైన వ్యవసాయ నిర్ణయాలు తీసుకోండి.',
+    detectDisease: 'వ్యాధిని గుర్తించండి',
+    askCropSaver: 'CropSaver ను అడగండి',
+    aiDiagnosis: 'AI పంట నిర్ధారణ',
     localLanguages: 'స్థానిక భాషలు',
-    anytimeAssistance: '24/7 సహాయం',
-    farmingToolkit: 'మీ వ్యవసాయ టూల్‌కిట్',
-    toolkitTitle: 'మీ పంటకు కావలసిన ప్రతిదీ ఒకే చోట.',
+    anytimeAssistance: 'ఎప్పుడైనా సహాయం',
+
+    farmingToolkit: 'వ్యవసాయ టూల్‌కిట్',
+    toolkitTitle: 'ఆరోగ్యకరమైన పంటలకు అవసరమైన అన్ని సాధనాలు',
     toolkitDescription:
-      'సమస్యలను ముందుగానే గుర్తించి, నమ్మదగిన సమాచారంతో మెరుగైన నిర్ణయాలు తీసుకోవడానికి స్మార్ట్ సాధనాలు.',
-    aiCropDoctor: 'ఏఐ పంట డాక్టర్',
-    diseaseFeatureTitle: 'పంట వ్యాధులు వ్యాపించే ముందే గుర్తించండి.',
+      'పంటలను రక్షించడానికి మరియు వ్యవసాయ సమస్యలను పరిష్కరించడానికి స్మార్ట్ సాధనాలు.',
+
+    diseaseFeatureTitle: 'పంట వ్యాధులను వెంటనే గుర్తించండి',
     diseaseFeatureDescription:
-      'పంట ఫోటోను అప్‌లోడ్ చేసి CropSaver ద్వారా వ్యాధి గుర్తింపు మరియు చికిత్స సలహా పొందండి.',
-    startDiagnosis: 'నిర్ధారణ ప్రారంభించండి',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'వ్యవసాయ ప్రశ్నలకు వెంటనే సమాధానాలు పొందండి.',
+      'పంట ఫోటోను అప్‌లోడ్ చేసి CropSaver AI ద్వారా వ్యాధి మరియు చికిత్స మార్గదర్శకత్వం పొందండి.',
+    aiCropDoctor: 'AI పంట డాక్టర్',
+    startDiagnosis: 'పరీక్ష ప్రారంభించండి',
+
+    aiFeatureTitle: 'మీ వ్యక్తిగత AI వ్యవసాయ సహాయకుడు',
     aiFeatureDescription:
-      'పంటలు, వ్యాధులు, పురుగులు, నీటిపారుదల, ఎరువులు మరియు సాగు పద్ధతుల గురించి మీ భాషలో అడగండి.',
-    askCropSaver: 'CropSaverను అడగండి',
-    finalCtaTitle: 'మీ పంటకు సహాయం కావాలా?',
+      'పంటలు, నీటిపారుదల, పురుగులు, ఎరువులు మరియు వ్యాధుల గురించి మీ భాషలో అడగండి.',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'వ్యవసాయం గురించి ప్రశ్న ఉందా?',
     finalCtaDescription:
-      'CropSaver AIతో మాట్లాడి అవసరమైనప్పుడు వ్యవసాయ మార్గదర్శనం పొందండి.',
-    tryAsking: 'అడిగి చూడండి',
+      'CropSaver AI మీ వ్యవసాయ ప్రశ్నలకు సహాయం చేయడానికి సిద్ధంగా ఉంది.',
+
+    footerDescription:
+      'ఏఐ ఆధారిత స్మార్ట్ వ్యవసాయ సహాయం — రైతులు పంటలను రక్షించుకోవడానికి మరియు మెరుగైన నిర్ణయాలు తీసుకోవడానికి సహాయపడుతుంది.',
+    madeForFarmers: 'భారతీయ రైతుల కోసం రూపొందించబడింది',
+    farmingTools: 'వ్యవసాయ సాధనాలు',
+    explore: 'మరింత తెలుసుకోండి',
+    needHelp: 'సహాయం కావాలా?',
+    footerRights: 'అన్ని హక్కులు ప్రత్యేకించబడ్డాయి.',
+    footerMessage: 'మెరుగైన వ్యవసాయం కోసం సాంకేతికత',
   },
 
   kn: {
     dashboardWelcome: 'ಸ್ವಾಗತ',
-    dashboardAiBadge: 'ಎಐ ಆಧಾರಿತ ಕೃಷಿ ಸಹಾಯಕ',
-    dashboardHeroTitle:
-      'ನಿಮ್ಮ ಬೆಳೆಗಳನ್ನು ರಕ್ಷಿಸಿ. ಆತ್ಮವಿಶ್ವಾಸದಿಂದ ಬೆಳೆಯಿರಿ.',
+    dashboardAiBadge: 'AI ಕೃಷಿ ಸಹಾಯಕ',
+    dashboardHeroTitle: 'ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಇಲ್ಲಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.',
     dashboardHeroDescription:
-      'ಬೆಳೆ ರೋಗಗಳನ್ನು ಗುರುತಿಸಿ, ತಜ್ಞರ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ ಮತ್ತು CropSaver ಮೂಲಕ ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ.',
-    aiDiagnosis: 'ಎಐ ರೋಗ ನಿರ್ಣಯ',
-    localLanguages: 'ಸ್ಥಳೀಯ ಭಾಷೆಗಳು',
-    anytimeAssistance: '24/7 ಸಹಾಯ',
-    farmingToolkit: 'ನಿಮ್ಮ ಕೃಷಿ ಟೂಲ್‌ಕಿಟ್',
-    toolkitTitle: 'ನಿಮ್ಮ ಬೆಳೆಗೆ ಬೇಕಾದ ಎಲ್ಲವೂ ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ.',
-    toolkitDescription:
-      'ಸಮಸ್ಯೆಗಳನ್ನು ಬೇಗ ಗುರುತಿಸಿ, ವಿಶ್ವಾಸಾರ್ಹ ಮಾಹಿತಿ ಪಡೆದು ಉತ್ತಮ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಸ್ಮಾರ್ಟ್ ಸಾಧನಗಳು.',
-    aiCropDoctor: 'ಎಐ ಬೆಳೆ ವೈದ್ಯ',
-    diseaseFeatureTitle: 'ಬೆಳೆ ರೋಗಗಳು ಹರಡುವ ಮೊದಲು ಗುರುತಿಸಿ.',
-    diseaseFeatureDescription:
-      'ಬೆಳೆಯ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ CropSaver ಮೂಲಕ ರೋಗ ಗುರುತಿಸುವಿಕೆ ಮತ್ತು ಚಿಕಿತ್ಸಾ ಸಲಹೆ ಪಡೆಯಿರಿ.',
-    startDiagnosis: 'ರೋಗನಿರ್ಣಯ ಪ್ರಾರಂಭಿಸಿ',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'ನಿಮ್ಮ ಕೃಷಿ ಪ್ರಶ್ನೆಗಳಿಗೆ ತಕ್ಷಣ ಉತ್ತರ ಪಡೆಯಿರಿ.',
-    aiFeatureDescription:
-      'ಬೆಳೆ, ರೋಗ, ಕೀಟ, ನೀರಾವರಿ, ಗೊಬ್ಬರ ಮತ್ತು ಕೃಷಿ ವಿಧಾನಗಳ ಬಗ್ಗೆ ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಕೇಳಿ.',
+      'ನಿಮ್ಮ ಬೆಳೆಗಳನ್ನು ರಕ್ಷಿಸಿ, ರೋಗಗಳನ್ನು ಬೇಗ ಗುರುತಿಸಿ ಮತ್ತು CropSaver ಮೂಲಕ ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ.',
+    detectDisease: 'ರೋಗ ಗುರುತಿಸಿ',
     askCropSaver: 'CropSaver ಅನ್ನು ಕೇಳಿ',
-    finalCtaTitle: 'ನಿಮ್ಮ ಬೆಳೆಗೆ ಸಹಾಯ ಬೇಕೇ?',
+    aiDiagnosis: 'AI ಬೆಳೆ ನಿರ್ಣಯ',
+    localLanguages: 'ಸ್ಥಳೀಯ ಭಾಷೆಗಳು',
+    anytimeAssistance: 'ಯಾವಾಗ ಬೇಕಾದರೂ ಸಹಾಯ',
+
+    farmingToolkit: 'ಕೃಷಿ ಟೂಲ್‌ಕಿಟ್',
+    toolkitTitle: 'ಆರೋಗ್ಯಕರ ಬೆಳೆಗಳಿಗೆ ಬೇಕಾದ ಎಲ್ಲ ಸಾಧನಗಳು',
+    toolkitDescription:
+      'ಬೆಳೆ ರಕ್ಷಣೆ, ಕೃಷಿ ಸಮಸ್ಯೆಗಳ ಪರಿಹಾರ ಮತ್ತು ಉತ್ತಮ ನಿರ್ಧಾರಗಳಿಗಾಗಿ ಸ್ಮಾರ್ಟ್ ಸಾಧನಗಳು.',
+
+    diseaseFeatureTitle: 'ಬೆಳೆ ರೋಗಗಳನ್ನು ತಕ್ಷಣ ಗುರುತಿಸಿ',
+    diseaseFeatureDescription:
+      'ಬೆಳೆಯ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ CropSaver AI ಮೂಲಕ ರೋಗ ಮತ್ತು ಚಿಕಿತ್ಸೆಯ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.',
+    aiCropDoctor: 'AI ಬೆಳೆ ವೈದ್ಯ',
+    startDiagnosis: 'ಪರಿಶೀಲನೆ ಆರಂಭಿಸಿ',
+
+    aiFeatureTitle: 'ನಿಮ್ಮ ವೈಯಕ್ತಿಕ AI ಕೃಷಿ ಸಹಾಯಕ',
+    aiFeatureDescription:
+      'ಬೆಳೆ, ನೀರಾವರಿ, ಕೀಟ, ಗೊಬ್ಬರ ಮತ್ತು ರೋಗಗಳ ಕುರಿತು ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಕೇಳಿ.',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'ಕೃಷಿ ಕುರಿತು ಪ್ರಶ್ನೆಯಿದೆಯೇ?',
     finalCtaDescription:
-      'CropSaver AI ಜೊತೆ ಮಾತನಾಡಿ ಮತ್ತು ಅಗತ್ಯವಿದ್ದಾಗ ಕೃಷಿ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.',
-    tryAsking: 'ಕೇಳಿ ನೋಡಿ',
+      'CropSaver AI ನಿಮಗೆ ಉಪಯುಕ್ತ ಕೃಷಿ ಮಾರ್ಗದರ್ಶನ ನೀಡಲು ಸಿದ್ಧವಾಗಿದೆ.',
+
+    footerDescription:
+      'ಎಐ ಆಧಾರಿತ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಸಹಾಯ — ರೈತರು ಬೆಳೆಗಳನ್ನು ರಕ್ಷಿಸಲು ಮತ್ತು ಉತ್ತಮ ಕೃಷಿ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.',
+    madeForFarmers: 'ಭಾರತೀಯ ರೈತರಿಗಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ',
+    farmingTools: 'ಕೃಷಿ ಸಾಧನಗಳು',
+    explore: 'ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ',
+    needHelp: 'ಸಹಾಯ ಬೇಕೇ?',
+    footerRights: 'ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
+    footerMessage: 'ಉತ್ತಮ ಕೃಷಿಗಾಗಿ ತಂತ್ರಜ್ಞಾನ',
   },
 
   ml: {
     dashboardWelcome: 'സ്വാഗതം',
-    dashboardAiBadge: 'എഐ അധിഷ്ഠിത കൃഷി സഹായി',
-    dashboardHeroTitle:
-      'നിങ്ങളുടെ വിളകളെ സംരക്ഷിക്കുക. ആത്മവിശ്വാസത്തോടെ കൃഷി ചെയ്യുക.',
+    dashboardAiBadge: 'AI കൃഷി സഹായി',
+    dashboardHeroTitle: 'സ്മാർട്ട് കൃഷി ഇവിടെ തുടങ്ങുന്നു.',
     dashboardHeroDescription:
-      'വിള രോഗങ്ങൾ കണ്ടെത്തുക, വിദഗ്ധ മാർഗനിർദേശം നേടുക, CropSaver ഉപയോഗിച്ച് മികച്ച കൃഷി തീരുമാനങ്ങൾ എടുക്കുക.',
-    aiDiagnosis: 'എഐ രോഗനിർണയം',
-    localLanguages: 'പ്രാദേശിക ഭാഷകൾ',
-    anytimeAssistance: '24/7 സഹായം',
-    farmingToolkit: 'നിങ്ങളുടെ കൃഷി ടൂൾകിറ്റ്',
-    toolkitTitle: 'നിങ്ങളുടെ വിളയ്ക്ക് വേണ്ടതെല്ലാം ഒരിടത്ത്.',
-    toolkitDescription:
-      'പ്രശ്നങ്ങൾ നേരത്തെ കണ്ടെത്താനും വിശ്വസനീയ വിവരങ്ങളോടെ മികച്ച തീരുമാനങ്ങൾ എടുക്കാനും സഹായിക്കുന്ന സ്മാർട്ട് ഉപകരണങ്ങൾ.',
-    aiCropDoctor: 'എഐ വിള ഡോക്ടർ',
-    diseaseFeatureTitle: 'വിള രോഗങ്ങൾ പടരുന്നതിന് മുമ്പ് കണ്ടെത്തുക.',
-    diseaseFeatureDescription:
-      'വിളയുടെ ചിത്രം അപ്‌ലോഡ് ചെയ്ത് CropSaver വഴി രോഗനിർണയവും ചികിത്സാ നിർദേശവും നേടുക.',
-    startDiagnosis: 'രോഗനിർണയം ആരംഭിക്കുക',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'കൃഷി ചോദ്യങ്ങൾക്ക് ഉടൻ മറുപടി നേടുക.',
-    aiFeatureDescription:
-      'വിളകൾ, രോഗങ്ങൾ, കീടങ്ങൾ, ജലസേചനം, വളങ്ങൾ, കൃഷിരീതികൾ എന്നിവയെക്കുറിച്ച് നിങ്ങളുടെ ഭാഷയിൽ ചോദിക്കുക.',
+      'നിങ്ങളുടെ വിളകൾ സംരക്ഷിക്കുക, രോഗങ്ങൾ നേരത്തെ കണ്ടെത്തുക, CropSaver ഉപയോഗിച്ച് മികച്ച കൃഷി തീരുമാനങ്ങൾ എടുക്കുക.',
+    detectDisease: 'രോഗം കണ്ടെത്തുക',
     askCropSaver: 'CropSaver-നോട് ചോദിക്കുക',
-    finalCtaTitle: 'നിങ്ങളുടെ വിളയ്ക്ക് സഹായം വേണോ?',
+    aiDiagnosis: 'AI വിള നിർണയം',
+    localLanguages: 'പ്രാദേശിക ഭാഷകൾ',
+    anytimeAssistance: 'എപ്പോൾ വേണമെങ്കിലും സഹായം',
+
+    farmingToolkit: 'കൃഷി ടൂൾകിറ്റ്',
+    toolkitTitle: 'ആരോഗ്യകരമായ വിളകൾക്കാവശ്യമായ എല്ലാ ഉപകരണങ്ങളും',
+    toolkitDescription:
+      'വിള സംരക്ഷണത്തിനും കൃഷി പ്രശ്നങ്ങൾ പരിഹരിക്കാനും സഹായിക്കുന്ന സ്മാർട്ട് ഉപകരണങ്ങൾ.',
+
+    diseaseFeatureTitle: 'വിള രോഗങ്ങൾ ഉടൻ കണ്ടെത്തുക',
+    diseaseFeatureDescription:
+      'വിളയുടെ ചിത്രം അപ്‌ലോഡ് ചെയ്ത് CropSaver AI വഴി രോഗവും ചികിത്സാ മാർഗനിർദേശവും നേടുക.',
+    aiCropDoctor: 'AI വിള ഡോക്ടർ',
+    startDiagnosis: 'പരിശോധന ആരംഭിക്കുക',
+
+    aiFeatureTitle: 'നിങ്ങളുടെ വ്യക്തിഗത AI കൃഷി സഹായി',
+    aiFeatureDescription:
+      'വിളകൾ, ജലസേചനം, കീടങ്ങൾ, വളങ്ങൾ, രോഗങ്ങൾ എന്നിവയെക്കുറിച്ച് നിങ്ങളുടെ ഭാഷയിൽ ചോദിക്കുക.',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'കൃഷിയെക്കുറിച്ച് ചോദ്യമുണ്ടോ?',
     finalCtaDescription:
-      'CropSaver AI-യോട് സംസാരിച്ച് ആവശ്യമുള്ളപ്പോൾ കൃഷി മാർഗനിർദേശം നേടുക.',
-    tryAsking: 'ചോദിച്ചു നോക്കൂ',
+      'CropSaver AI നിങ്ങൾക്ക് പ്രായോഗിക കൃഷി മാർഗനിർദേശം നൽകാൻ തയ്യാറാണ്.',
+
+    footerDescription:
+      'എഐ അധിഷ്ഠിത സ്മാർട്ട് കൃഷി സഹായം — കർഷകർക്ക് വിളകൾ സംരക്ഷിക്കാനും മികച്ച തീരുമാനങ്ങൾ എടുക്കാനും സഹായിക്കുന്നു.',
+    madeForFarmers: 'ഇന്ത്യൻ കർഷകർക്കായി നിർമ്മിച്ചത്',
+    farmingTools: 'കൃഷി ഉപകരണങ്ങൾ',
+    explore: 'കൂടുതൽ അറിയുക',
+    needHelp: 'സഹായം വേണോ?',
+    footerRights: 'എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം.',
+    footerMessage: 'മികച്ച കൃഷിക്കായി സാങ്കേതികവിദ്യ',
   },
 
   or: {
     dashboardWelcome: 'ସ୍ୱାଗତ',
-    dashboardAiBadge: 'ଏଆଇ ଆଧାରିତ କୃଷି ସହାୟକ',
-    dashboardHeroTitle:
-      'ଆପଣଙ୍କ ଫସଲକୁ ସୁରକ୍ଷା କରନ୍ତୁ। ଆତ୍ମବିଶ୍ୱାସରେ ଚାଷ କରନ୍ତୁ।',
+    dashboardAiBadge: 'AI କୃଷି ସହାୟକ',
+    dashboardHeroTitle: 'ସ୍ମାର୍ଟ କୃଷି ଏଠାରୁ ଆରମ୍ଭ ହୁଏ।',
     dashboardHeroDescription:
-      'ଫସଲ ରୋଗ ଚିହ୍ନଟ କରନ୍ତୁ, ବିଶେଷଜ୍ଞ ପରାମର୍ଶ ପାଆନ୍ତୁ ଏବଂ CropSaver ସହିତ ଉନ୍ନତ କୃଷି ନିଷ୍ପତ୍ତି ନିଅନ୍ତୁ।',
-    aiDiagnosis: 'ଏଆଇ ରୋଗ ନିର୍ଣ୍ଣୟ',
+      'ଆପଣଙ୍କ ଫସଲକୁ ସୁରକ୍ଷିତ କରନ୍ତୁ, ରୋଗକୁ ଶୀଘ୍ର ଚିହ୍ନଟ କରନ୍ତୁ ଏବଂ CropSaver ସହିତ ଉନ୍ନତ କୃଷି ନିଷ୍ପତ୍ତି ନିଅନ୍ତୁ।',
+    detectDisease: 'ରୋଗ ଚିହ୍ନଟ କରନ୍ତୁ',
+    askCropSaver: 'CropSaver କୁ ପଚାରନ୍ତୁ',
+    aiDiagnosis: 'AI ଫସଲ ନିର୍ଣ୍ଣୟ',
     localLanguages: 'ସ୍ଥାନୀୟ ଭାଷା',
-    anytimeAssistance: '24/7 ସହାୟତା',
-    farmingToolkit: 'ଆପଣଙ୍କ କୃଷି ଟୁଲକିଟ୍',
-    toolkitTitle: 'ଆପଣଙ୍କ ଫସଲର ସମସ୍ତ ଆବଶ୍ୟକତା ଏକ ସ୍ଥାନରେ।',
+    anytimeAssistance: 'ଯେକୌଣସି ସମୟରେ ସହାୟତା',
+
+    farmingToolkit: 'କୃଷି ଟୁଲକିଟ',
+    toolkitTitle: 'ସୁସ୍ଥ ଫସଲ ପାଇଁ ଆବଶ୍ୟକ ସମସ୍ତ ସାଧନ',
     toolkitDescription:
-      'ସମସ୍ୟା ଶୀଘ୍ର ଚିହ୍ନଟ କରି ଭଲ ନିଷ୍ପତ୍ତି ନେବାରେ ସାହାଯ୍ୟ କରୁଥିବା ସ୍ମାର୍ଟ ଉପକରଣ।',
-    aiCropDoctor: 'ଏଆଇ ଫସଲ ଡାକ୍ତର',
-    diseaseFeatureTitle: 'ଫସଲ ରୋଗ ବ୍ୟାପିବା ପୂର୍ବରୁ ଚିହ୍ନଟ କରନ୍ତୁ।',
+      'ଫସଲ ସୁରକ୍ଷା ଏବଂ କୃଷି ସମସ୍ୟାର ସମାଧାନ ପାଇଁ ସ୍ମାର୍ଟ ସାଧନ।',
+
+    diseaseFeatureTitle: 'ଫସଲ ରୋଗକୁ ତୁରନ୍ତ ଚିହ୍ନଟ କରନ୍ତୁ',
     diseaseFeatureDescription:
-      'ଫସଲର ଫଟୋ ଅପଲୋଡ୍ କରନ୍ତୁ ଏବଂ CropSaver ଠାରୁ ରୋଗ ଚିହ୍ନଟ ଓ ଚିକିତ୍ସା ପରାମର୍ଶ ପାଆନ୍ତୁ।',
-    startDiagnosis: 'ନିର୍ଣ୍ଣୟ ଆରମ୍ଭ କରନ୍ତୁ',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'କୃଷି ପ୍ରଶ୍ନର ଉତ୍ତର ତୁରନ୍ତ ପାଆନ୍ତୁ।',
+      'ଫସଲର ଫଟୋ ଅପଲୋଡ୍ କରି CropSaver AI ଠାରୁ ରୋଗ ଏବଂ ଚିକିତ୍ସା ମାର୍ଗଦର୍ଶନ ପାଆନ୍ତୁ।',
+    aiCropDoctor: 'AI ଫସଲ ଡାକ୍ତର',
+    startDiagnosis: 'ପରୀକ୍ଷା ଆରମ୍ଭ କରନ୍ତୁ',
+
+    aiFeatureTitle: 'ଆପଣଙ୍କ ବ୍ୟକ୍ତିଗତ AI କୃଷି ସହାୟକ',
     aiFeatureDescription:
-      'ଫସଲ, ରୋଗ, କୀଟ, ଜଳସେଚନ, ସାର ଏବଂ କୃଷି ପ୍ରଣାଳୀ ବିଷୟରେ ନିଜ ଭାଷାରେ ପଚାରନ୍ତୁ।',
-    askCropSaver: 'CropSaverକୁ ପଚାରନ୍ତୁ',
-    finalCtaTitle: 'ଆପଣଙ୍କ ଫସଲ ପାଇଁ ସାହାଯ୍ୟ ଦରକାର?',
+      'ଫସଲ, ଜଳସେଚନ, କୀଟ, ସାର ଏବଂ ରୋଗ ବିଷୟରେ ନିଜ ଭାଷାରେ ପଚାରନ୍ତୁ।',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'କୃଷି ବିଷୟରେ ପ୍ରଶ୍ନ ଅଛି?',
     finalCtaDescription:
-      'CropSaver AI ସହ କଥା ହୋଇ ଆବଶ୍ୟକ ସମୟରେ କୃଷି ପରାମର୍ଶ ପାଆନ୍ତୁ।',
-    tryAsking: 'ପଚାରି ଦେଖନ୍ତୁ',
+      'CropSaver AI ଆପଣଙ୍କୁ କୃଷି ସହାୟତା ଦେବାକୁ ପ୍ରସ୍ତୁତ।',
+
+    footerDescription:
+      'ଏଆଇ ଆଧାରିତ ସ୍ମାର୍ଟ କୃଷି ସହାୟତା — କୃଷକମାନଙ୍କୁ ଫସଲ ସୁରକ୍ଷା ଏବଂ ଉନ୍ନତ କୃଷି ନିଷ୍ପତ୍ତି ନେବାରେ ସାହାଯ୍ୟ କରେ।',
+    madeForFarmers: 'ଭାରତୀୟ କୃଷକଙ୍କ ପାଇଁ ନିର୍ମିତ',
+    farmingTools: 'କୃଷି ଉପକରଣ',
+    explore: 'ଅଧିକ ଜାଣନ୍ତୁ',
+    needHelp: 'ସାହାଯ୍ୟ ଦରକାର?',
+    footerRights: 'ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ।',
+    footerMessage: 'ଉନ୍ନତ କୃଷି ପାଇଁ ପ୍ରଯୁକ୍ତି',
   },
 
   as: {
     dashboardWelcome: 'স্বাগতম',
-    dashboardAiBadge: 'এআই-ভিত্তিক কৃষি সহায়ক',
-    dashboardHeroTitle:
-      'আপোনাৰ শস্য সুৰক্ষিত কৰক। আত্মবিশ্বাসেৰে খেতি কৰক।',
+    dashboardAiBadge: 'AI কৃষি সহায়ক',
+    dashboardHeroTitle: 'স্মাৰ্ট কৃষি ইয়াৰ পৰাই আৰম্ভ হয়।',
     dashboardHeroDescription:
-      'শস্যৰ ৰোগ চিনাক্ত কৰক, বিশেষজ্ঞৰ পৰামৰ্শ লওক আৰু CropSaverৰ সহায়ত উন্নত কৃষি সিদ্ধান্ত লওক।',
-    aiDiagnosis: 'এআই ৰোগ নিৰ্ণয়',
+      'আপোনাৰ শস্য সুৰক্ষিত কৰক, ৰোগ আগতেই চিনাক্ত কৰক আৰু CropSaver-ৰ সহায়ত উন্নত কৃষি সিদ্ধান্ত লওক।',
+    detectDisease: 'ৰোগ চিনাক্ত কৰক',
+    askCropSaver: 'CropSaver-ক সোধক',
+    aiDiagnosis: 'AI শস্য নিৰ্ণয়',
     localLanguages: 'স্থানীয় ভাষা',
-    anytimeAssistance: '24/7 সহায়',
-    farmingToolkit: 'আপোনাৰ কৃষি টুলকিট',
-    toolkitTitle: 'আপোনাৰ শস্যৰ সকলো প্ৰয়োজন একে ঠাইতে।',
+    anytimeAssistance: 'যিকোনো সময়তে সহায়',
+
+    farmingToolkit: 'কৃষি টুলকিট',
+    toolkitTitle: 'সুস্থ শস্যৰ বাবে প্ৰয়োজনীয় সকলো সঁজুলি',
     toolkitDescription:
-      'সমস্যা সোনকালে চিনাক্ত কৰি বিশ্বাসযোগ্য তথ্যৰ সহায়ত উন্নত সিদ্ধান্ত লোৱাৰ বাবে স্মাৰ্ট সঁজুলি।',
-    aiCropDoctor: 'এআই শস্য চিকিৎসক',
-    diseaseFeatureTitle: 'শস্যৰ ৰোগ বিয়পাৰ আগতেই চিনাক্ত কৰক।',
+      'শস্য সুৰক্ষা, কৃষি সমস্যা সমাধান আৰু উন্নত সিদ্ধান্তৰ বাবে স্মাৰ্ট সঁজুলি।',
+
+    diseaseFeatureTitle: 'শস্যৰ ৰোগ তৎক্ষণাত চিনাক্ত কৰক',
     diseaseFeatureDescription:
-      'শস্যৰ ফটো আপলোড কৰক আৰু CropSaverৰ পৰা ৰোগ চিনাক্তকৰণ আৰু চিকিৎসাৰ পৰামৰ্শ লওক।',
-    startDiagnosis: 'নিৰ্ণয় আৰম্ভ কৰক',
-    cropSaverAi: 'CropSaver AI',
-    aiFeatureTitle: 'কৃষি সম্পৰ্কীয় প্ৰশ্নৰ উত্তৰ তৎক্ষণাত পাওক।',
+      'শস্যৰ ছবি আপলোড কৰি CropSaver AI-ৰ পৰা ৰোগ আৰু চিকিৎসাৰ পৰামৰ্শ লাভ কৰক।',
+    aiCropDoctor: 'AI শস্য চিকিৎসক',
+    startDiagnosis: 'পৰীক্ষা আৰম্ভ কৰক',
+
+    aiFeatureTitle: 'আপোনাৰ ব্যক্তিগত AI কৃষি সহায়ক',
     aiFeatureDescription:
-      'শস্য, ৰোগ, কীট-পতংগ, জলসিঞ্চন, সাৰ আৰু কৃষি পদ্ধতিৰ বিষয়ে নিজৰ ভাষাত সোধক।',
-    askCropSaver: 'CropSaverক সোধক',
-    finalCtaTitle: 'আপোনাৰ শস্যৰ বাবে সহায় লাগে নেকি?',
+      'শস্য, জলসিঞ্চন, কীট-পতংগ, সাৰ আৰু ৰোগৰ বিষয়ে নিজৰ ভাষাত সোধক।',
+    cropSaverAi: 'CropSaver AI',
+
+    finalCtaTitle: 'কৃষিৰ বিষয়ে কোনো প্ৰশ্ন আছে?',
     finalCtaDescription:
-      'CropSaver AIৰ সৈতে কথা পাতক আৰু প্ৰয়োজনৰ সময়ত কৃষি পৰামৰ্শ পাওক।',
-    tryAsking: 'সুধি চাওক',
+      'CropSaver AI আপোনাক ব্যৱহাৰিক কৃষি পৰামৰ্শ দিবলৈ সাজু।',
+
+    footerDescription:
+      'এআই-ভিত্তিক স্মাৰ্ট কৃষি সহায়তা — কৃষকসকলক শস্য সুৰক্ষিত কৰিবলৈ আৰু উন্নত কৃষি সিদ্ধান্ত ল’বলৈ সহায় কৰে।',
+    madeForFarmers: 'ভাৰতীয় কৃষকৰ বাবে নিৰ্মিত',
+    farmingTools: 'কৃষি সঁজুলি',
+    explore: 'অধিক জানক',
+    needHelp: 'সহায় লাগে নেকি?',
+    footerRights: 'সকলো অধিকাৰ সংৰক্ষিত।',
+    footerMessage: 'উন্নত কৃষিৰ বাবে প্ৰযুক্তি',
   },
 }

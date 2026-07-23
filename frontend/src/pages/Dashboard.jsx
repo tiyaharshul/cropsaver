@@ -1,20 +1,30 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
+
 import DashboardHero from '../components/dashboard/DashboardHero'
 import FeatureCard from '../components/dashboard/FeatureCard'
-import QuickCard from '../components/dashboard/FeatureCard'
+import QuickCard from '../components/dashboard/QuickCard'
+
 import '../styles/dashboard.css'
 
 export default function Dashboard() {
   const { t } = useLanguage()
 
   return (
-    <div className="dashboard">
+    <div className="dashboard-page">
 
-      <DashboardHero />
+      {/* ================= HERO ================= */}
 
-      <section className="dashboard-intro">
-        <div>
+      <section className="dashboard-section hero-section">
+        <DashboardHero />
+      </section>
+
+
+      {/* ================= TOOLKIT INTRO ================= */}
+
+      <section className="dashboard-section toolkit-section">
+
+        <div className="toolkit-heading">
           <span className="section-label">
             {t.farmingToolkit}
           </span>
@@ -24,10 +34,17 @@ export default function Dashboard() {
           </h2>
         </div>
 
-        <p>{t.toolkitDescription}</p>
+        <p className="toolkit-description">
+          {t.toolkitDescription}
+        </p>
+
       </section>
 
-      <section className="main-features">
+
+      {/* ================= MAIN FEATURES ================= */}
+
+      <section className="dashboard-section main-features">
+
         <FeatureCard
           type="disease"
           title={t.diseaseFeatureTitle}
@@ -45,41 +62,82 @@ export default function Dashboard() {
           button={t.askCropSaver}
           to="/chat"
         />
+
       </section>
 
-      <section className="quick-features">
-        <QuickCard
-          icon="📜"
-          title={t.cropHistory}
-          description={t.historyCardDesc}
-          to="/history"
-        />
 
-        <QuickCard
-          icon="🏛️"
-          title={t.governmentNotices}
-          description={t.noticesCardDesc}
-          to="/notices"
-        />
+      {/* ================= QUICK TOOLS ================= */}
 
-        <QuickCard
-          icon="📍"
-          title={t.nearbyExperts}
-          description={t.expertsCardDesc}
-          to="/nearby"
-        />
-      </section>
+      <section className="dashboard-section quick-tools-section">
 
-      <section className="dashboard-cta">
-        <div>
-          <span>{t.cropSaverAi}</span>
-          <h2>{t.finalCtaTitle}</h2>
-          <p>{t.finalCtaDescription}</p>
+        <div className="quick-tools-heading">
+          <span className="section-label">
+            {t.quickTools || 'QUICK ACCESS'}
+          </span>
+
+          <h2>
+            {t.exploreTools || 'Explore your farming tools'}
+          </h2>
         </div>
 
-        <Link to="/chat">
-          {t.askCropSaver} →
+
+        <div className="quick-features">
+
+          <QuickCard
+            icon="📜"
+            title={t.cropHistory}
+            description={t.historyCardDesc}
+            to="/history"
+          />
+
+          <QuickCard
+            icon="🏛️"
+            title={t.governmentNotices}
+            description={t.noticesCardDesc}
+            to="/notices"
+          />
+
+          <QuickCard
+            icon="📍"
+            title={t.nearbyExperts}
+            description={t.expertsCardDesc}
+            to="/nearby"
+          />
+
+        </div>
+
+      </section>
+
+
+      {/* ================= AI CTA ================= */}
+
+      <section className="dashboard-section dashboard-cta">
+
+        <div className="cta-content">
+
+          <span className="cta-label">
+            ✨ {t.cropSaverAi}
+          </span>
+
+          <h2>
+            {t.finalCtaTitle}
+          </h2>
+
+          <p>
+            {t.finalCtaDescription}
+          </p>
+
+        </div>
+
+
+        <Link
+          to="/chat"
+          className="cta-button"
+        >
+          <span>{t.askCropSaver}</span>
+          <span className="cta-arrow">→</span>
         </Link>
+
       </section>
 
     </div>
