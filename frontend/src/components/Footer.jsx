@@ -16,7 +16,7 @@ export default function Footer() {
             <span className="footer-logo-icon">🌱</span>
 
             <span>
-              {t.appName || 'CropSaver'}
+              {t.appName || 'Krishay'}
             </span>
           </Link>
 
@@ -105,7 +105,7 @@ export default function Footer() {
       <div className="footer-bottom">
 
         <p>
-          © {new Date().getFullYear()} CropSaver.
+          © {new Date().getFullYear()} Krishay.
           {' '}
           {t.footerRights || 'All rights reserved.'}
         </p>
