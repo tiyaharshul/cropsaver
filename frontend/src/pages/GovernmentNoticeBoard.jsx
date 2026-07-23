@@ -49,117 +49,138 @@ export default function GovernmentNoticeBoard() {
 
   return (
 
-    <div className="space-y-4">
+    <div className="notices-page">
 
-      <h1
-        className="
-          text-2xl
-          font-bold
-          text-leaf-700
-        "
-      >
-        {t.governmentNoticeBoard}
-      </h1>
+      {/* PAGE HEADER */}
+      <div className="notices-header">
 
+        <span className="page-section-label">
+          🇮🇳 FARMER UPDATES
+        </span>
 
-      {loading && (
+        <h1>
+          {t.governmentNoticeBoard}
+        </h1>
 
-        <p className="text-gray-500">
-
-          {t.loadingNotices}
-
+        <p>
+          Stay informed about government schemes,
+          agricultural programs and important updates
+          for farmers.
         </p>
 
-      )}
+      </div>
 
 
-      {error && (
+      {/* LOADING */}
+      {loading && (
 
-        <div
-          className="
-            bg-red-50
-            text-red-700
-            rounded-lg
-            p-3
-          "
-        >
-          {error}
+        <div className="notices-state">
+
+          <div className="notices-loader"></div>
+
+          <p>
+            {t.loadingNotices}
+          </p>
+
         </div>
 
       )}
 
 
+      {/* ERROR */}
+      {error && (
+
+        <div className="notices-error">
+          <span>!</span>
+
+          <p>
+            {error}
+          </p>
+        </div>
+
+      )}
+
+
+      {/* EMPTY */}
       {!loading &&
         !error &&
         notices.length === 0 && (
 
-          <p className="text-gray-500">
+          <div className="notices-empty">
 
-            {t.noNotices}
+            <div className="notices-empty-icon">
+              📋
+            </div>
 
-          </p>
+            <h2>
+              No updates available
+            </h2>
+
+            <p>
+              {t.noNotices}
+            </p>
+
+          </div>
 
         )}
 
 
-      <div className="space-y-3">
+      {/* NOTICES */}
+      {!loading &&
+        !error &&
+        notices.length > 0 && (
 
-        {notices.map((notice, index) => (
+          <div className="notices-list">
 
-          <a
-            key={index}
-            href={notice.url}
-            target="_blank"
-            rel="noreferrer"
-            className="
-              block
-              bg-white
-              rounded-xl
-              shadow
-              p-5
-              hover:shadow-md
-              transition
-            "
-          >
+            {notices.map((notice, index) => (
 
-            <p
-              className="
-                font-semibold
-                text-lg
-              "
-            >
-              {notice.title}
-            </p>
+              <a
+                key={index}
+                href={notice.url}
+                target="_blank"
+                rel="noreferrer"
+                className="notice-card"
+              >
 
+               
 
-            <p
-              className="
-                text-sm
-                text-gray-600
-                mt-2
-                leading-relaxed
-              "
-            >
-              {notice.summary}
-            </p>
+                <div className="notice-card-content">
+
+                  <span className="notice-type">
+                    
+                  </span>
+
+                  <h2>
+                    {notice.title}
+                  </h2>
+
+                  <p>
+                    {notice.summary}
+                  </p>
 
 
-            <p
-              className="
-                text-sm
-                text-leaf-700
-                mt-3
-                font-medium
-              "
-            >
-              {t.readMore} →
-            </p>
+                  <span className="notice-read-more">
+                    {t.readMore}
 
-          </a>
+                    <span className="notice-arrow">
+                      →
+                    </span>
+                  </span>
 
-        ))}
+                </div>
 
-      </div>
+
+                <div className="notice-external">
+                  ↗
+                </div>
+
+              </a>
+
+            ))}
+
+          </div>
+
+        )}
 
     </div>
   )

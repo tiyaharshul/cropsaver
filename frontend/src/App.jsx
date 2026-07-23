@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import {
   Routes,
   Route,
@@ -42,7 +44,9 @@ function NavBar() {
   const location = useLocation()
   const { t } = useLanguage()
 
-  const token = localStorage.getItem('cropsaver_token')
+  const token = localStorage.getItem(
+    'cropsaver_token'
+  )
 
   if (!token) {
     return null
@@ -58,13 +62,23 @@ function NavBar() {
     [t.profile, '/profile', '♙'],
   ]
 
+
   const logout = () => {
-    localStorage.removeItem('cropsaver_token')
-    localStorage.removeItem('cropsaver_user')
-    localStorage.removeItem('user_name')
+    localStorage.removeItem(
+      'cropsaver_token'
+    )
+
+    localStorage.removeItem(
+      'cropsaver_user'
+    )
+
+    localStorage.removeItem(
+      'user_name'
+    )
 
     navigate('/login')
   }
+
 
   return (
     <nav className="app-navbar">
@@ -72,10 +86,12 @@ function NavBar() {
       <div className="navbar-container">
 
         {/* LOGO */}
+
         <Link
           to="/"
           className="navbar-logo"
         >
+
           <span className="navbar-logo-icon">
             🌱
           </span>
@@ -83,48 +99,61 @@ function NavBar() {
           <span>
             {t.appName || 'CropSaver'}
           </span>
+
         </Link>
 
 
         {/* DESKTOP NAVIGATION */}
+
         <div className="navbar-links">
 
-          {links.map(([label, path, icon]) => {
-            const active =
-              location.pathname === path
+          {links.map(
+            ([label, path, icon]) => {
 
-            return (
-              <Link
-                key={path}
-                to={path}
-                className={
-                  active
-                    ? 'navbar-link active'
-                    : 'navbar-link'
-                }
-              >
-                <span className="navbar-link-icon">
-                  {icon}
-                </span>
+              const active =
+                location.pathname === path
 
-                <span>
-                  {label}
-                </span>
-              </Link>
-            )
-          })}
+              return (
+                <Link
+                  key={path}
+                  to={path}
+                  className={
+                    active
+                      ? 'navbar-link active'
+                      : 'navbar-link'
+                  }
+                >
+
+                  <span className="navbar-link-icon">
+                    {icon}
+                  </span>
+
+                  <span>
+                    {label}
+                  </span>
+
+                </Link>
+              )
+            }
+          )}
 
         </div>
 
 
         {/* LOGOUT */}
+
         <button
           type="button"
           onClick={logout}
           className="navbar-logout"
         >
+
           <span>↪</span>
-          <span>{t.logout}</span>
+
+          <span>
+            {t.logout}
+          </span>
+
         </button>
 
       </div>
@@ -138,12 +167,17 @@ function NavBar() {
 // LANGUAGE REQUIREMENT
 // ======================================================
 
-function RequireLanguage({ children }) {
-  const chosen = localStorage.getItem(
-    'cropsaver_language_chosen'
-  )
+function RequireLanguage({
+  children,
+}) {
+
+  const chosen =
+    localStorage.getItem(
+      'cropsaver_language_chosen'
+    )
 
   if (!chosen) {
+
     return (
       <Navigate
         to="/language"
@@ -157,13 +191,82 @@ function RequireLanguage({ children }) {
 
 
 // ======================================================
-// APP
+// APP CONTENT
 // ======================================================
 
 function AppContent() {
-  const token = localStorage.getItem(
-    'cropsaver_token'
-  )
+
+  const token =
+    localStorage.getItem(
+      'cropsaver_token'
+    )
+
+
+  // ====================================================
+  // CURSOR FOLLOWING BACKGROUND GLOW
+  // ====================================================
+
+  useEffect(() => {
+
+    const handleMouseMove = (
+      event
+    ) => {
+
+      const main =
+        document.querySelector(
+          '.app-main.authenticated'
+        )
+
+      if (!main) {
+        return
+      }
+
+
+      const rect =
+        main.getBoundingClientRect()
+
+
+      const mouseX =
+        event.clientX - rect.left
+
+      const mouseY =
+        event.clientY - rect.top
+
+
+      main.style.setProperty(
+        '--mouse-x',
+        `${mouseX}px`
+      )
+
+      main.style.setProperty(
+        '--mouse-y',
+        `${mouseY}px`
+      )
+
+    }
+
+
+    window.addEventListener(
+      'mousemove',
+      handleMouseMove
+    )
+
+
+    return () => {
+
+      window.removeEventListener(
+        'mousemove',
+        handleMouseMove
+      )
+
+    }
+
+  }, [])
+
+
+  // ====================================================
+  // APP
+  // ====================================================
 
   return (
     <div className="app-shell">
@@ -185,7 +288,11 @@ function AppContent() {
 
         <Routes>
 
-          {/* LANGUAGE */}
+
+          {/* =============================================
+              LANGUAGE
+          ============================================= */}
+
           <Route
             path="/language"
             element={
@@ -194,138 +301,200 @@ function AppContent() {
           />
 
 
-          {/* LOGIN */}
+          {/* =============================================
+              LOGIN
+          ============================================= */}
+
           <Route
             path="/login"
             element={
+
               <RequireLanguage>
 
                 {token ? (
+
                   <Navigate
                     to="/"
                     replace
                   />
+
                 ) : (
+
                   <Login />
+
                 )}
 
               </RequireLanguage>
+
             }
           />
 
 
-          {/* REGISTER */}
+          {/* =============================================
+              REGISTER
+          ============================================= */}
+
           <Route
             path="/register"
             element={
+
               <RequireLanguage>
 
                 {token ? (
+
                   <Navigate
                     to="/"
                     replace
                   />
+
                 ) : (
+
                   <Register />
+
                 )}
 
               </RequireLanguage>
+
             }
           />
 
 
-          {/* DASHBOARD */}
+          {/* =============================================
+              DASHBOARD
+          ============================================= */}
+
           <Route
             path="/"
             element={
+
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* GOOGLE SETUP */}
+          {/* =============================================
+              GOOGLE SETUP
+          ============================================= */}
+
           <Route
             path="/google-setup"
             element={
+
               <ProtectedRoute>
                 <GoogleSetup />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* DISEASE DETECTION */}
+          {/* =============================================
+              DISEASE DETECTION
+          ============================================= */}
+
           <Route
             path="/detect"
             element={
+
               <ProtectedRoute>
                 <DiseaseDetection />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* CROP HISTORY */}
+          {/* =============================================
+              CROP HISTORY
+          ============================================= */}
+
           <Route
             path="/history"
             element={
+
               <ProtectedRoute>
                 <CropHistory />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* GOVERNMENT NOTICES */}
+          {/* =============================================
+              GOVERNMENT NOTICES
+          ============================================= */}
+
           <Route
             path="/notices"
             element={
+
               <ProtectedRoute>
                 <GovernmentNoticeBoard />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* NEARBY EXPERTS */}
+          {/* =============================================
+              NEARBY EXPERTS
+          ============================================= */}
+
           <Route
             path="/nearby"
             element={
+
               <ProtectedRoute>
                 <NearbyExperts />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* FULL CHATBOT */}
+          {/* =============================================
+              AI CHATBOT
+          ============================================= */}
+
           <Route
             path="/chat"
             element={
+
               <ProtectedRoute>
                 <AIChatbot />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* PROFILE */}
+          {/* =============================================
+              PROFILE
+          ============================================= */}
+
           <Route
             path="/profile"
             element={
+
               <ProtectedRoute>
                 <Profile />
               </ProtectedRoute>
+
             }
           />
 
 
-          {/* FALLBACK */}
+          {/* =============================================
+              FALLBACK
+          ============================================= */}
+
           <Route
             path="*"
             element={
+
               <Navigate
                 to={
                   token
@@ -334,6 +503,7 @@ function AppContent() {
                 }
                 replace
               />
+
             }
           />
 
@@ -346,7 +516,9 @@ function AppContent() {
           FOOTER
       ================================================= */}
 
-      {token && <Footer />}
+      {token && (
+        <Footer />
+      )}
 
 
       {/* =================================================
@@ -355,8 +527,11 @@ function AppContent() {
 
       {token && (
         <>
+
           <QuickChat />
+
           <VoiceAssistant />
+
         </>
       )}
 
@@ -370,9 +545,14 @@ function AppContent() {
 // ======================================================
 
 export default function App() {
+
   return (
+
     <LanguageProvider>
+
       <AppContent />
+
     </LanguageProvider>
+
   )
-} 
+}

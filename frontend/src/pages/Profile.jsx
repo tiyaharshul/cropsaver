@@ -2,13 +2,336 @@ import { useState } from 'react'
 import api from '../api/axios'
 import { languages } from '../data/translations'
 import { useLanguage } from '../contexts/LanguageContext'
-export default function Profile(){
- const user=JSON.parse(localStorage.getItem('cropsaver_user')||'null'),{language,setLanguage,t}=useLanguage()
- const [selected,setSelected]=useState(language),[message,setMessage]=useState(''),[error,setError]=useState('')
- const save=async()=>{try{const token=localStorage.getItem('cropsaver_token');const r=await api.patch('/auth/language',{language:selected},{headers:{Authorization:`Bearer ${token}`}});localStorage.setItem('cropsaver_user',JSON.stringify(r.data));setLanguage(selected);setMessage(t.saved);setError('')}catch(e){setError(e.response?.data?.detail||'Could not save language.')}}
- if(!user)return null
- return <div className="max-w-lg mx-auto bg-white rounded-2xl shadow p-6 space-y-6"><h1 className="text-2xl font-bold text-leaf-700">👤 {t.profile}</h1>
- <div className="space-y-2 text-sm"><p><strong>{t.name}:</strong> {user.name}</p>{user.phone&&<p><strong>{t.mobile}:</strong> {user.phone}</p>}{user.email&&<p><strong>{t.email}:</strong> {user.email}</p>}<p><strong>{t.state}:</strong> {user.state}</p></div>
- <div className="border-t pt-5"><label className="block text-sm font-semibold mb-2">🌐 {t.changeLanguage}</label><select value={selected} onChange={e=>setSelected(e.target.value)} className="w-full border rounded-xl px-3 py-2.5 bg-white">{languages.map(x=><option key={x.code} value={x.code}>{x.label} — {x.region}</option>)}</select><button onClick={save} className="mt-3 w-full bg-leaf-700 text-white rounded-xl py-2.5">{t.saveLanguage}</button>{message&&<p className="text-green-700 mt-2">{message}</p>}{error&&<p className="text-red-700 mt-2">{error}</p>}</div>
- </div>
+
+export default function Profile() {
+
+  const user = JSON.parse(
+    localStorage.getItem('cropsaver_user') || 'null'
+  )
+
+  const {
+    language,
+    setLanguage,
+    t
+  } = useLanguage()
+
+  const [selected, setSelected] =
+    useState(language)
+
+  const [message, setMessage] =
+    useState('')
+
+  const [error, setError] =
+    useState('')
+
+
+  const save = async () => {
+
+    try {
+
+      const token =
+        localStorage.getItem(
+          'cropsaver_token'
+        )
+
+      const r = await api.patch(
+        '/auth/language',
+        {
+          language: selected
+        },
+        {
+          headers: {
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      )
+
+      localStorage.setItem(
+        'cropsaver_user',
+        JSON.stringify(r.data)
+      )
+
+      setLanguage(selected)
+
+      setMessage(t.saved)
+
+      setError('')
+
+    } catch (e) {
+
+      setError(
+        e.response?.data?.detail ||
+        'Could not save language.'
+      )
+
+    }
+
+  }
+
+
+  if (!user) return null
+
+
+  return (
+    <div className="profile-page">
+
+      {/* PAGE HEADER */}
+
+      <div className="profile-page-header">
+
+        <span className="page-section-label">
+          👤 YOUR ACCOUNT
+        </span>
+
+        <h1>
+          {t.profile}
+        </h1>
+
+        <p>
+          View your personal information and manage
+          your CropSaver preferences.
+        </p>
+
+      </div>
+
+
+      <div className="profile-layout">
+
+        {/* PROFILE SUMMARY */}
+
+        <div className="profile-main-card">
+
+          <div className="profile-identity">
+
+            <div className="profile-avatar">
+              {user.name
+                ? user.name
+                    .charAt(0)
+                    .toUpperCase()
+                : '👤'}
+            </div>
+
+
+            <div className="profile-identity-text">
+
+              <span className="profile-small-label">
+                FARMER PROFILE
+              </span>
+
+              <h2>
+                {user.name}
+              </h2>
+
+              {user.state && (
+                <p>
+                  📍 {user.state}
+                </p>
+              )}
+
+            </div>
+
+          </div>
+
+
+          <div className="profile-divider"></div>
+
+
+          {/* PERSONAL INFORMATION */}
+
+          <div className="profile-section-header">
+
+            <div className="profile-section-icon">
+              👤
+            </div>
+
+            <div>
+              <h3>
+                Personal Information
+              </h3>
+
+              <p>
+                Your CropSaver account details
+              </p>
+            </div>
+
+          </div>
+
+
+          <div className="profile-info-grid">
+
+            {/* NAME */}
+
+            <div className="profile-info-item">
+
+              <span className="profile-info-label">
+                {t.name}
+              </span>
+
+              <strong>
+                {user.name}
+              </strong>
+
+            </div>
+
+
+            {/* MOBILE */}
+
+            {user.phone && (
+
+              <div className="profile-info-item">
+
+                <span className="profile-info-label">
+                  {t.mobile}
+                </span>
+
+                <strong>
+                  {user.phone}
+                </strong>
+
+              </div>
+
+            )}
+
+
+            {/* EMAIL */}
+
+            {user.email && (
+
+              <div className="profile-info-item">
+
+                <span className="profile-info-label">
+                  {t.email}
+                </span>
+
+                <strong>
+                  {user.email}
+                </strong>
+
+              </div>
+
+            )}
+
+
+            {/* STATE */}
+
+            <div className="profile-info-item">
+
+              <span className="profile-info-label">
+                {t.state}
+              </span>
+
+              <strong>
+                {user.state}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* LANGUAGE CARD */}
+
+        <div className="profile-language-card">
+
+          <div className="profile-language-icon">
+            🌐
+          </div>
+
+
+          <div className="profile-language-heading">
+
+            <span className="profile-small-label">
+              PREFERENCES
+            </span>
+
+            <h2>
+              {t.changeLanguage}
+            </h2>
+
+            <p>
+              Choose the language you want to use
+              across CropSaver.
+            </p>
+
+          </div>
+
+
+          <div className="profile-language-form">
+
+            <label htmlFor="profile-language">
+              Language
+            </label>
+
+
+            <div className="profile-select-wrapper">
+
+              <select
+                id="profile-language"
+                value={selected}
+                onChange={(e) =>
+                  setSelected(
+                    e.target.value
+                  )
+                }
+              >
+
+                {languages.map((x) => (
+
+                  <option
+                    key={x.code}
+                    value={x.code}
+                  >
+                    {x.label} — {x.region}
+                  </option>
+
+                ))}
+
+              </select>
+
+            </div>
+
+
+            <button
+              type="button"
+              onClick={save}
+              className="profile-save-button"
+            >
+              <span>✓</span>
+
+              {t.saveLanguage}
+            </button>
+
+
+            {message && (
+
+              <div className="profile-success-message">
+                <span>✓</span>
+
+                {message}
+              </div>
+
+            )}
+
+
+            {error && (
+
+              <div className="profile-error-message">
+                <span>!</span>
+
+                {error}
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  )
 }

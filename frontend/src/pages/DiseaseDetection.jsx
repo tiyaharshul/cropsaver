@@ -136,32 +136,72 @@ export default function DiseaseDetection() {
     }
   }
 
-  return (
-    <div className="max-w-3xl space-y-5">
+   return (
+    <div className="detection-page">
 
-      <h1 className="text-3xl font-bold text-green-700">
-        {t.cropDiseaseDetection}
-      </h1>
+      {/* PAGE HEADER */}
+      <div className="detection-header">
+        <span className="detection-label">
+          🌿 CROP HEALTH
+        </span>
 
-      <div className="bg-white rounded-xl shadow-md p-5 space-y-4">
+        <h1>
+          {t.cropDiseaseDetection}
+        </h1>
 
-        <div className="flex gap-3 flex-wrap">
+        <p>
+          Upload a clear photo of your crop and let CropSaver
+          identify possible diseases and recommend treatment.
+        </p>
+      </div>
 
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
+
+      {/* UPLOAD CARD */}
+      <div className="detection-upload-card">
+
+        <div className="detection-upload-icon">
+          🌱
+        </div>
+
+        <div className="detection-upload-text">
+          <h2>Upload crop image</h2>
+
+          <p>
+            Choose a clear image of the affected leaf or crop
+          </p>
+        </div>
+
+
+        <div className="detection-actions">
+
+          <label className="detection-file-button">
+            <span>↑</span>
+            <span>Choose Image</span>
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+          </label>
+
+
+          <span className="detection-or">
+            or
+          </span>
+
 
           <button
             type="button"
-            className="bg-green-700 text-white px-4 py-2 rounded-lg"
+            className="detection-camera-button"
             onClick={() =>
               setShowCamera(
                 (current) => !current
               )
             }
           >
+            <span>📷</span>
+
             {showCamera
               ? t.closeCamera
               : t.useCamera}
@@ -169,145 +209,264 @@ export default function DiseaseDetection() {
 
         </div>
 
+
+        {/* CAMERA */}
         {showCamera && (
-          <div className="space-y-3">
+          <div className="detection-camera">
 
             <Webcam
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              className="rounded-lg"
+              className="detection-webcam"
             />
 
             <button
               type="button"
               onClick={captureFromCamera}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+              className="detection-capture-button"
             >
-              {t.capturePhoto}
+              📸 {t.capturePhoto}
             </button>
 
           </div>
         )}
 
+
+        {/* IMAGE PREVIEW */}
         {preview && (
-          <img
-            src={preview}
-            alt=""
-            className="rounded-lg max-h-80 border"
-          />
+          <div className="detection-preview">
+
+            <img
+              src={preview}
+              alt="Selected crop"
+            />
+
+            <div className="detection-preview-info">
+              <span>✓</span>
+              Image ready for analysis
+            </div>
+
+          </div>
         )}
+
+
+        <p className="detection-hint">
+          JPG, PNG or camera photo • Clear images give better results
+        </p>
+
 
         <button
           type="button"
           disabled={!file || loading}
           onClick={handleDetect}
-          className="bg-green-700 text-white px-5 py-2 rounded-lg disabled:bg-gray-400"
+          className="detection-submit-button"
         >
-          {loading
-            ? t.analyzing
-            : t.detectDisease}
+          {loading ? (
+            <>
+              <span className="detection-spinner"></span>
+              {t.analyzing}
+            </>
+          ) : (
+            <>
+              <span>✦</span>
+              {t.detectDisease}
+            </>
+          )}
         </button>
 
+
         {error && (
-          <div className="bg-red-100 text-red-700 p-3 rounded">
+          <div className="detection-error">
             {error}
           </div>
         )}
 
       </div>
 
+
+      {/* RESULTS */}
       {detection && (
-        <div className="bg-white rounded-xl shadow-md p-5">
+        <div className="detection-result-card">
 
-          <h2 className="text-xl font-bold mb-3">
-            {t.diagnosisResult}
-          </h2>
+          <div className="detection-result-header">
+            <div>
+              <span className="detection-label">
+                ANALYSIS COMPLETE
+              </span>
 
-          <p>
-            <strong>{t.crop}:</strong>{' '}
-            {detection.crop_name ||
-              t.unknownCrop}
-          </p>
+              <h2>
+                {t.diagnosisResult}
+              </h2>
+            </div>
 
-          <p>
-            <strong>{t.disease}:</strong>{' '}
-            {detection.disease_name ||
-              t.unknown}
-          </p>
+            <div className="detection-result-icon">
+              ✓
+            </div>
+          </div>
 
-          <p>
-            <strong>{t.confidence}:</strong>{' '}
-            {typeof detection.confidence ===
-            'number'
-              ? `${(
-                  detection.confidence * 100
-                ).toFixed(2)}%`
-              : 'N/A'}
-          </p>
 
-          {detection.image_url && (
-            <img
-              src={detection.image_url}
-              alt=""
-              className="mt-4 rounded-lg max-h-80"
-            />
-          )}
+          <div className="detection-result-grid">
+
+            <div className="detection-result-details">
+
+              <div className="detection-result-item">
+                <span>{t.crop}</span>
+
+                <strong>
+                  {detection.crop_name ||
+                    t.unknownCrop}
+                </strong>
+              </div>
+
+
+              <div className="detection-result-item">
+                <span>{t.disease}</span>
+
+                <strong>
+                  {detection.disease_name ||
+                    t.unknown}
+                </strong>
+              </div>
+
+
+              <div className="detection-result-item">
+                <span>{t.confidence}</span>
+
+                <strong>
+                  {typeof detection.confidence ===
+                  'number'
+                    ? `${(
+                        detection.confidence * 100
+                      ).toFixed(2)}%`
+                    : 'N/A'}
+                </strong>
+              </div>
+
+            </div>
+
+
+            {detection.image_url && (
+              <img
+                src={detection.image_url}
+                alt="Detected crop"
+                className="detection-result-image"
+              />
+            )}
+
+          </div>
 
         </div>
       )}
 
+
+      {/* TREATMENT */}
       {treatment && (
-        <div className="bg-white rounded-xl shadow-md p-5 space-y-4">
+        <div className="treatment-card">
 
-          <h2 className="text-xl font-bold">
-            {t.treatmentRecommendation}
-          </h2>
+          <div className="treatment-header">
+            <span className="detection-label">
+              🌿 CROP CARE
+            </span>
 
-          <p>
-            <strong>{t.explanation}:</strong>
-            <br />
-            {treatment.explanation}
-          </p>
+            <h2>
+              {t.treatmentRecommendation}
+            </h2>
 
-          <p>
-            <strong>{t.organicTreatment}:</strong>
-            <br />
-            {treatment.organic_treatment}
-          </p>
+            <p>
+              Recommended steps based on your crop diagnosis
+            </p>
+          </div>
 
-          <p>
-            <strong>{t.chemicalTreatment}:</strong>
-            <br />
-            {treatment.chemical_treatment}
-          </p>
 
-          <p>
-            <strong>{t.dosage}:</strong>
-            <br />
-            {treatment.dosage}
-          </p>
+          <div className="treatment-grid">
 
-          <p>
-            <strong>{t.spraySchedule}:</strong>
-            <br />
-            {treatment.spray_schedule}
-          </p>
+            <div className="treatment-section treatment-wide">
+              <span className="treatment-icon">
+                💡
+              </span>
 
-          <p>
-            <strong>{t.recoveryTime}:</strong>
-            <br />
-            {treatment.recovery_time}
-          </p>
+              <div>
+                <h3>{t.explanation}</h3>
+                <p>{treatment.explanation}</p>
+              </div>
+            </div>
 
-          <p>
-            <strong>{t.prevention}:</strong>
-            <br />
-            {treatment.prevention}
-          </p>
+
+            <div className="treatment-section">
+              <span className="treatment-icon">
+                🌿
+              </span>
+
+              <div>
+                <h3>{t.organicTreatment}</h3>
+                <p>{treatment.organic_treatment}</p>
+              </div>
+            </div>
+
+
+            <div className="treatment-section">
+              <span className="treatment-icon">
+                🧪
+              </span>
+
+              <div>
+                <h3>{t.chemicalTreatment}</h3>
+                <p>{treatment.chemical_treatment}</p>
+              </div>
+            </div>
+
+
+            <div className="treatment-section">
+              <span className="treatment-icon">
+                💧
+              </span>
+
+              <div>
+                <h3>{t.dosage}</h3>
+                <p>{treatment.dosage}</p>
+              </div>
+            </div>
+
+
+            <div className="treatment-section">
+              <span className="treatment-icon">
+                📅
+              </span>
+
+              <div>
+                <h3>{t.spraySchedule}</h3>
+                <p>{treatment.spray_schedule}</p>
+              </div>
+            </div>
+
+
+            <div className="treatment-section">
+              <span className="treatment-icon">
+                ⏱
+              </span>
+
+              <div>
+                <h3>{t.recoveryTime}</h3>
+                <p>{treatment.recovery_time}</p>
+              </div>
+            </div>
+
+
+            <div className="treatment-section">
+              <span className="treatment-icon">
+                🛡
+              </span>
+
+              <div>
+                <h3>{t.prevention}</h3>
+                <p>{treatment.prevention}</p>
+              </div>
+            </div>
+
+          </div>
 
         </div>
       )}
 
     </div>
-  )
-}
+  )}

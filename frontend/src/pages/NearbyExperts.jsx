@@ -66,73 +66,220 @@ export default function NearbyExperts() {
   }, [position, t.nearbyFetchError])
 
   return (
-    <div className="space-y-4">
+    <div className="nearby-page">
 
-      <h1 className="text-2xl font-bold text-leaf-700">
-        {t.nearbyAgricultureExperts}
-      </h1>
+      {/* PAGE HEADER */}
+      <div className="nearby-header">
 
-      <p className="text-sm text-gray-600">
-        {t.nearbyDescription}
-      </p>
+        <div>
 
+          <span className="page-section-label">
+            📍 FARM SUPPORT
+          </span>
+
+          <h1>
+            {t.nearbyAgricultureExperts}
+          </h1>
+
+          <p>
+            {t.nearbyDescription}
+          </p>
+
+        </div>
+
+
+        {position && (
+          <div className="location-active">
+            <span className="location-active-dot"></span>
+
+            Location detected
+          </div>
+        )}
+
+      </div>
+
+
+      {/* ERROR */}
       {error && (
-        <p className="text-red-600">
-          {error}
-        </p>
+
+        <div className="nearby-error">
+
+          <span>!</span>
+
+          <p>
+            {error}
+          </p>
+
+        </div>
+
       )}
 
+
+      {/* LOADING */}
       {loading && (
-        <p>{t.loadingCenters}</p>
+
+        <div className="nearby-loading">
+
+          <div className="nearby-loader"></div>
+
+          <span>
+            {t.loadingCenters}
+          </span>
+
+        </div>
+
       )}
 
+
+      {/* MAP */}
+      {position && (
+
+        <div className="nearby-map-card">
+
+          <div className="nearby-map-header">
+
+            <div>
+              <span className="nearby-map-label">
+                YOUR AREA
+              </span>
+
+              <h2>
+                Agriculture services near you
+              </h2>
+            </div>
+
+
+            {centers.length > 0 && (
+              <span className="nearby-count">
+                {centers.length}{' '}
+                {centers.length === 1
+                  ? 'location'
+                  : 'locations'}
+              </span>
+            )}
+
+          </div>
+
+
+          <div className="nearby-map-wrapper">
+
+            <NearbyExpertsMap
+              userLat={position.lat}
+              userLon={position.lon}
+              centers={centers}
+            />
+
+          </div>
+
+        </div>
+
+      )}
+
+
+      {/* EMPTY */}
       {!loading &&
         !error &&
         position &&
         centers.length === 0 && (
-          <p className="text-gray-500">
-            {t.noCenters}
-          </p>
-        )}
 
-      {position && (
-        <NearbyExpertsMap
-          userLat={position.lat}
-          userLon={position.lon}
-          centers={centers}
-        />
-      )}
+          <div className="nearby-empty">
 
-      <ul className="divide-y divide-gray-200 bg-white rounded-lg shadow">
-
-        {centers.map((center, index) => (
-          <li
-            key={index}
-            className="p-3 flex justify-between items-center"
-          >
+            <span>
+              📍
+            </span>
 
             <div>
-              <p className="font-medium">
-                {center.name}
-              </p>
+              <h3>
+                No centers found nearby
+              </h3>
 
-              <p className="text-xs text-gray-500">
-                {center.category}
-
-                {center.address
-                  ? ` · ${center.address}`
-                  : ''}
+              <p>
+                {t.noCenters}
               </p>
             </div>
 
-            <span className="text-sm text-leaf-700 font-semibold">
-              {center.distance_km} km
-            </span>
+          </div>
 
-          </li>
-        ))}
+        )}
 
-      </ul>
+
+      {/* CENTERS */}
+      {centers.length > 0 && (
+
+        <div className="nearby-results">
+
+          <div className="nearby-results-heading">
+
+            <div>
+
+              <span className="page-section-label">
+                NEARBY LOCATIONS
+              </span>
+
+              <h2>
+                Agriculture support centers
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div className="nearby-centers-grid">
+
+            {centers.map((center, index) => (
+
+              <div
+                key={index}
+                className="nearby-center-card"
+              >
+
+                <div className="nearby-center-icon">
+                  🌾
+                </div>
+
+
+                <div className="nearby-center-content">
+
+                  <h3>
+                    {center.name}
+                  </h3>
+
+                  <span className="nearby-category">
+                    {center.category}
+                  </span>
+
+
+                  {center.address && (
+                    <p className="nearby-address">
+                      📍 {center.address}
+                    </p>
+                  )}
+
+                </div>
+
+
+                <div className="nearby-distance">
+
+                  <strong>
+                    {center.distance_km}
+                  </strong>
+
+                  <span>
+                    km away
+                  </span>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      )}
 
     </div>
   )
