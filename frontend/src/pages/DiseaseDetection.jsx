@@ -86,22 +86,37 @@ export default function DiseaseDetection() {
     try {
       const formData = new FormData()
 
-      formData.append('file', file)
+formData.append('file', file)
 
-      // -----------------------------
-      // DETECT DISEASE
-      // -----------------------------
+// Get logged-in user
+const user = JSON.parse(
+  localStorage.getItem('cropsaver_user') || 'null'
+)
 
-      const detectRes = await api.post(
-        '/detect',
-        formData,
-        {
-          headers: {
-            'Content-Type':
-              'multipart/form-data',
-          },
-        }
-      )
+const userId =
+  user?.id ||
+  user?._id ||
+  localStorage.getItem('user_name') ||
+  'anonymous'
+
+// -----------------------------
+// DETECT DISEASE
+// -----------------------------
+
+const detectRes = await api.post(
+  '/detect',
+  formData,
+  {
+    params: {
+      user_id: userId,
+    },
+
+    headers: {
+      'Content-Type':
+        'multipart/form-data',
+    },
+  }
+)
 
       setDetection(detectRes.data)
 
