@@ -52,10 +52,12 @@ class AuthResponse(BaseModel):
 # ======================================================
 # DISEASE / CROP PROBLEM DETECTION
 # ======================================================
-
 class DetectionResult(BaseModel):
     history_id: Optional[str] = None
 
+    # Canonical/internal names.
+    # Keep these in English for history, treatment,
+    # feedback learning and API matching.
     crop_name: str
 
     problem_type: str = "disease"
@@ -67,6 +69,17 @@ class DetectionResult(BaseModel):
     confidence: float
     image_url: Optional[str] = None
 
+    # Localized names shown to the farmer.
+    # Example:
+    # crop_name = "Tomato"
+    # display_crop_name = "टमाटर"
+    display_crop_name: Optional[str] = None
+
+    # Example:
+    # problem_name = "Tomato spotted wilt virus"
+    # display_problem_name =
+    # "टमाटर स्पॉटेड विल्ट वायरस (TSWV)"
+    display_problem_name: Optional[str] = None
 
 # ======================================================
 # TREATMENT

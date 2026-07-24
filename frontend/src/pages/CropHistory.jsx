@@ -10,8 +10,464 @@ import api from '../api/axios'
 import {
   useLanguage,
 } from '../contexts/LanguageContext'
+// ======================================================
+// LOCALIZED CROP NAMES
+// ======================================================
+
+const CROP_TRANSLATIONS = {
+
+  en: {
+    maize: 'Maize',
+    wheat: 'Wheat',
+    rice: 'Rice',
+    tomato: 'Tomato',
+    potato: 'Potato',
+    soybean: 'Soybean',
+    groundnut: 'Groundnut',
+    mustard: 'Mustard',
+    cotton: 'Cotton',
+    sugarcane: 'Sugarcane',
+    onion: 'Onion',
+    chilli: 'Chilli',
+    bajra: 'Bajra',
+    barley: 'Barley',
+    gram: 'Gram',
+  },
+
+  hi: {
+    maize: 'मक्का',
+    wheat: 'गेहूँ',
+    rice: 'धान',
+    tomato: 'टमाटर',
+    potato: 'आलू',
+    soybean: 'सोयाबीन',
+    groundnut: 'मूंगफली',
+    mustard: 'सरसों',
+    cotton: 'कपास',
+    sugarcane: 'गन्ना',
+    onion: 'प्याज',
+    chilli: 'मिर्च',
+    bajra: 'बाजरा',
+    barley: 'जौ',
+    gram: 'चना',
+  },
+
+  raj: {
+    maize: 'मक्का',
+    wheat: 'ग्यूं',
+    rice: 'धान',
+    tomato: 'टमाटर',
+    potato: 'आलू',
+    soybean: 'सोयाबीन',
+    groundnut: 'मूंगफली',
+    mustard: 'सरसों',
+    cotton: 'कपास',
+    sugarcane: 'गन्नो',
+    onion: 'कांदो',
+    chilli: 'मिरची',
+    bajra: 'बाजरो',
+    barley: 'जौ',
+    gram: 'चणो',
+  },
+
+  bho: {
+    maize: 'मक्का',
+    wheat: 'गेहूँ',
+    rice: 'धान',
+    tomato: 'टमाटर',
+    potato: 'आलू',
+    soybean: 'सोयाबीन',
+    groundnut: 'मूंगफली',
+    mustard: 'सरसों',
+    cotton: 'कपास',
+    sugarcane: 'गन्ना',
+    onion: 'पियाज',
+    chilli: 'मरिचा',
+    bajra: 'बाजरा',
+    barley: 'जौ',
+    gram: 'चना',
+  },
+
+  har: {
+    maize: 'मक्का',
+    wheat: 'गेहूँ',
+    rice: 'धान',
+    tomato: 'टमाटर',
+    potato: 'आलू',
+    soybean: 'सोयाबीन',
+    groundnut: 'मूंगफली',
+    mustard: 'सरसों',
+    cotton: 'कपास',
+    sugarcane: 'गन्ना',
+    onion: 'प्याज',
+    chilli: 'मिर्च',
+    bajra: 'बाजरा',
+    barley: 'जौ',
+    gram: 'चना',
+  },
+
+  gu: {
+    maize: 'મકાઈ',
+    wheat: 'ઘઉં',
+    rice: 'ચોખા',
+    tomato: 'ટામેટા',
+    potato: 'બટાકા',
+    soybean: 'સોયાબીન',
+    groundnut: 'મગફળી',
+    mustard: 'રાઈ',
+    cotton: 'કપાસ',
+    sugarcane: 'શેરડી',
+    onion: 'ડુંગળી',
+    chilli: 'મરચાં',
+    bajra: 'બાજરી',
+    barley: 'જવ',
+    gram: 'ચણા',
+  },
+
+  mr: {
+    maize: 'मका',
+    wheat: 'गहू',
+    rice: 'तांदूळ',
+    tomato: 'टोमॅटो',
+    potato: 'बटाटा',
+    soybean: 'सोयाबीन',
+    groundnut: 'भुईमूग',
+    mustard: 'मोहरी',
+    cotton: 'कापूस',
+    sugarcane: 'ऊस',
+    onion: 'कांदा',
+    chilli: 'मिरची',
+    bajra: 'बाजरी',
+    barley: 'बार्ली',
+    gram: 'हरभरा',
+  },
+
+  pa: {
+    maize: 'ਮੱਕੀ',
+    wheat: 'ਕਣਕ',
+    rice: 'ਚੌਲ',
+    tomato: 'ਟਮਾਟਰ',
+    potato: 'ਆਲੂ',
+    soybean: 'ਸੋਇਆਬੀਨ',
+    groundnut: 'ਮੂੰਗਫਲੀ',
+    mustard: 'ਸਰ੍ਹੋਂ',
+    cotton: 'ਕਪਾਹ',
+    sugarcane: 'ਗੰਨਾ',
+    onion: 'ਪਿਆਜ਼',
+    chilli: 'ਮਿਰਚ',
+    bajra: 'ਬਾਜਰਾ',
+    barley: 'ਜੌਂ',
+    gram: 'ਛੋਲੇ',
+  },
+
+  bn: {
+    maize: 'ভুট্টা',
+    wheat: 'গম',
+    rice: 'ধান',
+    tomato: 'টমেটো',
+    potato: 'আলু',
+    soybean: 'সয়াবিন',
+    groundnut: 'চিনাবাদাম',
+    mustard: 'সরিষা',
+    cotton: 'তুলা',
+    sugarcane: 'আখ',
+    onion: 'পেঁয়াজ',
+    chilli: 'মরিচ',
+    bajra: 'বাজরা',
+    barley: 'যব',
+    gram: 'ছোলা',
+  },
+
+  ta: {
+    maize: 'மக்காச்சோளம்',
+    wheat: 'கோதுமை',
+    rice: 'நெல்',
+    tomato: 'தக்காளி',
+    potato: 'உருளைக்கிழங்கு',
+    soybean: 'சோயாபீன்',
+    groundnut: 'நிலக்கடலை',
+    mustard: 'கடுகு',
+    cotton: 'பருத்தி',
+    sugarcane: 'கரும்பு',
+    onion: 'வெங்காயம்',
+    chilli: 'மிளகாய்',
+    bajra: 'கம்பு',
+    barley: 'பார்லி',
+    gram: 'கொண்டைக்கடலை',
+  },
+
+  te: {
+    maize: 'మొక్కజొన్న',
+    wheat: 'గోధుమ',
+    rice: 'వరి',
+    tomato: 'టమాటా',
+    potato: 'బంగాళాదుంప',
+    soybean: 'సోయాబీన్',
+    groundnut: 'వేరుశెనగ',
+    mustard: 'ఆవాలు',
+    cotton: 'పత్తి',
+    sugarcane: 'చెరకు',
+    onion: 'ఉల్లిపాయ',
+    chilli: 'మిరప',
+    bajra: 'సజ్జ',
+    barley: 'బార్లీ',
+    gram: 'శనగ',
+  },
+
+  kn: {
+    maize: 'ಮೆಕ್ಕೆಜೋಳ',
+    wheat: 'ಗೋಧಿ',
+    rice: 'ಭತ್ತ',
+    tomato: 'ಟೊಮೇಟೊ',
+    potato: 'ಆಲೂಗಡ್ಡೆ',
+    soybean: 'ಸೋಯಾಬೀನ್',
+    groundnut: 'ಕಡಲೆಕಾಯಿ',
+    mustard: 'ಸಾಸಿವೆ',
+    cotton: 'ಹತ್ತಿ',
+    sugarcane: 'ಕಬ್ಬು',
+    onion: 'ಈರುಳ್ಳಿ',
+    chilli: 'ಮೆಣಸಿನಕಾಯಿ',
+    bajra: 'ಸಜ್ಜೆ',
+    barley: 'ಬಾರ್ಲಿ',
+    gram: 'ಕಡಲೆ',
+  },
+
+  ml: {
+    maize: 'ചോളം',
+    wheat: 'ഗോതമ്പ്',
+    rice: 'നെല്ല്',
+    tomato: 'തക്കാളി',
+    potato: 'ഉരുളക്കിഴങ്ങ്',
+    soybean: 'സോയാബീൻ',
+    groundnut: 'നിലക്കടല',
+    mustard: 'കടുക്',
+    cotton: 'പരുത്തി',
+    sugarcane: 'കരിമ്പ്',
+    onion: 'സവാള',
+    chilli: 'മുളക്',
+    bajra: 'കമ്പ്',
+    barley: 'ബാർലി',
+    gram: 'കടല',
+  },
+
+  or: {
+    maize: 'ମକା',
+    wheat: 'ଗହମ',
+    rice: 'ଧାନ',
+    tomato: 'ଟମାଟୋ',
+    potato: 'ଆଳୁ',
+    soybean: 'ସୋୟାବିନ',
+    groundnut: 'ଚିନାବାଦାମ',
+    mustard: 'ସୋରିଷ',
+    cotton: 'କପା',
+    sugarcane: 'ଆଖୁ',
+    onion: 'ପିଆଜ',
+    chilli: 'ଲଙ୍କା',
+    bajra: 'ବାଜରା',
+    barley: 'ଯବ',
+    gram: 'ଚଣା',
+  },
+
+  as: {
+    maize: 'মাকৈ',
+    wheat: 'ঘেঁহু',
+    rice: 'ধান',
+    tomato: 'বিলাহী',
+    potato: 'আলু',
+    soybean: 'ছয়াবিন',
+    groundnut: 'বাদাম',
+    mustard: 'সৰিয়হ',
+    cotton: 'কপাহ',
+    sugarcane: 'কুঁহিয়াৰ',
+    onion: 'পিয়াঁজ',
+    chilli: 'জলকীয়া',
+    bajra: 'বাজৰা',
+    barley: 'যৱ',
+    gram: 'বুট',
+  },
+}
+
+function normalizeLanguage(language) {
+  const value = String(language || 'en')
+    .trim()
+    .toLowerCase()
+
+  const languageMap = {
+    en: 'en',
+    english: 'en',
+
+    hi: 'hi',
+    hindi: 'hi',
+
+    raj: 'raj',
+    rajasthani: 'raj',
+
+    bho: 'bho',
+    bhojpuri: 'bho',
+
+    har: 'har',
+    haryanvi: 'har',
+
+    gu: 'gu',
+    gujarati: 'gu',
+
+    mr: 'mr',
+    marathi: 'mr',
+
+    pa: 'pa',
+    punjabi: 'pa',
+
+    bn: 'bn',
+    bengali: 'bn',
+    bangla: 'bn',
+
+    ta: 'ta',
+    tamil: 'ta',
+
+    te: 'te',
+    telugu: 'te',
+
+    kn: 'kn',
+    kannada: 'kn',
+
+    ml: 'ml',
+    malayalam: 'ml',
+
+    or: 'or',
+    odia: 'or',
+    oriya: 'or',
+
+    as: 'as',
+    assamese: 'as',
+  }
+
+  return languageMap[value] || 'en'
+}
+// ======================================================
+// TRANSLATE CROP FOR DISPLAY
+// ======================================================
+function getCropDisplayName(
+  cropName,
+  language
+) {
+  if (!cropName) {
+    return ''
+  }
+
+  const lang =
+    normalizeLanguage(language)
+
+  const key =
+    String(cropName)
+      .trim()
+      .toLowerCase()
+
+  return (
+    CROP_TRANSLATIONS[lang]?.[key] ||
+    CROP_TRANSLATIONS.en?.[key] ||
+    cropName
+  )
+}
+// ======================================================
+// COMMON DISEASE TRANSLATIONS
+// Used mainly for older history records saved in English.
+// New diagnosis data should preferably save localized display
+// values from the backend.
+// ======================================================
+
+const DISEASE_TRANSLATIONS = {
+
+  hi: {
+    'tomato spotted wilt virus':
+      'टमाटर स्पॉटेड विल्ट वायरस',
+
+    'tomato spotted wilt virus (tswv)':
+      'टमाटर स्पॉटेड विल्ट वायरस (TSWV)',
+
+    'early blight':
+      'अगेती झुलसा',
+
+    'late blight':
+      'पछेती झुलसा',
+
+    'leaf spot':
+      'पत्ती धब्बा रोग',
+
+    'bacterial spot':
+      'जीवाणु धब्बा रोग',
+
+    'bacterial wilt':
+      'जीवाणु मुरझान',
+
+    'fusarium wilt':
+      'फ्यूजेरियम मुरझान',
+
+    'powdery mildew':
+      'चूर्णिल आसिता',
+
+    'downy mildew':
+      'मृदुरोमिल आसिता',
+
+    'anthracnose':
+      'एन्थ्रेक्नोज',
+
+    'rust':
+      'रतुआ रोग',
+
+    'mosaic virus':
+      'मोज़ेक वायरस',
+
+    'yellow mosaic virus':
+      'पीला मोज़ेक वायरस',
+
+    'leaf curl virus':
+      'पत्ती मरोड़ वायरस',
+
+    'root rot':
+      'जड़ सड़न',
+
+    'stem rot':
+      'तना सड़न',
+
+    'fruit rot':
+      'फल सड़न',
+  },
+
+}
 
 
+// ======================================================
+// TRANSLATE DISEASE FOR DISPLAY
+// ======================================================
+
+function getDiseaseDisplayName(
+  diseaseName,
+  language
+) {
+  if (!diseaseName) {
+    return ''
+  }
+
+  const lang =
+    normalizeLanguage(language)
+
+  const key =
+    String(diseaseName)
+      .trim()
+      .toLowerCase()
+
+  if (
+    ['hi', 'raj', 'bho', 'har']
+      .includes(lang)
+  ) {
+    return (
+      DISEASE_TRANSLATIONS.hi?.[key] ||
+      diseaseName
+    )
+  }
+
+  return diseaseName
+}
 export default function CropHistory() {
 
   const [items, setItems] = useState([])
@@ -78,7 +534,10 @@ export default function CropHistory() {
   ] = useState(false)
 
 
-  const { t } = useLanguage()
+ const {
+  t,
+  language,
+} = useLanguage()
 
 
   // ======================================================
@@ -608,11 +1067,13 @@ export default function CropHistory() {
                   </span>
 
                   <h2>
-                    {item.crop_name}
-                  </h2>
+                  {getCropDisplayName(
+                    item.crop_name,
+                    language
+                  )}
+                </h2>
 
-
-                  <div className="history-info">
+                      <div className="history-info">
 
 
                     {/* DISEASE */}
@@ -624,8 +1085,11 @@ export default function CropHistory() {
                       </span>
 
                       <strong>
-                        {item.disease_name}
-                      </strong>
+                      {getDiseaseDisplayName(
+                        item.disease_name,
+                        language
+                      )}
+                    </strong>
 
                     </div>
 
@@ -829,7 +1293,10 @@ export default function CropHistory() {
                     mt-1
                   "
                 >
-                  {selectedItem.crop_name}
+                  {getCropDisplayName(
+                  selectedItem.crop_name,
+                  language
+                )}
                 </h2>
 
               </div>
@@ -902,22 +1369,25 @@ export default function CropHistory() {
                 "
               >
 
+              <SummaryBox
+                title={t.crop}
+                value={
+                  getCropDisplayName(
+                    selectedItem.crop_name,
+                    language
+                  )
+                }
+              />
 
-                <SummaryBox
-                  title={t.crop}
-                  value={
-                    selectedItem.crop_name
-                  }
-                />
-
-
-                <SummaryBox
-                  title={t.disease}
-                  value={
-                    selectedItem.disease_name
-                  }
-                />
-
+              <SummaryBox
+                title={t.disease}
+                value={
+                  getDiseaseDisplayName(
+                    selectedItem.disease_name,
+                    language
+                  )
+                }
+              />
 
                 <SummaryBox
                   title={t.confidence}

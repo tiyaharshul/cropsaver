@@ -128,7 +128,34 @@ calendarTaskGrowthDesc:
 calendarTaskHarvestPreparationDesc:
   'Check crop maturity and prepare equipment, labour and storage for harvesting.',
 calendarTaskExpectedHarvestDesc:
-  'Expected harvest period. Confirm crop maturity before harvesting.',// ======================================================
+  'Expected harvest period. Confirm crop maturity before harvesting.',    // ======================================================
+    // CROP CALENDAR — CROP NAMES
+    // ======================================================
+
+    calendarCropMaize: 'Maize',
+    calendarCropWheat: 'Wheat',
+    calendarCropRice: 'Rice',
+    calendarCropTomato: 'Tomato',
+    calendarCropPotato: 'Potato',
+    calendarCropSoybean: 'Soybean',
+    calendarCropGroundnut: 'Groundnut',
+    calendarCropMustard: 'Mustard',
+    calendarCropCotton: 'Cotton',
+    calendarCropSugarcane: 'Sugarcane',
+    calendarCropOnion: 'Onion',
+    calendarCropChilli: 'Chilli',
+    calendarCropBajra: 'Bajra',
+    calendarCropBarley: 'Barley',
+    calendarCropGram: 'Gram',
+
+    // ======================================================
+    // CROP CALENDAR — SEASONS
+    // ======================================================
+
+    calendarSeasonKharif: 'Kharif',
+    calendarSeasonRabi: 'Rabi',
+    calendarSeasonZaid: 'Zaid',
+    calendarSeasonYearRound: 'Year Round',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -305,7 +332,34 @@ calendarTaskGrowthDesc:
 calendarTaskHarvestPreparationDesc:
   'फसल की परिपक्वता जाँचें और कटाई के लिए उपकरण, श्रम और भंडारण तैयार करें।',
 calendarTaskExpectedHarvestDesc:
-  'अनुमानित कटाई अवधि। कटाई से पहले फसल की परिपक्वता की पुष्टि करें।',// ======================================================
+  'अनुमानित कटाई अवधि। कटाई से पहले फसल की परिपक्वता की पुष्टि करें।',    // ======================================================
+    // फसल कैलेंडर — फसल के नाम
+    // ======================================================
+
+    calendarCropMaize: 'मक्का',
+    calendarCropWheat: 'गेहूँ',
+    calendarCropRice: 'धान',
+    calendarCropTomato: 'टमाटर',
+    calendarCropPotato: 'आलू',
+    calendarCropSoybean: 'सोयाबीन',
+    calendarCropGroundnut: 'मूंगफली',
+    calendarCropMustard: 'सरसों',
+    calendarCropCotton: 'कपास',
+    calendarCropSugarcane: 'गन्ना',
+    calendarCropOnion: 'प्याज',
+    calendarCropChilli: 'मिर्च',
+    calendarCropBajra: 'बाजरा',
+    calendarCropBarley: 'जौ',
+    calendarCropGram: 'चना',
+
+    // ======================================================
+    // फसल कैलेंडर — मौसम
+    // ======================================================
+
+    calendarSeasonKharif: 'खरीफ',
+    calendarSeasonRabi: 'रबी',
+    calendarSeasonZaid: 'जायद',
+    calendarSeasonYearRound: 'साल भर',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -482,7 +536,26 @@ calendarTaskGrowthDesc:
 calendarTaskHarvestPreparationDesc:
   'फसल पकण री जांच करो अर कटाई खातर साधन अर भंडारण तैयार राखो।',
 calendarTaskExpectedHarvestDesc:
-  'अनुमानित कटाई रो समय। कटाई सूं पहला फसल पकण री पुष्टि करो।',// ======================================================
+  'अनुमानित कटाई रो समय। कटाई सूं पहला फसल पकण री पुष्टि करो।',    calendarCropMaize: 'मक्का',
+    calendarCropWheat: 'गेहूँ',
+    calendarCropRice: 'धान',
+    calendarCropTomato: 'टमाटर',
+    calendarCropPotato: 'आलू',
+    calendarCropSoybean: 'सोयाबीन',
+    calendarCropGroundnut: 'मूंगफली',
+    calendarCropMustard: 'सरसों',
+    calendarCropCotton: 'कपास',
+    calendarCropSugarcane: 'गन्ना',
+    calendarCropOnion: 'प्याज',
+    calendarCropChilli: 'मिर्च',
+    calendarCropBajra: 'बाजरा',
+    calendarCropBarley: 'जौ',
+    calendarCropGram: 'चना',
+
+    calendarSeasonKharif: 'खरीफ',
+    calendarSeasonRabi: 'रबी',
+    calendarSeasonZaid: 'जायद',
+    calendarSeasonYearRound: 'साल भर',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -638,7 +711,26 @@ calendarTaskGrowth: 'फसल बढ़वार जाँच',
 calendarTaskHarvestPreparation: 'कटाई के तैयारी',
 calendarTaskExpectedHarvest: 'अनुमानित कटाई',
 
+calendarCropMaize: 'मक्का',
+calendarCropWheat: 'गेहूँ',
+calendarCropRice: 'धान',
+calendarCropTomato: 'टमाटर',
+calendarCropPotato: 'आलू',
+calendarCropSoybean: 'सोयाबीन',
+calendarCropGroundnut: 'मूंगफली',
+calendarCropMustard: 'सरसों',
+calendarCropCotton: 'कपास',
+calendarCropSugarcane: 'गन्ना',
+calendarCropOnion: 'पियाज',
+calendarCropChilli: 'मरिचा',
+calendarCropBajra: 'बाजरा',
+calendarCropBarley: 'जौ',
+calendarCropGram: 'चना',
 
+calendarSeasonKharif: 'खरीफ',
+calendarSeasonRabi: 'रबी',
+calendarSeasonZaid: 'जायद',
+calendarSeasonYearRound: 'साल भर',
 // ==================== HARYANVI ====================
 
 calendarPlanning: 'फसल की योजना',
@@ -777,7 +869,26 @@ deletingHistory: 'हटाया जा रह्या सै...',
     explore: 'और देख',
     needHelp: 'मदद चाहिए?',
     footerRights: 'सारे अधिकार सुरक्षित।',
-    footerMessage: 'बढ़िया खेती खातर तकनीक',// ======================================================
+    footerMessage: 'बढ़िया खेती खातर तकनीक',calendarCropMaize: 'मक्का',
+calendarCropWheat: 'गेहूँ',
+calendarCropRice: 'धान',
+calendarCropTomato: 'टमाटर',
+calendarCropPotato: 'आलू',
+calendarCropSoybean: 'सोयाबीन',
+calendarCropGroundnut: 'मूंगफली',
+calendarCropMustard: 'सरसों',
+calendarCropCotton: 'कपास',
+calendarCropSugarcane: 'गन्ना',
+calendarCropOnion: 'प्याज',
+calendarCropChilli: 'मिर्च',
+calendarCropBajra: 'बाजरा',
+calendarCropBarley: 'जौ',
+calendarCropGram: 'चना',
+
+calendarSeasonKharif: 'खरीफ',
+calendarSeasonRabi: 'रबी',
+calendarSeasonZaid: 'जायद',
+calendarSeasonYearRound: 'साल भर',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -914,7 +1025,26 @@ calendarTaskDisease: 'રોગ તપાસ',
 calendarTaskMidIrrigation: 'મધ્ય-મોસમ સિંચાઈ તપાસ',
 calendarTaskGrowth: 'પાક વૃદ્ધિ તપાસ',
 calendarTaskHarvestPreparation: 'લણણી તૈયારી',
-calendarTaskExpectedHarvest: 'અપેક્ષિત લણણી',// ======================================================
+calendarTaskExpectedHarvest: 'અપેક્ષિત લણણી',calendarCropMaize: 'મકાઈ',
+calendarCropWheat: 'ઘઉં',
+calendarCropRice: 'ચોખા',
+calendarCropTomato: 'ટામેટા',
+calendarCropPotato: 'બટાકા',
+calendarCropSoybean: 'સોયાબીન',
+calendarCropGroundnut: 'મગફળી',
+calendarCropMustard: 'રાઈ',
+calendarCropCotton: 'કપાસ',
+calendarCropSugarcane: 'શેરડી',
+calendarCropOnion: 'ડુંગળી',
+calendarCropChilli: 'મરચાં',
+calendarCropBajra: 'બાજરી',
+calendarCropBarley: 'જવ',
+calendarCropGram: 'ચણા',
+
+calendarSeasonKharif: 'ખરીફ',
+calendarSeasonRabi: 'રવિ',
+calendarSeasonZaid: 'ઝાયદ',
+calendarSeasonYearRound: 'આખું વર્ષ',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -1051,7 +1181,26 @@ calendarTaskDisease: 'रोग तपासणी',
 calendarTaskMidIrrigation: 'मध्य-हंगाम सिंचन तपासणी',
 calendarTaskGrowth: 'पीक वाढ तपासणी',
 calendarTaskHarvestPreparation: 'कापणीची तयारी',
-calendarTaskExpectedHarvest: 'अपेक्षित कापणी',// ======================================================
+calendarTaskExpectedHarvest: 'अपेक्षित कापणी',calendarCropMaize: 'मका',
+calendarCropWheat: 'गहू',
+calendarCropRice: 'तांदूळ',
+calendarCropTomato: 'टोमॅटो',
+calendarCropPotato: 'बटाटा',
+calendarCropSoybean: 'सोयाबीन',
+calendarCropGroundnut: 'भुईमूग',
+calendarCropMustard: 'मोहरी',
+calendarCropCotton: 'कापूस',
+calendarCropSugarcane: 'ऊस',
+calendarCropOnion: 'कांदा',
+calendarCropChilli: 'मिरची',
+calendarCropBajra: 'बाजरी',
+calendarCropBarley: 'बार्ली',
+calendarCropGram: 'हरभरा',
+
+calendarSeasonKharif: 'खरीप',
+calendarSeasonRabi: 'रब्बी',
+calendarSeasonZaid: 'झायड',
+calendarSeasonYearRound: 'वर्षभर',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -1182,7 +1331,26 @@ calendarTaskDisease: 'ਰੋਗ ਜਾਂਚ',
 calendarTaskMidIrrigation: 'ਮੱਧ-ਮੌਸਮ ਸਿੰਚਾਈ ਜਾਂਚ',
 calendarTaskGrowth: 'ਫਸਲ ਵਾਧਾ ਜਾਂਚ',
 calendarTaskHarvestPreparation: 'ਕਟਾਈ ਦੀ ਤਿਆਰੀ',
-calendarTaskExpectedHarvest: 'ਅਨੁਮਾਨਿਤ ਕਟਾਈ',// ======================================================
+calendarTaskExpectedHarvest: 'ਅਨੁਮਾਨਿਤ ਕਟਾਈ',calendarCropMaize: 'ਮੱਕੀ',
+calendarCropWheat: 'ਕਣਕ',
+calendarCropRice: 'ਚੌਲ',
+calendarCropTomato: 'ਟਮਾਟਰ',
+calendarCropPotato: 'ਆਲੂ',
+calendarCropSoybean: 'ਸੋਇਆਬੀਨ',
+calendarCropGroundnut: 'ਮੂੰਗਫਲੀ',
+calendarCropMustard: 'ਸਰ੍ਹੋਂ',
+calendarCropCotton: 'ਕਪਾਹ',
+calendarCropSugarcane: 'ਗੰਨਾ',
+calendarCropOnion: 'ਪਿਆਜ਼',
+calendarCropChilli: 'ਮਿਰਚ',
+calendarCropBajra: 'ਬਾਜਰਾ',
+calendarCropBarley: 'ਜੌਂ',
+calendarCropGram: 'ਛੋਲੇ',
+
+calendarSeasonKharif: 'ਖਰੀਫ',
+calendarSeasonRabi: 'ਰਬੀ',
+calendarSeasonZaid: 'ਜ਼ੈਦ',
+calendarSeasonYearRound: 'ਸਾਰਾ ਸਾਲ',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -1315,7 +1483,26 @@ calendarTaskDisease: 'রোগ পরীক্ষা',
 calendarTaskMidIrrigation: 'মধ্য-মৌসুম সেচ পরীক্ষা',
 calendarTaskGrowth: 'ফসল বৃদ্ধি পরীক্ষা',
 calendarTaskHarvestPreparation: 'ফসল কাটার প্রস্তুতি',
-calendarTaskExpectedHarvest: 'প্রত্যাশিত ফসল কাটা',
+calendarTaskExpectedHarvest: 'প্রত্যাশিত ফসল কাটা',calendarCropMaize: 'ভুট্টা',
+calendarCropWheat: 'গম',
+calendarCropRice: 'ধান',
+calendarCropTomato: 'টমেটো',
+calendarCropPotato: 'আলু',
+calendarCropSoybean: 'সয়াবিন',
+calendarCropGroundnut: 'চিনাবাদাম',
+calendarCropMustard: 'সরিষা',
+calendarCropCotton: 'তুলা',
+calendarCropSugarcane: 'আখ',
+calendarCropOnion: 'পেঁয়াজ',
+calendarCropChilli: 'মরিচ',
+calendarCropBajra: 'বাজরা',
+calendarCropBarley: 'যব',
+calendarCropGram: 'ছোলা',
+
+calendarSeasonKharif: 'খরিফ',
+calendarSeasonRabi: 'রবি',
+calendarSeasonZaid: 'জায়েদ',
+calendarSeasonYearRound: 'সারা বছর',
 // ======================================================
 // WEATHER ALERTS
 // ======================================================
@@ -1448,7 +1635,45 @@ calendarTaskDisease: 'நோய் சோதனை',
 calendarTaskMidIrrigation: 'நடுப்பருவ நீர்ப்பாசன சோதனை',
 calendarTaskGrowth: 'பயிர் வளர்ச்சி சோதனை',
 calendarTaskHarvestPreparation: 'அறுவடை தயாரிப்பு',
-calendarTaskExpectedHarvest: 'எதிர்பார்க்கப்படும் அறுவடை',// ======================================================
+calendarTaskExpectedHarvest: 'எதிர்பார்க்கப்படும் அறுவடை',calendarCropMaize: 'மக்காச்சோளம்',
+calendarCropWheat: 'கோதுமை',
+calendarCropRice: 'நெல்',
+calendarCropTomato: 'தக்காளி',
+calendarCropPotato: 'உருளைக்கிழங்கு',
+calendarCropSoybean: 'சோயாபீன்',
+calendarCropGroundnut: 'நிலக்கடலை',
+calendarCropMustard: 'கடுகு',
+calendarCropCotton: 'பருத்தி',
+calendarCropSugarcane: 'கரும்பு',
+calendarCropOnion: 'வெங்காயம்',
+calendarCropChilli: 'மிளகாய்',
+calendarCropBajra: 'கம்பு',
+calendarCropBarley: 'பார்லி',
+calendarCropGram: 'கொண்டைக்கடலை',
+
+calendarSeasonKharif: 'காரிஃப்',
+calendarSeasonRabi: 'ரபி',
+calendarSeasonZaid: 'சாயித்',
+calendarSeasonYearRound: 'ஆண்டு முழுவதும்',calendarCropMaize: 'మొక్కజొన్న',
+calendarCropWheat: 'గోధుమ',
+calendarCropRice: 'వరి',
+calendarCropTomato: 'టమాటా',
+calendarCropPotato: 'బంగాళాదుంప',
+calendarCropSoybean: 'సోయాబీన్',
+calendarCropGroundnut: 'వేరుశెనగ',
+calendarCropMustard: 'ఆవాలు',
+calendarCropCotton: 'పత్తి',
+calendarCropSugarcane: 'చెరకు',
+calendarCropOnion: 'ఉల్లిపాయ',
+calendarCropChilli: 'మిరప',
+calendarCropBajra: 'సజ్జ',
+calendarCropBarley: 'బార్లీ',
+calendarCropGram: 'శనగ',
+
+calendarSeasonKharif: 'ఖరీఫ్',
+calendarSeasonRabi: 'రబీ',
+calendarSeasonZaid: 'జైద్',
+calendarSeasonYearRound: 'ఏడాది పొడవునా',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -1580,7 +1805,26 @@ calendarTaskDisease: 'వ్యాధి తనిఖీ',
 calendarTaskMidIrrigation: 'మధ్య-సీజన్ నీటిపారుదల తనిఖీ',
 calendarTaskGrowth: 'పంట పెరుగుదల తనిఖీ',
 calendarTaskHarvestPreparation: 'కోత తయారీ',
-calendarTaskExpectedHarvest: 'అంచనా కోత',// ======================================================
+calendarTaskExpectedHarvest: 'అంచనా కోత',calendarCropMaize: 'ಮೆಕ್ಕೆಜೋಳ',
+calendarCropWheat: 'ಗೋಧಿ',
+calendarCropRice: 'ಭತ್ತ',
+calendarCropTomato: 'ಟೊಮೇಟೊ',
+calendarCropPotato: 'ಆಲೂಗಡ್ಡೆ',
+calendarCropSoybean: 'ಸೋಯಾಬೀನ್',
+calendarCropGroundnut: 'ಕಡಲೆಕಾಯಿ',
+calendarCropMustard: 'ಸಾಸಿವೆ',
+calendarCropCotton: 'ಹತ್ತಿ',
+calendarCropSugarcane: 'ಕಬ್ಬು',
+calendarCropOnion: 'ಈರುಳ್ಳಿ',
+calendarCropChilli: 'ಮೆಣಸಿನಕಾಯಿ',
+calendarCropBajra: 'ಸಜ್ಜೆ',
+calendarCropBarley: 'ಬಾರ್ಲಿ',
+calendarCropGram: 'ಕಡಲೆ',
+
+calendarSeasonKharif: 'ಖರೀಫ್',
+calendarSeasonRabi: 'ರಬಿ',
+calendarSeasonZaid: 'ಜೈದ್',
+calendarSeasonYearRound: 'ವರ್ಷಪೂರ್ತಿ',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 
@@ -1712,7 +1956,26 @@ calendarTaskDisease: 'ರೋಗ ಪರಿಶೀಲನೆ',
 calendarTaskMidIrrigation: 'ಮಧ್ಯ-ಋತು ನೀರಾವರಿ ಪರಿಶೀಲನೆ',
 calendarTaskGrowth: 'ಬೆಳೆ ಬೆಳವಣಿಗೆ ಪರಿಶೀಲನೆ',
 calendarTaskHarvestPreparation: 'ಕೊಯ್ಲು ತಯಾರಿ',
-calendarTaskExpectedHarvest: 'ನಿರೀಕ್ಷಿತ ಕೊಯ್ಲು',// ======================================================
+calendarTaskExpectedHarvest: 'ನಿರೀಕ್ಷಿತ ಕೊಯ್ಲು',calendarCropMaize: 'ചോളം',
+calendarCropWheat: 'ഗോതമ്പ്',
+calendarCropRice: 'നെല്ല്',
+calendarCropTomato: 'തക്കാളി',
+calendarCropPotato: 'ഉരുളക്കിഴങ്ങ്',
+calendarCropSoybean: 'സോയാബീൻ',
+calendarCropGroundnut: 'നിലക്കടല',
+calendarCropMustard: 'കടുക്',
+calendarCropCotton: 'പരുത്തി',
+calendarCropSugarcane: 'കരിമ്പ്',
+calendarCropOnion: 'സവാള',
+calendarCropChilli: 'മുളക്',
+calendarCropBajra: 'കമ്പ്',
+calendarCropBarley: 'ബാർലി',
+calendarCropGram: 'കടല',
+
+calendarSeasonKharif: 'ഖാരിഫ്',
+calendarSeasonRabi: 'റാബി',
+calendarSeasonZaid: 'സൈദ്',
+calendarSeasonYearRound: 'വർഷം മുഴുവൻ',// ======================================================
 // WEATHER ALERTS
 // ======================================================
 

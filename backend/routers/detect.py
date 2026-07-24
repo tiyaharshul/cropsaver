@@ -85,7 +85,17 @@ Allowed problem_type values:
 "healthy"
 "other"
 
-Return ONLY valid JSON.
+IMPORTANT:
+
+Return the crop name and problem name in canonical English.
+
+This canonical English diagnosis is used internally for
+database storage, treatment matching and farmer-feedback
+learning.
+
+Return ONLY ONE JSON OBJECT.
+
+Do NOT return a JSON array.
 
 Required JSON structure:
 
@@ -106,7 +116,6 @@ Do not use ```json.
 Return ONLY JSON.
 """
 
-
     response = gemini_client.models.generate_content(
 
         model="gemini-3.5-flash-lite",
@@ -125,12 +134,10 @@ Return ONLY JSON.
         ),
     )
 
-
     if not response.text:
         raise ValueError(
             "Gemini returned empty image analysis."
         )
-
 
     text = (
         response.text
@@ -140,14 +147,50 @@ Return ONLY JSON.
         .strip()
     )
 
-
     print("=" * 60)
     print("Gemini Image Analysis")
     print(text)
     print("=" * 60)
 
+    # ==================================================
+    # SAFE GEMINI JSON PARSING
+    # ==================================================
+    #
+    # Gemini may occasionally return:
+    #
+    # {
+    #   "crop_name": "Tomato"
+    # }
+    #
+    # OR:
+    #
+    # [
+    #   {
+    #     "crop_name": "Tomato"
+    #   }
+    # ]
+    #
+    # We normalize both formats into a dictionary.
+    # ==================================================
 
-    return json.loads(text)
+    parsed = json.loads(text)
+
+    if isinstance(parsed, list):
+
+        if not parsed:
+            raise ValueError(
+                "Gemini returned an empty analysis list."
+            )
+
+        parsed = parsed[0]
+
+    if not isinstance(parsed, dict):
+
+        raise ValueError(
+            "Gemini analysis must be a JSON object."
+        )
+
+    return parsed
 
 
 # ======================================================
@@ -164,7 +207,9 @@ async def reconcile_diagnosis(
     plant_confidence,
 ):
 
-    # If Plant.id gives no useful result, trust Gemini.
+    # If Plant.id gives no useful result,
+    # use Gemini result.
+
     if not plant_disease:
 
         return {
@@ -174,7 +219,6 @@ async def reconcile_diagnosis(
             "problem_name":
                 gemini_problem_name,
         }
-
 
     prompt = f"""
 You are an expert agricultural plant pathologist.
@@ -222,6 +266,8 @@ visual evidence reasonably supports it.
 Do NOT blindly choose the diagnosis with the higher
 confidence.
 
+The final problem_name MUST remain in canonical English.
+
 Return ONLY valid JSON.
 
 Required JSON:
@@ -235,7 +281,6 @@ Required JSON:
 Do not write markdown.
 Return ONLY JSON.
 """
-
 
     try:
 
@@ -253,12 +298,10 @@ Return ONLY JSON.
             )
         )
 
-
         if not response.text:
             raise ValueError(
                 "Empty reconciliation response."
             )
-
 
         text = (
             response.text
@@ -268,15 +311,29 @@ Return ONLY JSON.
             .strip()
         )
 
-
         print("=" * 60)
         print("Gemini Reconciliation")
         print(text)
         print("=" * 60)
 
-
         parsed = json.loads(text)
 
+        # Safety in case Gemini wraps this
+        # response in a list too.
+
+        if isinstance(parsed, list):
+
+            if not parsed:
+                raise ValueError(
+                    "Empty reconciliation list."
+                )
+
+            parsed = parsed[0]
+
+        if not isinstance(parsed, dict):
+            raise ValueError(
+                "Reconciliation must return an object."
+            )
 
         return {
             "problem_type":
@@ -292,17 +349,12 @@ Return ONLY JSON.
                 ),
         }
 
-
     except Exception as e:
 
         print(
             "Reconciliation Error:",
             e,
         )
-
-
-        # Prefer specific Gemini diagnosis when Plant.id
-        # only returns a broad category.
 
         broad_labels = {
             "bacteria",
@@ -313,7 +365,6 @@ Return ONLY JSON.
             "abiotic",
             "pest",
         }
-
 
         if (
             plant_disease
@@ -329,13 +380,224 @@ Return ONLY JSON.
                     plant_disease,
             }
 
-
         return {
             "problem_type":
                 gemini_problem_type,
 
             "problem_name":
                 gemini_problem_name,
+        }
+
+
+# ======================================================
+# LOCALIZE FARMER-FACING DIAGNOSIS
+# ======================================================
+
+async def localize_diagnosis(
+    crop_name: str,
+    problem_name: str,
+    problem_type: str,
+    language: str,
+):
+
+    # --------------------------------------------------
+    # ENGLISH
+    # --------------------------------------------------
+
+    if not language:
+        language = "English"
+
+    normalized_language = (
+        language
+        .strip()
+        .lower()
+    )
+
+    if normalized_language in {
+        "en",
+        "english",
+    }:
+
+        return {
+            "display_crop_name":
+                crop_name,
+
+            "display_problem_name":
+                problem_name,
+        }
+
+
+    # --------------------------------------------------
+    # OTHER LANGUAGES
+    # --------------------------------------------------
+
+    prompt = f"""
+You are an agricultural terminology translator helping
+Indian farmers understand crop diagnosis results.
+
+Canonical crop name:
+{crop_name}
+
+Canonical problem type:
+{problem_type}
+
+Canonical crop problem:
+{problem_name}
+
+Target language:
+{language}
+
+Translate the crop name and crop problem into the target
+language.
+
+IMPORTANT RULES:
+
+1. Preserve the agricultural/scientific meaning exactly.
+
+2. Do NOT change the diagnosis.
+
+3. Do NOT invent another disease, pest or crop.
+
+4. Use natural terminology understandable to farmers who
+   speak the target language.
+
+5. Preserve useful scientific abbreviations.
+
+For example:
+
+Tomato spotted wilt virus (TSWV)
+
+should preserve:
+
+(TSWV)
+
+after the translated disease name.
+
+6. Scientific names may remain in English when translation
+   would make them inaccurate.
+
+7. Do NOT add explanations.
+
+8. Return ONLY valid JSON.
+
+Required JSON:
+
+{{
+  "display_crop_name": "...",
+  "display_problem_name": "..."
+}}
+
+Do not use markdown.
+Do not use ```json.
+Return ONLY JSON.
+"""
+
+    try:
+
+        response = (
+            gemini_client.models.generate_content(
+
+                model="gemini-3.5-flash-lite",
+
+                contents=prompt,
+
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    temperature=0.1,
+                ),
+            )
+        )
+
+        if not response.text:
+            raise ValueError(
+                "Empty localization response."
+            )
+
+        text = (
+            response.text
+            .replace("```json", "")
+            .replace("```JSON", "")
+            .replace("```", "")
+            .strip()
+        )
+
+        parsed = json.loads(text)
+
+        # Gemini may return [{...}]
+        # instead of {...}.
+
+        if isinstance(parsed, list):
+
+            if not parsed:
+                raise ValueError(
+                    "Empty localization list."
+                )
+
+            parsed = parsed[0]
+
+        if not isinstance(parsed, dict):
+            raise ValueError(
+                "Localization must return an object."
+            )
+
+        display_crop_name = (
+            parsed.get(
+                "display_crop_name"
+            )
+            or crop_name
+        )
+
+        display_problem_name = (
+            parsed.get(
+                "display_problem_name"
+            )
+            or problem_name
+        )
+
+        print("=" * 60)
+        print("Localized Diagnosis")
+        print("Language:", language)
+
+        print(
+            "Crop:",
+            crop_name,
+            "->",
+            display_crop_name,
+        )
+
+        print(
+            "Problem:",
+            problem_name,
+            "->",
+            display_problem_name,
+        )
+
+        print("=" * 60)
+
+        return {
+            "display_crop_name":
+                display_crop_name,
+
+            "display_problem_name":
+                display_problem_name,
+        }
+
+    except Exception as e:
+
+        # Localization should NEVER cause
+        # diagnosis to fail.
+
+        print(
+            "Diagnosis localization error:",
+            e,
+        )
+
+        return {
+            "display_crop_name":
+                crop_name,
+
+            "display_problem_name":
+                problem_name,
         }
 
 
@@ -351,10 +613,10 @@ Return ONLY JSON.
 async def detect_disease(
     file: UploadFile = File(...),
     user_id: str = "anonymous",
+    language: str = "English",
 ):
 
     image_bytes = await file.read()
-
 
     if not image_bytes:
 
@@ -362,7 +624,6 @@ async def detect_disease(
             status_code=400,
             detail="Uploaded image is empty.",
         )
-
 
     mime_type = (
         file.content_type
@@ -386,17 +647,18 @@ async def detect_disease(
             )
         )
 
-
         image_url = (
-            upload_result["secure_url"]
+            upload_result[
+                "secure_url"
+            ]
         )
 
-
         print("=" * 60)
-        print("Cloudinary Upload Successful")
+        print(
+            "Cloudinary Upload Successful"
+        )
         print(image_url)
         print("=" * 60)
-
 
     except Exception as e:
 
@@ -415,7 +677,6 @@ async def detect_disease(
 
     gemini_data = {}
 
-
     try:
 
         gemini_data = (
@@ -425,7 +686,6 @@ async def detect_disease(
             )
         )
 
-
     except Exception as e:
 
         print(
@@ -433,6 +693,10 @@ async def detect_disease(
             e,
         )
 
+
+    # ==================================================
+    # SAFE EXTRACTION
+    # ==================================================
 
     crop_name = (
         gemini_data.get(
@@ -467,9 +731,23 @@ async def detect_disease(
             )
         )
 
-    except (TypeError, ValueError):
+    except (
+        TypeError,
+        ValueError,
+    ):
 
         gemini_confidence = 0.0
+
+
+    # Clamp confidence to 0-1
+
+    gemini_confidence = max(
+        0.0,
+        min(
+            gemini_confidence,
+            1.0,
+        ),
+    )
 
 
     gemini_reason = (
@@ -528,6 +806,7 @@ async def detect_disease(
 
 
         print("=" * 60)
+
         print(
             "Plant.id Status:",
             resp.status_code,
@@ -542,12 +821,16 @@ async def detect_disease(
             201,
         ):
 
-            plant_data = resp.json()
+            plant_data = (
+                resp.json()
+            )
 
 
-            result = plant_data.get(
-                "result",
-                {},
+            result = (
+                plant_data.get(
+                    "result",
+                    {},
+                )
             )
 
 
@@ -569,7 +852,9 @@ async def detect_disease(
 
             if suggestions:
 
-                top = suggestions[0]
+                top = (
+                    suggestions[0]
+                )
 
 
                 plant_disease = (
@@ -579,13 +864,30 @@ async def detect_disease(
                 )
 
 
-                plant_confidence = float(
-                    top.get(
-                        "probability",
-                        0,
-                    )
-                )
+                try:
 
+                    plant_confidence = float(
+                        top.get(
+                            "probability",
+                            0,
+                        )
+                    )
+
+                except (
+                    TypeError,
+                    ValueError,
+                ):
+
+                    plant_confidence = 0.0
+
+
+                plant_confidence = max(
+                    0.0,
+                    min(
+                        plant_confidence,
+                        1.0,
+                    ),
+                )
 
         else:
 
@@ -597,8 +899,8 @@ async def detect_disease(
 
     except Exception as e:
 
-        # Gemini can still provide diagnosis if Plant.id
-        # temporarily fails.
+        # Gemini can still provide diagnosis if
+        # Plant.id temporarily fails.
 
         print(
             "Plant.id error:",
@@ -642,23 +944,88 @@ async def detect_disease(
     )
 
 
-    # Keep disease_name so your existing frontend and
-    # history continue working.
+    # Keep disease_name for existing
+    # frontend and history compatibility.
 
-    disease_name = problem_name
+    disease_name = (
+        problem_name
+    )
 
 
-    # Plant.id confidence remains useful when available.
-    # Otherwise use Gemini confidence.
+    # ==================================================
+    # LOCALIZE FARMER-FACING RESULT
+    # ==================================================
+
+    localized = (
+        await localize_diagnosis(
+
+            crop_name=crop_name,
+
+            problem_name=
+                problem_name,
+
+            problem_type=
+                problem_type,
+
+            language=
+                language,
+        )
+    )
+
+
+    display_crop_name = (
+        localized.get(
+            "display_crop_name"
+        )
+        or crop_name
+    )
+
+
+    display_problem_name = (
+        localized.get(
+            "display_problem_name"
+        )
+        or problem_name
+    )
+
+
+    # ==================================================
+    # FINAL CONFIDENCE
+    # ==================================================
 
     if plant_confidence > 0:
-        confidence = plant_confidence
+
+        confidence = (
+            plant_confidence
+        )
+
     else:
-        confidence = gemini_confidence
+
+        confidence = (
+            gemini_confidence
+        )
+
+
+    confidence = max(
+        0.0,
+        min(
+            confidence,
+            1.0,
+        ),
+    )
 
 
     # ==================================================
     # SAVE HISTORY
+    # ==================================================
+    #
+    # IMPORTANT:
+    #
+    # Canonical English values are saved.
+    #
+    # Hindi/Gujarati/etc. are ONLY display values.
+    #
+    # This keeps feedback learning consistent.
     # ==================================================
 
     history_document = {
@@ -684,7 +1051,13 @@ async def detect_disease(
         "image_url":
             image_url,
 
+
+        # ----------------------------------------------
+        # GEMINI DETAILS
+        # ----------------------------------------------
+
         "gemini_analysis": {
+
             "problem_name":
                 gemini_problem_name,
 
@@ -698,7 +1071,13 @@ async def detect_disease(
                 gemini_reason,
         },
 
+
+        # ----------------------------------------------
+        # PLANT.ID DETAILS
+        # ----------------------------------------------
+
         "plant_id_analysis": {
+
             "disease_name":
                 plant_disease,
 
@@ -706,8 +1085,13 @@ async def detect_disease(
                 plant_confidence,
         },
 
+
+        # Treatment will be added later by
+        # /treatment.
+
         "treatment":
             None,
+
 
         "created_at":
             datetime.utcnow(),
@@ -717,22 +1101,26 @@ async def detect_disease(
     try:
 
         insert_result = (
-            await crop_history_collection.insert_one(
+            await crop_history_collection
+            .insert_one(
                 history_document
             )
         )
 
 
         history_id = str(
-            insert_result.inserted_id
+            insert_result
+            .inserted_id
         )
 
 
         print("=" * 60)
+
         print(
             "History saved:",
             history_id,
         )
+
         print("=" * 60)
 
 
@@ -747,22 +1135,45 @@ async def detect_disease(
 
 
     # ==================================================
-    # RESPONSE
+    # FINAL RESPONSE
     # ==================================================
 
     return DetectionResult(
 
-        history_id=history_id,
+        history_id=
+            history_id,
 
-        crop_name=crop_name,
 
-        problem_type=problem_type,
+        # ----------------------------------------------
+        # INTERNAL / CANONICAL VALUES
+        # ----------------------------------------------
 
-        problem_name=problem_name,
+        crop_name=
+            crop_name,
 
-        disease_name=disease_name,
+        problem_type=
+            problem_type,
 
-        confidence=confidence,
+        problem_name=
+            problem_name,
 
-        image_url=image_url,
+        disease_name=
+            disease_name,
+
+        confidence=
+            confidence,
+
+        image_url=
+            image_url,
+
+
+        # ----------------------------------------------
+        # TRANSLATED FARMER-FACING VALUES
+        # ----------------------------------------------
+
+        display_crop_name=
+            display_crop_name,
+
+        display_problem_name=
+            display_problem_name,
     )
