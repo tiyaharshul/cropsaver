@@ -1659,3 +1659,851 @@
         padding:36px;
     }
 }
+/* =========================================================
+   WEATHER + AGRICULTURAL RISK
+========================================================= */
+
+.weather-risk-section {
+  margin-bottom: 64px;
+}
+
+
+/* =========================================================
+   MAIN WEATHER CARD
+========================================================= */
+
+.weather-risk-card {
+  position: relative;
+
+  width: 100%;
+
+  padding: 34px;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 254, 248, 0.98),
+      rgba(246, 250, 240, 0.97)
+    );
+
+  border:
+    1px solid
+    rgba(47, 102, 60, 0.16);
+
+  box-shadow:
+    0 10px 30px
+    rgba(25, 72, 39, 0.08);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.weather-risk-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(47, 105, 61, 0.26);
+
+  box-shadow:
+    0 20px 45px
+    rgba(25, 72, 39, 0.13);
+}
+
+
+/* subtle decorative glow */
+
+.weather-risk-card::before {
+  content: '';
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  top: -150px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(80, 150, 94, 0.07);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.weather-risk-header {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 28px;
+}
+
+
+.weather-risk-header h2 {
+  margin: 9px 0 0;
+
+  color: #153c21;
+
+  font-size:
+    clamp(25px, 2.5vw, 34px);
+
+  letter-spacing: -0.8px;
+}
+
+
+.weather-risk-header p {
+  max-width: 650px;
+
+  margin: 9px 0 0;
+
+  color: #647268;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.weather-location {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 9px 13px;
+
+  border-radius: 999px;
+
+  background: #edf5ea;
+
+  border:
+    1px solid
+    rgba(44, 102, 58, 0.10);
+
+  color: #276d3c;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   WEATHER METRICS
+========================================================= */
+
+.weather-metrics {
+  position: relative;
+
+  z-index: 1;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 16px;
+}
+
+
+.weather-metric {
+  min-height: 92px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 17px;
+
+  border-radius: 16px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  border:
+    1px solid
+    rgba(46, 103, 60, 0.10);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.weather-metric:hover {
+  transform:
+    translateY(-3px);
+
+  background: #fffef9;
+
+  box-shadow:
+    0 8px 20px
+    rgba(28, 78, 42, 0.08);
+}
+
+
+.weather-metric-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #edf5ea;
+
+  font-size: 20px;
+}
+
+
+.weather-metric > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.weather-metric strong {
+  color: #173b24;
+
+  font-size: 18px;
+
+  font-weight: 750;
+}
+
+
+.weather-metric span:last-child {
+  color: #718077;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   WEATHER CONDITION
+========================================================= */
+
+.weather-condition {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 22px;
+
+  padding: 7px 11px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(237, 245, 234, 0.8);
+
+  color: #55705c;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+
+/* =========================================================
+   DISEASE + PEST RISK GRID
+========================================================= */
+
+.weather-risk-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   RISK BOX
+========================================================= */
+
+.weather-risk-box {
+  position: relative;
+
+  padding: 22px;
+
+  border-radius: 17px;
+
+  background:
+    rgba(255, 255, 255, 0.70);
+
+  border:
+    1px solid
+    rgba(46, 103, 60, 0.11);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.weather-risk-box:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(27, 76, 41, 0.08);
+}
+
+
+.weather-risk-box-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 15px;
+}
+
+
+.weather-risk-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+.weather-risk-title > span {
+  font-size: 21px;
+}
+
+
+.weather-risk-title h3 {
+  margin: 0;
+
+  color: #173b24;
+
+  font-size: 15px;
+
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   RISK BADGES
+========================================================= */
+
+.weather-risk-badge {
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+
+  text-transform: uppercase;
+}
+
+
+/* LOW */
+
+.weather-risk-badge.risk-low {
+  color: #26703d;
+
+  background: #e6f5e9;
+
+  border:
+    1px solid
+    rgba(38, 112, 61, 0.12);
+}
+
+
+/* MODERATE */
+
+.weather-risk-badge.risk-moderate {
+  color: #8b6818;
+
+  background: #fff4d8;
+
+  border:
+    1px solid
+    rgba(139, 104, 24, 0.13);
+}
+
+
+/* HIGH */
+
+.weather-risk-badge.risk-high {
+  color: #a64032;
+
+  background: #fde9e5;
+
+  border:
+    1px solid
+    rgba(166, 64, 50, 0.13);
+}
+
+
+/* risk box subtle border indication */
+
+.weather-risk-box.risk-high {
+  border-color:
+    rgba(166, 64, 50, 0.18);
+}
+
+
+.weather-risk-box.risk-moderate {
+  border-color:
+    rgba(160, 119, 30, 0.18);
+}
+
+
+.weather-risk-box.risk-low {
+  border-color:
+    rgba(38, 112, 61, 0.15);
+}
+
+
+/* =========================================================
+   RISK REASONS
+========================================================= */
+
+.weather-risk-reasons {
+  margin: 0;
+
+  padding-left: 18px;
+
+  color: #647268;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+
+.weather-risk-reasons li {
+  margin-bottom: 6px;
+}
+
+
+.weather-risk-reasons li:last-child {
+  margin-bottom: 0;
+}
+
+
+.weather-no-risk {
+  margin: 0;
+
+  color: #647268;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   RECOMMENDED ACTIONS
+========================================================= */
+
+.weather-recommendations {
+  margin-top: 18px;
+
+  padding: 22px;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf5ea,
+      #f5f8ef
+    );
+
+  border:
+    1px solid
+    rgba(45, 103, 59, 0.10);
+}
+
+
+.weather-recommendations-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 14px;
+}
+
+
+.weather-recommendations-heading span {
+  font-size: 19px;
+}
+
+
+.weather-recommendations-heading h3 {
+  margin: 0;
+
+  color: #1c512d;
+
+  font-size: 14px;
+
+  font-weight: 750;
+}
+
+
+.weather-recommendations-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 9px 18px;
+}
+
+
+.weather-recommendation {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 9px;
+}
+
+
+.weather-check {
+  width: 19px;
+  height: 19px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1px;
+
+  border-radius: 50%;
+
+  background: #dcefdc;
+
+  color: #23703a;
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+.weather-recommendation p {
+  margin: 0;
+
+  color: #586b5d;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.weather-loading {
+  min-height: 145px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 17px;
+}
+
+
+.weather-loader {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  border:
+    3px solid #dcebdc;
+
+  border-top-color:
+    #2c7b43;
+
+  animation:
+    weather-spin 0.8s
+    linear infinite;
+}
+
+
+@keyframes weather-spin {
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+.weather-loading strong {
+  display: block;
+
+  color: #1d4e2c;
+
+  font-size: 14px;
+}
+
+
+.weather-loading p {
+  margin: 4px 0 0;
+
+  color: #728077;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.weather-error {
+  min-height: 130px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+.weather-error-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #edf5ea;
+
+  font-size: 22px;
+}
+
+
+.weather-error strong {
+  display: block;
+
+  color: #173b24;
+
+  font-size: 14px;
+}
+
+
+.weather-error p {
+  margin: 5px 0 0;
+
+  color: #6c786f;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .weather-risk-section {
+    margin-bottom: 55px;
+  }
+
+
+  .weather-metrics {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .weather-recommendations-list {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .weather-risk-section {
+    margin-bottom: 48px;
+  }
+
+
+  .weather-risk-card {
+    padding: 23px 19px;
+
+    border-radius: 20px;
+  }
+
+
+  .weather-risk-header {
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-bottom: 23px;
+  }
+
+
+  .weather-risk-header h2 {
+    font-size: 26px;
+  }
+
+
+  .weather-location {
+    align-self: flex-start;
+  }
+
+
+  .weather-metrics {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+  }
+
+
+  .weather-metric {
+    min-height: 82px;
+
+    padding: 13px;
+
+    gap: 10px;
+  }
+
+
+  .weather-metric-icon {
+    width: 36px;
+    height: 36px;
+
+    font-size: 17px;
+  }
+
+
+  .weather-metric strong {
+    font-size: 15px;
+  }
+
+
+  .weather-risk-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+
+  .weather-risk-box {
+    padding: 18px;
+  }
+
+
+  .weather-recommendations {
+    padding: 18px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .weather-metrics {
+    grid-template-columns: 1fr;
+  }
+
+
+  .weather-metric {
+    min-height: 74px;
+  }
+
+
+  .weather-risk-box-header {
+    align-items: flex-start;
+  }
+
+}
