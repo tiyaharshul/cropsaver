@@ -45,83 +45,70 @@ import {
 // ======================================================
 // NAVBAR
 // ======================================================
-
 function NavBar({
   isAuthenticated,
   onLogout,
 }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { t } = useLanguage()
 
-  const navigate =
-    useNavigate()
-
-  const location =
-    useLocation()
-
-  const { t } =
-    useLanguage()
-
+  const [mobileMenuOpen, setMobileMenuOpen] =
+    useState(false)
 
   if (!isAuthenticated) {
     return null
   }
 
-
   const links = [
-
     [
       t.dashboard,
       '/',
       '⌂',
     ],
-
     [
       t.diseaseDetection,
       '/detect',
       '⌗',
     ],
-
     [
       t.cropHistory,
       '/history',
       '◴',
     ],
-
     [
-  t.cropCalendarTitle ||
-    'Crop Calendar',
-  '/calendar',
-  '▦',
-],
-
+      t.cropCalendarTitle ||
+        'Crop Calendar',
+      '/calendar',
+      '▦',
+    ],
     [
       t.governmentNotices,
       '/notices',
       '▥',
     ],
-
     [
       t.nearbyExperts,
       '/nearby',
       '⌖',
     ],
-
     [
       t.aiChatbot,
       '/chat',
       '✦',
     ],
-
     [
       t.profile,
       '/profile',
       '♙',
     ],
-
   ]
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
 
   const logout = () => {
-
     localStorage.removeItem(
       'cropsaver_token'
     )
@@ -134,9 +121,9 @@ function NavBar({
       'user_name'
     )
 
+    setMobileMenuOpen(false)
 
     onLogout()
-
 
     navigate(
       '/login',
@@ -144,37 +131,31 @@ function NavBar({
         replace: true,
       }
     )
-
   }
 
-
   return (
-
     <nav className="app-navbar">
 
       <div className="navbar-container">
-
 
         {/* LOGO */}
 
         <Link
           to="/"
           className="navbar-logo"
+          onClick={closeMobileMenu}
         >
-
           <span className="navbar-logo-icon">
             🌱
           </span>
 
           <span>
-            {t.appName ||
-              'Krishay'}
+            {t.appName || 'Krishay'}
           </span>
-
         </Link>
 
 
-        {/* NAVIGATION */}
+        {/* DESKTOP NAVIGATION */}
 
         <div className="navbar-links">
 
@@ -184,14 +165,10 @@ function NavBar({
               path,
               icon,
             ]) => {
-
               const active =
-                location.pathname ===
-                path
-
+                location.pathname === path
 
               return (
-
                 <Link
                   key={path}
                   to={path}
@@ -201,7 +178,6 @@ function NavBar({
                       : 'navbar-link'
                   }
                 >
-
                   <span className="navbar-link-icon">
                     {icon}
                   </span>
@@ -209,25 +185,21 @@ function NavBar({
                   <span>
                     {label}
                   </span>
-
                 </Link>
-
               )
-
             }
           )}
 
         </div>
 
 
-        {/* LOGOUT */}
+        {/* DESKTOP LOGOUT */}
 
         <button
           type="button"
           onClick={logout}
           className="navbar-logout"
         >
-
           <span>
             ↪
           </span>
@@ -235,13 +207,109 @@ function NavBar({
           <span>
             {t.logout}
           </span>
+        </button>
 
+
+        {/* MOBILE HAMBURGER */}
+
+        <button
+          type="button"
+          className={
+            mobileMenuOpen
+              ? 'navbar-menu-button open'
+              : 'navbar-menu-button'
+          }
+          onClick={() =>
+            setMobileMenuOpen(
+              (previous) => !previous
+            )
+          }
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span />
+          <span />
+          <span />
         </button>
 
       </div>
 
-    </nav>
 
+      {/* MOBILE MENU */}
+
+      <div
+        className={
+          mobileMenuOpen
+            ? 'mobile-navbar-menu open'
+            : 'mobile-navbar-menu'
+        }
+      >
+
+        <div className="mobile-navbar-links">
+
+          {links.map(
+            ([
+              label,
+              path,
+              icon,
+            ]) => {
+              const active =
+                location.pathname === path
+
+              return (
+                <Link
+                  key={path}
+                  to={path}
+                  onClick={closeMobileMenu}
+                  className={
+                    active
+                      ? 'mobile-navbar-link active'
+                      : 'mobile-navbar-link'
+                  }
+                >
+                  <span className="mobile-navbar-icon">
+                    {icon}
+                  </span>
+
+                  <span>
+                    {label}
+                  </span>
+                </Link>
+              )
+            }
+          )}
+
+          <button
+            type="button"
+            className="mobile-navbar-logout"
+            onClick={logout}
+          >
+            <span>
+              ↪
+            </span>
+
+            <span>
+              {t.logout}
+            </span>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      {/* BACKDROP */}
+
+      {mobileMenuOpen && (
+        <button
+          type="button"
+          className="mobile-navbar-backdrop"
+          onClick={closeMobileMenu}
+          aria-label="Close navigation menu"
+        />
+      )}
+
+    </nav>
   )
 }
 

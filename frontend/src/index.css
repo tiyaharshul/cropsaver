@@ -4071,4 +4071,563 @@ h1{
     padding: 10px 22px;
     gap: 4px;
   }
+}/* =========================================================
+   KRISHAY — FINAL RESPONSIVE NAVBAR + COMPACT FOOTER
+========================================================= */
+
+
+/* =========================================================
+   MOBILE NAVIGATION ELEMENTS
+   Hidden on desktop
+========================================================= */
+
+.navbar-menu-button {
+  display: none;
+}
+
+.mobile-navbar-menu {
+  display: none;
+}
+
+.mobile-navbar-backdrop {
+  display: none;
+}
+
+
+/* =========================================================
+   MOBILE FOOTER LINKS
+   Hidden on desktop
+========================================================= */
+
+.footer-mobile-links {
+  display: none;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .app-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+
+  .navbar-container {
+    position: relative;
+
+    min-height: 62px;
+
+    padding:
+      0 18px;
+
+    justify-content: space-between;
+  }
+
+
+  /* Existing desktop navigation */
+
+  .navbar-links {
+    display: none;
+  }
+
+
+  /* Existing desktop logout */
+
+  .navbar-logout {
+    display: none;
+  }
+
+
+  /* Hamburger */
+
+  .navbar-menu-button {
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.18);
+
+    border-radius: 11px;
+
+    background:
+      rgba(255, 255, 255, 0.07);
+
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+
+  .navbar-menu-button:hover {
+    background:
+      rgba(255, 255, 255, 0.13);
+
+    border-color:
+      rgba(255, 255, 255, 0.28);
+  }
+
+
+  .navbar-menu-button span {
+    width: 19px;
+    height: 2px;
+
+    display: block;
+
+    border-radius: 999px;
+
+    background: #ffffff;
+
+    transition:
+      transform 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+
+  /* Hamburger -> X */
+
+  .navbar-menu-button.open span:nth-child(1) {
+    transform:
+      translateY(7px)
+      rotate(45deg);
+  }
+
+
+  .navbar-menu-button.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+
+  .navbar-menu-button.open span:nth-child(3) {
+    transform:
+      translateY(-7px)
+      rotate(-45deg);
+  }
+
+
+  /* ===============================================
+     MOBILE MENU
+  =============================================== */
+
+  .mobile-navbar-menu {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    z-index: 1002;
+
+    width: 100%;
+
+    display: block;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    visibility: hidden;
+    opacity: 0;
+
+    background:
+      linear-gradient(
+        145deg,
+        #123f25,
+        #18532f
+      );
+
+    border-top:
+      1px solid
+      rgba(255, 255, 255, 0.07);
+
+    box-shadow:
+      0 20px 35px
+      rgba(8, 39, 19, 0.22);
+
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+
+  .mobile-navbar-menu.open {
+    max-height: calc(100vh - 62px);
+
+    visibility: visible;
+    opacity: 1;
+
+    overflow-y: auto;
+  }
+
+
+  .mobile-navbar-links {
+    width: 100%;
+
+    padding:
+      12px 15px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+
+  .mobile-navbar-link {
+    min-height: 47px;
+
+    padding:
+      0 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border-radius: 11px;
+
+    color:
+      rgba(255, 255, 255, 0.82);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+
+  .mobile-navbar-link:hover {
+    color: #ffffff;
+
+    background:
+      rgba(255, 255, 255, 0.08);
+  }
+
+
+  .mobile-navbar-link.active {
+    color: #ffffff;
+
+    background:
+      rgba(255, 255, 255, 0.12);
+  }
+
+
+  .mobile-navbar-icon {
+    width: 25px;
+
+    flex-shrink: 0;
+
+    color: #f2c96d;
+
+    font-size: 16px;
+
+    text-align: center;
+  }
+
+
+  /* Mobile logout */
+
+  .mobile-navbar-logout {
+    width: 100%;
+
+    min-height: 47px;
+
+    margin-top: 8px;
+
+    padding:
+      0 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.13);
+
+    border-radius: 11px;
+
+    color: #ffffff;
+
+    background:
+      rgba(255, 255, 255, 0.06);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-align: left;
+  }
+
+
+  /* Background overlay */
+
+  .mobile-navbar-backdrop {
+    position: fixed;
+
+    inset: 62px 0 0;
+
+    z-index: 999;
+
+    display: block;
+
+    border: 0;
+
+    background:
+      rgba(9, 32, 17, 0.28);
+
+    backdrop-filter:
+      blur(2px);
+  }
+
+}
+
+
+/* =========================================================
+   COMPACT MOBILE FOOTER
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .app-footer {
+    margin-top: auto;
+  }
+
+
+  /*
+    Hide the large desktop columns.
+    Keep only the brand area.
+  */
+
+  .footer-container {
+    padding:
+      22px 20px 14px;
+
+    display: block;
+  }
+
+
+  .footer-brand {
+    max-width: 100%;
+
+    text-align: center;
+  }
+
+
+  .footer-logo {
+    justify-content: center;
+
+    font-size: 18px;
+  }
+
+
+  .footer-logo-icon {
+    font-size: 22px;
+  }
+
+
+  .footer-brand > p {
+    max-width: 430px;
+
+    margin:
+      8px auto 0;
+
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+
+  .footer-badge {
+    margin-top: 10px;
+
+    padding:
+      5px 9px;
+
+    font-size: 9px;
+  }
+
+
+  /* Hide desktop footer columns */
+
+  .footer-container > .footer-column {
+    display: none;
+  }
+
+
+  /* ===============================================
+     COMPACT QUICK LINKS
+  =============================================== */
+
+  .footer-mobile-links {
+    width:
+      calc(100% - 40px);
+
+    max-width: 500px;
+
+    margin:
+      0 auto;
+
+    padding:
+      13px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap:
+      6px 14px;
+
+    border-top:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+
+    border-bottom:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+  }
+
+
+  .footer-mobile-links a {
+    color:
+      rgba(255, 255, 255, 0.68);
+
+    font-size: 10px;
+    font-weight: 500;
+
+    transition:
+      color 0.2s ease;
+  }
+
+
+  .footer-mobile-links a:hover {
+    color: #ffffff;
+  }
+
+
+  /* ===============================================
+     FOOTER BOTTOM
+  =============================================== */
+
+  .footer-bottom {
+    min-height: auto;
+
+    padding:
+      12px 20px 15px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap:
+      4px 12px;
+
+    text-align: center;
+
+    font-size: 9px;
+  }
+
+
+  .footer-bottom-message {
+    white-space: nowrap;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .navbar-container {
+    padding:
+      0 13px;
+  }
+
+
+  .navbar-logo {
+    font-size: 16px;
+  }
+
+
+  .navbar-logo-icon {
+    font-size: 21px;
+  }
+
+
+  .navbar-menu-button {
+    width: 39px;
+    height: 39px;
+  }
+
+
+  .mobile-navbar-links {
+    padding:
+      10px 12px 16px;
+  }
+
+
+  .mobile-navbar-link,
+  .mobile-navbar-logout {
+    min-height: 44px;
+
+    font-size: 12px;
+  }
+
+
+  .footer-container {
+    padding:
+      19px 16px 12px;
+  }
+
+
+  .footer-brand > p {
+    font-size: 10px;
+  }
+
+
+  .footer-mobile-links {
+    width:
+      calc(100% - 32px);
+
+    gap:
+      6px 11px;
+  }
+
+
+  .footer-mobile-links a {
+    font-size: 9px;
+  }
+
+
+  .footer-bottom {
+    padding:
+      10px 16px 13px;
+
+    font-size: 8px;
+  }
+
 }
