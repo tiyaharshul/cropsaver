@@ -33,7 +33,6 @@ export default function CropHistory() {
     setDeletingId,
   ] = useState(null)
 
-
   const { t } = useLanguage()
 
 
@@ -46,7 +45,6 @@ export default function CropHistory() {
       'cropsaver_user'
     ) || 'null'
   )
-
 
   const userId =
     user?.id ||
@@ -65,7 +63,6 @@ export default function CropHistory() {
 
     let active = true
 
-
     const loadHistory = async () => {
 
       setLoading(true)
@@ -82,13 +79,10 @@ export default function CropHistory() {
           }
         )
 
-
         if (active) {
-
           setItems(
             res.data.history || []
           )
-
         }
 
       } catch (err) {
@@ -98,11 +92,11 @@ export default function CropHistory() {
           err
         )
 
-
         if (active) {
 
           setError(
             err.response?.data?.detail ||
+            t.couldNotLoadHistory ||
             'Could not load crop history.'
           )
 
@@ -118,15 +112,16 @@ export default function CropHistory() {
 
     }
 
-
     loadHistory()
-
 
     return () => {
       active = false
     }
 
-  }, [userId])
+  }, [
+    userId,
+    t.couldNotLoadHistory,
+  ])
 
 
   // ======================================================
@@ -150,23 +145,20 @@ export default function CropHistory() {
       return
     }
 
-
     const confirmed =
       window.confirm(
+        t.deleteConfirm ||
         'Are you sure you want to delete this diagnosis? This action cannot be undone.'
       )
-
 
     if (!confirmed) {
       return
     }
 
-
     try {
 
       setDeletingId(historyId)
       setError('')
-
 
       await api.delete(
         `/history/${historyId}`,
@@ -177,8 +169,7 @@ export default function CropHistory() {
         }
       )
 
-
-      // Remove immediately from UI
+      // Remove from UI immediately
       setItems(
         (currentItems) =>
           currentItems.filter(
@@ -187,18 +178,13 @@ export default function CropHistory() {
           )
       )
 
-
-      // Close modal if the deleted
-      // diagnosis is currently open
+      // Close modal if deleted item is open
       if (
         selectedItem?._id ===
         historyId
       ) {
-
         setSelectedItem(null)
-
       }
-
 
     } catch (err) {
 
@@ -207,18 +193,39 @@ export default function CropHistory() {
         err
       )
 
-
       setError(
         err.response?.data?.detail ||
+        t.couldNotDeleteDiagnosis ||
         'Could not delete this diagnosis.'
       )
-
 
     } finally {
 
       setDeletingId(null)
 
     }
+
+  }
+
+
+  // ======================================================
+  // CONFIDENCE HELPER
+  // ======================================================
+
+  const formatConfidence = (
+    confidence
+  ) => {
+
+    if (
+      typeof confidence !==
+      'number'
+    ) {
+      return 'N/A'
+    }
+
+    return `${(
+      confidence * 100
+    ).toFixed(1)}%`
 
   }
 
@@ -266,7 +273,8 @@ export default function CropHistory() {
           </div>
 
           <p>
-            Loading crop history...
+            {t.loadingCropHistory ||
+              'Loading crop history...'}
           </p>
 
         </div>
@@ -388,7 +396,6 @@ export default function CropHistory() {
                     {t.cropDiagnosis}
                   </span>
 
-
                   <h2>
                     {item.crop_name}
                   </h2>
@@ -421,13 +428,9 @@ export default function CropHistory() {
 
                       <strong className="history-confidence">
 
-                        {typeof item.confidence ===
-                        'number'
-                          ? `${(
-                              item.confidence *
-                              100
-                            ).toFixed(1)}%`
-                          : 'N/A'}
+                        {formatConfidence(
+                          item.confidence
+                        )}
 
                       </strong>
 
@@ -473,7 +476,8 @@ export default function CropHistory() {
                         transition
                       "
                     >
-                      View Full Diagnosis →
+                      {t.viewFullDiagnosis ||
+                        'View Full Diagnosis'} →
                     </button>
 
 
@@ -509,8 +513,17 @@ export default function CropHistory() {
 
                       {deletingId ===
                       item._id
-                        ? 'Deleting...'
-                        : '🗑 Delete'}
+                        ? (
+                          t.deletingHistory ||
+                          'Deleting...'
+                        )
+                        : (
+                          <>
+                            🗑{' '}
+                            {t.deleteHistory ||
+                              'Delete'}
+                          </>
+                        )}
 
                     </button>
 
@@ -773,13 +786,9 @@ export default function CropHistory() {
                     "
                   >
 
-                    {typeof selectedItem.confidence ===
-                    'number'
-                      ? `${(
-                          selectedItem.confidence *
-                          100
-                        ).toFixed(1)}%`
-                      : 'N/A'}
+                    {formatConfidence(
+                      selectedItem.confidence
+                    )}
 
                   </p>
 
@@ -812,7 +821,8 @@ export default function CropHistory() {
                         text-green-700
                       "
                     >
-                      🌱 TREATMENT PLAN
+                      🌱 {t.treatmentPlan ||
+                        'Treatment Plan'}
                     </span>
 
                     <h3
@@ -928,50 +938,18 @@ export default function CropHistory() {
 
                   {/* DELETE FROM MODAL */}
 
-                  <div
-                    className="
-                      border-t
-                      border-gray-100
-                      pt-5
-                    "
-                  >
-
-                    <button
-                      type="button"
-                      disabled={
-                        deletingId ===
-                        selectedItem._id
-                      }
-                      onClick={() =>
-                        deleteHistory(
-                          selectedItem._id
-                        )
-                      }
-                      className="
-                        w-full
-                        rounded-xl
-                        border
-                        border-red-200
-                        bg-red-50
-                        text-red-700
-                        font-semibold
-                        py-3
-                        px-4
-                        hover:bg-red-100
-                        disabled:opacity-50
-                        disabled:cursor-not-allowed
-                        transition
-                      "
-                    >
-
-                      {deletingId ===
+                  <DeleteDiagnosisButton
+                    deleting={
+                      deletingId ===
                       selectedItem._id
-                        ? 'Deleting...'
-                        : '🗑 Delete this diagnosis'}
-
-                    </button>
-
-                  </div>
+                    }
+                    onDelete={() =>
+                      deleteHistory(
+                        selectedItem._id
+                      )
+                    }
+                    t={t}
+                  />
 
                 </div>
 
@@ -997,7 +975,8 @@ export default function CropHistory() {
                       text-amber-900
                     "
                   >
-                    Treatment details unavailable
+                    {t.treatmentDetailsUnavailable ||
+                      'Treatment details unavailable'}
                   </h3>
 
                   <p
@@ -1008,49 +987,23 @@ export default function CropHistory() {
                       leading-relaxed
                     "
                   >
-                    This diagnosis was saved before
-                    treatment history was enabled.
-                    New diagnoses will save the complete
-                    treatment plan automatically.
+                    {t.oldTreatmentHistoryMessage ||
+                      'This diagnosis was saved before treatment history was enabled. New diagnoses will save the complete treatment plan automatically.'}
                   </p>
 
 
-                  {/* DELETE OLD RECORD */}
-
-                  <button
-                    type="button"
-                    disabled={
+                  <DeleteDiagnosisButton
+                    deleting={
                       deletingId ===
                       selectedItem._id
                     }
-                    onClick={() =>
+                    onDelete={() =>
                       deleteHistory(
                         selectedItem._id
                       )
                     }
-                    className="
-                      w-full
-                      mt-4
-                      rounded-xl
-                      border
-                      border-red-200
-                      bg-red-50
-                      text-red-700
-                      font-semibold
-                      py-3
-                      px-4
-                      hover:bg-red-100
-                      disabled:opacity-50
-                      transition
-                    "
-                  >
-
-                    {deletingId ===
-                    selectedItem._id
-                      ? 'Deleting...'
-                      : '🗑 Delete this diagnosis'}
-
-                  </button>
+                    t={t}
+                  />
 
                 </div>
 
@@ -1071,6 +1024,69 @@ export default function CropHistory() {
 
 
 // ======================================================
+// DELETE DIAGNOSIS BUTTON
+// ======================================================
+
+function DeleteDiagnosisButton({
+  deleting,
+  onDelete,
+  t,
+}) {
+
+  return (
+
+    <div
+      className="
+        border-t
+        border-gray-100
+        pt-5
+        mt-4
+      "
+    >
+
+      <button
+        type="button"
+        disabled={deleting}
+        onClick={onDelete}
+        className="
+          w-full
+          rounded-xl
+          border
+          border-red-200
+          bg-red-50
+          text-red-700
+          font-semibold
+          py-3
+          px-4
+          hover:bg-red-100
+          disabled:opacity-50
+          disabled:cursor-not-allowed
+          transition
+        "
+      >
+
+        {deleting
+          ? (
+            t.deletingHistory ||
+            'Deleting...'
+          )
+          : (
+            <>
+              🗑{' '}
+              {t.deleteThisDiagnosis ||
+                'Delete this diagnosis'}
+            </>
+          )}
+
+      </button>
+
+    </div>
+
+  )
+}
+
+
+// ======================================================
 // DETAIL SECTION
 // ======================================================
 
@@ -1083,7 +1099,6 @@ function DetailSection({
   if (!value) {
     return null
   }
-
 
   return (
 
