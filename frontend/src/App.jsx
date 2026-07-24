@@ -87,11 +87,11 @@ function NavBar({
     ],
 
     [
-      t.cropCalendar ||
-        'Crop Calendar',
-      '/calendar',
-      '▦',
-    ],
+  t.cropCalendarTitle ||
+    'Crop Calendar',
+  '/calendar',
+  '▦',
+],
 
     [
       t.governmentNotices,

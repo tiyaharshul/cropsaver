@@ -42,6 +42,95 @@ deletingHistory: 'Deleting...',
     needHelp: 'Need Help?',
     footerRights: 'All rights reserved.',
     footerMessage: 'Technology for better farming',
+calendarPlanning: 'Crop Planning',
+cropCalendarTitle: 'Crop Calendar',
+cropCalendarDescription:
+  'Plan your crop journey from sowing to harvest and keep track of important farming activities.',
+
+calendarNewCrop: 'New Crop',
+calendarCreateTitle: 'Create Crop Calendar',
+calendarCreateDescription:
+  'Add your crop and sowing information to generate a farming timeline.',
+
+calendarCrop: 'Crop',
+calendarState: 'State',
+calendarSeason: 'Season',
+calendarSowingDate: 'Sowing Date',
+
+calendarCreateButton: 'Create Calendar',
+calendarCreating: 'Creating Calendar...',
+
+calendarActiveCrop: 'Active Crop',
+calendarDelete: 'Delete',
+calendarDeleting: 'Deleting...',
+
+calendarSowing: 'Sowing',
+calendarExpectedHarvest: 'Expected Harvest',
+calendarProgress: 'Progress',
+calendarFarmingActivities: 'Farming activities',
+
+calendarCompleted: 'Completed',
+calendarToday: 'Today',
+calendarOverdue: 'Overdue',
+calendarUpcoming: 'Upcoming',
+
+calendarLoading: 'Loading your calendars...',
+calendarNoCalendars: 'No crop calendars yet',
+calendarNoCalendarsDescription:
+  'Create your first crop calendar to start tracking farming activities.',
+
+calendarSelectCrop: 'Please select a crop.',
+calendarEnterState: 'Please enter your state.',
+calendarSelectSeason: 'Please select a season.',
+calendarSelectSowingDate: 'Please select the sowing date.',
+
+calendarLoadError: 'Could not load your crop calendars.',
+calendarCreateError: 'Could not create crop calendar.',
+calendarUpdateError: 'Could not update this task.',
+calendarDeleteError: 'Could not delete crop calendar.',
+
+calendarCreatedSuccess: 'Crop calendar created successfully.',
+calendarDeletedSuccess: 'Crop calendar deleted.',
+
+calendarDeleteConfirm:
+  'Delete this crop calendar? This action cannot be undone.',
+
+calendarTaskSowing: 'Sowing',
+calendarTaskIrrigation: 'Irrigation Check',
+calendarTaskGermination: 'Germination Check',
+calendarTaskWeeding: 'Weed Management',
+calendarTaskFertilizer: 'Fertilizer Application',
+calendarTaskPest: 'Pest Inspection',
+calendarTaskDisease: 'Disease Inspection',
+calendarTaskMidIrrigation: 'Mid-Season Irrigation Check',
+calendarTaskGrowth: 'Crop Growth Check',
+calendarTaskHarvestPreparation: 'Harvest Preparation',
+calendarTaskExpectedHarvest: 'Expected Harvest',
+
+calendarTaskSowingDesc:
+  'Sow the crop using recommended seed rate, spacing and field preparation practices.',
+calendarTaskIrrigationDesc:
+  'Check soil moisture and irrigate only if required.',
+calendarTaskGerminationDesc:
+  'Inspect germination and identify areas with poor crop establishment.',
+calendarTaskWeedingDesc:
+  'Inspect the field for weeds and carry out suitable weed management.',
+calendarTaskFertilizerDesc:
+  'Review crop growth and apply recommended nutrients according to crop and local guidance.',
+calendarTaskPestDesc:
+  'Inspect leaves, stems and nearby plants for visible pest activity.',
+calendarTaskDiseaseDesc:
+  'Check the crop for spots, lesions, wilting, discoloration or other disease symptoms.',
+calendarTaskMidIrrigationDesc:
+  'Check soil moisture and crop water stress during the active growth stage.',
+calendarTaskGrowthDesc:
+  'Inspect crop growth, flowering or fruit development and look for nutrient or stress symptoms.',
+calendarTaskHarvestPreparationDesc:
+  'Check crop maturity and prepare equipment, labour and storage for harvesting.',
+calendarTaskExpectedHarvestDesc:
+  'Expected harvest period. Confirm crop maturity before harvesting.',
+
+
   },
 
   hi: {viewFullDiagnosis: 'पूरा निदान देखें',
@@ -86,6 +175,94 @@ deletingHistory: 'हटाया जा रहा है...',
     needHelp: 'मदद चाहिए?',
     footerRights: 'सर्वाधिकार सुरक्षित।',
     footerMessage: 'बेहतर खेती के लिए तकनीक',
+calendarPlanning: 'फसल योजना',
+cropCalendarTitle: 'फसल कैलेंडर',
+cropCalendarDescription:
+  'बुवाई से कटाई तक अपनी फसल की योजना बनाएं और महत्वपूर्ण कृषि गतिविधियों पर नज़र रखें।',
+
+calendarNewCrop: 'नई फसल',
+calendarCreateTitle: 'फसल कैलेंडर बनाएं',
+calendarCreateDescription:
+  'कृषि समयरेखा बनाने के लिए अपनी फसल और बुवाई की जानकारी जोड़ें।',
+
+calendarCrop: 'फसल',
+calendarState: 'राज्य',
+calendarSeason: 'मौसम',
+calendarSowingDate: 'बुवाई की तारीख',
+
+calendarCreateButton: 'कैलेंडर बनाएं',
+calendarCreating: 'कैलेंडर बनाया जा रहा है...',
+
+calendarActiveCrop: 'सक्रिय फसल',
+calendarDelete: 'हटाएं',
+calendarDeleting: 'हटाया जा रहा है...',
+
+calendarSowing: 'बुवाई',
+calendarExpectedHarvest: 'अनुमानित कटाई',
+calendarProgress: 'प्रगति',
+calendarFarmingActivities: 'कृषि गतिविधियाँ',
+
+calendarCompleted: 'पूरा हुआ',
+calendarToday: 'आज',
+calendarOverdue: 'समय बीत गया',
+calendarUpcoming: 'आगामी',
+
+calendarLoading: 'आपके फसल कैलेंडर लोड हो रहे हैं...',
+calendarNoCalendars: 'अभी कोई फसल कैलेंडर नहीं है',
+calendarNoCalendarsDescription:
+  'कृषि गतिविधियों को ट्रैक करने के लिए अपना पहला फसल कैलेंडर बनाएं।',
+
+calendarSelectCrop: 'कृपया फसल चुनें।',
+calendarEnterState: 'कृपया अपना राज्य दर्ज करें।',
+calendarSelectSeason: 'कृपया मौसम चुनें।',
+calendarSelectSowingDate: 'कृपया बुवाई की तारीख चुनें।',
+
+calendarLoadError: 'फसल कैलेंडर लोड नहीं हो सके।',
+calendarCreateError: 'फसल कैलेंडर नहीं बनाया जा सका।',
+calendarUpdateError: 'यह कार्य अपडेट नहीं किया जा सका।',
+calendarDeleteError: 'फसल कैलेंडर हटाया नहीं जा सका।',
+
+calendarCreatedSuccess: 'फसल कैलेंडर सफलतापूर्वक बनाया गया।',
+calendarDeletedSuccess: 'फसल कैलेंडर हटा दिया गया।',
+
+calendarDeleteConfirm:
+  'क्या आप इस फसल कैलेंडर को हटाना चाहते हैं? इसे वापस नहीं लाया जा सकता।',
+
+calendarTaskSowing: 'बुवाई',
+calendarTaskIrrigation: 'सिंचाई जाँच',
+calendarTaskGermination: 'अंकुरण जाँच',
+calendarTaskWeeding: 'खरपतवार प्रबंधन',
+calendarTaskFertilizer: 'उर्वरक प्रयोग',
+calendarTaskPest: 'कीट जाँच',
+calendarTaskDisease: 'रोग जाँच',
+calendarTaskMidIrrigation: 'मध्य-मौसम सिंचाई जाँच',
+calendarTaskGrowth: 'फसल वृद्धि जाँच',
+calendarTaskHarvestPreparation: 'कटाई की तैयारी',
+calendarTaskExpectedHarvest: 'अनुमानित कटाई',
+
+calendarTaskSowingDesc:
+  'अनुशंसित बीज दर, दूरी और खेत की तैयारी के अनुसार फसल की बुवाई करें।',
+calendarTaskIrrigationDesc:
+  'मिट्टी की नमी जाँचें और आवश्यकता होने पर ही सिंचाई करें।',
+calendarTaskGerminationDesc:
+  'अंकुरण की जाँच करें और कमजोर फसल स्थापना वाले क्षेत्रों की पहचान करें।',
+calendarTaskWeedingDesc:
+  'खेत में खरपतवार की जाँच करें और उचित खरपतवार प्रबंधन करें।',
+calendarTaskFertilizerDesc:
+  'फसल की वृद्धि जाँचें और स्थानीय सलाह के अनुसार आवश्यक पोषक तत्व दें।',
+calendarTaskPestDesc:
+  'पत्तियों, तनों और आसपास के पौधों पर कीट गतिविधि की जाँच करें।',
+calendarTaskDiseaseDesc:
+  'धब्बे, घाव, मुरझाना, रंग बदलना या अन्य रोग लक्षणों की जाँच करें।',
+calendarTaskMidIrrigationDesc:
+  'सक्रिय वृद्धि के दौरान मिट्टी की नमी और फसल में पानी की कमी की जाँच करें।',
+calendarTaskGrowthDesc:
+  'फसल की वृद्धि, फूल या फल विकास और पोषण संबंधी समस्याओं की जाँच करें।',
+calendarTaskHarvestPreparationDesc:
+  'फसल की परिपक्वता जाँचें और कटाई के लिए उपकरण, श्रम और भंडारण तैयार करें।',
+calendarTaskExpectedHarvestDesc:
+  'अनुमानित कटाई अवधि। कटाई से पहले फसल की परिपक्वता की पुष्टि करें।',
+
   },
 
   raj: {viewFullDiagnosis: 'पूरो निदान देखो',
@@ -130,6 +307,95 @@ deletingHistory: 'हटायो जा रियो है...',
     needHelp: 'मदद चाहिए?',
     footerRights: 'सगळा अधिकार सुरक्षित।',
     footerMessage: 'बेहतर खेती खातर तकनीक',
+
+calendarPlanning: 'फसल री योजना',
+cropCalendarTitle: 'फसल कैलेंडर',
+cropCalendarDescription:
+  'बुवाई सूं कटाई तक आपरी फसल री योजना बणाओ अर जरूरी खेती रा कामां रो ध्यान राखो।',
+
+calendarNewCrop: 'नई फसल',
+calendarCreateTitle: 'फसल कैलेंडर बणाओ',
+calendarCreateDescription:
+  'खेती री समय योजना बणावण खातर फसल अर बुवाई री जानकारी भरो।',
+
+calendarCrop: 'फसल',
+calendarState: 'राज्य',
+calendarSeason: 'मौसम',
+calendarSowingDate: 'बुवाई री तारीख',
+
+calendarCreateButton: 'कैलेंडर बणाओ',
+calendarCreating: 'कैलेंडर बण रियो है...',
+
+calendarActiveCrop: 'चालू फसल',
+calendarDelete: 'हटाओ',
+calendarDeleting: 'हटायो जा रियो है...',
+
+calendarSowing: 'बुवाई',
+calendarExpectedHarvest: 'अनुमानित कटाई',
+calendarProgress: 'प्रगति',
+calendarFarmingActivities: 'खेती रा काम',
+
+calendarCompleted: 'पूरो भयो',
+calendarToday: 'आज',
+calendarOverdue: 'समय बीत गयो',
+calendarUpcoming: 'आवण वालो',
+
+calendarLoading: 'आपरा फसल कैलेंडर लोड हो रिया है...',
+calendarNoCalendars: 'अभी कोई फसल कैलेंडर कोनी',
+calendarNoCalendarsDescription:
+  'खेती रा काम ट्रैक करण खातर पहलो फसल कैलेंडर बणाओ।',
+
+calendarSelectCrop: 'कृपया फसल चुनो।',
+calendarEnterState: 'कृपया राज्य भरो।',
+calendarSelectSeason: 'कृपया मौसम चुनो।',
+calendarSelectSowingDate: 'कृपया बुवाई री तारीख चुनो।',
+
+calendarLoadError: 'फसल कैलेंडर लोड नी हो सक्या।',
+calendarCreateError: 'फसल कैलेंडर नी बण सक्यो।',
+calendarUpdateError: 'ई काम अपडेट नी हो सक्यो।',
+calendarDeleteError: 'फसल कैलेंडर हट नी सक्यो।',
+
+calendarCreatedSuccess: 'फसल कैलेंडर सफलतापूर्वक बण गयो।',
+calendarDeletedSuccess: 'फसल कैलेंडर हटा दियो गयो।',
+
+calendarDeleteConfirm:
+  'ई फसल कैलेंडर हटावणो है? फेर वापस नी आवेगो।',
+
+calendarTaskSowing: 'बुवाई',
+calendarTaskIrrigation: 'सिंचाई जांच',
+calendarTaskGermination: 'अंकुरण जांच',
+calendarTaskWeeding: 'खरपतवार प्रबंधन',
+calendarTaskFertilizer: 'खाद देवणो',
+calendarTaskPest: 'कीड़ा जांच',
+calendarTaskDisease: 'बीमारी जांच',
+calendarTaskMidIrrigation: 'बीच मौसम सिंचाई जांच',
+calendarTaskGrowth: 'फसल बढ़वार जांच',
+calendarTaskHarvestPreparation: 'कटाई री तैयारी',
+calendarTaskExpectedHarvest: 'अनुमानित कटाई',
+
+calendarTaskSowingDesc:
+  'सुझाई गई बीज मात्रा, दूरी अर खेत तैयारी अनुसार फसल बोवो।',
+calendarTaskIrrigationDesc:
+  'माटी री नमी जांचो अर जरूरत होवे तो ही पानी देवो।',
+calendarTaskGerminationDesc:
+  'अंकुरण जांचो अर कमजोर उगाव वाला हिस्सा पहचानो।',
+calendarTaskWeedingDesc:
+  'खेत में खरपतवार जांचो अर सही प्रबंधन करो।',
+calendarTaskFertilizerDesc:
+  'फसल री बढ़वार जांचो अर सलाह अनुसार खाद अर पोषक तत्व देवो।',
+calendarTaskPestDesc:
+  'पत्ता, तणा अर आसपास रा पौधां में कीड़ा गतिविधि जांचो।',
+calendarTaskDiseaseDesc:
+  'धब्बा, मुरझावण, रंग बदलाव अर बीमारी रा लक्षण जांचो।',
+calendarTaskMidIrrigationDesc:
+  'फसल री बढ़वार दौरान माटी री नमी अर पानी री कमी जांचो।',
+calendarTaskGrowthDesc:
+  'फसल री बढ़वार, फूल अर फल विकास री जांच करो।',
+calendarTaskHarvestPreparationDesc:
+  'फसल पकण री जांच करो अर कटाई खातर साधन अर भंडारण तैयार राखो।',
+calendarTaskExpectedHarvestDesc:
+  'अनुमानित कटाई रो समय। कटाई सूं पहला फसल पकण री पुष्टि करो।',
+
   },
 
   bho: {viewFullDiagnosis: 'पूरा रोग जाँच देखीं',
@@ -174,6 +440,123 @@ deletingHistory: 'हटावल जा रहल बा...',
     needHelp: 'मदद चाहीं?',
     footerRights: 'सभ अधिकार सुरक्षित।',
     footerMessage: 'बेहतर खेती खातिर तकनीक',
+
+calendarPlanning: 'फसल योजना',
+cropCalendarTitle: 'फसल कैलेंडर',
+cropCalendarDescription:
+  'बोआई से कटाई तक अपना फसल के योजना बनाईं आ जरूरी खेती के काम पर नजर रखीं।',
+
+calendarNewCrop: 'नया फसल',
+calendarCreateTitle: 'फसल कैलेंडर बनाईं',
+calendarCreateDescription:
+  'खेती के समयरेखा बनावे खातिर फसल आ बोआई के जानकारी दीं।',
+
+calendarCrop: 'फसल',
+calendarState: 'राज्य',
+calendarSeason: 'मौसम',
+calendarSowingDate: 'बोआई के तारीख',
+
+calendarCreateButton: 'कैलेंडर बनाईं',
+calendarCreating: 'कैलेंडर बन रहल बा...',
+
+calendarActiveCrop: 'चलत फसल',
+calendarDelete: 'हटाईं',
+calendarDeleting: 'हटावल जा रहल बा...',
+
+calendarSowing: 'बोआई',
+calendarExpectedHarvest: 'अनुमानित कटाई',
+calendarProgress: 'प्रगति',
+calendarFarmingActivities: 'खेती के काम',
+
+calendarCompleted: 'पूरा भइल',
+calendarToday: 'आज',
+calendarOverdue: 'समय बीत गइल',
+calendarUpcoming: 'आवे वाला',
+
+calendarLoading: 'रउआ फसल कैलेंडर लोड हो रहल बा...',
+calendarNoCalendars: 'अभी कौनो फसल कैलेंडर नइखे',
+calendarNoCalendarsDescription:
+  'खेती के काम ट्रैक करे खातिर पहिला फसल कैलेंडर बनाईं।',
+
+calendarSelectCrop: 'कृपया फसल चुनीं।',
+calendarEnterState: 'कृपया राज्य लिखीं।',
+calendarSelectSeason: 'कृपया मौसम चुनीं।',
+calendarSelectSowingDate: 'कृपया बोआई के तारीख चुनीं।',
+
+calendarLoadError: 'फसल कैलेंडर लोड ना हो सकल।',
+calendarCreateError: 'फसल कैलेंडर ना बन सकल।',
+calendarUpdateError: 'ई काम अपडेट ना हो सकल।',
+calendarDeleteError: 'फसल कैलेंडर हट ना सकल।',
+
+calendarCreatedSuccess: 'फसल कैलेंडर सफलतापूर्वक बन गइल।',
+calendarDeletedSuccess: 'फसल कैलेंडर हटा दिहल गइल।',
+
+calendarDeleteConfirm:
+  'ई फसल कैलेंडर हटावल जाव? एकरा वापस ना लावल जा सकेला।',
+
+calendarTaskSowing: 'बोआई',
+calendarTaskIrrigation: 'सिंचाई जाँच',
+calendarTaskGermination: 'अंकुरण जाँच',
+calendarTaskWeeding: 'खरपतवार प्रबंधन',
+calendarTaskFertilizer: 'खाद डालल',
+calendarTaskPest: 'कीट जाँच',
+calendarTaskDisease: 'रोग जाँच',
+calendarTaskMidIrrigation: 'बीच मौसम सिंचाई जाँच',
+calendarTaskGrowth: 'फसल बढ़वार जाँच',
+calendarTaskHarvestPreparation: 'कटाई के तैयारी',
+calendarTaskExpectedHarvest: 'अनुमानित कटाई',
+
+
+// ==================== HARYANVI ====================
+
+calendarPlanning: 'फसल की योजना',
+cropCalendarTitle: 'फसल कैलेंडर',
+cropCalendarDescription:
+  'बिजाई तै कटाई तक अपणी फसल की योजना बनाओ अर खेती के जरूरी कामां का ध्यान राखो।',
+
+calendarNewCrop: 'नई फसल',
+calendarCreateTitle: 'फसल कैलेंडर बनाओ',
+calendarCreateDescription:
+  'खेती की समय योजना बनाण खातर फसल अर बिजाई की जानकारी भरो।',
+
+calendarCrop: 'फसल',
+calendarState: 'राज्य',
+calendarSeason: 'मौसम',
+calendarSowingDate: 'बिजाई की तारीख',
+
+calendarCreateButton: 'कैलेंडर बनाओ',
+calendarCreating: 'कैलेंडर बन रह्या सै...',
+
+calendarActiveCrop: 'चालू फसल',
+calendarDelete: 'हटाओ',
+calendarDeleting: 'हटाया जा रह्या सै...',
+
+calendarSowing: 'बिजाई',
+calendarExpectedHarvest: 'अनुमानित कटाई',
+calendarProgress: 'प्रगति',
+calendarFarmingActivities: 'खेती के काम',
+
+calendarCompleted: 'पूरा हो गया',
+calendarToday: 'आज',
+calendarOverdue: 'टाइम निकल गया',
+calendarUpcoming: 'आण वाला',
+
+calendarLoading: 'थारे फसल कैलेंडर लोड हो रहे सैं...',
+calendarNoCalendars: 'अभी कोई फसल कैलेंडर ना सै',
+calendarNoCalendarsDescription:
+  'खेती के काम ट्रैक करण खातर पहला फसल कैलेंडर बनाओ।',
+
+calendarTaskSowing: 'बिजाई',
+calendarTaskIrrigation: 'सिंचाई जांच',
+calendarTaskGermination: 'अंकुरण जांच',
+calendarTaskWeeding: 'खरपतवार प्रबंधन',
+calendarTaskFertilizer: 'खाद डालणा',
+calendarTaskPest: 'कीड़े की जांच',
+calendarTaskDisease: 'बीमारी की जांच',
+calendarTaskMidIrrigation: 'बीच मौसम सिंचाई जांच',
+calendarTaskGrowth: 'फसल बढ़वार जांच',
+calendarTaskHarvestPreparation: 'कटाई की तैयारी',
+calendarTaskExpectedHarvest: 'अनुमानित कटाई',
   },
 
   har: {viewFullDiagnosis: 'पूरा रोग जांच देखो',
@@ -263,6 +646,55 @@ deletingHistory: 'કાઢી રહ્યા છીએ...',
     needHelp: 'મદદ જોઈએ?',
     footerRights: 'બધા અધિકારો સુરક્ષિત.',
     footerMessage: 'વધુ સારી ખેતી માટે ટેકનોલોજી',
+
+calendarPlanning: 'પાક આયોજન',
+cropCalendarTitle: 'પાક કેલેન્ડર',
+cropCalendarDescription:
+  'વાવણીથી લણણી સુધી તમારા પાકનું આયોજન કરો અને મહત્વપૂર્ણ ખેતી પ્રવૃત્તિઓ પર નજર રાખો.',
+
+calendarNewCrop: 'નવો પાક',
+calendarCreateTitle: 'પાક કેલેન્ડર બનાવો',
+calendarCreateDescription:
+  'ખેતી સમયરેખા બનાવવા માટે પાક અને વાવણીની માહિતી ઉમેરો.',
+
+calendarCrop: 'પાક',
+calendarState: 'રાજ્ય',
+calendarSeason: 'મોસમ',
+calendarSowingDate: 'વાવણી તારીખ',
+
+calendarCreateButton: 'કેલેન્ડર બનાવો',
+calendarCreating: 'કેલેન્ડર બની રહ્યું છે...',
+
+calendarActiveCrop: 'સક્રિય પાક',
+calendarDelete: 'કાઢી નાખો',
+calendarDeleting: 'કાઢી રહ્યા છીએ...',
+
+calendarSowing: 'વાવણી',
+calendarExpectedHarvest: 'અપેક્ષિત લણણી',
+calendarProgress: 'પ્રગતિ',
+calendarFarmingActivities: 'ખેતી પ્રવૃત્તિઓ',
+
+calendarCompleted: 'પૂર્ણ',
+calendarToday: 'આજે',
+calendarOverdue: 'સમય વીતી ગયો',
+calendarUpcoming: 'આગામી',
+
+calendarLoading: 'તમારા પાક કેલેન્ડર લોડ થઈ રહ્યા છે...',
+calendarNoCalendars: 'હજુ કોઈ પાક કેલેન્ડર નથી',
+calendarNoCalendarsDescription:
+  'ખેતી પ્રવૃત્તિઓ ટ્રેક કરવા માટે તમારું પ્રથમ પાક કેલેન્ડર બનાવો.',
+
+calendarTaskSowing: 'વાવણી',
+calendarTaskIrrigation: 'સિંચાઈ તપાસ',
+calendarTaskGermination: 'અંકુરણ તપાસ',
+calendarTaskWeeding: 'નીંદણ વ્યવસ્થાપન',
+calendarTaskFertilizer: 'ખાતર આપવું',
+calendarTaskPest: 'જીવાત તપાસ',
+calendarTaskDisease: 'રોગ તપાસ',
+calendarTaskMidIrrigation: 'મધ્ય-મોસમ સિંચાઈ તપાસ',
+calendarTaskGrowth: 'પાક વૃદ્ધિ તપાસ',
+calendarTaskHarvestPreparation: 'લણણી તૈયારી',
+calendarTaskExpectedHarvest: 'અપેક્ષિત લણણી',
   },
 
   mr: {viewFullDiagnosis: 'संपूर्ण निदान पहा',
@@ -308,6 +740,54 @@ deletingHistory: 'हटवत आहे...',
     needHelp: 'मदत हवी आहे?',
     footerRights: 'सर्व हक्क राखीव.',
     footerMessage: 'उत्तम शेतीसाठी तंत्रज्ञान',
+calendarPlanning: 'पीक नियोजन',
+cropCalendarTitle: 'पीक कॅलेंडर',
+cropCalendarDescription:
+  'पेरणीपासून कापणीपर्यंत पिकाचे नियोजन करा आणि महत्त्वाच्या शेती कामांचा मागोवा ठेवा.',
+
+calendarNewCrop: 'नवीन पीक',
+calendarCreateTitle: 'पीक कॅलेंडर तयार करा',
+calendarCreateDescription:
+  'शेती वेळापत्रक तयार करण्यासाठी पीक आणि पेरणीची माहिती जोडा.',
+
+calendarCrop: 'पीक',
+calendarState: 'राज्य',
+calendarSeason: 'हंगाम',
+calendarSowingDate: 'पेरणी तारीख',
+
+calendarCreateButton: 'कॅलेंडर तयार करा',
+calendarCreating: 'कॅलेंडर तयार होत आहे...',
+
+calendarActiveCrop: 'सक्रिय पीक',
+calendarDelete: 'हटवा',
+calendarDeleting: 'हटवत आहे...',
+
+calendarSowing: 'पेरणी',
+calendarExpectedHarvest: 'अपेक्षित कापणी',
+calendarProgress: 'प्रगती',
+calendarFarmingActivities: 'शेती कामे',
+
+calendarCompleted: 'पूर्ण',
+calendarToday: 'आज',
+calendarOverdue: 'मुदत संपली',
+calendarUpcoming: 'आगामी',
+
+calendarLoading: 'तुमची पीक कॅलेंडर लोड होत आहेत...',
+calendarNoCalendars: 'अजून कोणतेही पीक कॅलेंडर नाही',
+calendarNoCalendarsDescription:
+  'शेती कामांचा मागोवा घेण्यासाठी पहिले पीक कॅलेंडर तयार करा.',
+
+calendarTaskSowing: 'पेरणी',
+calendarTaskIrrigation: 'सिंचन तपासणी',
+calendarTaskGermination: 'उगवण तपासणी',
+calendarTaskWeeding: 'तण व्यवस्थापन',
+calendarTaskFertilizer: 'खत वापर',
+calendarTaskPest: 'कीड तपासणी',
+calendarTaskDisease: 'रोग तपासणी',
+calendarTaskMidIrrigation: 'मध्य-हंगाम सिंचन तपासणी',
+calendarTaskGrowth: 'पीक वाढ तपासणी',
+calendarTaskHarvestPreparation: 'कापणीची तयारी',
+calendarTaskExpectedHarvest: 'अपेक्षित कापणी',
   },
 
   pa: {viewFullDiagnosis: 'ਪੂਰਾ ਨਿਦਾਨ ਵੇਖੋ',
@@ -352,6 +832,50 @@ deletingHistory: 'ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...',
     needHelp: 'ਮਦਦ ਚਾਹੀਦੀ ਹੈ?',
     footerRights: 'ਸਾਰੇ ਅਧਿਕਾਰ ਰਾਖਵੇਂ ਹਨ।',
     footerMessage: 'ਬਿਹਤਰ ਖੇਤੀ ਲਈ ਤਕਨਾਲੋਜੀ',
+calendarPlanning: 'ਫਸਲ ਯੋਜਨਾ',
+cropCalendarTitle: 'ਫਸਲ ਕੈਲੰਡਰ',
+cropCalendarDescription:
+  'ਬਿਜਾਈ ਤੋਂ ਕਟਾਈ ਤੱਕ ਆਪਣੀ ਫਸਲ ਦੀ ਯੋਜਨਾ ਬਣਾਓ ਅਤੇ ਮਹੱਤਵਪੂਰਨ ਖੇਤੀ ਕੰਮਾਂ ਦਾ ਧਿਆਨ ਰੱਖੋ।',
+
+calendarNewCrop: 'ਨਵੀਂ ਫਸਲ',
+calendarCreateTitle: 'ਫਸਲ ਕੈਲੰਡਰ ਬਣਾਓ',
+calendarCreateDescription:
+  'ਖੇਤੀ ਸਮਾਂ-ਸਾਰਣੀ ਬਣਾਉਣ ਲਈ ਫਸਲ ਅਤੇ ਬਿਜਾਈ ਦੀ ਜਾਣਕਾਰੀ ਸ਼ਾਮਲ ਕਰੋ।',
+
+calendarCrop: 'ਫਸਲ',
+calendarState: 'ਰਾਜ',
+calendarSeason: 'ਮੌਸਮ',
+calendarSowingDate: 'ਬਿਜਾਈ ਦੀ ਤਾਰੀਖ',
+
+calendarCreateButton: 'ਕੈਲੰਡਰ ਬਣਾਓ',
+calendarCreating: 'ਕੈਲੰਡਰ ਬਣਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...',
+
+calendarActiveCrop: 'ਸਰਗਰਮ ਫਸਲ',
+calendarDelete: 'ਮਿਟਾਓ',
+calendarDeleting: 'ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...',
+
+calendarSowing: 'ਬਿਜਾਈ',
+calendarExpectedHarvest: 'ਅਨੁਮਾਨਿਤ ਕਟਾਈ',
+calendarProgress: 'ਤਰੱਕੀ',
+calendarFarmingActivities: 'ਖੇਤੀ ਗਤੀਵਿਧੀਆਂ',
+
+calendarCompleted: 'ਪੂਰਾ',
+calendarToday: 'ਅੱਜ',
+calendarOverdue: 'ਸਮਾਂ ਲੰਘ ਗਿਆ',
+calendarUpcoming: 'ਆਉਣ ਵਾਲਾ',
+
+calendarTaskSowing: 'ਬਿਜਾਈ',
+calendarTaskIrrigation: 'ਸਿੰਚਾਈ ਜਾਂਚ',
+calendarTaskGermination: 'ਅੰਕੁਰਣ ਜਾਂਚ',
+calendarTaskWeeding: 'ਨਦੀਨ ਪ੍ਰਬੰਧਨ',
+calendarTaskFertilizer: 'ਖਾਦ ਦੀ ਵਰਤੋਂ',
+calendarTaskPest: 'ਕੀਟ ਜਾਂਚ',
+calendarTaskDisease: 'ਰੋਗ ਜਾਂਚ',
+calendarTaskMidIrrigation: 'ਮੱਧ-ਮੌਸਮ ਸਿੰਚਾਈ ਜਾਂਚ',
+calendarTaskGrowth: 'ਫਸਲ ਵਾਧਾ ਜਾਂਚ',
+calendarTaskHarvestPreparation: 'ਕਟਾਈ ਦੀ ਤਿਆਰੀ',
+calendarTaskExpectedHarvest: 'ਅਨੁਮਾਨਿਤ ਕਟਾਈ',
+
   },
 
   bn: {viewFullDiagnosis: 'সম্পূর্ণ রোগ নির্ণয় দেখুন',
@@ -397,6 +921,51 @@ deletingHistory: 'মুছে ফেলা হচ্ছে...',
     needHelp: 'সাহায্য দরকার?',
     footerRights: 'সর্বস্বত্ব সংরক্ষিত।',
     footerMessage: 'উন্নত কৃষির জন্য প্রযুক্তি',
+calendarPlanning: 'ফসল পরিকল্পনা',
+cropCalendarTitle: 'ফসল ক্যালেন্ডার',
+cropCalendarDescription:
+  'বপন থেকে ফসল কাটা পর্যন্ত পরিকল্পনা করুন এবং গুরুত্বপূর্ণ কৃষিকাজের উপর নজর রাখুন।',
+
+calendarNewCrop: 'নতুন ফসল',
+calendarCreateTitle: 'ফসল ক্যালেন্ডার তৈরি করুন',
+calendarCreateDescription:
+  'কৃষি সময়সূচি তৈরির জন্য ফসল ও বপনের তথ্য যোগ করুন।',
+
+calendarCrop: 'ফসল',
+calendarState: 'রাজ্য',
+calendarSeason: 'মৌসুম',
+calendarSowingDate: 'বপনের তারিখ',
+
+calendarCreateButton: 'ক্যালেন্ডার তৈরি করুন',
+calendarCreating: 'ক্যালেন্ডার তৈরি হচ্ছে...',
+
+calendarActiveCrop: 'সক্রিয় ফসল',
+calendarDelete: 'মুছুন',
+calendarDeleting: 'মুছে ফেলা হচ্ছে...',
+
+calendarSowing: 'বপন',
+calendarExpectedHarvest: 'প্রত্যাশিত ফসল কাটা',
+calendarProgress: 'অগ্রগতি',
+calendarFarmingActivities: 'কৃষি কার্যক্রম',
+
+calendarCompleted: 'সম্পন্ন',
+calendarToday: 'আজ',
+calendarOverdue: 'সময় পেরিয়েছে',
+calendarUpcoming: 'আসন্ন',
+
+calendarTaskSowing: 'বপন',
+calendarTaskIrrigation: 'সেচ পরীক্ষা',
+calendarTaskGermination: 'অঙ্কুরোদ্গম পরীক্ষা',
+calendarTaskWeeding: 'আগাছা ব্যবস্থাপনা',
+calendarTaskFertilizer: 'সার প্রয়োগ',
+calendarTaskPest: 'কীট পরীক্ষা',
+calendarTaskDisease: 'রোগ পরীক্ষা',
+calendarTaskMidIrrigation: 'মধ্য-মৌসুম সেচ পরীক্ষা',
+calendarTaskGrowth: 'ফসল বৃদ্ধি পরীক্ষা',
+calendarTaskHarvestPreparation: 'ফসল কাটার প্রস্তুতি',
+calendarTaskExpectedHarvest: 'প্রত্যাশিত ফসল কাটা',
+
+
   },
 
   ta: {viewFullDiagnosis: 'முழு நோயறிதலைக் காண்க',
@@ -441,6 +1010,49 @@ deletingHistory: 'நீக்கப்படுகிறது...',
     needHelp: 'உதவி தேவையா?',
     footerRights: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.',
     footerMessage: 'சிறந்த விவசாயத்திற்கான தொழில்நுட்பம்',
+calendarPlanning: 'பயிர் திட்டமிடல்',
+cropCalendarTitle: 'பயிர் நாட்காட்டி',
+cropCalendarDescription:
+  'விதைப்பிலிருந்து அறுவடை வரை உங்கள் பயிரை திட்டமிட்டு முக்கிய விவசாய நடவடிக்கைகளை கண்காணிக்கவும்.',
+
+calendarNewCrop: 'புதிய பயிர்',
+calendarCreateTitle: 'பயிர் நாட்காட்டி உருவாக்கவும்',
+calendarCreateDescription:
+  'விவசாய காலவரிசையை உருவாக்க பயிர் மற்றும் விதைப்பு தகவலை சேர்க்கவும்.',
+
+calendarCrop: 'பயிர்',
+calendarState: 'மாநிலம்',
+calendarSeason: 'பருவம்',
+calendarSowingDate: 'விதைப்பு தேதி',
+
+calendarCreateButton: 'நாட்காட்டி உருவாக்கவும்',
+calendarCreating: 'நாட்காட்டி உருவாக்கப்படுகிறது...',
+
+calendarActiveCrop: 'செயலில் உள்ள பயிர்',
+calendarDelete: 'நீக்கு',
+calendarDeleting: 'நீக்கப்படுகிறது...',
+
+calendarSowing: 'விதைப்பு',
+calendarExpectedHarvest: 'எதிர்பார்க்கப்படும் அறுவடை',
+calendarProgress: 'முன்னேற்றம்',
+calendarFarmingActivities: 'விவசாய நடவடிக்கைகள்',
+
+calendarCompleted: 'முடிந்தது',
+calendarToday: 'இன்று',
+calendarOverdue: 'காலாவதியானது',
+calendarUpcoming: 'வரவுள்ளது',
+
+calendarTaskSowing: 'விதைப்பு',
+calendarTaskIrrigation: 'நீர்ப்பாசன சோதனை',
+calendarTaskGermination: 'முளைப்பு சோதனை',
+calendarTaskWeeding: 'களை மேலாண்மை',
+calendarTaskFertilizer: 'உரமிடுதல்',
+calendarTaskPest: 'பூச்சி சோதனை',
+calendarTaskDisease: 'நோய் சோதனை',
+calendarTaskMidIrrigation: 'நடுப்பருவ நீர்ப்பாசன சோதனை',
+calendarTaskGrowth: 'பயிர் வளர்ச்சி சோதனை',
+calendarTaskHarvestPreparation: 'அறுவடை தயாரிப்பு',
+calendarTaskExpectedHarvest: 'எதிர்பார்க்கப்படும் அறுவடை',
   },
 
   te: {viewFullDiagnosis: 'పూర్తి నిర్ధారణను చూడండి',
@@ -486,6 +1098,49 @@ deletingHistory: 'తొలగిస్తోంది...',
     needHelp: 'సహాయం కావాలా?',
     footerRights: 'అన్ని హక్కులు ప్రత్యేకించబడ్డాయి.',
     footerMessage: 'మెరుగైన వ్యవసాయం కోసం సాంకేతికత',
+calendarPlanning: 'పంట ప్రణాళిక',
+cropCalendarTitle: 'పంట క్యాలెండర్',
+cropCalendarDescription:
+  'విత్తడం నుండి కోత వరకు మీ పంటను ప్రణాళిక చేసి ముఖ్యమైన వ్యవసాయ పనులను గమనించండి.',
+
+calendarNewCrop: 'కొత్త పంట',
+calendarCreateTitle: 'పంట క్యాలెండర్ సృష్టించండి',
+calendarCreateDescription:
+  'వ్యవసాయ కాలక్రమాన్ని రూపొందించడానికి పంట మరియు విత్తన సమాచారాన్ని జోడించండి.',
+
+calendarCrop: 'పంట',
+calendarState: 'రాష్ట్రం',
+calendarSeason: 'సీజన్',
+calendarSowingDate: 'విత్తిన తేదీ',
+
+calendarCreateButton: 'క్యాలెండర్ సృష్టించండి',
+calendarCreating: 'క్యాలెండర్ సృష్టిస్తోంది...',
+
+calendarActiveCrop: 'క్రియాశీల పంట',
+calendarDelete: 'తొలగించు',
+calendarDeleting: 'తొలగిస్తోంది...',
+
+calendarSowing: 'విత్తడం',
+calendarExpectedHarvest: 'అంచనా కోత',
+calendarProgress: 'పురోగతి',
+calendarFarmingActivities: 'వ్యవసాయ పనులు',
+
+calendarCompleted: 'పూర్తయింది',
+calendarToday: 'ఈరోజు',
+calendarOverdue: 'గడువు ముగిసింది',
+calendarUpcoming: 'రాబోయేది',
+
+calendarTaskSowing: 'విత్తడం',
+calendarTaskIrrigation: 'నీటిపారుదల తనిఖీ',
+calendarTaskGermination: 'మొలక తనిఖీ',
+calendarTaskWeeding: 'కలుపు నిర్వహణ',
+calendarTaskFertilizer: 'ఎరువు వేయడం',
+calendarTaskPest: 'పురుగు తనిఖీ',
+calendarTaskDisease: 'వ్యాధి తనిఖీ',
+calendarTaskMidIrrigation: 'మధ్య-సీజన్ నీటిపారుదల తనిఖీ',
+calendarTaskGrowth: 'పంట పెరుగుదల తనిఖీ',
+calendarTaskHarvestPreparation: 'కోత తయారీ',
+calendarTaskExpectedHarvest: 'అంచనా కోత',
   },
 
   kn: {viewFullDiagnosis: 'ಸಂಪೂರ್ಣ ರೋಗನಿರ್ಣಯ ನೋಡಿ',
@@ -531,6 +1186,50 @@ deletingHistory: 'ಅಳಿಸಲಾಗುತ್ತಿದೆ...',
     needHelp: 'ಸಹಾಯ ಬೇಕೇ?',
     footerRights: 'ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
     footerMessage: 'ಉತ್ತಮ ಕೃಷಿಗಾಗಿ ತಂತ್ರಜ್ಞಾನ',
+calendarPlanning: 'ಬೆಳೆ ಯೋಜನೆ',
+cropCalendarTitle: 'ಬೆಳೆ ಕ್ಯಾಲೆಂಡರ್',
+cropCalendarDescription:
+  'ಬಿತ್ತನೆಯಿಂದ ಕೊಯ್ಲುವರೆಗೆ ನಿಮ್ಮ ಬೆಳೆಯನ್ನು ಯೋಜಿಸಿ ಮತ್ತು ಪ್ರಮುಖ ಕೃಷಿ ಚಟುವಟಿಕೆಗಳನ್ನು ಗಮನಿಸಿ.',
+
+calendarNewCrop: 'ಹೊಸ ಬೆಳೆ',
+calendarCreateTitle: 'ಬೆಳೆ ಕ್ಯಾಲೆಂಡರ್ ರಚಿಸಿ',
+calendarCreateDescription:
+  'ಕೃಷಿ ವೇಳಾಪಟ್ಟಿಯನ್ನು ರಚಿಸಲು ಬೆಳೆ ಮತ್ತು ಬಿತ್ತನೆ ಮಾಹಿತಿಯನ್ನು ಸೇರಿಸಿ.',
+
+calendarCrop: 'ಬೆಳೆ',
+calendarState: 'ರಾಜ್ಯ',
+calendarSeason: 'ಋತು',
+calendarSowingDate: 'ಬಿತ್ತನೆ ದಿನಾಂಕ',
+
+calendarCreateButton: 'ಕ್ಯಾಲೆಂಡರ್ ರಚಿಸಿ',
+calendarCreating: 'ಕ್ಯಾಲೆಂಡರ್ ರಚಿಸಲಾಗುತ್ತಿದೆ...',
+
+calendarActiveCrop: 'ಸಕ್ರಿಯ ಬೆಳೆ',
+calendarDelete: 'ಅಳಿಸಿ',
+calendarDeleting: 'ಅಳಿಸಲಾಗುತ್ತಿದೆ...',
+
+calendarSowing: 'ಬಿತ್ತನೆ',
+calendarExpectedHarvest: 'ನಿರೀಕ್ಷಿತ ಕೊಯ್ಲು',
+calendarProgress: 'ಪ್ರಗತಿ',
+calendarFarmingActivities: 'ಕೃಷಿ ಚಟುವಟಿಕೆಗಳು',
+
+calendarCompleted: 'ಪೂರ್ಣಗೊಂಡಿದೆ',
+calendarToday: 'ಇಂದು',
+calendarOverdue: 'ಅವಧಿ ಮೀರಿದೆ',
+calendarUpcoming: 'ಮುಂಬರುವ',
+
+calendarTaskSowing: 'ಬಿತ್ತನೆ',
+calendarTaskIrrigation: 'ನೀರಾವರಿ ಪರಿಶೀಲನೆ',
+calendarTaskGermination: 'ಮೊಳಕೆ ಪರಿಶೀಲನೆ',
+calendarTaskWeeding: 'ಕಳೆ ನಿರ್ವಹಣೆ',
+calendarTaskFertilizer: 'ಗೊಬ್ಬರ ಬಳಕೆ',
+calendarTaskPest: 'ಕೀಟ ಪರಿಶೀಲನೆ',
+calendarTaskDisease: 'ರೋಗ ಪರಿಶೀಲನೆ',
+calendarTaskMidIrrigation: 'ಮಧ್ಯ-ಋತು ನೀರಾವರಿ ಪರಿಶೀಲನೆ',
+calendarTaskGrowth: 'ಬೆಳೆ ಬೆಳವಣಿಗೆ ಪರಿಶೀಲನೆ',
+calendarTaskHarvestPreparation: 'ಕೊಯ್ಲು ತಯಾರಿ',
+calendarTaskExpectedHarvest: 'ನಿರೀಕ್ಷಿತ ಕೊಯ್ಲು',
+
   },
 
   ml: {viewFullDiagnosis: 'പൂർണ്ണ രോഗനിർണയം കാണുക',
@@ -576,6 +1275,50 @@ deletingHistory: 'ഇല്ലാതാക്കുന്നു...',
     needHelp: 'സഹായം വേണോ?',
     footerRights: 'എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം.',
     footerMessage: 'മികച്ച കൃഷിക്കായി സാങ്കേതികവിദ്യ',
+calendarPlanning: 'വിള ആസൂത്രണം',
+cropCalendarTitle: 'വിള കലണ്ടർ',
+cropCalendarDescription:
+  'വിതയ്ക്കുന്നതുമുതൽ വിളവെടുപ്പ് വരെ നിങ്ങളുടെ വിള ആസൂത്രണം ചെയ്ത് പ്രധാന കൃഷി പ്രവർത്തനങ്ങൾ നിരീക്ഷിക്കുക.',
+
+calendarNewCrop: 'പുതിയ വിള',
+calendarCreateTitle: 'വിള കലണ്ടർ സൃഷ്ടിക്കുക',
+calendarCreateDescription:
+  'കൃഷി സമയക്രമം സൃഷ്ടിക്കാൻ വിളയും വിതയ്ക്കൽ വിവരങ്ങളും ചേർക്കുക.',
+
+calendarCrop: 'വിള',
+calendarState: 'സംസ്ഥാനം',
+calendarSeason: 'സീസൺ',
+calendarSowingDate: 'വിതയ്ക്കൽ തീയതി',
+
+calendarCreateButton: 'കലണ്ടർ സൃഷ്ടിക്കുക',
+calendarCreating: 'കലണ്ടർ സൃഷ്ടിക്കുന്നു...',
+
+calendarActiveCrop: 'സജീവ വിള',
+calendarDelete: 'ഇല്ലാതാക്കുക',
+calendarDeleting: 'ഇല്ലാതാക്കുന്നു...',
+
+calendarSowing: 'വിതയ്ക്കൽ',
+calendarExpectedHarvest: 'പ്രതീക്ഷിക്കുന്ന വിളവെടുപ്പ്',
+calendarProgress: 'പുരോഗതി',
+calendarFarmingActivities: 'കൃഷി പ്രവർത്തനങ്ങൾ',
+
+calendarCompleted: 'പൂർത്തിയായി',
+calendarToday: 'ഇന്ന്',
+calendarOverdue: 'കാലാവധി കഴിഞ്ഞു',
+calendarUpcoming: 'വരാനിരിക്കുന്നത്',
+
+calendarTaskSowing: 'വിതയ്ക്കൽ',
+calendarTaskIrrigation: 'ജലസേചന പരിശോധന',
+calendarTaskGermination: 'മുളപ്പിക്കൽ പരിശോധന',
+calendarTaskWeeding: 'കള നിയന്ത്രണം',
+calendarTaskFertilizer: 'വളപ്രയോഗം',
+calendarTaskPest: 'കീട പരിശോധന',
+calendarTaskDisease: 'രോഗ പരിശോധന',
+calendarTaskMidIrrigation: 'മധ്യകാല ജലസേചന പരിശോധന',
+calendarTaskGrowth: 'വിള വളർച്ച പരിശോധന',
+calendarTaskHarvestPreparation: 'വിളവെടുപ്പ് തയ്യാറെടുപ്പ്',
+calendarTaskExpectedHarvest: 'പ്രതീക്ഷിക്കുന്ന വിളവെടുപ്പ്',
+
   },
 
   or: {viewFullDiagnosis: 'ସମ୍ପୂର୍ଣ୍ଣ ରୋଗ ନିର୍ଣ୍ଣୟ ଦେଖନ୍ତୁ',
@@ -621,6 +1364,50 @@ deletingHistory: 'ବିଲୋପ କରାଯାଉଛି...',
     needHelp: 'ସାହାଯ୍ୟ ଦରକାର?',
     footerRights: 'ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ।',
     footerMessage: 'ଉନ୍ନତ କୃଷି ପାଇଁ ପ୍ରଯୁକ୍ତି',
+calendarPlanning: 'ଫସଲ ଯୋଜନା',
+cropCalendarTitle: 'ଫସଲ କ୍ୟାଲେଣ୍ଡର',
+cropCalendarDescription:
+  'ବିହନ ବୁଣିବାରୁ ଅମଳ ପର୍ଯ୍ୟନ୍ତ ଫସଲ ଯୋଜନା କରନ୍ତୁ ଏବଂ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ କୃଷି କାର୍ଯ୍ୟ ଟ୍ରାକ୍ କରନ୍ତୁ।',
+
+calendarNewCrop: 'ନୂଆ ଫସଲ',
+calendarCreateTitle: 'ଫସଲ କ୍ୟାଲେଣ୍ଡର ତିଆରି କରନ୍ତୁ',
+calendarCreateDescription:
+  'କୃଷି ସମୟସୂଚୀ ପାଇଁ ଫସଲ ଏବଂ ବୁଣା ତଥ୍ୟ ଯୋଡନ୍ତୁ।',
+
+calendarCrop: 'ଫସଲ',
+calendarState: 'ରାଜ୍ୟ',
+calendarSeason: 'ଋତୁ',
+calendarSowingDate: 'ବୁଣା ତାରିଖ',
+
+calendarCreateButton: 'କ୍ୟାଲେଣ୍ଡର ତିଆରି କରନ୍ତୁ',
+calendarCreating: 'କ୍ୟାଲେଣ୍ଡର ତିଆରି ହେଉଛି...',
+
+calendarActiveCrop: 'ସକ୍ରିୟ ଫସଲ',
+calendarDelete: 'ବିଲୋପ କରନ୍ତୁ',
+calendarDeleting: 'ବିଲୋପ କରାଯାଉଛି...',
+
+calendarSowing: 'ବୁଣା',
+calendarExpectedHarvest: 'ଆଶାକରା ଅମଳ',
+calendarProgress: 'ପ୍ରଗତି',
+calendarFarmingActivities: 'କୃଷି କାର୍ଯ୍ୟ',
+
+calendarCompleted: 'ସମ୍ପୂର୍ଣ୍ଣ',
+calendarToday: 'ଆଜି',
+calendarOverdue: 'ସମୟ ଅତିକ୍ରମ',
+calendarUpcoming: 'ଆଗାମୀ',
+
+calendarTaskSowing: 'ବୁଣା',
+calendarTaskIrrigation: 'ଜଳସେଚନ ଯାଞ୍ଚ',
+calendarTaskGermination: 'ଅଙ୍କୁରୋଦ୍ଗମ ଯାଞ୍ଚ',
+calendarTaskWeeding: 'ଘାସ ପରିଚାଳନା',
+calendarTaskFertilizer: 'ସାର ପ୍ରୟୋଗ',
+calendarTaskPest: 'କୀଟ ଯାଞ୍ଚ',
+calendarTaskDisease: 'ରୋଗ ଯାଞ୍ଚ',
+calendarTaskMidIrrigation: 'ମଧ୍ୟ-ଋତୁ ଜଳସେଚନ ଯାଞ୍ଚ',
+calendarTaskGrowth: 'ଫସଲ ବୃଦ୍ଧି ଯାଞ୍ଚ',
+calendarTaskHarvestPreparation: 'ଅମଳ ପ୍ରସ୍ତୁତି',
+calendarTaskExpectedHarvest: 'ଆଶାକରା ଅମଳ',
+
   },
 
   as: {viewFullDiagnosis: 'সম্পূৰ্ণ ৰোগ নিৰ্ণয় চাওক',
@@ -665,6 +1452,50 @@ deletingHistory: 'মচি থকা হৈছে...',
     needHelp: 'সহায় লাগে নেকি?',
     footerRights: 'সকলো অধিকাৰ সংৰক্ষিত।',
     footerMessage: 'উন্নত কৃষিৰ বাবে প্ৰযুক্তি',
+
+calendarPlanning: 'শস্য পৰিকল্পনা',
+cropCalendarTitle: 'শস্য কেলেণ্ডাৰ',
+cropCalendarDescription:
+  'বীজ সিঁচাৰ পৰা চপোৱালৈকে শস্যৰ পৰিকল্পনা কৰক আৰু গুৰুত্বপূৰ্ণ কৃষি কামসমূহ অনুসৰণ কৰক।',
+
+calendarNewCrop: 'নতুন শস্য',
+calendarCreateTitle: 'শস্য কেলেণ্ডাৰ তৈয়াৰ কৰক',
+calendarCreateDescription:
+  'কৃষি সময়সূচী তৈয়াৰ কৰিবলৈ শস্য আৰু বীজ সিঁচাৰ তথ্য যোগ কৰক।',
+
+calendarCrop: 'শস্য',
+calendarState: 'ৰাজ্য',
+calendarSeason: 'ঋতু',
+calendarSowingDate: 'বীজ সিঁচাৰ তাৰিখ',
+
+calendarCreateButton: 'কেলেণ্ডাৰ তৈয়াৰ কৰক',
+calendarCreating: 'কেলেণ্ডাৰ তৈয়াৰ হৈ আছে...',
+
+calendarActiveCrop: 'সক্ৰিয় শস্য',
+calendarDelete: 'মচক',
+calendarDeleting: 'মচি থকা হৈছে...',
+
+calendarSowing: 'বীজ সিঁচা',
+calendarExpectedHarvest: 'সম্ভাব্য চপোৱা',
+calendarProgress: 'অগ্ৰগতি',
+calendarFarmingActivities: 'কৃষি কাম',
+
+calendarCompleted: 'সম্পূৰ্ণ',
+calendarToday: 'আজি',
+calendarOverdue: 'সময় পাৰ হৈছে',
+calendarUpcoming: 'আগন্তুক',
+
+calendarTaskSowing: 'বীজ সিঁচা',
+calendarTaskIrrigation: 'জলসিঞ্চন পৰীক্ষা',
+calendarTaskGermination: 'অংকুৰণ পৰীক্ষা',
+calendarTaskWeeding: 'অপতৃণ ব্যৱস্থাপনা',
+calendarTaskFertilizer: 'সাৰ প্ৰয়োগ',
+calendarTaskPest: 'কীট-পতংগ পৰীক্ষা',
+calendarTaskDisease: 'ৰোগ পৰীক্ষা',
+calendarTaskMidIrrigation: 'মধ্য-ঋতু জলসিঞ্চন পৰীক্ষা',
+calendarTaskGrowth: 'শস্য বৃদ্ধি পৰীক্ষা',
+calendarTaskHarvestPreparation: 'চপোৱাৰ প্ৰস্তুতি',
+calendarTaskExpectedHarvest: 'সম্ভাব্য চপোৱা',
   },
 
   
