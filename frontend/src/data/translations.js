@@ -1744,7 +1744,672 @@ const weatherTranslations = {
   ml: {},
   or: {},
   as: {},
-}// =====================================================
+}
+// =====================================================
+// FARMER FEEDBACK TRANSLATIONS
+// =====================================================
+
+const feedbackTranslations = {
+  // ===================================================
+  // ENGLISH
+  // ===================================================
+
+  en: {
+    farmerFeedback: 'FARMER FEEDBACK',
+    shareTreatmentExperience: 'How did the treatment work?',
+    feedbackDescription:
+      'Your experience helps improve future recommendations for farmers.',
+
+    didTreatmentWork: 'Did this treatment work?',
+    treatmentWorkedYes: 'Yes, it helped',
+    treatmentWorkedNo: "No, it didn't",
+
+    rateTreatment: 'Rate the treatment',
+
+    actualRecoveryTime: 'Recovery time',
+    days: 'days',
+
+    additionalFeedback: 'Additional feedback',
+    feedbackPlaceholder:
+      'Tell us about your experience with this treatment...',
+
+    submitFeedback: 'Submit Feedback',
+    submittingFeedback: 'Submitting...',
+    feedbackSubmitted: 'Feedback Submitted',
+
+    feedbackChooseResult:
+      'Please tell us whether the treatment worked.',
+
+    feedbackChooseRating:
+      'Please select a rating from 1 to 5 stars.',
+
+    feedbackThankYou:
+      'Thank you! Your feedback has been saved successfully.',
+
+    feedbackSubmitError:
+      'Could not submit feedback. Please try again.',
+
+    diagnosisInformationMissing:
+      'Diagnosis information is missing.',
+  },
+
+
+  // ===================================================
+  // HINDI
+  // ===================================================
+
+  hi: {
+    farmerFeedback: 'किसान प्रतिक्रिया',
+    shareTreatmentExperience: 'उपचार का असर कैसा रहा?',
+    feedbackDescription:
+      'आपका अनुभव किसानों के लिए भविष्य की सिफारिशों को बेहतर बनाने में मदद करता है।',
+
+    didTreatmentWork: 'क्या इस उपचार से फायदा हुआ?',
+    treatmentWorkedYes: 'हाँ, फायदा हुआ',
+    treatmentWorkedNo: 'नहीं, फायदा नहीं हुआ',
+
+    rateTreatment: 'उपचार को रेटिंग दें',
+
+    actualRecoveryTime: 'ठीक होने का समय',
+    days: 'दिन',
+
+    additionalFeedback: 'अतिरिक्त प्रतिक्रिया',
+    feedbackPlaceholder:
+      'इस उपचार के साथ अपने अनुभव के बारे में हमें बताएं...',
+
+    submitFeedback: 'प्रतिक्रिया भेजें',
+    submittingFeedback: 'भेजा जा रहा है...',
+    feedbackSubmitted: 'प्रतिक्रिया भेज दी गई',
+
+    feedbackChooseResult:
+      'कृपया बताएं कि उपचार से फायदा हुआ या नहीं।',
+
+    feedbackChooseRating:
+      'कृपया 1 से 5 स्टार के बीच रेटिंग चुनें।',
+
+    feedbackThankYou:
+      'धन्यवाद! आपकी प्रतिक्रिया सफलतापूर्वक सहेज ली गई है।',
+
+    feedbackSubmitError:
+      'प्रतिक्रिया भेजी नहीं जा सकी। कृपया दोबारा प्रयास करें।',
+
+    diagnosisInformationMissing:
+      'निदान की जानकारी उपलब्ध नहीं है।',
+  },
+
+
+  // ===================================================
+  // RAJASTHANI / MARWARI
+  // ===================================================
+
+  raj: {
+    farmerFeedback: 'किसान री राय',
+    shareTreatmentExperience: 'इलाज रो असर किणो रह्यो?',
+    feedbackDescription:
+      'आपरो अनुभव किसानां खातर आगली सलाह ने बेहतर बणावण में मदद करै है।',
+
+    didTreatmentWork: 'कांई ई इलाज सूं फायदा हुयो?',
+    treatmentWorkedYes: 'हां, फायदा हुयो',
+    treatmentWorkedNo: 'ना, फायदा कोनी हुयो',
+
+    rateTreatment: 'इलाज ने रेटिंग देवो',
+
+    actualRecoveryTime: 'ठीक होवण रो समय',
+    days: 'दिन',
+
+    additionalFeedback: 'दूजी राय',
+    feedbackPlaceholder:
+      'ई इलाज रै बारे में आपरो अनुभव बतावो...',
+
+    submitFeedback: 'राय भेजो',
+    submittingFeedback: 'भेजी जा री है...',
+    feedbackSubmitted: 'राय भेज दी गई',
+
+    feedbackChooseResult:
+      'कृपया बतावो कि इलाज सूं फायदा हुयो या कोनी।',
+
+    feedbackChooseRating:
+      'कृपया 1 सूं 5 स्टार तक रेटिंग चुनो।',
+
+    feedbackThankYou:
+      'धन्यवाद! आपरी राय सफलतापूर्वक सहेज ली गई है।',
+
+    feedbackSubmitError:
+      'राय भेजी कोनी जा सकी। कृपया फेर कोशिश करो।',
+
+    diagnosisInformationMissing:
+      'निदान री जानकारी उपलब्ध कोनी है।',
+  },
+
+
+  // ===================================================
+  // BHOJPURI
+  // ===================================================
+
+  bho: {
+    farmerFeedback: 'किसान प्रतिक्रिया',
+    shareTreatmentExperience: 'इलाज के असर कइसन रहल?',
+    feedbackDescription:
+      'रउआ के अनुभव किसानन खातिर आगे के सलाह बेहतर बनावे में मदद करी।',
+
+    didTreatmentWork: 'का ई इलाज से फायदा भइल?',
+    treatmentWorkedYes: 'हँ, फायदा भइल',
+    treatmentWorkedNo: 'ना, फायदा ना भइल',
+
+    rateTreatment: 'इलाज के रेटिंग दीं',
+
+    actualRecoveryTime: 'ठीक होखे के समय',
+    days: 'दिन',
+
+    additionalFeedback: 'अउरी प्रतिक्रिया',
+    feedbackPlaceholder:
+      'ई इलाज के बारे में आपन अनुभव बताईं...',
+
+    submitFeedback: 'प्रतिक्रिया भेजीं',
+    submittingFeedback: 'भेजल जा रहल बा...',
+    feedbackSubmitted: 'प्रतिक्रिया भेज दीहल गइल',
+
+    feedbackChooseResult:
+      'कृपया बताईं कि इलाज से फायदा भइल कि ना।',
+
+    feedbackChooseRating:
+      'कृपया 1 से 5 स्टार के बीच रेटिंग चुनीं।',
+
+    feedbackThankYou:
+      'धन्यवाद! रउआ के प्रतिक्रिया सफलतापूर्वक सहेज लिहल गइल बा।',
+
+    feedbackSubmitError:
+      'प्रतिक्रिया भेजल ना जा सकल। कृपया फेर कोशिश करीं।',
+
+    diagnosisInformationMissing:
+      'निदान के जानकारी उपलब्ध नइखे।',
+  },
+
+
+  // ===================================================
+  // HARYANVI
+  // ===================================================
+
+  har: {
+    farmerFeedback: 'किसान की राय',
+    shareTreatmentExperience: 'इलाज का असर कैसा रहा?',
+    feedbackDescription:
+      'आपका अनुभव किसानां खातर आगे की सलाह बेहतर करण में मदद करैगा।',
+
+    didTreatmentWork: 'के इस इलाज तै फायदा होया?',
+    treatmentWorkedYes: 'हाँ, फायदा होया',
+    treatmentWorkedNo: 'ना, फायदा कोनी होया',
+
+    rateTreatment: 'इलाज नै रेटिंग देओ',
+
+    actualRecoveryTime: 'ठीक होण का समय',
+    days: 'दिन',
+
+    additionalFeedback: 'और राय',
+    feedbackPlaceholder:
+      'इस इलाज के बारे में अपना अनुभव बताओ...',
+
+    submitFeedback: 'राय भेजो',
+    submittingFeedback: 'भेजी जा रही सै...',
+    feedbackSubmitted: 'राय भेज दी गई',
+
+    feedbackChooseResult:
+      'कृपया बताओ के इलाज तै फायदा होया या ना।',
+
+    feedbackChooseRating:
+      'कृपया 1 तै 5 स्टार तक रेटिंग चुनो।',
+
+    feedbackThankYou:
+      'धन्यवाद! आपकी राय सफलतापूर्वक सहेज ली गई सै।',
+
+    feedbackSubmitError:
+      'राय भेजी ना जा सकी। कृपया फेर कोशिश करो।',
+
+    diagnosisInformationMissing:
+      'निदान की जानकारी उपलब्ध कोनी सै।',
+  },
+
+
+  // ===================================================
+  // GUJARATI
+  // ===================================================
+
+  gu: {
+    farmerFeedback: 'ખેડૂત પ્રતિસાદ',
+    shareTreatmentExperience: 'સારવારની અસર કેવી રહી?',
+    feedbackDescription:
+      'તમારો અનુભવ ખેડૂતો માટે ભવિષ્યની ભલામણોને વધુ સારી બનાવવામાં મદદ કરે છે.',
+
+    didTreatmentWork: 'શું આ સારવારથી ફાયદો થયો?',
+    treatmentWorkedYes: 'હા, ફાયદો થયો',
+    treatmentWorkedNo: 'ના, ફાયદો થયો નથી',
+
+    rateTreatment: 'સારવારને રેટિંગ આપો',
+
+    actualRecoveryTime: 'સાજા થવાનો સમય',
+    days: 'દિવસ',
+
+    additionalFeedback: 'વધારાનો પ્રતિસાદ',
+    feedbackPlaceholder:
+      'આ સારવાર વિશે તમારો અનુભવ અમને જણાવો...',
+
+    submitFeedback: 'પ્રતિસાદ મોકલો',
+    submittingFeedback: 'મોકલવામાં આવી રહ્યું છે...',
+    feedbackSubmitted: 'પ્રતિસાદ મોકલાયો',
+
+    feedbackChooseResult:
+      'કૃપા કરીને જણાવો કે સારવારથી ફાયદો થયો કે નહીં.',
+
+    feedbackChooseRating:
+      'કૃપા કરીને 1 થી 5 સ્ટાર વચ્ચે રેટિંગ પસંદ કરો.',
+
+    feedbackThankYou:
+      'આભાર! તમારો પ્રતિસાદ સફળતાપૂર્વક સાચવવામાં આવ્યો છે.',
+
+    feedbackSubmitError:
+      'પ્રતિસાદ મોકલી શકાયો નથી. કૃપા કરીને ફરી પ્રયાસ કરો.',
+
+    diagnosisInformationMissing:
+      'નિદાનની માહિતી ઉપલબ્ધ નથી.',
+  },
+
+
+  // ===================================================
+  // MARATHI
+  // ===================================================
+
+  mr: {
+    farmerFeedback: 'शेतकरी अभिप्राय',
+    shareTreatmentExperience: 'उपचाराचा परिणाम कसा झाला?',
+    feedbackDescription:
+      'तुमचा अनुभव शेतकऱ्यांसाठी भविष्यातील शिफारसी सुधारण्यास मदत करतो.',
+
+    didTreatmentWork: 'या उपचाराचा फायदा झाला का?',
+    treatmentWorkedYes: 'होय, फायदा झाला',
+    treatmentWorkedNo: 'नाही, फायदा झाला नाही',
+
+    rateTreatment: 'उपचाराला रेटिंग द्या',
+
+    actualRecoveryTime: 'बरे होण्याचा कालावधी',
+    days: 'दिवस',
+
+    additionalFeedback: 'अतिरिक्त अभिप्राय',
+    feedbackPlaceholder:
+      'या उपचाराबद्दलचा तुमचा अनुभव आम्हाला सांगा...',
+
+    submitFeedback: 'अभिप्राय पाठवा',
+    submittingFeedback: 'पाठवत आहे...',
+    feedbackSubmitted: 'अभिप्राय पाठवला',
+
+    feedbackChooseResult:
+      'कृपया उपचाराचा फायदा झाला की नाही ते सांगा.',
+
+    feedbackChooseRating:
+      'कृपया 1 ते 5 स्टारमधील रेटिंग निवडा.',
+
+    feedbackThankYou:
+      'धन्यवाद! तुमचा अभिप्राय यशस्वीरित्या जतन करण्यात आला आहे.',
+
+    feedbackSubmitError:
+      'अभिप्राय पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा.',
+
+    diagnosisInformationMissing:
+      'निदानाची माहिती उपलब्ध नाही.',
+  },
+
+
+  // ===================================================
+  // PUNJABI
+  // ===================================================
+
+  pa: {
+    farmerFeedback: 'ਕਿਸਾਨ ਫੀਡਬੈਕ',
+    shareTreatmentExperience: 'ਇਲਾਜ ਦਾ ਅਸਰ ਕਿਵੇਂ ਰਿਹਾ?',
+    feedbackDescription:
+      'ਤੁਹਾਡਾ ਤਜਰਬਾ ਕਿਸਾਨਾਂ ਲਈ ਭਵਿੱਖ ਦੀਆਂ ਸਿਫਾਰਸ਼ਾਂ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ।',
+
+    didTreatmentWork: 'ਕੀ ਇਸ ਇਲਾਜ ਨਾਲ ਫਾਇਦਾ ਹੋਇਆ?',
+    treatmentWorkedYes: 'ਹਾਂ, ਫਾਇਦਾ ਹੋਇਆ',
+    treatmentWorkedNo: 'ਨਹੀਂ, ਫਾਇਦਾ ਨਹੀਂ ਹੋਇਆ',
+
+    rateTreatment: 'ਇਲਾਜ ਨੂੰ ਰੇਟਿੰਗ ਦਿਓ',
+
+    actualRecoveryTime: 'ਠੀਕ ਹੋਣ ਦਾ ਸਮਾਂ',
+    days: 'ਦਿਨ',
+
+    additionalFeedback: 'ਵਾਧੂ ਫੀਡਬੈਕ',
+    feedbackPlaceholder:
+      'ਇਸ ਇਲਾਜ ਬਾਰੇ ਆਪਣਾ ਤਜਰਬਾ ਸਾਨੂੰ ਦੱਸੋ...',
+
+    submitFeedback: 'ਫੀਡਬੈਕ ਭੇਜੋ',
+    submittingFeedback: 'ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ...',
+    feedbackSubmitted: 'ਫੀਡਬੈਕ ਭੇਜ ਦਿੱਤਾ ਗਿਆ',
+
+    feedbackChooseResult:
+      'ਕਿਰਪਾ ਕਰਕੇ ਦੱਸੋ ਕਿ ਇਲਾਜ ਨਾਲ ਫਾਇਦਾ ਹੋਇਆ ਜਾਂ ਨਹੀਂ।',
+
+    feedbackChooseRating:
+      'ਕਿਰਪਾ ਕਰਕੇ 1 ਤੋਂ 5 ਸਟਾਰ ਤੱਕ ਰੇਟਿੰਗ ਚੁਣੋ।',
+
+    feedbackThankYou:
+      'ਧੰਨਵਾਦ! ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਸਫਲਤਾਪੂਰਵਕ ਸੰਭਾਲਿਆ ਗਿਆ ਹੈ।',
+
+    feedbackSubmitError:
+      'ਫੀਡਬੈਕ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।',
+
+    diagnosisInformationMissing:
+      'ਨਿਦਾਨ ਦੀ ਜਾਣਕਾਰੀ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
+  },
+
+
+  // ===================================================
+  // BENGALI
+  // ===================================================
+
+  bn: {
+    farmerFeedback: 'কৃষকের মতামত',
+    shareTreatmentExperience: 'চিকিৎসার ফল কেমন হয়েছে?',
+    feedbackDescription:
+      'আপনার অভিজ্ঞতা কৃষকদের জন্য ভবিষ্যতের পরামর্শ আরও উন্নত করতে সাহায্য করে।',
+
+    didTreatmentWork: 'এই চিকিৎসায় কি উপকার হয়েছে?',
+    treatmentWorkedYes: 'হ্যাঁ, উপকার হয়েছে',
+    treatmentWorkedNo: 'না, উপকার হয়নি',
+
+    rateTreatment: 'চিকিৎসার রেটিং দিন',
+
+    actualRecoveryTime: 'সুস্থ হতে সময়',
+    days: 'দিন',
+
+    additionalFeedback: 'অতিরিক্ত মতামত',
+    feedbackPlaceholder:
+      'এই চিকিৎসা সম্পর্কে আপনার অভিজ্ঞতা আমাদের জানান...',
+
+    submitFeedback: 'মতামত পাঠান',
+    submittingFeedback: 'পাঠানো হচ্ছে...',
+    feedbackSubmitted: 'মতামত পাঠানো হয়েছে',
+
+    feedbackChooseResult:
+      'চিকিৎসায় উপকার হয়েছে কি না তা জানান।',
+
+    feedbackChooseRating:
+      '১ থেকে ৫ স্টারের মধ্যে একটি রেটিং নির্বাচন করুন।',
+
+    feedbackThankYou:
+      'ধন্যবাদ! আপনার মতামত সফলভাবে সংরক্ষণ করা হয়েছে।',
+
+    feedbackSubmitError:
+      'মতামত পাঠানো যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।',
+
+    diagnosisInformationMissing:
+      'রোগ নির্ণয়ের তথ্য পাওয়া যাচ্ছে না।',
+  },
+
+
+  // ===================================================
+  // TAMIL
+  // ===================================================
+
+  ta: {
+    farmerFeedback: 'விவசாயி கருத்து',
+    shareTreatmentExperience: 'சிகிச்சையின் விளைவு எப்படி இருந்தது?',
+    feedbackDescription:
+      'உங்கள் அனுபவம் விவசாயிகளுக்கான எதிர்கால பரிந்துரைகளை மேம்படுத்த உதவுகிறது.',
+
+    didTreatmentWork: 'இந்த சிகிச்சை பயனளித்ததா?',
+    treatmentWorkedYes: 'ஆம், பயனளித்தது',
+    treatmentWorkedNo: 'இல்லை, பயனளிக்கவில்லை',
+
+    rateTreatment: 'சிகிச்சையை மதிப்பிடுங்கள்',
+
+    actualRecoveryTime: 'குணமடையும் காலம்',
+    days: 'நாட்கள்',
+
+    additionalFeedback: 'கூடுதல் கருத்து',
+    feedbackPlaceholder:
+      'இந்த சிகிச்சை குறித்த உங்கள் அனுபவத்தை எங்களிடம் பகிருங்கள்...',
+
+    submitFeedback: 'கருத்தை சமர்ப்பிக்கவும்',
+    submittingFeedback: 'சமர்ப்பிக்கப்படுகிறது...',
+    feedbackSubmitted: 'கருத்து சமர்ப்பிக்கப்பட்டது',
+
+    feedbackChooseResult:
+      'சிகிச்சை பயனளித்ததா என்பதைத் தெரிவிக்கவும்.',
+
+    feedbackChooseRating:
+      '1 முதல் 5 நட்சத்திரங்களில் மதிப்பீட்டைத் தேர்ந்தெடுக்கவும்.',
+
+    feedbackThankYou:
+      'நன்றி! உங்கள் கருத்து வெற்றிகரமாக சேமிக்கப்பட்டது.',
+
+    feedbackSubmitError:
+      'கருத்தை சமர்ப்பிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.',
+
+    diagnosisInformationMissing:
+      'நோய் கண்டறிதல் தகவல் கிடைக்கவில்லை.',
+  },
+
+
+  // ===================================================
+  // TELUGU
+  // ===================================================
+
+  te: {
+    farmerFeedback: 'రైతు అభిప్రాయం',
+    shareTreatmentExperience: 'చికిత్స ప్రభావం ఎలా ఉంది?',
+    feedbackDescription:
+      'మీ అనుభవం రైతుల కోసం భవిష్యత్ సిఫార్సులను మెరుగుపరచడంలో సహాయపడుతుంది.',
+
+    didTreatmentWork: 'ఈ చికిత్స ఉపయోగపడిందా?',
+    treatmentWorkedYes: 'అవును, ఉపయోగపడింది',
+    treatmentWorkedNo: 'లేదు, ఉపయోగపడలేదు',
+
+    rateTreatment: 'చికిత్సకు రేటింగ్ ఇవ్వండి',
+
+    actualRecoveryTime: 'కోలుకునే సమయం',
+    days: 'రోజులు',
+
+    additionalFeedback: 'అదనపు అభిప్రాయం',
+    feedbackPlaceholder:
+      'ఈ చికిత్స గురించి మీ అనుభవాన్ని మాకు చెప్పండి...',
+
+    submitFeedback: 'అభిప్రాయం పంపండి',
+    submittingFeedback: 'పంపుతోంది...',
+    feedbackSubmitted: 'అభిప్రాయం పంపబడింది',
+
+    feedbackChooseResult:
+      'చికిత్స ఉపయోగపడిందో లేదో దయచేసి తెలియజేయండి.',
+
+    feedbackChooseRating:
+      'దయచేసి 1 నుండి 5 నక్షత్రాల మధ్య రేటింగ్ ఎంచుకోండి.',
+
+    feedbackThankYou:
+      'ధన్యవాదాలు! మీ అభిప్రాయం విజయవంతంగా సేవ్ చేయబడింది.',
+
+    feedbackSubmitError:
+      'అభిప్రాయం పంపడం సాధ్యపడలేదు. దయచేసి మళ్లీ ప్రయత్నించండి.',
+
+    diagnosisInformationMissing:
+      'నిర్ధారణ సమాచారం అందుబాటులో లేదు.',
+  },
+
+
+  // ===================================================
+  // KANNADA
+  // ===================================================
+
+  kn: {
+    farmerFeedback: 'ರೈತರ ಪ್ರತಿಕ್ರಿಯೆ',
+    shareTreatmentExperience: 'ಚಿಕಿತ್ಸೆಯ ಪರಿಣಾಮ ಹೇಗಿತ್ತು?',
+    feedbackDescription:
+      'ನಿಮ್ಮ ಅನುಭವವು ರೈತರಿಗಾಗಿ ಭವಿಷ್ಯದ ಶಿಫಾರಸುಗಳನ್ನು ಸುಧಾರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.',
+
+    didTreatmentWork: 'ಈ ಚಿಕಿತ್ಸೆ ಪ್ರಯೋಜನಕಾರಿಯಾಗಿತ್ತೇ?',
+    treatmentWorkedYes: 'ಹೌದು, ಪ್ರಯೋಜನವಾಯಿತು',
+    treatmentWorkedNo: 'ಇಲ್ಲ, ಪ್ರಯೋಜನವಾಗಲಿಲ್ಲ',
+
+    rateTreatment: 'ಚಿಕಿತ್ಸೆಗೆ ರೇಟಿಂಗ್ ನೀಡಿ',
+
+    actualRecoveryTime: 'ಚೇತರಿಕೆಯ ಸಮಯ',
+    days: 'ದಿನಗಳು',
+
+    additionalFeedback: 'ಹೆಚ್ಚುವರಿ ಪ್ರತಿಕ್ರಿಯೆ',
+    feedbackPlaceholder:
+      'ಈ ಚಿಕಿತ್ಸೆಯ ಬಗ್ಗೆ ನಿಮ್ಮ ಅನುಭವವನ್ನು ನಮಗೆ ತಿಳಿಸಿ...',
+
+    submitFeedback: 'ಪ್ರತಿಕ್ರಿಯೆ ಸಲ್ಲಿಸಿ',
+    submittingFeedback: 'ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ...',
+    feedbackSubmitted: 'ಪ್ರತಿಕ್ರಿಯೆ ಸಲ್ಲಿಸಲಾಗಿದೆ',
+
+    feedbackChooseResult:
+      'ಚಿಕಿತ್ಸೆ ಪ್ರಯೋಜನಕಾರಿಯಾಗಿತ್ತೇ ಎಂಬುದನ್ನು ತಿಳಿಸಿ.',
+
+    feedbackChooseRating:
+      'ದಯವಿಟ್ಟು 1 ರಿಂದ 5 ನಕ್ಷತ್ರಗಳ ನಡುವೆ ರೇಟಿಂಗ್ ಆಯ್ಕೆಮಾಡಿ.',
+
+    feedbackThankYou:
+      'ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಉಳಿಸಲಾಗಿದೆ.',
+
+    feedbackSubmitError:
+      'ಪ್ರತಿಕ್ರಿಯೆ ಸಲ್ಲಿಸಲಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
+
+    diagnosisInformationMissing:
+      'ರೋಗನಿರ್ಣಯದ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ.',
+  },
+
+
+  // ===================================================
+  // MALAYALAM
+  // ===================================================
+
+  ml: {
+    farmerFeedback: 'കർഷക പ്രതികരണം',
+    shareTreatmentExperience: 'ചികിത്സയുടെ ഫലം എങ്ങനെയായിരുന്നു?',
+    feedbackDescription:
+      'നിങ്ങളുടെ അനുഭവം കർഷകർക്കായുള്ള ഭാവിയിലെ നിർദേശങ്ങൾ മെച്ചപ്പെടുത്താൻ സഹായിക്കുന്നു.',
+
+    didTreatmentWork: 'ഈ ചികിത്സ ഫലപ്രദമായിരുന്നോ?',
+    treatmentWorkedYes: 'അതെ, ഫലപ്രദമായിരുന്നു',
+    treatmentWorkedNo: 'ഇല്ല, ഫലപ്രദമായിരുന്നില്ല',
+
+    rateTreatment: 'ചികിത്സയ്ക്ക് റേറ്റിംഗ് നൽകുക',
+
+    actualRecoveryTime: 'സുഖം പ്രാപിക്കാൻ എടുത്ത സമയം',
+    days: 'ദിവസങ്ങൾ',
+
+    additionalFeedback: 'കൂടുതൽ അഭിപ്രായം',
+    feedbackPlaceholder:
+      'ഈ ചികിത്സയെക്കുറിച്ചുള്ള നിങ്ങളുടെ അനുഭവം ഞങ്ങളോട് പറയൂ...',
+
+    submitFeedback: 'അഭിപ്രായം സമർപ്പിക്കുക',
+    submittingFeedback: 'സമർപ്പിക്കുന്നു...',
+    feedbackSubmitted: 'അഭിപ്രായം സമർപ്പിച്ചു',
+
+    feedbackChooseResult:
+      'ചികിത്സ ഫലപ്രദമായിരുന്നോ എന്ന് അറിയിക്കുക.',
+
+    feedbackChooseRating:
+      '1 മുതൽ 5 നക്ഷത്രങ്ങൾക്കിടയിൽ റേറ്റിംഗ് തിരഞ്ഞെടുക്കുക.',
+
+    feedbackThankYou:
+      'നന്ദി! നിങ്ങളുടെ അഭിപ്രായം വിജയകരമായി സംരക്ഷിച്ചു.',
+
+    feedbackSubmitError:
+      'അഭിപ്രായം സമർപ്പിക്കാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കുക.',
+
+    diagnosisInformationMissing:
+      'രോഗനിർണയ വിവരം ലഭ്യമല്ല.',
+  },
+
+
+  // ===================================================
+  // ODIA
+  // ===================================================
+
+  or: {
+    farmerFeedback: 'କୃଷକ ମତାମତ',
+    shareTreatmentExperience: 'ଚିକିତ୍ସାର ପ୍ରଭାବ କେମିତି ଥିଲା?',
+    feedbackDescription:
+      'ଆପଣଙ୍କ ଅନୁଭବ କୃଷକମାନଙ୍କ ପାଇଁ ଭବିଷ୍ୟତର ପରାମର୍ଶକୁ ଉନ୍ନତ କରିବାରେ ସାହାଯ୍ୟ କରେ।',
+
+    didTreatmentWork: 'ଏହି ଚିକିତ୍ସାରୁ ଲାଭ ହେଲା କି?',
+    treatmentWorkedYes: 'ହଁ, ଲାଭ ହେଲା',
+    treatmentWorkedNo: 'ନା, ଲାଭ ହେଲା ନାହିଁ',
+
+    rateTreatment: 'ଚିକିତ୍ସାକୁ ରେଟିଂ ଦିଅନ୍ତୁ',
+
+    actualRecoveryTime: 'ସୁସ୍ଥ ହେବାର ସମୟ',
+    days: 'ଦିନ',
+
+    additionalFeedback: 'ଅତିରିକ୍ତ ମତାମତ',
+    feedbackPlaceholder:
+      'ଏହି ଚିକିତ୍ସା ବିଷୟରେ ଆପଣଙ୍କ ଅନୁଭବ ଆମକୁ କୁହନ୍ତୁ...',
+
+    submitFeedback: 'ମତାମତ ପଠାନ୍ତୁ',
+    submittingFeedback: 'ପଠାଯାଉଛି...',
+    feedbackSubmitted: 'ମତାମତ ପଠାଯାଇଛି',
+
+    feedbackChooseResult:
+      'ଚିକିତ୍ସାରୁ ଲାଭ ହେଲା କି ନାହିଁ ଦୟାକରି କୁହନ୍ତୁ।',
+
+    feedbackChooseRating:
+      'ଦୟାକରି 1 ରୁ 5 ଷ୍ଟାର ମଧ୍ୟରେ ରେଟିଂ ବାଛନ୍ତୁ।',
+
+    feedbackThankYou:
+      'ଧନ୍ୟବାଦ! ଆପଣଙ୍କ ମତାମତ ସଫଳତାର ସହିତ ସଞ୍ଚୟ ହୋଇଛି।',
+
+    feedbackSubmitError:
+      'ମତାମତ ପଠାଯାଇ ପାରିଲା ନାହିଁ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।',
+
+    diagnosisInformationMissing:
+      'ରୋଗ ନିର୍ଣ୍ଣୟ ସୂଚନା ଉପଲବ୍ଧ ନାହିଁ।',
+  },
+
+
+  // ===================================================
+  // ASSAMESE
+  // ===================================================
+
+  as: {
+    farmerFeedback: 'কৃষকৰ মতামত',
+    shareTreatmentExperience: 'চিকিৎসাৰ ফল কেনেকুৱা আছিল?',
+    feedbackDescription:
+      'আপোনাৰ অভিজ্ঞতাই কৃষকৰ বাবে ভৱিষ্যতৰ পৰামৰ্শ উন্নত কৰাত সহায় কৰে।',
+
+    didTreatmentWork: 'এই চিকিৎসাই উপকাৰ কৰিলে নে?',
+    treatmentWorkedYes: 'হয়, উপকাৰ কৰিলে',
+    treatmentWorkedNo: 'নাই, উপকাৰ নকৰিলে',
+
+    rateTreatment: 'চিকিৎসাক ৰেটিং দিয়ক',
+
+    actualRecoveryTime: 'সুস্থ হোৱাৰ সময়',
+    days: 'দিন',
+
+    additionalFeedback: 'অতিৰিক্ত মতামত',
+    feedbackPlaceholder:
+      'এই চিকিৎসাৰ বিষয়ে আপোনাৰ অভিজ্ঞতা আমাক জনাওক...',
+
+    submitFeedback: 'মতামত পঠিয়াওক',
+    submittingFeedback: 'পঠিওৱা হৈছে...',
+    feedbackSubmitted: 'মতামত পঠিওৱা হৈছে',
+
+    feedbackChooseResult:
+      'চিকিৎসাই উপকাৰ কৰিলে নে নাই অনুগ্ৰহ কৰি জনাওক।',
+
+    feedbackChooseRating:
+      'অনুগ্ৰহ কৰি 1 ৰ পৰা 5 ষ্টাৰৰ ভিতৰত ৰেটিং বাছনি কৰক।',
+
+    feedbackThankYou:
+      'ধন্যবাদ! আপোনাৰ মতামত সফলভাৱে সংৰক্ষণ কৰা হৈছে।',
+
+    feedbackSubmitError:
+      'মতামত পঠিয়াব পৰা নগ’ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।',
+
+    diagnosisInformationMissing:
+      'ৰোগ নিৰ্ণয়ৰ তথ্য উপলব্ধ নাই।',
+  },
+}
+// =====================================================
 // FINAL TRANSLATIONS
 // =====================================================
 
@@ -1752,7 +2417,8 @@ const buildTranslations = (
   base,
   dashboard,
   page,
-  weather
+  weather,
+  feedback
 ) => ({
   ...base,
   ...dashboard,
@@ -1763,112 +2429,131 @@ const buildTranslations = (
 
   // Selected-language weather overrides English.
   ...weather,
+
+  // English feedback acts as safe fallback.
+  ...feedbackTranslations.en,
+
+  // Selected-language feedback overrides English.
+  ...feedback,
 })
-
-
 export const translations = {
   en: buildTranslations(
     en,
     dashboardTranslations.en,
     pageUiTranslations.en,
-    weatherTranslations.en
+    weatherTranslations.en,
+    feedbackTranslations.en
   ),
 
   hi: buildTranslations(
     hi,
     dashboardTranslations.hi,
     pageUiTranslations.hi,
-    weatherTranslations.hi
+    weatherTranslations.hi,
+    feedbackTranslations.hi
   ),
 
   raj: buildTranslations(
     raj,
     dashboardTranslations.raj,
     pageUiTranslations.raj,
-    weatherTranslations.raj
+    weatherTranslations.raj,
+    feedbackTranslations.raj
   ),
 
   bho: buildTranslations(
     bho,
     dashboardTranslations.bho,
     pageUiTranslations.bho,
-    weatherTranslations.bho
+    weatherTranslations.bho,
+    feedbackTranslations.bho
   ),
 
   har: buildTranslations(
     har,
     dashboardTranslations.har,
     pageUiTranslations.har,
-    weatherTranslations.har
+    weatherTranslations.har,
+    feedbackTranslations.har
   ),
 
   gu: buildTranslations(
     gu,
     dashboardTranslations.gu,
     pageUiTranslations.gu,
-    weatherTranslations.gu
+    weatherTranslations.gu,
+    feedbackTranslations.gu
   ),
 
   mr: buildTranslations(
     mr,
     dashboardTranslations.mr,
     pageUiTranslations.mr,
-    weatherTranslations.mr
+    weatherTranslations.mr,
+    feedbackTranslations.mr
   ),
 
   pa: buildTranslations(
     pa,
     dashboardTranslations.pa,
     pageUiTranslations.pa,
-    weatherTranslations.pa
+    weatherTranslations.pa,
+    feedbackTranslations.pa
   ),
 
   bn: buildTranslations(
     bn,
     dashboardTranslations.bn,
     pageUiTranslations.bn,
-    weatherTranslations.bn
+    weatherTranslations.bn,
+    feedbackTranslations.bn
   ),
 
   ta: buildTranslations(
     ta,
     dashboardTranslations.ta,
     pageUiTranslations.ta,
-    weatherTranslations.ta
+    weatherTranslations.ta,
+    feedbackTranslations.ta
   ),
 
   te: buildTranslations(
     te,
     dashboardTranslations.te,
     pageUiTranslations.te,
-    weatherTranslations.te
+    weatherTranslations.te,
+    feedbackTranslations.te
   ),
 
   kn: buildTranslations(
     kn,
     dashboardTranslations.kn,
     pageUiTranslations.kn,
-    weatherTranslations.kn
+    weatherTranslations.kn,
+    feedbackTranslations.kn
   ),
 
   ml: buildTranslations(
     ml,
     dashboardTranslations.ml,
     pageUiTranslations.ml,
-    weatherTranslations.ml
+    weatherTranslations.ml,
+    feedbackTranslations.ml
   ),
 
   or: buildTranslations(
     or,
     dashboardTranslations.or,
     pageUiTranslations.or,
-    weatherTranslations.or
+    weatherTranslations.or,
+    feedbackTranslations.or
   ),
 
   as: buildTranslations(
     as,
     dashboardTranslations.as,
     pageUiTranslations.as,
-    weatherTranslations.as
+    weatherTranslations.as,
+    feedbackTranslations.as
   ),
 }

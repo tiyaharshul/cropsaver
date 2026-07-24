@@ -331,14 +331,13 @@ export default function CropHistory() {
 
 
     if (!selectedItem?._id) {
+  setFeedbackError(
+    t.diagnosisInformationMissing ||
+    'Diagnosis information is missing.'
+  )
 
-      setFeedbackError(
-        'Diagnosis information is missing.'
-      )
-
-      return
-
-    }
+  return
+}
 
 
     try {

@@ -1,22 +1,38 @@
 import json
 
 from bson import ObjectId
-from fastapi import APIRouter, HTTPException
+
+from fastapi import (
+    APIRouter,
+    HTTPException,
+)
 
 from google import genai
 from google.genai import types
 
 from config import settings
-from database import crop_history_collection
+
+from database import (
+    crop_history_collection,
+)
 
 from models import (
     TreatmentRequest,
     TreatmentResponse,
 )
 
+from services.feedback_learning import (
+    get_feedback_insights,
+    build_feedback_context,
+)
+
 
 router = APIRouter()
 
+
+# ======================================================
+# GEMINI CLIENT
+# ======================================================
 
 client = genai.Client(
     api_key=settings.GEMINI_API_KEY
@@ -28,10 +44,10 @@ client = genai.Client(
 # ======================================================
 
 PROMPT_TEMPLATE = """
-You are an expert agricultural scientist helping farmers.
+You are an expert agricultural scientist helping
+farmers make safe crop-management decisions.
 
-A crop image has already been analyzed by an AI crop
-diagnostic system.
+An AI crop-analysis system has analyzed a crop image.
 
 Crop:
 {crop_name}
@@ -39,30 +55,28 @@ Crop:
 Problem type:
 {problem_type}
 
-Problem:
+Detected problem:
 {problem_name}
 
 Detection confidence:
 {confidence}
 
-The problem may be a:
+{feedback_context}
 
-- disease
-- pest
-- nutrient deficiency
-- environmental stress
-- physical damage
-- healthy crop
-- other agricultural problem
+Generate useful and cautious treatment guidance for
+the farmer.
 
-Provide practical and cautious guidance for the farmer.
+The diagnosis confidence must be taken into account.
 
-If the diagnosis confidence is low, clearly explain that
-the diagnosis should be verified before applying treatment.
+If confidence is low, clearly explain that the
+diagnosis should be verified before treatment is
+applied.
 
-If the problem has no chemical cure, clearly say so.
+Farmer feedback is supplementary information only.
+It must never override established agricultural
+safety guidance.
 
-Generate ONLY valid JSON.
+Generate treatment ONLY as valid JSON.
 
 Required JSON format:
 
@@ -76,21 +90,29 @@ Required JSON format:
   "prevention": "..."
 }}
 
-Important rules:
+IMPORTANT SAFETY RULES:
 
-- Do not invent treatments.
-- Take the confidence level into account.
-- Do not recommend unnecessary pesticides.
-- If chemical treatment is relevant, advise the farmer to
-  follow the registered product label and applicable local
-  agricultural guidance.
-- If the diagnosis is uncertain, recommend verification by
-  an agricultural expert.
+- Do not invent treatment information.
+
+- Do not treat farmer feedback as scientific proof.
+
+- Do not recommend a chemical solely because previous
+  farmers reported success.
+
+- When chemical treatment is relevant, advise the
+  farmer to follow the registered product label and
+  applicable local agricultural guidance.
+
+- If the diagnosis confidence is low, recommend
+  verification before chemical treatment.
+
 - Do not write markdown.
-- Do not write ```json.
-- Return ONLY JSON.
 
-Language:
+- Do not write ```json.
+
+- Return ONLY valid JSON.
+
+Response language:
 {language}
 """
 
@@ -117,53 +139,149 @@ async def get_treatment(
     # DETERMINE PROBLEM
     # ==================================================
 
+    problem_name = (
+        req.problem_name
+        or req.disease_name
+    )
+
+
     problem_type = (
         req.problem_type
         or "disease"
     )
 
-    problem_name = (
-        req.problem_name
-        or req.disease_name
-        or "Unknown crop problem"
+
+    # ==================================================
+    # GET PREVIOUS FARMER OUTCOMES
+    # ==================================================
+
+    try:
+
+        feedback_insights = (
+            await get_feedback_insights(
+                crop_name=req.crop_name,
+                problem_name=problem_name,
+            )
+        )
+
+
+        print("=" * 60)
+        print("Feedback Learning")
+
+        if feedback_insights:
+
+            print(
+                "Historical farmer data found:"
+            )
+
+            print(
+                feedback_insights
+            )
+
+        else:
+
+            print(
+                "Not enough matching feedback yet."
+            )
+
+        print("=" * 60)
+
+
+    except Exception as e:
+
+        # ------------------------------------------------
+        # Feedback analytics must NEVER prevent
+        # treatment generation.
+        # ------------------------------------------------
+
+        print(
+            "Feedback learning error:",
+            e,
+        )
+
+        feedback_insights = None
+
+
+    # ==================================================
+    # BUILD FEEDBACK CONTEXT
+    # ==================================================
+
+    feedback_context = (
+        build_feedback_context(
+            feedback_insights
+        )
     )
 
 
     # ==================================================
-    # BUILD PROMPT
+    # BUILD GEMINI PROMPT
     # ==================================================
 
     prompt = PROMPT_TEMPLATE.format(
-        crop_name=req.crop_name,
-        problem_type=problem_type,
-        problem_name=problem_name,
-        confidence=req.confidence,
-        language=req.language,
+
+        crop_name=
+            req.crop_name,
+
+        problem_type=
+            problem_type,
+
+        problem_name=
+            problem_name,
+
+        confidence=
+            req.confidence,
+
+        feedback_context=
+            feedback_context,
+
+        language=
+            req.language,
+
     )
 
 
     try:
 
-        # ==============================================
+        # ==================================================
         # GEMINI
-        # ==============================================
+        # ==================================================
 
-        response = client.models.generate_content(
+        response = (
+            client.models.generate_content(
 
-            model="gemini-3.5-flash-lite",
+                model=(
+                    "gemini-3.5-flash-lite"
+                ),
 
-            contents=prompt,
+                contents=prompt,
 
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                temperature=0.2,
-            ),
+                config=(
+                    types.GenerateContentConfig(
+
+                        response_mime_type=(
+                            "application/json"
+                        ),
+
+                        temperature=0.2,
+
+                    )
+                ),
+            )
         )
 
 
+        # ==================================================
+        # CHECK RESPONSE
+        # ==================================================
+
         if not response.text:
-            raise ValueError(
-                "Gemini returned an empty response."
+
+            raise HTTPException(
+                status_code=500,
+                detail=(
+                    "Gemini returned an empty "
+                    "treatment response."
+                ),
             )
 
 
@@ -176,31 +294,49 @@ async def get_treatment(
         print("=" * 60)
 
 
-        # ==============================================
+        # ==================================================
         # CLEAN RESPONSE
-        # ==============================================
+        # ==================================================
 
         text = (
             text
-            .replace("```json", "")
-            .replace("```JSON", "")
-            .replace("```", "")
+            .replace(
+                "```json",
+                "",
+            )
+            .replace(
+                "```JSON",
+                "",
+            )
+            .replace(
+                "```",
+                "",
+            )
             .strip()
         )
 
 
-        parsed = json.loads(text)
+        # ==================================================
+        # PARSE JSON
+        # ==================================================
+
+        parsed = json.loads(
+            text
+        )
 
 
-        # ==============================================
+        # ==================================================
         # BUILD TREATMENT RESPONSE
-        # ==============================================
+        # ==================================================
 
         treatment = TreatmentResponse(
 
             explanation=parsed.get(
                 "explanation",
-                "No explanation available.",
+                (
+                    "No explanation "
+                    "available."
+                ),
             ),
 
             organic_treatment=parsed.get(
@@ -215,7 +351,10 @@ async def get_treatment(
 
             dosage=parsed.get(
                 "dosage",
-                "Follow registered product label.",
+                (
+                    "Follow the registered "
+                    "product label."
+                ),
             ),
 
             spray_schedule=parsed.get(
@@ -230,14 +369,18 @@ async def get_treatment(
 
             prevention=parsed.get(
                 "prevention",
-                "Maintain good crop hygiene.",
+                (
+                    "Maintain good crop "
+                    "hygiene."
+                ),
             ),
+
         )
 
 
-        # ==============================================
-        # SAVE TREATMENT TO HISTORY
-        # ==============================================
+        # ==================================================
+        # SAVE TREATMENT INTO CROP HISTORY
+        # ==================================================
 
         if req.history_id:
 
@@ -251,22 +394,66 @@ async def get_treatment(
                         await crop_history_collection.update_one(
 
                             {
-                                "_id": ObjectId(
-                                    req.history_id
-                                )
+                                "_id":
+                                    ObjectId(
+                                        req.history_id
+                                    )
                             },
 
                             {
                                 "$set": {
 
-                                    "problem_type":
-                                        problem_type,
-
-                                    "problem_name":
-                                        problem_name,
-
                                     "treatment":
                                         treatment.model_dump(),
+
+                                    # ----------------------------------
+                                    # Useful metadata showing whether
+                                    # feedback learning was used.
+                                    # ----------------------------------
+
+                                    "feedback_learning": {
+
+                                        "used":
+                                            bool(
+                                                feedback_insights
+                                            ),
+
+                                        "sample_size":
+                                            (
+                                                feedback_insights.get(
+                                                    "sample_size"
+                                                )
+                                                if feedback_insights
+                                                else 0
+                                            ),
+
+                                        "success_rate":
+                                            (
+                                                feedback_insights.get(
+                                                    "success_rate"
+                                                )
+                                                if feedback_insights
+                                                else None
+                                            ),
+
+                                        "average_rating":
+                                            (
+                                                feedback_insights.get(
+                                                    "average_rating"
+                                                )
+                                                if feedback_insights
+                                                else None
+                                            ),
+
+                                        "average_recovery_days":
+                                            (
+                                                feedback_insights.get(
+                                                    "average_recovery_days"
+                                                )
+                                                if feedback_insights
+                                                else None
+                                            ),
+                                    },
                                 }
                             },
                         )
@@ -290,7 +477,15 @@ async def get_treatment(
                         update_result.modified_count,
                     )
 
+                    print(
+                        "Feedback learning used:",
+                        bool(
+                            feedback_insights
+                        ),
+                    )
+
                     print("=" * 60)
+
 
                 else:
 
@@ -300,27 +495,29 @@ async def get_treatment(
                     )
 
 
-            except Exception as history_error:
+            except Exception as e:
 
-                # Treatment should still be returned even if
-                # MongoDB history update fails.
+                # ------------------------------------------
+                # Treatment should still be returned even
+                # if history storage fails.
+                # ------------------------------------------
 
                 print(
                     "Treatment history save error:",
-                    history_error,
+                    e,
                 )
 
 
-        # ==============================================
-        # RETURN
-        # ==============================================
+        # ==================================================
+        # RETURN TREATMENT
+        # ==================================================
 
         return treatment
 
 
-    # ==================================================
-    # INVALID JSON
-    # ==================================================
+    # ======================================================
+    # INVALID GEMINI JSON
+    # ======================================================
 
     except json.JSONDecodeError as e:
 
@@ -333,20 +530,16 @@ async def get_treatment(
         )
 
 
-    # ==================================================
-    # OTHER ERROR
-    # ==================================================
+    # ======================================================
+    # OTHER ERRORS
+    # ======================================================
 
     except HTTPException:
+
         raise
 
 
     except Exception as e:
-
-        print(
-            "Treatment generation error:",
-            repr(e),
-        )
 
         raise HTTPException(
             status_code=500,
