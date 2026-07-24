@@ -37,7 +37,6 @@ def calculate_crop_risk(
 
     disease_reasons = []
     pest_reasons = []
-
     recommendations = []
 
 
@@ -50,8 +49,7 @@ def calculate_crop_risk(
         disease_score += 3
 
         disease_reasons.append(
-            "Very high humidity can strongly favor "
-            "fungal and bacterial crop diseases."
+            "veryHighHumidityDisease"
         )
 
     elif humidity >= 70:
@@ -59,8 +57,7 @@ def calculate_crop_risk(
         disease_score += 2
 
         disease_reasons.append(
-            "High humidity may favor fungal disease "
-            "development."
+            "highHumidityDisease"
         )
 
     elif humidity >= 60:
@@ -77,8 +74,7 @@ def calculate_crop_risk(
         disease_score += 2
 
         disease_reasons.append(
-            "The current temperature range can support "
-            "development of several crop diseases."
+            "temperatureDiseaseRisk"
         )
 
 
@@ -87,8 +83,7 @@ def calculate_crop_risk(
         pest_score += 2
 
         pest_reasons.append(
-            "Warm temperatures may increase activity "
-            "of common crop pests."
+            "warmTemperaturePest"
         )
 
     elif temperature > 35:
@@ -96,8 +91,7 @@ def calculate_crop_risk(
         pest_score += 1
 
         pest_reasons.append(
-            "Hot conditions may increase activity of "
-            "some heat-tolerant pests."
+            "hotTemperaturePest"
         )
 
 
@@ -110,8 +104,7 @@ def calculate_crop_risk(
         disease_score += 3
 
         disease_reasons.append(
-            "Recent rainfall creates wet conditions "
-            "that can increase disease risk."
+            "heavyRainDisease"
         )
 
     elif rain > 0:
@@ -119,13 +112,12 @@ def calculate_crop_risk(
         disease_score += 1
 
         disease_reasons.append(
-            "Recent rainfall may increase leaf "
-            "wetness and disease pressure."
+            "recentRainDisease"
         )
 
 
     # ==================================================
-    # HUMID + TEMPERATURE COMBINATION
+    # HUMIDITY + TEMPERATURE
     # ==================================================
 
     if (
@@ -137,8 +129,7 @@ def calculate_crop_risk(
         disease_score += 2
 
         disease_reasons.append(
-            "Warm and humid conditions together are "
-            "favorable for many fungal infections."
+            "warmHumidFungalRisk"
         )
 
 
@@ -155,9 +146,7 @@ def calculate_crop_risk(
         pest_score += 1
 
         pest_reasons.append(
-            "Warm and moderately humid weather may "
-            "support aphids, whiteflies and other "
-            "crop pests."
+            "warmHumidPestRisk"
         )
 
 
@@ -170,8 +159,7 @@ def calculate_crop_risk(
         disease_score += 1
 
         disease_reasons.append(
-            "Strong winds may help spread some "
-            "airborne plant pathogens."
+            "strongWindDiseaseRisk"
         )
 
 
@@ -206,51 +194,44 @@ def calculate_crop_risk(
     if disease_risk == "high":
 
         recommendations.append(
-            "Inspect crops closely for spots, lesions, "
-            "mildew, wilting or unusual discoloration."
+            "inspectCropDisease"
         )
 
         recommendations.append(
-            "Avoid unnecessary overhead irrigation "
-            "and prolonged leaf wetness."
+            "avoidOverheadIrrigation"
         )
 
     elif disease_risk == "moderate":
 
         recommendations.append(
-            "Monitor leaves regularly for early "
-            "disease symptoms."
+            "monitorDiseaseSymptoms"
         )
 
 
     if pest_risk == "high":
 
         recommendations.append(
-            "Scout the crop for insects, eggs and "
-            "feeding damage."
+            "scoutCropPests"
         )
 
     elif pest_risk == "moderate":
 
         recommendations.append(
-            "Check the underside of leaves for aphids, "
-            "whiteflies and other pests."
+            "checkLeafUnderside"
         )
 
 
     if rain > 0:
 
         recommendations.append(
-            "Avoid spraying immediately before or "
-            "during rainfall."
+            "avoidSprayingRain"
         )
 
 
     if wind_speed >= 5:
 
         recommendations.append(
-            "Avoid pesticide spraying during strong "
-            "winds to reduce spray drift."
+            "avoidSprayingWind"
         )
 
 
@@ -261,18 +242,27 @@ def calculate_crop_risk(
     ):
 
         recommendations.append(
-            "Current weather conditions indicate "
-            "relatively low immediate crop risk. "
-            "Continue regular monitoring."
+            "lowWeatherRisk"
         )
 
 
-    return {
-        "disease_risk": disease_risk,
-        "disease_score": disease_score,
+    # ==================================================
+    # RESULT
+    # ==================================================
 
-        "pest_risk": pest_risk,
-        "pest_score": pest_score,
+    return {
+
+        "disease_risk":
+            disease_risk,
+
+        "disease_score":
+            disease_score,
+
+        "pest_risk":
+            pest_risk,
+
+        "pest_score":
+            pest_score,
 
         "disease_reasons":
             disease_reasons,
@@ -283,6 +273,91 @@ def calculate_crop_risk(
         "recommendations":
             recommendations,
     }
+
+
+# ======================================================
+# WEATHER CONDITION KEY
+# ======================================================
+
+def get_weather_condition_key(
+    condition: str,
+):
+
+    condition = (
+        condition
+        .strip()
+        .lower()
+    )
+
+
+    condition_map = {
+
+        "clear sky":
+            "weatherClearSky",
+
+        "few clouds":
+            "weatherFewClouds",
+
+        "scattered clouds":
+            "weatherScatteredClouds",
+
+        "broken clouds":
+            "weatherBrokenClouds",
+
+        "overcast clouds":
+            "weatherOvercastClouds",
+
+        "light rain":
+            "weatherLightRain",
+
+        "moderate rain":
+            "weatherModerateRain",
+
+        "heavy intensity rain":
+            "weatherHeavyRain",
+
+        "very heavy rain":
+            "weatherVeryHeavyRain",
+
+        "extreme rain":
+            "weatherExtremeRain",
+
+        "shower rain":
+            "weatherShowerRain",
+
+        "light intensity shower rain":
+            "weatherLightShowerRain",
+
+        "thunderstorm":
+            "weatherThunderstorm",
+
+        "thunderstorm with rain":
+            "weatherThunderstormRain",
+
+        "thunderstorm with light rain":
+            "weatherThunderstormLightRain",
+
+        "mist":
+            "weatherMist",
+
+        "fog":
+            "weatherFog",
+
+        "haze":
+            "weatherHaze",
+
+        "smoke":
+            "weatherSmoke",
+
+        "dust":
+            "weatherDust",
+    }
+
+
+    return condition_map.get(
+        condition,
+        "weatherUnknown"
+    )
 
 
 # ======================================================
@@ -298,14 +373,26 @@ async def get_weather(
     """
     Returns current weather together with
     agricultural disease and pest risk analysis.
+
+    Dynamic explanatory text is returned as
+    translation keys so the frontend can display
+    it using the currently selected language.
     """
 
+
     params = {
-        "lat": lat,
-        "lon": lon,
+
+        "lat":
+            lat,
+
+        "lon":
+            lon,
+
         "appid":
             settings.OPENWEATHER_API_KEY,
-        "units": "metric",
+
+        "units":
+            "metric",
     }
 
 
@@ -323,6 +410,7 @@ async def get_weather(
                 OPENWEATHER_URL,
                 params=params,
             )
+
 
     except httpx.RequestError as e:
 
@@ -390,12 +478,17 @@ async def get_weather(
     )
 
 
+    # ==================================================
+    # NORMALIZE VALUES
+    # ==================================================
+
     temperature = float(
         main.get(
             "temp",
             0
         )
     )
+
 
     humidity = float(
         main.get(
@@ -404,12 +497,14 @@ async def get_weather(
         )
     )
 
+
     wind_speed = float(
         wind.get(
             "speed",
             0
         )
     )
+
 
     rain = float(
         rain_data.get(
@@ -419,13 +514,27 @@ async def get_weather(
     )
 
 
+    # ==================================================
+    # WEATHER CONDITION
+    # ==================================================
+
     condition = (
+
         weather_list[0].get(
             "description",
             "Unknown"
         )
+
         if weather_list
+
         else "Unknown"
+    )
+
+
+    condition_key = (
+        get_weather_condition_key(
+            condition
+        )
     )
 
 
@@ -434,9 +543,13 @@ async def get_weather(
     # ==================================================
 
     risk = calculate_crop_risk(
+
         temperature=temperature,
+
         humidity=humidity,
+
         rain=rain,
+
         wind_speed=wind_speed,
     )
 
@@ -448,6 +561,7 @@ async def get_weather(
     return {
 
         "location": {
+
             "name":
                 data.get(
                     "name",
@@ -478,8 +592,13 @@ async def get_weather(
             "humidity_pct":
                 humidity,
 
+            # Keep original condition if needed
             "condition":
                 condition,
+
+            # Frontend should translate this
+            "condition_key":
+                condition_key,
 
             "wind_speed_mps":
                 wind_speed,
@@ -492,6 +611,7 @@ async def get_weather(
         "agricultural_risk": {
 
             "disease": {
+
                 "level":
                     risk[
                         "disease_risk"
@@ -510,6 +630,7 @@ async def get_weather(
 
 
             "pest": {
+
                 "level":
                     risk[
                         "pest_risk"

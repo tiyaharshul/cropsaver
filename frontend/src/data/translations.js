@@ -1382,99 +1382,493 @@ const pageUiTranslations = {
       'আপোনাৰ শস্য ৰোগ নিৰ্ণয়ৰ ভিত্তিত পৰামৰ্শ দিয়া চিকিৎসাৰ পদক্ষেপ',
   },
 }
-
 // =====================================================
+// WEATHER & CROP RISK TRANSLATIONS
+// =====================================================
+
+const weatherTranslations = {
+  en: {
+    cropWeatherAlert: 'CROP WEATHER ALERT',
+    weatherCropRisk: 'Weather & Crop Risk',
+    weatherRiskDescription:
+      'Live agricultural risk analysis based on your local weather conditions.',
+
+    temperature: 'Temperature',
+    humidity: 'Humidity',
+    recentRain: 'Recent Rain',
+    windSpeed: 'Wind Speed',
+
+    diseaseRisk: 'Disease Risk',
+    pestRisk: 'Pest Risk',
+    recommendedActions: 'Recommended Actions',
+
+    highRisk: 'High',
+    moderateRisk: 'Moderate',
+    lowRisk: 'Low',
+
+    checkingCropWeather: 'Checking crop weather...',
+    analyzingWeatherRisk:
+      'Analyzing local disease and pest conditions',
+    weatherUnavailable: 'Weather risk unavailable',
+    weatherLoadError: 'Could not load weather information.',
+    noMajorWeatherRisk:
+      'No major weather-related risk detected.',
+
+    veryHighHumidityDisease:
+      'Very high humidity can strongly favor fungal and bacterial crop diseases.',
+
+    highHumidityDisease:
+      'High humidity can increase the risk of crop diseases.',
+
+    temperatureDiseaseRisk:
+      'The current temperature range can support the development of several crop diseases.',
+
+    heavyRainDisease:
+      'Heavy rainfall can increase leaf wetness and disease pressure.',
+
+    recentRainDisease:
+      'Recent rainfall may increase leaf wetness and disease pressure.',
+
+    warmHumidFungalRisk:
+      'Warm and humid conditions are favorable for many fungal infections.',
+
+    strongWindDiseaseRisk:
+      'Strong winds may spread some plant pathogens and damage crops.',
+
+    warmTemperaturePest:
+      'Warm temperatures may increase the activity of common crop pests.',
+
+    hotTemperaturePest:
+      'Hot weather may affect the activity of some crop pests.',
+
+    warmHumidPestRisk:
+      'Warm and humid weather may support aphids, whiteflies and other crop pests.',
+
+    inspectCropDisease:
+      'Inspect crops closely for spots, lesions, mildew, wilting or unusual discoloration.',
+
+    avoidOverheadIrrigation:
+      'Avoid unnecessary overhead irrigation and prolonged leaf wetness.',
+
+    monitorDiseaseSymptoms:
+      'Monitor crops regularly for early symptoms of disease.',
+
+    scoutCropPests:
+      'Inspect crops carefully for signs of pest infestation.',
+
+    checkLeafUnderside:
+      'Check the underside of leaves for aphids, whiteflies and other pests.',
+
+    avoidSprayingRain:
+      'Avoid spraying immediately before or during rainfall.',
+
+    avoidSprayingWind:
+      'Avoid spraying during strong winds.',
+
+    lowWeatherRisk:
+      'Current weather conditions indicate relatively low disease and pest risk.',
+
+    weatherClearSky: 'Clear Sky',
+    weatherFewClouds: 'Few Clouds',
+    weatherScatteredClouds: 'Scattered Clouds',
+    weatherBrokenClouds: 'Broken Clouds',
+    weatherOvercastClouds: 'Overcast Clouds',
+    weatherLightRain: 'Light Rain',
+    weatherModerateRain: 'Moderate Rain',
+    weatherHeavyRain: 'Heavy Rain',
+    weatherVeryHeavyRain: 'Very Heavy Rain',
+    weatherExtremeRain: 'Extreme Rain',
+    weatherShowerRain: 'Shower Rain',
+    weatherLightShowerRain: 'Light Shower Rain',
+    weatherThunderstorm: 'Thunderstorm',
+    weatherThunderstormRain: 'Thunderstorm with Rain',
+    weatherThunderstormLightRain:
+      'Thunderstorm with Light Rain',
+    weatherMist: 'Mist',
+    weatherFog: 'Fog',
+    weatherHaze: 'Haze',
+    weatherSmoke: 'Smoke',
+    weatherDust: 'Dust',
+    weatherUnknown: 'Unknown Weather',
+  },
+
+
+  // ===================================================
+  // HINDI
+  // ===================================================
+
+  hi: {
+    cropWeatherAlert: 'फसल मौसम चेतावनी',
+    weatherCropRisk: 'मौसम और फसल जोखिम',
+
+    weatherRiskDescription:
+      'आपके स्थानीय मौसम के आधार पर फसल रोग और कीट जोखिम का लाइव विश्लेषण।',
+
+    temperature: 'तापमान',
+    humidity: 'नमी',
+    recentRain: 'हाल की बारिश',
+    windSpeed: 'हवा की गति',
+
+    diseaseRisk: 'रोग का जोखिम',
+    pestRisk: 'कीट का जोखिम',
+    recommendedActions: 'सुझाए गए कदम',
+
+    highRisk: 'उच्च',
+    moderateRisk: 'मध्यम',
+    lowRisk: 'कम',
+
+    checkingCropWeather:
+      'फसल का मौसम जांचा जा रहा है...',
+
+    analyzingWeatherRisk:
+      'स्थानीय रोग और कीट जोखिम का विश्लेषण किया जा रहा है',
+
+    weatherUnavailable:
+      'मौसम जोखिम की जानकारी उपलब्ध नहीं है',
+
+    weatherLoadError:
+      'मौसम की जानकारी लोड नहीं हो सकी।',
+
+    noMajorWeatherRisk:
+      'मौसम से जुड़ा कोई बड़ा जोखिम नहीं मिला।',
+
+    veryHighHumidityDisease:
+      'बहुत अधिक नमी फफूंद और बैक्टीरिया से होने वाले फसल रोगों का खतरा बढ़ा सकती है।',
+
+    highHumidityDisease:
+      'अधिक नमी फसल रोगों का खतरा बढ़ा सकती है।',
+
+    temperatureDiseaseRisk:
+      'वर्तमान तापमान कई फसल रोगों के विकास के लिए अनुकूल हो सकता है।',
+
+    heavyRainDisease:
+      'भारी बारिश पत्तियों पर नमी और रोग का खतरा बढ़ा सकती है।',
+
+    recentRainDisease:
+      'हाल की बारिश पत्तियों पर नमी और रोग का खतरा बढ़ा सकती है।',
+
+    warmHumidFungalRisk:
+      'गर्म और नम मौसम कई फफूंद संक्रमणों के लिए अनुकूल होता है।',
+
+    strongWindDiseaseRisk:
+      'तेज हवा कुछ पौध रोगों को फैलाने और फसल को नुकसान पहुंचाने में मदद कर सकती है।',
+
+    warmTemperaturePest:
+      'गर्म तापमान सामान्य फसल कीटों की सक्रियता बढ़ा सकता है।',
+
+    hotTemperaturePest:
+      'बहुत गर्म मौसम कुछ फसल कीटों की सक्रियता को प्रभावित कर सकता है।',
+
+    warmHumidPestRisk:
+      'गर्म और नम मौसम माहू, सफेद मक्खी और अन्य फसल कीटों के लिए अनुकूल हो सकता है।',
+
+    inspectCropDisease:
+      'धब्बे, घाव, फफूंद, मुरझाने या असामान्य रंग के लिए फसल की ध्यान से जांच करें।',
+
+    avoidOverheadIrrigation:
+      'अनावश्यक ऊपरी सिंचाई और पत्तियों पर लंबे समय तक नमी रहने से बचें।',
+
+    monitorDiseaseSymptoms:
+      'रोग के शुरुआती लक्षणों के लिए फसल की नियमित निगरानी करें।',
+
+    scoutCropPests:
+      'कीट संक्रमण के संकेतों के लिए फसल की ध्यान से जांच करें।',
+
+    checkLeafUnderside:
+      'माहू, सफेद मक्खी और अन्य कीटों के लिए पत्तियों के नीचे जांच करें।',
+
+    avoidSprayingRain:
+      'बारिश से ठीक पहले या बारिश के दौरान छिड़काव न करें।',
+
+    avoidSprayingWind:
+      'तेज हवा के दौरान छिड़काव करने से बचें।',
+
+    lowWeatherRisk:
+      'वर्तमान मौसम में रोग और कीट का खतरा अपेक्षाकृत कम है।',
+
+    weatherClearSky: 'साफ आसमान',
+    weatherFewClouds: 'हल्के बादल',
+    weatherScatteredClouds: 'छिटपुट बादल',
+    weatherBrokenClouds: 'अधिक बादल',
+    weatherOvercastClouds: 'बादल छाए हुए',
+    weatherLightRain: 'हल्की बारिश',
+    weatherModerateRain: 'मध्यम बारिश',
+    weatherHeavyRain: 'भारी बारिश',
+    weatherVeryHeavyRain: 'बहुत भारी बारिश',
+    weatherExtremeRain: 'अत्यधिक बारिश',
+    weatherShowerRain: 'बारिश की बौछार',
+    weatherLightShowerRain: 'हल्की बौछार',
+    weatherThunderstorm: 'आंधी-तूफान',
+    weatherThunderstormRain:
+      'बारिश के साथ आंधी-तूफान',
+    weatherThunderstormLightRain:
+      'हल्की बारिश के साथ आंधी-तूफान',
+    weatherMist: 'धुंध',
+    weatherFog: 'कोहरा',
+    weatherHaze: 'धुंधला मौसम',
+    weatherSmoke: 'धुआं',
+    weatherDust: 'धूल',
+    weatherUnknown: 'अज्ञात मौसम',
+  },
+
+
+  // ===================================================
+  // RAJASTHANI
+  // ===================================================
+
+  raj: {
+    cropWeatherAlert: 'फसल मौसम चेतावणी',
+    weatherCropRisk: 'मौसम अर फसल रो खतरो',
+
+    weatherRiskDescription:
+      'आपरे इलाकै रै मौसम रै आधार पर फसल रोग अर कीट रै खतरे री जानकारी।',
+
+    temperature: 'तापमान',
+    humidity: 'नमी',
+    recentRain: 'हाल री बरसात',
+    windSpeed: 'हवा री गति',
+
+    diseaseRisk: 'रोग रो खतरो',
+    pestRisk: 'कीट रो खतरो',
+    recommendedActions: 'सुझाया कदम',
+
+    highRisk: 'घणो',
+    moderateRisk: 'मध्यम',
+    lowRisk: 'कम',
+
+    veryHighHumidityDisease:
+      'घणी नमी फसल में फफूंद अर बैक्टीरिया रा रोग बढ़ा सके है।',
+
+    highHumidityDisease:
+      'ज्यादा नमी फसल रा रोग रो खतरो बढ़ा सके है।',
+
+    temperatureDiseaseRisk:
+      'अभी रो तापमान कई फसल रोगां रै विकास खातर अनुकूल हो सके है।',
+
+    heavyRainDisease:
+      'घणी बरसात पानां री नमी अर रोग रो खतरो बढ़ा सके है।',
+
+    recentRainDisease:
+      'हाल री बरसात सूं पानां पर नमी अर रोग रो खतरो बढ़ सके है।',
+
+    warmHumidFungalRisk:
+      'गरम अर नम मौसम कई फफूंद रोगां खातर अनुकूल है।',
+
+    strongWindDiseaseRisk:
+      'तेज हवा रोग फैलावण अर फसल ने नुकसान पहुंचावण में मदद कर सके है।',
+
+    warmTemperaturePest:
+      'गरम तापमान आम फसल कीटां री सक्रियता बढ़ा सके है।',
+
+    hotTemperaturePest:
+      'घणो गरम मौसम कुछ फसल कीटां री सक्रियता ने प्रभावित कर सके है।',
+
+    warmHumidPestRisk:
+      'गरम अर नम मौसम माहू, सफेद मक्खी अर दूजा कीटां खातर अनुकूल हो सके है।',
+
+    inspectCropDisease:
+      'फसल में धब्बा, फफूंद, मुरझावण अर रंग बदलाव री ध्यान सूं जांच करो।',
+
+    avoidOverheadIrrigation:
+      'बिना जरूरत ऊपर सूं सिंचाई अर पानां ने घणा समय गीला राखण सूं बचो।',
+
+    monitorDiseaseSymptoms:
+      'रोग रा शुरुआती लक्षण खातर फसल पर नियमित नजर राखो।',
+
+    scoutCropPests:
+      'कीटां रा निशान खातर फसल री ध्यान सूं जांच करो।',
+
+    checkLeafUnderside:
+      'माहू, सफेद मक्खी अर दूजा कीटां खातर पानां रै नीचे जांच करो।',
+
+    avoidSprayingRain:
+      'बरसात सूं ठीक पैला या बरसात रै समय छिड़काव मत करो।',
+
+    avoidSprayingWind:
+      'तेज हवा में छिड़काव करण सूं बचो।',
+
+    lowWeatherRisk:
+      'अभी रै मौसम में रोग अर कीट रो खतरो कम है।',
+
+    weatherClearSky: 'साफ आसमान',
+    weatherFewClouds: 'थोड़ा बादळ',
+    weatherScatteredClouds: 'छितराया बादळ',
+    weatherBrokenClouds: 'घणा बादळ',
+    weatherOvercastClouds: 'बादळ छाया',
+    weatherLightRain: 'हल्की बरसात',
+    weatherModerateRain: 'मध्यम बरसात',
+    weatherHeavyRain: 'घणी बरसात',
+    weatherVeryHeavyRain: 'बहुत घणी बरसात',
+    weatherExtremeRain: 'अत्यधिक बरसात',
+    weatherShowerRain: 'बरसात री बौछार',
+    weatherLightShowerRain: 'हल्की बौछार',
+    weatherThunderstorm: 'आंधी-तूफान',
+    weatherThunderstormRain:
+      'बरसात अर आंधी-तूफान',
+    weatherThunderstormLightRain:
+      'हल्की बरसात अर आंधी-तूफान',
+    weatherMist: 'धुंध',
+    weatherFog: 'कोहरो',
+    weatherHaze: 'धुंधळो मौसम',
+    weatherSmoke: 'धूंवो',
+    weatherDust: 'धूळ',
+    weatherUnknown: 'मौसम री जानकारी कोनी',
+  },
+
+
+  // ===================================================
+  // BHOJPURI
+  // ===================================================
+
+  bho: {
+    ...this?.hi,
+  },
+
+
+  // ===================================================
+  // HARYANVI
+  // ===================================================
+
+  har: {
+    ...this?.hi,
+  },
+  bho: {},
+  har: {},
+  gu: {},
+  mr: {},
+  pa: {},
+  bn: {},
+  ta: {},
+  te: {},
+  kn: {},
+  ml: {},
+  or: {},
+  as: {},
+}// =====================================================
 // FINAL TRANSLATIONS
 // =====================================================
 
+const buildTranslations = (
+  base,
+  dashboard,
+  page,
+  weather
+) => ({
+  ...base,
+  ...dashboard,
+  ...page,
+
+  // English weather acts as safe fallback.
+  ...weatherTranslations.en,
+
+  // Selected-language weather overrides English.
+  ...weather,
+})
+
+
 export const translations = {
-  en: {
-    ...en,
-    ...dashboardTranslations.en,
-    ...pageUiTranslations.en,
-  },
+  en: buildTranslations(
+    en,
+    dashboardTranslations.en,
+    pageUiTranslations.en,
+    weatherTranslations.en
+  ),
 
-  hi: {
-    ...hi,
-    ...dashboardTranslations.hi,
-    ...pageUiTranslations.hi,
-  },
+  hi: buildTranslations(
+    hi,
+    dashboardTranslations.hi,
+    pageUiTranslations.hi,
+    weatherTranslations.hi
+  ),
 
-  raj: {
-    ...raj,
-    ...dashboardTranslations.raj,
-    ...pageUiTranslations.raj,
-  },
+  raj: buildTranslations(
+    raj,
+    dashboardTranslations.raj,
+    pageUiTranslations.raj,
+    weatherTranslations.raj
+  ),
 
-  bho: {
-    ...bho,
-    ...dashboardTranslations.bho,
-    ...pageUiTranslations.bho,
-  },
+  bho: buildTranslations(
+    bho,
+    dashboardTranslations.bho,
+    pageUiTranslations.bho,
+    weatherTranslations.bho
+  ),
 
-  har: {
-    ...har,
-    ...dashboardTranslations.har,
-    ...pageUiTranslations.har,
-  },
+  har: buildTranslations(
+    har,
+    dashboardTranslations.har,
+    pageUiTranslations.har,
+    weatherTranslations.har
+  ),
 
-  gu: {
-    ...gu,
-    ...dashboardTranslations.gu,
-    ...pageUiTranslations.gu,
-  },
+  gu: buildTranslations(
+    gu,
+    dashboardTranslations.gu,
+    pageUiTranslations.gu,
+    weatherTranslations.gu
+  ),
 
-  mr: {
-    ...mr,
-    ...dashboardTranslations.mr,
-    ...pageUiTranslations.mr,
-  },
+  mr: buildTranslations(
+    mr,
+    dashboardTranslations.mr,
+    pageUiTranslations.mr,
+    weatherTranslations.mr
+  ),
 
-  pa: {
-    ...pa,
-    ...dashboardTranslations.pa,
-    ...pageUiTranslations.pa,
-  },
+  pa: buildTranslations(
+    pa,
+    dashboardTranslations.pa,
+    pageUiTranslations.pa,
+    weatherTranslations.pa
+  ),
 
-  bn: {
-    ...bn,
-    ...dashboardTranslations.bn,
-    ...pageUiTranslations.bn,
-  },
+  bn: buildTranslations(
+    bn,
+    dashboardTranslations.bn,
+    pageUiTranslations.bn,
+    weatherTranslations.bn
+  ),
 
-  ta: {
-    ...ta,
-    ...dashboardTranslations.ta,
-    ...pageUiTranslations.ta,
-  },
+  ta: buildTranslations(
+    ta,
+    dashboardTranslations.ta,
+    pageUiTranslations.ta,
+    weatherTranslations.ta
+  ),
 
-  te: {
-    ...te,
-    ...dashboardTranslations.te,
-    ...pageUiTranslations.te,
-  },
+  te: buildTranslations(
+    te,
+    dashboardTranslations.te,
+    pageUiTranslations.te,
+    weatherTranslations.te
+  ),
 
-  kn: {
-    ...kn,
-    ...dashboardTranslations.kn,
-    ...pageUiTranslations.kn,
-  },
+  kn: buildTranslations(
+    kn,
+    dashboardTranslations.kn,
+    pageUiTranslations.kn,
+    weatherTranslations.kn
+  ),
 
-  ml: {
-    ...ml,
-    ...dashboardTranslations.ml,
-    ...pageUiTranslations.ml,
-  },
+  ml: buildTranslations(
+    ml,
+    dashboardTranslations.ml,
+    pageUiTranslations.ml,
+    weatherTranslations.ml
+  ),
 
-  or: {
-    ...or,
-    ...dashboardTranslations.or,
-    ...pageUiTranslations.or,
-  },
+  or: buildTranslations(
+    or,
+    dashboardTranslations.or,
+    pageUiTranslations.or,
+    weatherTranslations.or
+  ),
 
-  as: {
-    ...as,
-    ...dashboardTranslations.as,
-    ...pageUiTranslations.as,
-  },
+  as: buildTranslations(
+    as,
+    dashboardTranslations.as,
+    pageUiTranslations.as,
+    weatherTranslations.as
+  ),
 }

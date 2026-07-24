@@ -4,10 +4,13 @@ import {
 } from 'react'
 
 import api from '../../api/axios'
-import { useLanguage } from '../../contexts/LanguageContext'
+import {
+  useLanguage,
+} from '../../contexts/LanguageContext'
 
 
 export default function WeatherRiskCard() {
+
   const { t } = useLanguage()
 
   const [data, setData] = useState(null)
@@ -15,16 +18,47 @@ export default function WeatherRiskCard() {
   const [error, setError] = useState('')
 
 
+  // ======================================================
+  // TRANSLATION HELPER
+  // ======================================================
+
+  const translateKey = (
+    key,
+    fallback = ''
+  ) => {
+
+    if (!key) {
+      return fallback
+    }
+
+    return (
+      t[key] ||
+      fallback ||
+      key
+    )
+  }
+
+
+  // ======================================================
+  // LOAD WEATHER
+  // ======================================================
+
   useEffect(() => {
+
     let active = true
 
+
     const loadWeather = () => {
+
       if (!navigator.geolocation) {
+
         if (active) {
+
           setError(
             t.geolocationUnsupported ||
             'Location is not supported by your browser.'
           )
+
           setLoading(false)
         }
 
@@ -33,8 +67,11 @@ export default function WeatherRiskCard() {
 
 
       navigator.geolocation.getCurrentPosition(
+
         async (position) => {
+
           try {
+
             const lat =
               position.coords.latitude
 
@@ -42,29 +79,38 @@ export default function WeatherRiskCard() {
               position.coords.longitude
 
 
-            const response = await api.get(
-              '/weather',
-              {
-                params: {
-                  lat,
-                  lon,
-                },
-              }
-            )
+            const response =
+              await api.get(
+                '/weather',
+                {
+                  params: {
+                    lat,
+                    lon,
+                  },
+                }
+              )
 
 
             if (active) {
-              setData(response.data)
+
+              setData(
+                response.data
+              )
+
               setError('')
             }
 
+
           } catch (err) {
+
             console.error(
               'Weather error:',
               err
             )
 
+
             if (active) {
+
               setError(
                 err.response?.data?.detail ||
                 t.weatherLoadError ||
@@ -72,20 +118,26 @@ export default function WeatherRiskCard() {
               )
             }
 
+
           } finally {
+
             if (active) {
               setLoading(false)
             }
           }
         },
 
+
         (geoError) => {
+
           console.error(
             'Location error:',
             geoError
           )
 
+
           if (active) {
+
             setError(
               t.locationError ||
               'Please allow location access to view crop weather risks.'
@@ -94,6 +146,7 @@ export default function WeatherRiskCard() {
             setLoading(false)
           }
         },
+
 
         {
           enableHighAccuracy: false,
@@ -110,6 +163,7 @@ export default function WeatherRiskCard() {
     return () => {
       active = false
     }
+
   }, [
     t.geolocationUnsupported,
     t.locationError,
@@ -122,21 +176,34 @@ export default function WeatherRiskCard() {
   // ======================================================
 
   if (loading) {
+
     return (
-      <section className="weather-risk-card weather-loading">
+
+      <section
+        className="
+          weather-risk-card
+          weather-loading
+        "
+      >
 
         <div className="weather-loader" />
 
         <div>
+
           <strong>
-            {t.checkingCropWeather ||
-              'Checking crop weather...'}
+            {
+              t.checkingCropWeather ||
+              'Checking crop weather...'
+            }
           </strong>
 
           <p>
-            {t.analyzingWeatherRisk ||
-              'Analyzing local disease and pest conditions'}
+            {
+              t.analyzingWeatherRisk ||
+              'Analyzing local disease and pest conditions'
+            }
           </p>
+
         </div>
 
       </section>
@@ -149,20 +216,33 @@ export default function WeatherRiskCard() {
   // ======================================================
 
   if (error) {
+
     return (
-      <section className="weather-risk-card weather-error">
+
+      <section
+        className="
+          weather-risk-card
+          weather-error
+        "
+      >
 
         <div className="weather-error-icon">
           🌦️
         </div>
 
         <div>
+
           <strong>
-            {t.weatherUnavailable ||
-              'Weather risk unavailable'}
+            {
+              t.weatherUnavailable ||
+              'Weather risk unavailable'
+            }
           </strong>
 
-          <p>{error}</p>
+          <p>
+            {error}
+          </p>
+
         </div>
 
       </section>
@@ -175,7 +255,12 @@ export default function WeatherRiskCard() {
   }
 
 
-  const weather = data.weather || {}
+  // ======================================================
+  // DATA
+  // ======================================================
+
+  const weather =
+    data.weather || {}
 
   const agriculturalRisk =
     data.agricultural_risk || {}
@@ -193,8 +278,26 @@ export default function WeatherRiskCard() {
     data.location || {}
 
 
+  // ======================================================
+  // WEATHER CONDITION
+  // ======================================================
+
+  const weatherCondition =
+
+    translateKey(
+      weather.condition_key,
+      weather.condition
+    )
+
+
+  // ======================================================
+  // UI
+  // ======================================================
+
   return (
+
     <section className="weather-risk-card">
+
 
       {/* HEADER */}
 
@@ -203,44 +306,68 @@ export default function WeatherRiskCard() {
         <div>
 
           <span className="section-label">
+
             🌦️{' '}
-            {t.cropWeatherAlert ||
-              'CROP WEATHER ALERT'}
+
+            {
+              t.cropWeatherAlert ||
+              'CROP WEATHER ALERT'
+            }
+
           </span>
 
+
           <h2>
-            {t.weatherCropRisk ||
-              'Weather & Crop Risk'}
+
+            {
+              t.weatherCropRisk ||
+              'Weather & Crop Risk'
+            }
+
           </h2>
 
+
           <p>
-            {t.weatherRiskDescription ||
-              'Live agricultural risk analysis based on your local weather conditions.'}
+
+            {
+              t.weatherRiskDescription ||
+              'Live agricultural risk analysis based on your local weather conditions.'
+            }
+
           </p>
 
         </div>
 
 
-        {(location.name ||
-          location.country) && (
+        {
+          (
+            location.name ||
+            location.country
+          ) && (
 
-          <div className="weather-location">
+            <div className="weather-location">
 
-            <span>📍</span>
+              <span>
+                📍
+              </span>
 
-            <span>
-              {location.name}
+              <span>
 
-              {location.name &&
-                location.country &&
-                ', '}
+                {location.name}
 
-              {location.country}
-            </span>
+                {
+                  location.name &&
+                  location.country &&
+                  ', '
+                }
 
-          </div>
+                {location.country}
 
-        )}
+              </span>
+
+            </div>
+          )
+        }
 
       </div>
 
@@ -249,67 +376,92 @@ export default function WeatherRiskCard() {
 
       <div className="weather-metrics">
 
+
         <WeatherMetric
+
           icon="🌡️"
+
           value={
             weather.temperature_c != null
+
               ? `${Number(
                   weather.temperature_c
                 ).toFixed(1)}°C`
+
               : '--'
           }
+
           label={
             t.temperature ||
             'Temperature'
           }
+
         />
 
 
         <WeatherMetric
+
           icon="💧"
+
           value={
             weather.humidity_pct != null
+
               ? `${Number(
                   weather.humidity_pct
                 ).toFixed(0)}%`
+
               : '--'
           }
+
           label={
             t.humidity ||
             'Humidity'
           }
+
         />
 
 
         <WeatherMetric
+
           icon="🌧️"
+
           value={
             weather.rain_last_hour_mm != null
+
               ? `${Number(
                   weather.rain_last_hour_mm
                 ).toFixed(2)} mm`
+
               : '--'
           }
+
           label={
             t.recentRain ||
             'Recent Rain'
           }
+
         />
 
 
         <WeatherMetric
+
           icon="💨"
+
           value={
             weather.wind_speed_mps != null
+
               ? `${Number(
                   weather.wind_speed_mps
                 ).toFixed(1)} m/s`
+
               : '--'
           }
+
           label={
             t.windSpeed ||
             'Wind Speed'
           }
+
         />
 
       </div>
@@ -317,46 +469,70 @@ export default function WeatherRiskCard() {
 
       {/* WEATHER CONDITION */}
 
-      {weather.condition && (
+      {
+        weatherCondition && (
 
-        <div className="weather-condition">
+          <div className="weather-condition">
 
-          <span>☁️</span>
+            <span>
+              ☁️
+            </span>
 
-          <span>
-            {weather.condition}
-          </span>
+            <span>
+              {weatherCondition}
+            </span>
 
-        </div>
-
-      )}
+          </div>
+        )
+      }
 
 
       {/* RISK CARDS */}
 
       <div className="weather-risk-grid">
 
+
         <RiskBox
+
           icon="🦠"
+
           title={
             t.diseaseRisk ||
             'Disease Risk'
           }
-          risk={disease.level}
-          reasons={disease.reasons}
+
+          risk={
+            disease.level
+          }
+
+          reasons={
+            disease.reasons
+          }
+
           t={t}
+
         />
 
 
         <RiskBox
+
           icon="🐛"
+
           title={
             t.pestRisk ||
             'Pest Risk'
           }
-          risk={pest.level}
-          reasons={pest.reasons}
+
+          risk={
+            pest.level
+          }
+
+          reasons={
+            pest.reasons
+          }
+
           t={t}
+
         />
 
       </div>
@@ -364,50 +540,67 @@ export default function WeatherRiskCard() {
 
       {/* RECOMMENDATIONS */}
 
-      {recommendations.length > 0 && (
+      {
+        recommendations.length > 0 && (
 
-        <div className="weather-recommendations">
+          <div className="weather-recommendations">
 
-          <div className="weather-recommendations-heading">
 
-            <span>🌱</span>
+            <div className="weather-recommendations-heading">
 
-            <h3>
-              {t.recommendedActions ||
-                'Recommended Actions'}
-            </h3>
+              <span>
+                🌱
+              </span>
+
+              <h3>
+
+                {
+                  t.recommendedActions ||
+                  'Recommended Actions'
+                }
+
+              </h3>
+
+            </div>
+
+
+            <div className="weather-recommendations-list">
+
+              {
+                recommendations.map(
+                  (
+                    recommendation,
+                    index
+                  ) => (
+
+                    <div
+                      key={index}
+                      className="weather-recommendation"
+                    >
+
+                      <span className="weather-check">
+                        ✓
+                      </span>
+
+                      <p>
+
+                        {
+                          t[recommendation] ||
+                          recommendation
+                        }
+
+                      </p>
+
+                    </div>
+                  )
+                )
+              }
+
+            </div>
 
           </div>
-
-
-          <div className="weather-recommendations-list">
-
-            {recommendations.map(
-              (recommendation, index) => (
-
-                <div
-                  key={index}
-                  className="weather-recommendation"
-                >
-
-                  <span className="weather-check">
-                    ✓
-                  </span>
-
-                  <p>
-                    {recommendation}
-                  </p>
-
-                </div>
-
-              )
-            )}
-
-          </div>
-
-        </div>
-
-      )}
+        )
+      }
 
     </section>
   )
@@ -423,7 +616,9 @@ function WeatherMetric({
   value,
   label,
 }) {
+
   return (
+
     <div className="weather-metric">
 
       <span className="weather-metric-icon">
@@ -460,32 +655,53 @@ function RiskBox({
 }) {
 
   const normalizedRisk =
-    String(risk || 'low')
-      .toLowerCase()
+    String(
+      risk || 'low'
+    ).toLowerCase()
 
 
   const getRiskLabel = () => {
 
-    if (normalizedRisk === 'high') {
-      return t.highRisk || 'High'
+    if (
+      normalizedRisk === 'high'
+    ) {
+
+      return (
+        t.highRisk ||
+        'High'
+      )
     }
 
-    if (normalizedRisk === 'moderate') {
-      return t.moderateRisk || 'Moderate'
+
+    if (
+      normalizedRisk === 'moderate'
+    ) {
+
+      return (
+        t.moderateRisk ||
+        'Moderate'
+      )
     }
 
-    return t.lowRisk || 'Low'
+
+    return (
+      t.lowRisk ||
+      'Low'
+    )
   }
 
 
   return (
+
     <div
       className={
         `weather-risk-box risk-${normalizedRisk}`
       }
     >
 
+
       <div className="weather-risk-box-header">
+
 
         <div className="weather-risk-title">
 
@@ -505,38 +721,55 @@ function RiskBox({
             `weather-risk-badge risk-${normalizedRisk}`
           }
         >
+
           {getRiskLabel()}
+
         </span>
 
       </div>
 
 
-      {reasons.length > 0 ? (
+      {
+        reasons.length > 0
 
-        <ul className="weather-risk-reasons">
+          ? (
 
-          {reasons.map(
-            (reason, index) => (
+            <ul className="weather-risk-reasons">
 
-              <li key={index}>
-                {reason}
-              </li>
+              {
+                reasons.map(
+                  (
+                    reason,
+                    index
+                  ) => (
 
-            )
-          )}
+                    <li key={index}>
 
-        </ul>
+                      {
+                        t[reason] ||
+                        reason
+                      }
 
-      ) : (
+                    </li>
+                  )
+                )
+              }
 
-        <p className="weather-no-risk">
+            </ul>
+          )
 
-          {t.noMajorWeatherRisk ||
-            'No major weather-related risk detected.'}
+          : (
 
-        </p>
+            <p className="weather-no-risk">
 
-      )}
+              {
+                t.noMajorWeatherRisk ||
+                'No major weather-related risk detected.'
+              }
+
+            </p>
+          )
+      }
 
     </div>
   )
