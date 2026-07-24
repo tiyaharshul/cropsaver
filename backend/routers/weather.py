@@ -246,10 +246,6 @@ def calculate_crop_risk(
         )
 
 
-    # ==================================================
-    # RESULT
-    # ==================================================
-
     return {
 
         "disease_risk":
@@ -273,6 +269,173 @@ def calculate_crop_risk(
         "recommendations":
             recommendations,
     }
+
+
+# ======================================================
+# WEATHER ALERTS
+# ======================================================
+
+def calculate_weather_alerts(
+    temperature: float,
+    humidity: float,
+    rain: float,
+    wind_speed: float,
+):
+
+    alerts = []
+
+
+    # ==================================================
+    # RAIN
+    # ==================================================
+
+    if rain >= 7.5:
+
+        alerts.append({
+            "type": "heavy_rain",
+            "level": "high",
+            "icon": "🌧️",
+            "title_key":
+                "weatherAlertHeavyRainTitle",
+            "message_key":
+                "weatherAlertHeavyRainMessage",
+        })
+
+    elif rain >= 2.5:
+
+        alerts.append({
+            "type": "rain",
+            "level": "moderate",
+            "icon": "🌦️",
+            "title_key":
+                "weatherAlertRainTitle",
+            "message_key":
+                "weatherAlertRainMessage",
+        })
+
+
+    # ==================================================
+    # HEAT
+    # ==================================================
+
+    if temperature >= 40:
+
+        alerts.append({
+            "type": "extreme_heat",
+            "level": "high",
+            "icon": "🔥",
+            "title_key":
+                "weatherAlertExtremeHeatTitle",
+            "message_key":
+                "weatherAlertExtremeHeatMessage",
+        })
+
+    elif temperature >= 35:
+
+        alerts.append({
+            "type": "heat",
+            "level": "moderate",
+            "icon": "🌡️",
+            "title_key":
+                "weatherAlertHeatTitle",
+            "message_key":
+                "weatherAlertHeatMessage",
+        })
+
+
+    # ==================================================
+    # COLD / FROST
+    # ==================================================
+
+    if temperature <= 2:
+
+        alerts.append({
+            "type": "frost",
+            "level": "high",
+            "icon": "❄️",
+            "title_key":
+                "weatherAlertFrostTitle",
+            "message_key":
+                "weatherAlertFrostMessage",
+        })
+
+    elif temperature <= 7:
+
+        alerts.append({
+            "type": "cold",
+            "level": "moderate",
+            "icon": "🥶",
+            "title_key":
+                "weatherAlertColdTitle",
+            "message_key":
+                "weatherAlertColdMessage",
+        })
+
+
+    # ==================================================
+    # WIND
+    # ==================================================
+
+    if wind_speed >= 10:
+
+        alerts.append({
+            "type": "strong_wind",
+            "level": "high",
+            "icon": "💨",
+            "title_key":
+                "weatherAlertStrongWindTitle",
+            "message_key":
+                "weatherAlertStrongWindMessage",
+        })
+
+    elif wind_speed >= 6:
+
+        alerts.append({
+            "type": "wind",
+            "level": "moderate",
+            "icon": "🌬️",
+            "title_key":
+                "weatherAlertWindTitle",
+            "message_key":
+                "weatherAlertWindMessage",
+        })
+
+
+    # ==================================================
+    # HUMIDITY
+    # ==================================================
+
+    if humidity >= 90:
+
+        alerts.append({
+            "type": "humidity",
+            "level": "moderate",
+            "icon": "💧",
+            "title_key":
+                "weatherAlertHumidityTitle",
+            "message_key":
+                "weatherAlertHumidityMessage",
+        })
+
+
+    # ==================================================
+    # SAFE CONDITIONS
+    # ==================================================
+
+    if not alerts:
+
+        alerts.append({
+            "type": "safe",
+            "level": "low",
+            "icon": "✅",
+            "title_key":
+                "weatherAlertSafeTitle",
+            "message_key":
+                "weatherAlertSafeMessage",
+        })
+
+
+    return alerts
 
 
 # ======================================================
@@ -371,12 +534,10 @@ async def get_weather(
 ):
 
     """
-    Returns current weather together with
-    agricultural disease and pest risk analysis.
-
-    Dynamic explanatory text is returned as
-    translation keys so the frontend can display
-    it using the currently selected language.
+    Returns current weather,
+    agricultural disease/pest risk,
+    recommendations,
+    and farmer weather alerts.
     """
 
 
@@ -539,7 +700,7 @@ async def get_weather(
 
 
     # ==================================================
-    # AGRICULTURAL RISK ANALYSIS
+    # AGRICULTURAL RISK
     # ==================================================
 
     risk = calculate_crop_risk(
@@ -551,6 +712,24 @@ async def get_weather(
         rain=rain,
 
         wind_speed=wind_speed,
+    )
+
+
+    # ==================================================
+    # WEATHER ALERTS
+    # ==================================================
+
+    weather_alerts = (
+        calculate_weather_alerts(
+
+            temperature=temperature,
+
+            humidity=humidity,
+
+            rain=rain,
+
+            wind_speed=wind_speed,
+        )
     )
 
 
@@ -592,11 +771,9 @@ async def get_weather(
             "humidity_pct":
                 humidity,
 
-            # Keep original condition if needed
             "condition":
                 condition,
 
-            # Frontend should translate this
             "condition_key":
                 condition_key,
 
@@ -606,6 +783,10 @@ async def get_weather(
             "rain_last_hour_mm":
                 rain,
         },
+
+
+        "weather_alerts":
+            weather_alerts,
 
 
         "agricultural_risk": {

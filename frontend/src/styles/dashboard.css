@@ -2217,3 +2217,114 @@
   }
 
 }
+/* =========================================================
+   CROP WEATHER ALERTS
+========================================================= */
+
+.dashboard-weather-column .crop-weather-alerts {
+  margin: 0 0 14px;
+  padding: 13px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(43, 103, 58, 0.11);
+  border-radius: 13px;
+}
+
+.dashboard-weather-column .crop-weather-alerts-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.dashboard-weather-column .crop-weather-alerts-heading > span {
+  font-size: 14px;
+}
+
+.dashboard-weather-column .crop-weather-alerts-heading h3 {
+  margin: 0;
+  font-size: 11px;
+  color: #23482e;
+}
+
+.dashboard-weather-column .crop-weather-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard-weather-column .crop-weather-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(43, 100, 57, 0.10);
+  border-radius: 11px;
+}
+
+.dashboard-weather-column .crop-weather-alert-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #edf5e9;
+  font-size: 14px;
+}
+
+.dashboard-weather-column .crop-weather-alert-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.dashboard-weather-column .crop-weather-alert-content strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 10px;
+  line-height: 1.3;
+  color: #23482e;
+}
+
+.dashboard-weather-column .crop-weather-alert-content p {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.45;
+  color: #647068;
+}
+
+.dashboard-weather-column .weather-alert-high {
+  border-left: 3px solid #a84332;
+  background: rgba(255, 244, 241, 0.82);
+}
+
+.dashboard-weather-column .weather-alert-moderate {
+  border-left: 3px solid #b48624;
+  background: rgba(255, 250, 235, 0.84);
+}
+
+.dashboard-weather-column .weather-alert-low {
+  border-left: 3px solid #3d8250;
+  background: rgba(239, 249, 237, 0.84);
+}
+
+@media (max-width: 850px) {
+  .dashboard-weather-column .crop-weather-alert-content strong {
+    font-size: 11px;
+  }
+
+  .dashboard-weather-column .crop-weather-alert-content p {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-weather-column .crop-weather-alerts {
+    padding: 11px;
+  }
+
+  .dashboard-weather-column .crop-weather-alert {
+    padding: 9px;
+  }
+}

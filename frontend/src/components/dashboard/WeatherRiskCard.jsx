@@ -4,6 +4,7 @@ import {
 } from 'react'
 
 import api from '../../api/axios'
+
 import {
   useLanguage,
 } from '../../contexts/LanguageContext'
@@ -13,9 +14,14 @@ export default function WeatherRiskCard() {
 
   const { t } = useLanguage()
 
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [data, setData] =
+    useState(null)
+
+  const [loading, setLoading] =
+    useState(true)
+
+  const [error, setError] =
+    useState('')
 
 
   // ======================================================
@@ -277,13 +283,11 @@ export default function WeatherRiskCard() {
   const location =
     data.location || {}
 
+  const weatherAlerts =
+    data.weather_alerts || []
 
-  // ======================================================
-  // WEATHER CONDITION
-  // ======================================================
 
   const weatherCondition =
-
     translateKey(
       weather.condition_key,
       weather.condition
@@ -487,6 +491,99 @@ export default function WeatherRiskCard() {
       }
 
 
+      {/* WEATHER ALERTS */}
+
+      {
+        weatherAlerts.length > 0 && (
+
+          <div className="crop-weather-alerts">
+
+            <div className="crop-weather-alerts-heading">
+
+              <span>
+                ⚠️
+              </span>
+
+              <h3>
+
+                {
+                  t.activeWeatherAlerts ||
+                  'Weather Alerts'
+                }
+
+              </h3>
+
+            </div>
+
+
+            <div className="crop-weather-alerts-list">
+
+              {
+                weatherAlerts.map(
+                  (
+                    alert,
+                    index
+                  ) => (
+
+                    <div
+                      key={
+                        `${alert.type}-${index}`
+                      }
+                      className={
+                        `crop-weather-alert weather-alert-${alert.level}`
+                      }
+                    >
+
+                      <div className="crop-weather-alert-icon">
+                        {alert.icon}
+                      </div>
+
+
+                      <div className="crop-weather-alert-content">
+
+                        <strong>
+
+                          {
+                            translateKey(
+                              alert.title_key,
+                              getDefaultAlertTitle(
+                                alert.type
+                              )
+                            )
+                          }
+
+                        </strong>
+
+
+                        <p>
+
+                          {
+                            translateKey(
+                              alert.message_key,
+                              getDefaultAlertMessage(
+                                alert.type
+                              )
+                            )
+                          }
+
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  )
+                )
+              }
+
+            </div>
+
+          </div>
+
+        )
+      }
+
+
       {/* RISK CARDS */}
 
       <div className="weather-risk-grid">
@@ -592,6 +689,7 @@ export default function WeatherRiskCard() {
                       </p>
 
                     </div>
+
                   )
                 )
               }
@@ -599,10 +697,107 @@ export default function WeatherRiskCard() {
             </div>
 
           </div>
+
         )
       }
 
     </section>
+  )
+}
+
+
+// ======================================================
+// DEFAULT ALERT TITLES
+// ======================================================
+
+function getDefaultAlertTitle(type) {
+
+  const titles = {
+
+    heavy_rain:
+      'Heavy Rain Alert',
+
+    rain:
+      'Rain Alert',
+
+    extreme_heat:
+      'Extreme Heat Alert',
+
+    heat:
+      'High Temperature Alert',
+
+    frost:
+      'Frost Risk Alert',
+
+    cold:
+      'Cold Weather Alert',
+
+    strong_wind:
+      'Strong Wind Alert',
+
+    wind:
+      'Wind Alert',
+
+    humidity:
+      'High Humidity Alert',
+
+    safe:
+      'No Critical Weather Alert',
+
+  }
+
+
+  return (
+    titles[type] ||
+    'Weather Alert'
+  )
+}
+
+
+// ======================================================
+// DEFAULT ALERT MESSAGES
+// ======================================================
+
+function getDefaultAlertMessage(type) {
+
+  const messages = {
+
+    heavy_rain:
+      'Heavy rainfall is occurring. Avoid spraying and check field drainage to prevent waterlogging.',
+
+    rain:
+      'Rainy conditions may affect field operations. Avoid spraying while rain is present.',
+
+    extreme_heat:
+      'Very high temperature may cause crop heat stress. Check soil moisture and avoid field operations during peak afternoon heat.',
+
+    heat:
+      'High temperature may increase crop water stress. Monitor soil moisture and irrigation needs.',
+
+    frost:
+      'Very low temperature may damage sensitive crops. Consider appropriate frost protection measures.',
+
+    cold:
+      'Low temperature may slow crop growth or affect sensitive crops. Monitor crop condition closely.',
+
+    strong_wind:
+      'Strong winds can cause spray drift and crop damage. Avoid spraying until wind conditions improve.',
+
+    wind:
+      'Windy conditions may reduce spraying accuracy. Consider delaying pesticide or fertilizer spraying.',
+
+    humidity:
+      'Very high humidity can favour fungal disease development. Inspect crops regularly for early symptoms.',
+
+    safe:
+      'Current weather conditions do not indicate a major immediate weather threat to your crop.',
+
+  }
+
+
+  return (
+    messages[type] ||
+    ''
   )
 }
 
