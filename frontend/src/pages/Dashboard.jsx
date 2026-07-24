@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 import {
   useLanguage,
 } from '../contexts/LanguageContext'
@@ -34,6 +32,21 @@ export default function Dashboard() {
     e.currentTarget.style.setProperty(
       '--mouse-y',
       `${e.clientY - rect.top}px`
+    )
+
+  }
+
+
+  // ======================================================
+  // OPEN VOICE ASSISTANT
+  // ======================================================
+
+  const handleOpenVoiceAssistant = () => {
+
+    window.dispatchEvent(
+      new CustomEvent(
+        'cropsaver:open-voice-assistant'
+      )
     )
 
   }
@@ -247,7 +260,7 @@ export default function Dashboard() {
 
 
       {/* ==================================================
-          CTA
+          CTA — OPENS VOICE ASSISTANT
       ================================================== */}
 
       <section
@@ -274,9 +287,11 @@ export default function Dashboard() {
         </div>
 
 
-        <Link
-          to="/chat"
+        <button
+          type="button"
           className="cta-button"
+          onClick={handleOpenVoiceAssistant}
+          aria-label="Open voice assistant"
         >
 
           <span>
@@ -287,11 +302,12 @@ export default function Dashboard() {
             →
           </span>
 
-        </Link>
+        </button>
 
       </section>
 
     </div>
 
   )
+
 }

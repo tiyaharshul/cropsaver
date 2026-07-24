@@ -1,39 +1,165 @@
-import { useRef, useState } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+
 import api from '../api/axios'
 
+
 const languages = [
-  { name: 'Hindi', label: 'हिन्दी', region: 'Hindi', speechCode: 'hi-IN', voiceCode: 'hi-IN' },
-  { name: 'English', label: 'English', region: 'India', speechCode: 'en-IN', voiceCode: 'en-IN' },
-  { name: 'Marwari/Rajasthani', label: 'मारवाड़ी / राजस्थानी', region: 'Rajasthan', speechCode: 'hi-IN', voiceCode: 'hi-IN' },
-  { name: 'Bhojpuri', label: 'भोजपुरी', region: 'UP / Bihar', speechCode: 'hi-IN', voiceCode: 'hi-IN' },
-  { name: 'Haryanvi', label: 'हरियाणवी', region: 'Haryana', speechCode: 'hi-IN', voiceCode: 'hi-IN' },
-  { name: 'Gujarati', label: 'ગુજરાતી', region: 'Gujarat', speechCode: 'gu-IN', voiceCode: 'gu-IN' },
-  { name: 'Marathi', label: 'मराठी', region: 'Maharashtra', speechCode: 'mr-IN', voiceCode: 'mr-IN' },
-  { name: 'Punjabi', label: 'ਪੰਜਾਬੀ', region: 'Punjab', speechCode: 'pa-IN', voiceCode: 'pa-IN' },
-  { name: 'Bengali', label: 'বাংলা', region: 'West Bengal', speechCode: 'bn-IN', voiceCode: 'bn-IN' },
-  { name: 'Tamil', label: 'தமிழ்', region: 'Tamil Nadu', speechCode: 'ta-IN', voiceCode: 'ta-IN' },
-  { name: 'Telugu', label: 'తెలుగు', region: 'Andhra Pradesh / Telangana', speechCode: 'te-IN', voiceCode: 'te-IN' },
-  { name: 'Kannada', label: 'ಕನ್ನಡ', region: 'Karnataka', speechCode: 'kn-IN', voiceCode: 'kn-IN' },
-  { name: 'Malayalam', label: 'മലയാളം', region: 'Kerala', speechCode: 'ml-IN', voiceCode: 'ml-IN' },
-  { name: 'Odia', label: 'ଓଡ଼ିଆ', region: 'Odisha', speechCode: 'or-IN', voiceCode: 'or-IN' },
-  { name: 'Assamese', label: 'অসমীয়া', region: 'Assam', speechCode: 'as-IN', voiceCode: 'as-IN' },
+  {
+    name: 'Hindi',
+    label: 'हिन्दी',
+    region: 'Hindi',
+    speechCode: 'hi-IN',
+    voiceCode: 'hi-IN',
+  },
+  {
+    name: 'English',
+    label: 'English',
+    region: 'India',
+    speechCode: 'en-IN',
+    voiceCode: 'en-IN',
+  },
+  {
+    name: 'Marwari/Rajasthani',
+    label: 'मारवाड़ी / राजस्थानी',
+    region: 'Rajasthan',
+    speechCode: 'hi-IN',
+    voiceCode: 'hi-IN',
+  },
+  {
+    name: 'Bhojpuri',
+    label: 'भोजपुरी',
+    region: 'UP / Bihar',
+    speechCode: 'hi-IN',
+    voiceCode: 'hi-IN',
+  },
+  {
+    name: 'Haryanvi',
+    label: 'हरियाणवी',
+    region: 'Haryana',
+    speechCode: 'hi-IN',
+    voiceCode: 'hi-IN',
+  },
+  {
+    name: 'Gujarati',
+    label: 'ગુજરાતી',
+    region: 'Gujarat',
+    speechCode: 'gu-IN',
+    voiceCode: 'gu-IN',
+  },
+  {
+    name: 'Marathi',
+    label: 'मराठी',
+    region: 'Maharashtra',
+    speechCode: 'mr-IN',
+    voiceCode: 'mr-IN',
+  },
+  {
+    name: 'Punjabi',
+    label: 'ਪੰਜਾਬੀ',
+    region: 'Punjab',
+    speechCode: 'pa-IN',
+    voiceCode: 'pa-IN',
+  },
+  {
+    name: 'Bengali',
+    label: 'বাংলা',
+    region: 'West Bengal',
+    speechCode: 'bn-IN',
+    voiceCode: 'bn-IN',
+  },
+  {
+    name: 'Tamil',
+    label: 'தமிழ்',
+    region: 'Tamil Nadu',
+    speechCode: 'ta-IN',
+    voiceCode: 'ta-IN',
+  },
+  {
+    name: 'Telugu',
+    label: 'తెలుగు',
+    region: 'Andhra Pradesh / Telangana',
+    speechCode: 'te-IN',
+    voiceCode: 'te-IN',
+  },
+  {
+    name: 'Kannada',
+    label: 'ಕನ್ನಡ',
+    region: 'Karnataka',
+    speechCode: 'kn-IN',
+    voiceCode: 'kn-IN',
+  },
+  {
+    name: 'Malayalam',
+    label: 'മലയാളം',
+    region: 'Kerala',
+    speechCode: 'ml-IN',
+    voiceCode: 'ml-IN',
+  },
+  {
+    name: 'Odia',
+    label: 'ଓଡ଼ିଆ',
+    region: 'Odisha',
+    speechCode: 'or-IN',
+    voiceCode: 'or-IN',
+  },
+  {
+    name: 'Assamese',
+    label: 'অসমীয়া',
+    region: 'Assam',
+    speechCode: 'as-IN',
+    voiceCode: 'as-IN',
+  },
 ]
 
+
 export default function VoiceAssistant() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isListening, setIsListening] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [question, setQuestion] = useState('')
-  const [answer, setAnswer] = useState('')
-  const [error, setError] = useState('')
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0])
+
+  const [isOpen, setIsOpen] =
+    useState(false)
+
+  const [isListening, setIsListening] =
+    useState(false)
+
+  const [isLoading, setIsLoading] =
+    useState(false)
+
+  const [question, setQuestion] =
+    useState('')
+
+  const [answer, setAnswer] =
+    useState('')
+
+  const [error, setError] =
+    useState('')
+
+  const [
+    selectedLanguage,
+    setSelectedLanguage,
+  ] = useState(languages[0])
+
 
   const recognitionRef = useRef(null)
-  const recognitionSessionRef = useRef(0)
-  const requestSessionRef = useRef(0)
+
+  const recognitionSessionRef =
+    useRef(0)
+
+  const requestSessionRef =
+    useRef(0)
+
+
+  // ======================================================
+  // CLEAN TEXT BEFORE SPEAKING
+  // ======================================================
 
   const cleanTextForSpeech = (text) => {
-    if (!text) return ''
+
+    if (!text) {
+      return ''
+    }
 
     return text
       .replace(/\*\*(.*?)\*\*/g, '$1')
@@ -49,114 +175,291 @@ export default function VoiceAssistant() {
       .replace(/#/g, '')
       .replace(/\s+/g, ' ')
       .trim()
+
   }
+
+
+  // ======================================================
+  // STOP SPEAKING
+  // ======================================================
 
   const stopSpeaking = () => {
-    if ('speechSynthesis' in window) {
+
+    if (
+      'speechSynthesis' in window
+    ) {
+
       window.speechSynthesis.cancel()
+
     }
+
   }
+
+
+  // ======================================================
+  // STOP RECOGNITION
+  // ======================================================
 
   const stopRecognition = () => {
+
     recognitionSessionRef.current += 1
 
-    if (recognitionRef.current) {
+
+    if (
+      recognitionRef.current
+    ) {
+
       try {
+
         recognitionRef.current.abort()
+
       } catch (err) {
-        console.log('Recognition already stopped:', err)
+
+        console.log(
+          'Recognition already stopped:',
+          err
+        )
+
       }
+
+
       recognitionRef.current = null
+
     }
+
 
     setIsListening(false)
+
   }
 
-  const speakAnswer = (text, language = selectedLanguage) => {
-    if (!('speechSynthesis' in window)) {
-      setError('Text-to-speech is not supported in this browser.')
+
+  // ======================================================
+  // SPEAK ANSWER
+  // ======================================================
+
+  const speakAnswer = (
+    text,
+    language = selectedLanguage
+  ) => {
+
+    if (
+      !(
+        'speechSynthesis' in window
+      )
+    ) {
+
+      setError(
+        'Text-to-speech is not supported in this browser.'
+      )
+
       return
+
     }
+
 
     stopSpeaking()
 
-    const cleanText = cleanTextForSpeech(text)
-    if (!cleanText) return
 
-    const speech = new SpeechSynthesisUtterance(cleanText)
-    speech.lang = language.voiceCode
+    const cleanText =
+      cleanTextForSpeech(text)
+
+
+    if (!cleanText) {
+      return
+    }
+
+
+    const speech =
+      new SpeechSynthesisUtterance(
+        cleanText
+      )
+
+
+    speech.lang =
+      language.voiceCode
+
     speech.rate = 0.9
     speech.pitch = 1
 
-    const voices = window.speechSynthesis.getVoices()
-    const languagePrefix = language.voiceCode.split('-')[0].toLowerCase()
 
-    const matchingVoice = voices.find((voice) =>
-      voice.lang.toLowerCase().startsWith(languagePrefix)
-    )
+    const voices =
+      window.speechSynthesis.getVoices()
+
+
+    const languagePrefix =
+      language.voiceCode
+        .split('-')[0]
+        .toLowerCase()
+
+
+    const matchingVoice =
+      voices.find((voice) =>
+        voice.lang
+          .toLowerCase()
+          .startsWith(
+            languagePrefix
+          )
+      )
+
 
     if (matchingVoice) {
-      speech.voice = matchingVoice
+
+      speech.voice =
+        matchingVoice
+
     }
+
 
     speech.onerror = (event) => {
-      if (event.error !== 'interrupted' && event.error !== 'canceled') {
-        console.error('Speech synthesis error:', event.error)
+
+      if (
+        event.error !==
+          'interrupted' &&
+        event.error !==
+          'canceled'
+      ) {
+
+        console.error(
+          'Speech synthesis error:',
+          event.error
+        )
+
       }
+
     }
 
-    window.speechSynthesis.speak(speech)
+
+    window.speechSynthesis.speak(
+      speech
+    )
+
   }
 
-  const askCropSaver = async (message, language, requestId) => {
+
+  // ======================================================
+  // ASK CROPSAVER
+  // ======================================================
+
+  const askCropSaver = async (
+    message,
+    language,
+    requestId
+  ) => {
+
     try {
+
       setIsLoading(true)
       setAnswer('')
       setError('')
 
-      const response = await api.post('/voice', {
-        message,
-        language: language.name,
-      })
 
-      if (requestId !== requestSessionRef.current) return
+      const response =
+        await api.post(
+          '/voice',
+          {
+            message,
+            language:
+              language.name,
+          }
+        )
 
-      const responseText = response.data.answer
 
-      if (!responseText) {
-        setError('CropSaver returned an empty response.')
+      if (
+        requestId !==
+        requestSessionRef.current
+      ) {
+
         return
+
       }
 
-      setAnswer(responseText)
-      speakAnswer(responseText, language)
-    } catch (err) {
-      if (requestId !== requestSessionRef.current) return
 
-      console.error('Voice assistant error:', err)
+      const responseText =
+        response.data.answer
+
+
+      if (!responseText) {
+
+        setError(
+          'CropSaver returned an empty response.'
+        )
+
+        return
+
+      }
+
+
+      setAnswer(responseText)
+
+
+      speakAnswer(
+        responseText,
+        language
+      )
+
+    } catch (err) {
+
+      if (
+        requestId !==
+        requestSessionRef.current
+      ) {
+
+        return
+
+      }
+
+
+      console.error(
+        'Voice assistant error:',
+        err
+      )
+
+
       setError(
         err.response?.data?.detail ||
           'Unable to contact CropSaver assistant.'
       )
+
     } finally {
-      if (requestId === requestSessionRef.current) {
+
+      if (
+        requestId ===
+        requestSessionRef.current
+      ) {
+
         setIsLoading(false)
+
       }
+
     }
+
   }
 
+
+  // ======================================================
+  // START LISTENING
+  // ======================================================
+
   const startListening = () => {
+
     setError('')
 
+
     const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition
+      window.SpeechRecognition ||
+      window.webkitSpeechRecognition
+
 
     if (!SpeechRecognition) {
+
       setError(
         'Speech recognition is not supported in this browser. Please use Chrome or Edge.'
       )
+
       return
+
     }
+
 
     stopSpeaking()
     stopRecognition()
@@ -164,257 +467,692 @@ export default function VoiceAssistant() {
     setQuestion('')
     setAnswer('')
 
+
     recognitionSessionRef.current += 1
-    const sessionId = recognitionSessionRef.current
 
-    const recognition = new SpeechRecognition()
-    recognition.lang = selectedLanguage.speechCode
-    recognition.interimResults = false
-    recognition.continuous = false
-    recognition.maxAlternatives = 1
 
-    recognitionRef.current = recognition
+    const sessionId =
+      recognitionSessionRef.current
+
+
+    const recognition =
+      new SpeechRecognition()
+
+
+    recognition.lang =
+      selectedLanguage.speechCode
+
+    recognition.interimResults =
+      false
+
+    recognition.continuous =
+      false
+
+    recognition.maxAlternatives =
+      1
+
+
+    recognitionRef.current =
+      recognition
+
 
     recognition.onstart = () => {
-      if (sessionId !== recognitionSessionRef.current) return
+
+      if (
+        sessionId !==
+        recognitionSessionRef.current
+      ) {
+
+        return
+
+      }
+
+
       setIsListening(true)
+
     }
+
 
     recognition.onend = () => {
-      if (sessionId !== recognitionSessionRef.current) return
+
+      if (
+        sessionId !==
+        recognitionSessionRef.current
+      ) {
+
+        return
+
+      }
+
 
       setIsListening(false)
 
-      if (recognitionRef.current === recognition) {
-        recognitionRef.current = null
+
+      if (
+        recognitionRef.current ===
+        recognition
+      ) {
+
+        recognitionRef.current =
+          null
+
       }
+
     }
 
-    recognition.onerror = (event) => {
-      if (sessionId !== recognitionSessionRef.current) return
 
-      console.error('Speech recognition error:', event.error)
-      setIsListening(false)
+    recognition.onerror = (
+      event
+    ) => {
 
-      if (recognitionRef.current === recognition) {
-        recognitionRef.current = null
+      if (
+        sessionId !==
+        recognitionSessionRef.current
+      ) {
+
+        return
+
       }
 
-      if (event.error === 'not-allowed') {
+
+      console.error(
+        'Speech recognition error:',
+        event.error
+      )
+
+
+      setIsListening(false)
+
+
+      if (
+        recognitionRef.current ===
+        recognition
+      ) {
+
+        recognitionRef.current =
+          null
+
+      }
+
+
+      if (
+        event.error ===
+        'not-allowed'
+      ) {
+
         setError(
           'Microphone permission was denied. Please allow microphone access.'
         )
-      } else if (event.error === 'no-speech') {
-        setError('No speech was detected. Please try again.')
-      } else if (event.error !== 'aborted') {
-        setError('Could not understand your voice. Please try again.')
+
+      } else if (
+        event.error ===
+        'no-speech'
+      ) {
+
+        setError(
+          'No speech was detected. Please try again.'
+        )
+
+      } else if (
+        event.error !==
+        'aborted'
+      ) {
+
+        setError(
+          'Could not understand your voice. Please try again.'
+        )
+
       }
+
     }
 
-    recognition.onresult = (event) => {
-      if (sessionId !== recognitionSessionRef.current) return
 
-      const transcript = event.results[0][0].transcript
+    recognition.onresult = (
+      event
+    ) => {
+
+      if (
+        sessionId !==
+        recognitionSessionRef.current
+      ) {
+
+        return
+
+      }
+
+
+      const transcript =
+        event.results[0][0]
+          .transcript
+
 
       setQuestion(transcript)
       setIsListening(false)
 
-      const languageForRequest = { ...selectedLanguage }
+
+      const languageForRequest = {
+        ...selectedLanguage,
+      }
+
 
       requestSessionRef.current += 1
-      const requestId = requestSessionRef.current
 
-      askCropSaver(transcript, languageForRequest, requestId)
+
+      const requestId =
+        requestSessionRef.current
+
+
+      askCropSaver(
+        transcript,
+        languageForRequest,
+        requestId
+      )
+
     }
+
 
     try {
+
       recognition.start()
+
     } catch (err) {
-      console.error('Unable to start microphone:', err)
+
+      console.error(
+        'Unable to start microphone:',
+        err
+      )
+
+
       setIsListening(false)
-      setError('Unable to start microphone. Please try again.')
+
+
+      setError(
+        'Unable to start microphone. Please try again.'
+      )
+
     }
+
   }
 
-  const handleLanguageChange = (event) => {
-    const language = languages.find(
-      (lang) => lang.name === event.target.value
+
+  // ======================================================
+  // LANGUAGE CHANGE
+  // ======================================================
+
+  const handleLanguageChange = (
+    event
+  ) => {
+
+    const language =
+      languages.find(
+        (lang) =>
+          lang.name ===
+          event.target.value
+      )
+
+
+    if (!language) {
+      return
+    }
+
+
+    stopRecognition()
+    stopSpeaking()
+
+
+    requestSessionRef.current += 1
+
+
+    setSelectedLanguage(
+      language
     )
 
-    if (!language) return
 
-    stopRecognition()
-    stopSpeaking()
-    requestSessionRef.current += 1
-
-    setSelectedLanguage(language)
     setIsListening(false)
     setIsLoading(false)
+
     setQuestion('')
     setAnswer('')
     setError('')
+
   }
+
+
+  // ======================================================
+  // CLOSE ASSISTANT
+  // ======================================================
 
   const closeAssistant = () => {
+
     stopRecognition()
     stopSpeaking()
+
+
     requestSessionRef.current += 1
+
 
     setIsListening(false)
     setIsLoading(false)
+
     setQuestion('')
     setAnswer('')
     setError('')
+
     setIsOpen(false)
+
   }
+
+
+  // ======================================================
+  // OPEN ASSISTANT
+  // ======================================================
 
   const openAssistant = () => {
+
     setError('')
     setIsOpen(true)
+
   }
 
+
+  // ======================================================
+  // OPEN ASSISTANT FROM DASHBOARD CTA
+  // ======================================================
+
+  useEffect(() => {
+
+    const handleOpenVoiceAssistant =
+      () => {
+
+        setError('')
+        setIsOpen(true)
+
+      }
+
+
+    window.addEventListener(
+      'cropsaver:open-voice-assistant',
+      handleOpenVoiceAssistant
+    )
+
+
+    return () => {
+
+      window.removeEventListener(
+        'cropsaver:open-voice-assistant',
+        handleOpenVoiceAssistant
+      )
+
+    }
+
+  }, [])
+
+
+  // ======================================================
+  // COMPONENT
+  // ======================================================
+
   return (
+
     <>
+
+      {/* ==================================================
+          ASSISTANT WINDOW
+      ================================================== */}
+
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border border-leaf-100 z-50 overflow-hidden">
-          <div className="bg-gradient-to-r from-leaf-700 to-leaf-800 text-white p-4 flex justify-between items-center">
+
+        <div
+          className="
+            fixed
+            bottom-24
+            right-6
+            w-96
+            max-w-[calc(100vw-3rem)]
+            bg-white
+            rounded-2xl
+            shadow-2xl
+            border
+            border-leaf-100
+            z-50
+            overflow-hidden
+          "
+        >
+
+          {/* HEADER */}
+
+          <div
+            className="
+              bg-gradient-to-r
+              from-leaf-700
+              to-leaf-800
+              text-white
+              p-4
+              flex
+              justify-between
+              items-center
+            "
+          >
+
             <div>
-              <h2 className="font-heading font-bold text-lg">🌱 CropSaver Assistant</h2>
-              <p className="text-xs opacity-90">Speak in your language</p>
+
+              <h2 className="font-heading font-bold text-lg">
+
+                🌱 CropSaver Assistant
+
+              </h2>
+
+
+              <p className="text-xs opacity-90">
+
+                Speak in your language
+
+              </p>
+
             </div>
+
 
             <button
               type="button"
-              onClick={closeAssistant}
+              onClick={
+                closeAssistant
+              }
               className="text-xl hover:opacity-70"
               aria-label="Close voice assistant"
             >
+
               ✕
+
             </button>
+
           </div>
+
+
+          {/* LANGUAGE */}
 
           <div className="p-4 border-b bg-leaf-50">
+
             <label className="block text-xs font-semibold text-gray-600 mb-2">
+
               अपनी भाषा चुनें / Select your language
+
             </label>
 
+
             <select
-              value={selectedLanguage.name}
-              onChange={handleLanguageChange}
-              disabled={isListening || isLoading}
+              value={
+                selectedLanguage.name
+              }
+              onChange={
+                handleLanguageChange
+              }
+              disabled={
+                isListening ||
+                isLoading
+              }
               className="w-full border border-leaf-200 rounded-lg px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-leaf-400"
             >
-              {languages.map((language) => (
-                <option key={language.name} value={language.name}>
-                  {language.label} — {language.region}
-                </option>
-              ))}
+
+              {languages.map(
+                (language) => (
+
+                  <option
+                    key={
+                      language.name
+                    }
+                    value={
+                      language.name
+                    }
+                  >
+
+                    {language.label}
+                    {' — '}
+                    {language.region}
+
+                  </option>
+
+                )
+              )}
+
             </select>
+
           </div>
+
+
+          {/* CONTENT */}
 
           <div className="p-4 max-h-80 overflow-y-auto">
-            {!question && !isListening && !isLoading && (
-              <div className="text-center text-gray-500 py-5">
-                <div className="text-4xl mb-3">👨‍🌾</div>
-                <p className="font-medium text-gray-700">
-                  Ask your farming question
-                </p>
-                <p className="text-sm mt-1">
-                  अपनी खेती से जुड़ा सवाल बोलकर पूछें
-                </p>
-                <p className="text-xs mt-3 text-gray-400">
-                  Selected: {selectedLanguage.label}
-                </p>
-              </div>
-            )}
+
+            {!question &&
+              !isListening &&
+              !isLoading && (
+
+                <div className="text-center text-gray-500 py-5">
+
+                  <div className="text-4xl mb-3">
+
+                    👨‍🌾
+
+                  </div>
+
+
+                  <p className="font-medium text-gray-700">
+
+                    Ask your farming question
+
+                  </p>
+
+
+                  <p className="text-sm mt-1">
+
+                    अपनी खेती से जुड़ा सवाल बोलकर पूछें
+
+                  </p>
+
+
+                  <p className="text-xs mt-3 text-gray-400">
+
+                    Selected:{' '}
+                    {
+                      selectedLanguage.label
+                    }
+
+                  </p>
+
+                </div>
+
+              )}
+
 
             {isListening && (
+
               <div className="text-center py-6">
-                <div className="text-5xl animate-pulse mb-3">🎙️</div>
-                <p className="text-leaf-700 font-semibold">Listening...</p>
-                <p className="text-sm text-gray-500 mt-1">
-                  बोलिए, मैं सुन रहा हूँ
+
+                <div className="text-5xl animate-pulse mb-3">
+
+                  🎙️
+
+                </div>
+
+
+                <p className="text-leaf-700 font-semibold">
+
+                  Listening...
+
                 </p>
+
+
+                <p className="text-sm text-gray-500 mt-1">
+
+                  बोलिए, मैं सुन रहा हूँ
+
+                </p>
+
               </div>
+
             )}
+
 
             {question && (
+
               <div className="mb-4">
-                <p className="text-xs text-gray-500 mb-1">👨‍🌾 You said</p>
+
+                <p className="text-xs text-gray-500 mb-1">
+
+                  👨‍🌾 You said
+
+                </p>
+
+
                 <div className="bg-leaf-50 rounded-lg p-3 text-sm">
+
                   {question}
+
                 </div>
+
               </div>
+
             )}
+
 
             {isLoading && (
+
               <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                <span className="animate-pulse">🌱</span>
+
+                <span className="animate-pulse">
+
+                  🌱
+
+                </span>
+
                 CropSaver is thinking...
+
               </div>
+
             )}
+
 
             {answer && (
+
               <div>
-                <p className="text-xs text-gray-500 mb-1">🌱 CropSaver</p>
+
+                <p className="text-xs text-gray-500 mb-1">
+
+                  🌱 CropSaver
+
+                </p>
+
 
                 <div className="bg-leaf-100 rounded-lg p-3 text-sm whitespace-pre-line">
+
                   {answer}
+
                 </div>
+
 
                 <div className="flex gap-4 mt-3">
+
                   <button
                     type="button"
-                    onClick={() => speakAnswer(answer, selectedLanguage)}
+                    onClick={() =>
+                      speakAnswer(
+                        answer,
+                        selectedLanguage
+                      )
+                    }
                     className="text-sm text-leaf-700 hover:underline"
                   >
+
                     🔊 Listen again
+
                   </button>
+
 
                   <button
                     type="button"
-                    onClick={stopSpeaking}
+                    onClick={
+                      stopSpeaking
+                    }
                     className="text-sm text-gray-600 hover:underline"
                   >
+
                     ⏹ Stop
+
                   </button>
+
                 </div>
+
               </div>
+
             )}
+
 
             {error && (
+
               <div className="bg-red-50 text-red-700 rounded-lg p-3 text-sm mt-3">
+
                 {error}
+
               </div>
+
             )}
+
           </div>
 
+
+          {/* SPEAK BUTTON */}
+
           <div className="border-t p-4 flex justify-center">
+
             <button
               type="button"
-              onClick={startListening}
-              disabled={isListening || isLoading}
+              onClick={
+                startListening
+              }
+              disabled={
+                isListening ||
+                isLoading
+              }
               className="bg-gradient-to-r from-leaf-600 to-leaf-800 hover:from-leaf-700 hover:to-leaf-900 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-full font-medium transition"
             >
-              {isListening
-                ? '🎙️ Listening...'
-                : isLoading
-                  ? '🌱 Thinking...'
-                  : '🎤 Tap to Speak'}
+
+              {
+                isListening
+                  ? '🎙️ Listening...'
+                  : isLoading
+                    ? '🌱 Thinking...'
+                    : '🎤 Tap to Speak'
+              }
+
             </button>
+
           </div>
+
         </div>
+
       )}
+
+
+      {/* ==================================================
+          FLOATING MICROPHONE
+      ================================================== */}
 
       <button
         type="button"
-        onClick={openAssistant}
+        onClick={
+          openAssistant
+        }
         className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-leaf-600 to-leaf-800 hover:scale-110 text-white rounded-full shadow-floaty text-2xl z-50 flex items-center justify-center transition-transform animate-pulse-ring"
         title="CropSaver Voice Assistant"
         aria-label="Open CropSaver Voice Assistant"
       >
+
         🎤
+
       </button>
+
     </>
+
   )
+
 }
