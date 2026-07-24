@@ -63,165 +63,187 @@ export default function Dashboard() {
 
 
       {/* ==================================================
-          WEATHER + CROP RISK
+          MAIN DASHBOARD AREA
+          LEFT = FARMING TOOLS
+          RIGHT = WEATHER
       ================================================== */}
 
-      <section
+      <div
         className="
           dashboard-section
-          weather-risk-section
+          dashboard-main-layout
         "
       >
 
-        <WeatherRiskCard />
+        {/* ================================================
+            LEFT SIDE
+        ================================================ */}
 
-      </section>
+        <main className="dashboard-tools-column">
 
+          {/* ==============================================
+              TOOLKIT INTRO
+          ============================================== */}
 
-      {/* ==================================================
-          TOOLKIT INTRO
-      ================================================== */}
+          <section
+            className="
+              toolkit-section
+              dashboard-inner-section
+            "
+          >
 
-      <section
-        className="
-          dashboard-section
-          toolkit-section
-        "
-      >
+            <div className="toolkit-heading">
 
-        <div className="toolkit-heading">
+              <span className="section-label">
+                {t.farmingToolkit}
+              </span>
 
-          <span className="section-label">
-            {t.farmingToolkit}
-          </span>
+              <h2>
+                {t.toolkitTitle}
+              </h2>
 
-          <h2>
-            {t.toolkitTitle}
-          </h2>
-
-        </div>
-
-
-        <p className="toolkit-description">
-          {t.toolkitDescription}
-        </p>
-
-      </section>
+            </div>
 
 
-      {/* ==================================================
-          MAIN FEATURES
-      ================================================== */}
+            <p className="toolkit-description">
+              {t.toolkitDescription}
+            </p>
 
-      <section
-        className="
-          dashboard-section
-          main-features
-        "
-      >
-
-        <FeatureCard
-          type="disease"
-          title={
-            t.diseaseFeatureTitle
-          }
-          description={
-            t.diseaseFeatureDescription
-          }
-          label={
-            t.aiCropDoctor
-          }
-          button={
-            t.startDiagnosis
-          }
-          to="/detect"
-        />
+          </section>
 
 
-        <FeatureCard
-          type="chat"
-          title={
-            t.aiFeatureTitle
-          }
-          description={
-            t.aiFeatureDescription
-          }
-          label={
-            t.cropSaverAi
-          }
-          button={
-            t.askCropSaver
-          }
-          to="/chat"
-        />
+          {/* ==============================================
+              MAIN FEATURES
+          ============================================== */}
 
-      </section>
+          <section
+            className="
+              main-features
+              dashboard-inner-section
+            "
+          >
 
-
-      {/* ==================================================
-          QUICK TOOLS
-      ================================================== */}
-
-      <section
-        className="
-          dashboard-section
-          quick-tools-section
-        "
-      >
-
-        <div className="quick-tools-heading">
-
-          <span className="section-label">
-            {t.quickTools}
-          </span>
-
-          <h2>
-            {t.exploreTools}
-          </h2>
-
-        </div>
+            <FeatureCard
+              type="disease"
+              title={
+                t.diseaseFeatureTitle
+              }
+              description={
+                t.diseaseFeatureDescription
+              }
+              label={
+                t.aiCropDoctor
+              }
+              button={
+                t.startDiagnosis
+              }
+              to="/detect"
+            />
 
 
-        <div className="quick-features">
+            <FeatureCard
+              type="chat"
+              title={
+                t.aiFeatureTitle
+              }
+              description={
+                t.aiFeatureDescription
+              }
+              label={
+                t.cropSaverAi
+              }
+              button={
+                t.askCropSaver
+              }
+              to="/chat"
+            />
 
-          <QuickCard
-            icon="📜"
-            title={
-              t.cropHistory
-            }
-            description={
-              t.historyCardDesc
-            }
-            to="/history"
-          />
-
-
-          <QuickCard
-            icon="🏛️"
-            title={
-              t.governmentNotices
-            }
-            description={
-              t.noticesCardDesc
-            }
-            to="/notices"
-          />
+          </section>
 
 
-          <QuickCard
-            icon="📍"
-            title={
-              t.nearbyExperts
-            }
-            description={
-              t.expertsCardDesc
-            }
-            to="/nearby"
-          />
+          {/* ==============================================
+              QUICK TOOLS
+          ============================================== */}
 
-        </div>
+          <section
+            className="
+              quick-tools-section
+              dashboard-inner-section
+            "
+          >
 
-      </section>
+            <div className="quick-tools-heading">
+
+              <span className="section-label">
+                {t.quickTools}
+              </span>
+
+              <h2>
+                {t.exploreTools}
+              </h2>
+
+            </div>
+
+
+            <div className="quick-features">
+
+              <QuickCard
+                icon="📜"
+                title={
+                  t.cropHistory
+                }
+                description={
+                  t.historyCardDesc
+                }
+                to="/history"
+              />
+
+
+              <QuickCard
+                icon="🏛️"
+                title={
+                  t.governmentNotices
+                }
+                description={
+                  t.noticesCardDesc
+                }
+                to="/notices"
+              />
+
+
+              <QuickCard
+                icon="📍"
+                title={
+                  t.nearbyExperts
+                }
+                description={
+                  t.expertsCardDesc
+                }
+                to="/nearby"
+              />
+
+            </div>
+
+          </section>
+
+        </main>
+
+
+        {/* ================================================
+            RIGHT SIDE — WEATHER SIDEBAR
+        ================================================ */}
+
+        <aside className="dashboard-weather-column">
+
+          <div className="dashboard-weather-sticky">
+
+            <WeatherRiskCard />
+
+          </div>
+
+        </aside>
+
+      </div>
 
 
       {/* ==================================================
