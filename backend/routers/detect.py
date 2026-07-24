@@ -992,20 +992,17 @@ async def detect_disease(
     # ==================================================
     # FINAL CONFIDENCE
     # ==================================================
+    # ==================================================
+    # FINAL CONFIDENCE
+    # ==================================================
 
-    if plant_confidence > 0:
+    # Use the higher confidence from Gemini or Plant.id
+    confidence = max(
+        gemini_confidence,
+        plant_confidence,
+    )
 
-        confidence = (
-            plant_confidence
-        )
-
-    else:
-
-        confidence = (
-            gemini_confidence
-        )
-
-
+    # Safety clamp between 0 and 1
     confidence = max(
         0.0,
         min(
@@ -1014,6 +1011,30 @@ async def detect_disease(
         ),
     )
 
+    print("=" * 60)
+    print("CONFIDENCE COMPARISON")
+
+    print(
+        "Gemini:",
+        f"{gemini_confidence * 100:.1f}%"
+    )
+
+    print(
+        "Plant.id:",
+        f"{plant_confidence * 100:.1f}%"
+    )
+
+    print(
+        "Final:",
+        f"{confidence * 100:.1f}%"
+    )
+
+    print("=" * 60)
+
+
+    # ==================================================
+    # SAVE HISTORY
+    # ==================================================
 
     # ==================================================
     # SAVE HISTORY
