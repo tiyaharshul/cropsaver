@@ -1,0 +1,626 @@
+/* =====================================================
+   CROP CALENDAR PAGE
+===================================================== */
+
+.crop-calendar-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.calendar-page-header {
+  margin-bottom: 28px;
+}
+
+.calendar-eyebrow,
+.calendar-small-label {
+  display: inline-block;
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.calendar-page-header h1 {
+  margin: 7px 0 6px;
+  color: #111827;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.calendar-page-header p {
+  max-width: 680px;
+  margin: 0;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   ALERT
+===================================================== */
+
+.calendar-alert {
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.calendar-alert.error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.calendar-alert.success {
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+
+/* =====================================================
+   CREATE CARD
+===================================================== */
+
+.calendar-create-card {
+  position: sticky;
+  top: 95px;
+
+  padding: 24px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #dcfce7;
+  border-radius: 24px;
+
+  box-shadow:
+    0 12px 35px rgba(22, 101, 52, 0.08);
+}
+
+.calendar-card-heading h2 {
+  margin: 7px 0 7px;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.calendar-card-heading p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.calendar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 23px;
+}
+
+.calendar-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.calendar-form label > span {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.calendar-form input,
+.calendar-form select {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  color: #111827;
+  background: #ffffff;
+
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+
+  font-size: 14px;
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.calendar-form input:focus,
+.calendar-form select:focus {
+  border-color: #16a34a;
+  box-shadow:
+    0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.calendar-create-button {
+  margin-top: 4px;
+
+  padding: 13px 18px;
+
+  color: #ffffff;
+  background: #15803d;
+
+  border: none;
+  border-radius: 13px;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.calendar-create-button:hover:not(:disabled) {
+  background: #166534;
+  transform: translateY(-1px);
+}
+
+.calendar-create-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.calendar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.calendar-empty {
+  padding: 70px 30px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px dashed #bbf7d0;
+  border-radius: 24px;
+}
+
+.calendar-empty-icon,
+.calendar-empty > div:first-child {
+  margin-bottom: 10px;
+  font-size: 42px;
+}
+
+.calendar-empty h2,
+.calendar-empty h3 {
+  margin: 0 0 7px;
+  color: #1f2937;
+}
+
+.calendar-empty p {
+  max-width: 430px;
+  margin: 0 auto;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   CALENDAR CARD
+===================================================== */
+
+.crop-calendar-card {
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #dcfce7;
+  border-radius: 24px;
+
+  box-shadow:
+    0 12px 35px rgba(22, 101, 52, 0.07);
+}
+
+.crop-calendar-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 24px 26px;
+
+  border-bottom: 1px solid #f0fdf4;
+}
+
+.crop-calendar-card-header h2 {
+  margin: 6px 0 3px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.crop-calendar-card-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.calendar-delete-button {
+  padding: 9px 12px;
+
+  color: #b91c1c;
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.calendar-delete-button:hover:not(:disabled) {
+  background: #fee2e2;
+}
+
+.calendar-delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.calendar-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  padding: 20px 26px;
+}
+
+.calendar-summary-item {
+  padding: 14px 16px;
+
+  background: #f0fdf4;
+
+  border: 1px solid #dcfce7;
+  border-radius: 15px;
+}
+
+.calendar-summary-item span {
+  display: block;
+  margin-bottom: 4px;
+
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.calendar-summary-item strong {
+  color: #166534;
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.calendar-progress {
+  padding: 0 26px 23px;
+}
+
+.calendar-progress-info {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 8px;
+
+  color: #4b5563;
+  font-size: 12px;
+}
+
+.calendar-progress-info strong {
+  color: #166534;
+}
+
+.calendar-progress-track {
+  width: 100%;
+  height: 8px;
+
+  overflow: hidden;
+
+  background: #e5e7eb;
+  border-radius: 999px;
+}
+
+.calendar-progress-fill {
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    #15803d
+  );
+
+  border-radius: inherit;
+
+  transition: width 0.35s ease;
+}
+
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
+.calendar-timeline {
+  padding: 0 26px 28px;
+}
+
+.calendar-task {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+
+  padding-bottom: 22px;
+}
+
+.calendar-task:not(:last-child)::before {
+  content: '';
+
+  position: absolute;
+
+  left: 16px;
+  top: 34px;
+  bottom: 0;
+
+  width: 2px;
+
+  background: #e5e7eb;
+}
+
+.calendar-task.completed:not(:last-child)::before {
+  background: #86efac;
+}
+
+
+/* =====================================================
+   CHECK
+===================================================== */
+
+.calendar-task-check {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  color: #ffffff;
+  background: #ffffff;
+
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+
+  font-size: 15px;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.calendar-task-check:hover {
+  transform: scale(1.06);
+}
+
+.calendar-task.completed .calendar-task-check {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+.calendar-task.today .calendar-task-check {
+  border-color: #2563eb;
+}
+
+.calendar-task.overdue .calendar-task-check {
+  border-color: #ef4444;
+}
+
+
+/* =====================================================
+   TASK BODY
+===================================================== */
+
+.calendar-task-body {
+  padding: 14px 16px;
+
+  background: #f9fafb;
+
+  border: 1px solid #f3f4f6;
+  border-radius: 15px;
+}
+
+.calendar-task.completed .calendar-task-body {
+  background: #f0fdf4;
+  border-color: #dcfce7;
+}
+
+.calendar-task.today .calendar-task-body {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.calendar-task.overdue .calendar-task-body {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.calendar-task-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.calendar-task-top > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calendar-task-top strong {
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.calendar-task-icon {
+  font-size: 18px;
+}
+
+.calendar-task-date {
+  margin: 6px 0 0;
+
+  color: #15803d;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.calendar-task-description {
+  margin: 7px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.calendar-status {
+  flex-shrink: 0;
+
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.calendar-status.completed {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.calendar-status.today {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+
+.calendar-status.upcoming {
+  color: #854d0e;
+  background: #fef9c3;
+}
+
+.calendar-status.overdue {
+  color: #b91c1c;
+  background: #fee2e2;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .calendar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-create-card {
+    position: static;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .crop-calendar-page {
+    padding:
+      24px 14px
+      50px;
+  }
+
+  .crop-calendar-card-header {
+    flex-direction: column;
+  }
+
+  .calendar-delete-button {
+    width: 100%;
+  }
+
+  .calendar-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-task-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+}

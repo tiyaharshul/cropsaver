@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
-from typing import Optional
-from datetime import datetime
+from typing import Optional, List
+from datetime import datetime, date
 
 
 # ======================================================
@@ -173,9 +173,7 @@ class CropHistoryItem(BaseModel):
 
     image_url: Optional[str] = None
 
-    treatment: Optional[
-        TreatmentResponse
-    ] = None
+    treatment: Optional[TreatmentResponse] = None
 
     created_at: datetime = Field(
         default_factory=datetime.utcnow
@@ -194,3 +192,87 @@ class NearbyCenter(BaseModel):
 
     address: Optional[str] = None
     distance_km: Optional[float] = None
+
+
+# ======================================================
+# CROP CALENDAR
+# ======================================================
+
+class CropCalendarCreateRequest(BaseModel):
+    """
+    Data required when a farmer creates a new crop calendar.
+    """
+
+    user_id: str
+
+    crop_name: str = Field(
+        min_length=2,
+        max_length=100,
+    )
+
+    state: str = Field(
+        min_length=2,
+        max_length=100,
+    )
+
+    season: str = Field(
+        min_length=2,
+        max_length=50,
+    )
+
+    sowing_date: date
+
+
+class CropCalendarTaskUpdateRequest(BaseModel):
+    """
+    Used when the farmer marks a calendar task
+    completed or incomplete.
+    """
+
+    completed: bool
+
+
+class CropCalendarTask(BaseModel):
+    """
+    Individual farming activity inside a crop calendar.
+    """
+
+    task_id: str
+
+    title: str
+
+    description: Optional[str] = None
+
+    task_type: str
+
+    scheduled_date: date
+
+    completed: bool = False
+
+    completed_at: Optional[datetime] = None
+
+
+class CropCalendarResponse(BaseModel):
+    """
+    Complete crop calendar returned by the API.
+    """
+
+    id: str
+
+    user_id: str
+
+    crop_name: str
+
+    state: str
+
+    season: str
+
+    sowing_date: date
+
+    expected_harvest_date: date
+
+    tasks: List[CropCalendarTask]
+
+    created_at: datetime
+
+    updated_at: datetime
