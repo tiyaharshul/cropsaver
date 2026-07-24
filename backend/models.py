@@ -58,7 +58,6 @@ class DetectionResult(BaseModel):
 
     crop_name: str
 
-    # General problem classification
     problem_type: str = "disease"
     problem_name: Optional[str] = None
 
@@ -85,7 +84,7 @@ class TreatmentRequest(BaseModel):
     # Connect treatment with MongoDB history
     history_id: Optional[str] = None
 
-    # New generalized crop-problem fields
+    # Generalized crop-problem fields
     problem_type: str = "disease"
     problem_name: Optional[str] = None
 
@@ -101,12 +100,13 @@ class TreatmentResponse(BaseModel):
 
 
 # ======================================================
-# FEEDBACK
+# FARMER FEEDBACK
 # ======================================================
 
 class FeedbackRequest(BaseModel):
     user_id: str
     crop_history_id: str
+
     treatment_worked: bool
 
     rating: int = Field(
@@ -114,8 +114,32 @@ class FeedbackRequest(BaseModel):
         le=5,
     )
 
+    comments: Optional[str] = Field(
+        default=None,
+        max_length=1000,
+    )
+
+    recovery_days: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=365,
+    )
+
+
+class FeedbackResponse(BaseModel):
+    id: str
+
+    user_id: str
+    crop_history_id: str
+
+    treatment_worked: bool
+    rating: int
+
     comments: Optional[str] = None
     recovery_days: Optional[int] = None
+
+    created_at: datetime
+    updated_at: datetime
 
 
 # ======================================================
@@ -149,7 +173,9 @@ class CropHistoryItem(BaseModel):
 
     image_url: Optional[str] = None
 
-    treatment: Optional[TreatmentResponse] = None
+    treatment: Optional[
+        TreatmentResponse
+    ] = None
 
     created_at: datetime = Field(
         default_factory=datetime.utcnow
